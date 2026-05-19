@@ -57,7 +57,7 @@ public class CharacterCreationService {
     public PlayerCharacter assignBackground(UUID characterId, AssignBackgroundRequest request){
         PlayerCharacter sheet = playerCharacterRepo.findById(characterId).orElseThrow(() -> new RuntimeException("Character not found"));
         Background background = backgroundRepo.findById(request.backgroundId()).orElseThrow(() -> new RuntimeException("Background not found"));
-        Skill chosenSkill = skillRepo.findById(request.backgroundId()).orElseThrow(() -> new RuntimeException("Skill not found"));
+        Skill chosenSkill = skillRepo.findById(request.chosenBackgroundSkillId()).orElseThrow(() -> new RuntimeException("Skill not found"));
 
         if(!background.getTrainedSkillOptions().contains(chosenSkill))
             throw new RuntimeException("Invalid background skill choice");
