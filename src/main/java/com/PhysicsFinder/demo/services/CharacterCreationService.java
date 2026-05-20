@@ -77,11 +77,26 @@ public class CharacterCreationService {
     }
 
     private void addSense(PlayerCharacter character, SenseType senseType){
-        if(senseType == SenseType.DARKVISION)
+        if (senseType == SenseType.DARKVISION) {
             character.getSenses().remove(SenseType.LOW_LIGHT_VISION);
-
-        if (senseType == SenseType.LOW_LIGHT_VISION && character.getSenses().contains(SenseType.DARKVISION))
+            character.getSenses().add(SenseType.DARKVISION);
             return;
+        }
+
+        if (senseType == SenseType.LOW_LIGHT_VISION) {
+            if (character.getSenses().contains(SenseType.DARKVISION)) {
+                return;
+            }
+
+            if (character.getSenses().contains(SenseType.LOW_LIGHT_VISION)) {
+                character.getSenses().remove(SenseType.LOW_LIGHT_VISION);
+                character.getSenses().add(SenseType.DARKVISION);
+                return;
+            }
+
+            character.getSenses().add(SenseType.LOW_LIGHT_VISION);
+            return;
+        }
 
         character.getSenses().add(senseType);
     }

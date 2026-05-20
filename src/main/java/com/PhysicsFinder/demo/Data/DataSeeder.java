@@ -379,7 +379,15 @@ public class DataSeeder {
             dromaar.setTraits(Set.of(TraitType.DROMAAR, TraitType.ORC));
             dromaar.setSenses(Set.of(SenseType.LOW_LIGHT_VISION));
 
-            heritageRepo.saveAll(List.of(skilledHuman, ancientBlooded, ancientElf, chameleonGnome, charhideGoblin, gutsyHalfling, cactusLeshy, badlandsOrc, aiuvarin, dromaar));
+            Heritage changeling = new Heritage("Changeling", "Your mother was a hag.", HeritageType.VERSATILE, null);
+            changeling.setTraits(Set.of(TraitType.CHANGELING));
+            changeling.setSenses(Set.of(SenseType.LOW_LIGHT_VISION));
+
+            Heritage nephilim = new Heritage("Nephilim", "Your nature is influenced by celestials, fiends, or monitors.", HeritageType.VERSATILE, null);
+            nephilim.setTraits(Set.of(TraitType.NEPHILIM));
+            nephilim.setSenses(Set.of(SenseType.LOW_LIGHT_VISION));
+
+            heritageRepo.saveAll(List.of(skilledHuman, ancientBlooded, ancientElf, chameleonGnome, charhideGoblin, gutsyHalfling, cactusLeshy, badlandsOrc, aiuvarin, dromaar, changeling, nephilim));
 
             Feat intimidatingGlare = new Feat("Intimidating Glare", 1, FeatType.SKILL, "Demoralize a creature using only a look.");
             Feat terrainExpert = new Feat("Terrain Expertise", 1, FeatType.SKILL, "You are particularly skilled in rough terrain.");

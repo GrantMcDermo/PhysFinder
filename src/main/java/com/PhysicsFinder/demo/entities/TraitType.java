@@ -12,5 +12,7 @@ public enum TraitType {
     AIUVARIN,
     DROMAAR,
     HUMANOID,
-    PLANT
+    PLANT,
+    CHANGELING,
+    NEPHILIM
 }
