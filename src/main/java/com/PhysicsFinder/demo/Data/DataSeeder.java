@@ -72,7 +72,11 @@ public class DataSeeder {
             warhammer.setName("Warhammer");
             warhammer.setCategory(WeaponCategory.MARTIAL);
 
-            weaponRepo.saveAll(List.of(crossbow, warhammer));
+            Weapon sawtoothSaber = new Weapon();
+            sawtoothSaber.setName("Sawtooth Saber");
+            sawtoothSaber.setCategory(WeaponCategory.ADVANCED);
+
+            weaponRepo.saveAll(List.of(crossbow, warhammer, sawtoothSaber));
 
             Deity abadar = new Deity();
             abadar.setName("Abadar");
