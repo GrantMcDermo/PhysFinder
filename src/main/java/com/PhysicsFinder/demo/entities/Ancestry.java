@@ -19,7 +19,8 @@ public class Ancestry {
     private String size;
 
     @ElementCollection
-    private List<String> traits = new ArrayList<>();
+    @Enumerated(EnumType.STRING)
+    private Set<TraitType> traits = new HashSet<>();
 
     @ElementCollection
     private List<String> languages = new ArrayList<>();

@@ -3,9 +3,7 @@ package com.PhysicsFinder.demo.entities;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Data
 @Entity
@@ -26,7 +24,12 @@ public class Heritage {
     private Ancestry ancestry;
 
     @ElementCollection
-    private List<String> traits = new ArrayList<>();
+    @Enumerated(EnumType.STRING)
+    private Set<TraitType> traits = new HashSet<>();
+
+    @ElementCollection
+    @Enumerated(EnumType.STRING)
+    private Set<SenseType> senses = new HashSet<>();
 
     @ManyToMany
     private List<Ancestry> grantedAncestryFeatAccess = new ArrayList<>();

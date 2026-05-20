@@ -36,6 +36,10 @@ public class PlayerCharacter {
 
     @ElementCollection
     @Enumerated(EnumType.STRING)
+    private Set<TraitType> traits = new HashSet<>();
+
+    @ElementCollection
+    @Enumerated(EnumType.STRING)
     private Set<SenseType> senses = new HashSet<>();
 
     @ManyToMany

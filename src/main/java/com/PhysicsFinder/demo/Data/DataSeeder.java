@@ -293,11 +293,11 @@ public class DataSeeder {
             characterClassRepo.saveAll(List.of(bard, cleric, druid, fighter, psychic, ranger, rogue, thaumaturge, witch, wizard));
 
             Ancestry human = new Ancestry("Human", 8, 25, "MEDIUM");
-            human.setTraits(List.of("HUMAN", "HUMANOID"));
+            human.setTraits(Set.of(TraitType.HUMAN, TraitType.HUMANOID));
             human.setLanguages(List.of("Common"));
 
             Ancestry dwarf = new Ancestry("Dwarf", 10, 20, "MEDIUM");
-            dwarf.setTraits(List.of("DWARF", "HUMANOID"));
+            dwarf.setTraits(Set.of(TraitType.DWARF, TraitType.HUMANOID));
             dwarf.setLanguages(List.of("Common", "Dwarven"));
             dwarf.setSenses(Set.of(SenseType.DARKVISION));
 
@@ -309,22 +309,22 @@ public class DataSeeder {
             dwarf.setFeatures(List.of(clanDaggerMechanic));
 
             Ancestry elf = new Ancestry("Elf", 6, 30, "MEDIUM");
-            elf.setTraits(List.of("ELF", "HUMANOID"));
+            elf.setTraits(Set.of(TraitType.ELF, TraitType.HUMANOID));
             elf.setLanguages(List.of("Common", "Elven"));
             elf.setSenses(Set.of(SenseType.LOW_LIGHT_VISION));
 
             Ancestry gnome = new Ancestry("Gnome", 8, 25, "SMALL");
-            gnome.setTraits(List.of("GNOME", "HUMANOID"));
+            gnome.setTraits(Set.of(TraitType.GNOME, TraitType.HUMANOID));
             gnome.setLanguages(List.of("Common", "Fey", "Gnomish"));
             gnome.setSenses(Set.of(SenseType.LOW_LIGHT_VISION));
 
             Ancestry goblin = new Ancestry("Goblin", 6, 25, "SMALL");
-            goblin.setTraits(List.of("GOBLIN", "HUMANOID"));
+            goblin.setTraits(Set.of(TraitType.GOBLIN, TraitType.HUMANOID));
             goblin.setLanguages(List.of("Common", "Goblin"));
             goblin.setSenses(Set.of(SenseType.DARKVISION));
 
             Ancestry halfling = new Ancestry("Halfling", 6, 25, "SMALL");
-            halfling.setTraits(List.of("HALFLING", "HUMANOID"));
+            halfling.setTraits(Set.of(TraitType.HALFLING, TraitType.HUMANOID));
             halfling.setLanguages(List.of("Common", "Halfling"));
 
             AncestryFeature keenEyes = new AncestryFeature();
@@ -335,7 +335,7 @@ public class DataSeeder {
             halfling.setFeatures(List.of(keenEyes));
 
             Ancestry leshy = new Ancestry("Leshy", 8, 25, "SMALL");
-            leshy.setTraits(List.of("LESHY", "PLANT"));
+            leshy.setTraits(Set.of(TraitType.LESHY, TraitType.PLANT));
             leshy.setLanguages(List.of("Common", "Fey"));
             leshy.setSenses(Set.of(SenseType.LOW_LIGHT_VISION));
 
@@ -347,7 +347,7 @@ public class DataSeeder {
             leshy.setFeatures(List.of(plantNourishment));
 
             Ancestry orc = new Ancestry("Orc", 10, 25, "MEDIUM");
-            orc.setTraits(List.of("HUMANOID", "ORC"));
+            orc.setTraits(Set.of(TraitType.HUMANOID, TraitType.ORC));
             orc.setLanguages(List.of("Common", "Orcish"));
             orc.setSenses(Set.of(SenseType.DARKVISION));
 
@@ -371,10 +371,13 @@ public class DataSeeder {
 
             Heritage aiuvarin = new Heritage("Aiuvarin", "You have the blood of Elves mixed into your ancestry.", HeritageType.VERSATILE, null);
             aiuvarin.setGrantedAncestryFeatAccess(List.of(elf));
-            aiuvarin.setTraits(List.of("AIUVARIN", "ELF"));
+            aiuvarin.setTraits(Set.of(TraitType.ELF, TraitType.AIUVARIN));
+            aiuvarin.setSenses(Set.of(SenseType.LOW_LIGHT_VISION));
 
             Heritage dromaar = new Heritage("Dromaar", "You have the blood of Orcs mixed into your ancestry.", HeritageType.VERSATILE, null);
             dromaar.setGrantedAncestryFeatAccess(List.of(orc));
+            dromaar.setTraits(Set.of(TraitType.DROMAAR, TraitType.ORC));
+            dromaar.setSenses(Set.of(SenseType.LOW_LIGHT_VISION));
 
             heritageRepo.saveAll(List.of(skilledHuman, ancientBlooded, ancientElf, chameleonGnome, charhideGoblin, gutsyHalfling, cactusLeshy, badlandsOrc, aiuvarin, dromaar));
 

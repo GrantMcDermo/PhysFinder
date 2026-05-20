@@ -51,16 +51,28 @@ public class CharacterCreationService {
         sheet.setHeritage(heritage);
         sheet.setSpeed(ancestry.getSpeed());
         sheet.setSize(ancestry.getSize());
-        copyAncestrySenses(sheet, ancestry);
+        copyAncestryAndHeritageTraitsAndSenses(sheet, ancestry, heritage);
         recalculateDerivedStats(sheet);
 
         return playerCharacterRepo.save(sheet);
     }
 
-    private void copyAncestrySenses(PlayerCharacter character, Ancestry ancestry){
+    private void copyAncestryAndHeritageTraitsAndSenses(PlayerCharacter character, Ancestry ancestry, Heritage heritage){
+        character.getTraits().clear();
         character.getSenses().clear();
+
+        character.getTraits().addAll(ancestry.getTraits());
+
         for(SenseType sense : ancestry.getSenses()){
             addSense(character, sense);
+        }
+
+        if(heritage != null){
+            character.getTraits().addAll(heritage.getTraits());
+
+            for (SenseType sense : heritage.getSenses()) {
+                addSense(character, sense);
+            }
         }
     }
 
