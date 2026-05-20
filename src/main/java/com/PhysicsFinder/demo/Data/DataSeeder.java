@@ -23,6 +23,7 @@ public class DataSeeder {
             AttributeFlawRuleRepo attributeFlawRuleRepo,
             ClassFeatureChoiceRepo classFeatureChoiceRepo,
             WeaponRepo weaponRepo,
+            ArmorRepo armorRepo,
             DeityRepo deityRepo){
         return args -> {
             if(ancestryRepo.count() > 0)
@@ -77,6 +78,24 @@ public class DataSeeder {
             sawtoothSaber.setCategory(WeaponCategory.ADVANCED);
 
             weaponRepo.saveAll(List.of(crossbow, warhammer, sawtoothSaber));
+
+            Armor explorersClothing = new Armor();
+            explorersClothing.setName("Explorer's Clothing");
+            explorersClothing.setCategory(ArmorCategory.UNARMORED);
+
+            Armor paddedArmor = new Armor();
+            paddedArmor.setName("Padded Armor");
+            paddedArmor.setCategory(ArmorCategory.LIGHT);
+
+            Armor hideArmor = new Armor();
+            hideArmor.setName("Hide Armor");
+            hideArmor.setCategory(ArmorCategory.MEDIUM);
+
+            Armor splintMail = new Armor();
+            splintMail.setName("Splint Mail");
+            splintMail.setCategory(ArmorCategory.HEAVY);
+
+            armorRepo.saveAll(List.of(explorersClothing, paddedArmor, hideArmor, splintMail));
 
             Deity abadar = new Deity();
             abadar.setName("Abadar");
