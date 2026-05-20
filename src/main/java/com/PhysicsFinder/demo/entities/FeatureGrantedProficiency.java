@@ -28,4 +28,11 @@ public class FeatureGrantedProficiency {
 
     @Enumerated(EnumType.STRING)
     private ProficiencyRank rank;
+
+    public FeatureGrantedProficiency(ClassFeatureChoice classFeatureChoice, String proficiencyName, ProficiencyCategory category, ProficiencyRank rank){
+        this.classFeatureChoice = classFeatureChoice;
+        this.proficiencyName = proficiencyName;
+        this.category = category;
+        this.rank = rank;
+    }
 }

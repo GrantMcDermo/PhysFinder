@@ -7,5 +7,6 @@ public enum ProficiencyCategory {
     DEFENSE,
     PERCEPTION,
     SPELL,
-    CLASS_DC
+    CLASS_DC,
+    WEAPON
 }

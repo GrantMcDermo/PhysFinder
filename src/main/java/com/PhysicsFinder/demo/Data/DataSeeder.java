@@ -20,7 +20,9 @@ public class DataSeeder {
             FeatRepo featRepo,
             SkillRepo skillRepo,
             AttributeBoostRuleRepo attributeBoostRuleRepo,
-            ClassFeatureChoiceRepo classFeatureChoiceRepo){
+            ClassFeatureChoiceRepo classFeatureChoiceRepo,
+            WeaponRepo weaponRepo,
+            DeityRepo deityRepo){
         return args -> {
             if(ancestryRepo.count() > 0)
                 return;
@@ -28,22 +30,60 @@ public class DataSeeder {
             Skill acrobatics = new Skill("Acrobatics", "Dexterity");
             Skill athletics = new Skill("Athletics", "Strength");
             Skill arcana = new Skill("Arcana", "Intelligence");
+            Skill crafting = new Skill("Crafting", "Intelligence");
+            Skill deception = new Skill("Deception", "Charisma");
+            Skill diplomacy = new Skill("Diplomacy", "Charisma");
             Skill intimidation = new Skill("Intimidation", "Charisma");
+            Skill medicine = new Skill("Medicine", "Wisdom");
             Skill nature = new Skill("Nature", "Wisdom");
             Skill occultism = new Skill("Occultism", "Intelligence");
+            Skill performance = new Skill("Performance", "Charisma");
             Skill religion = new Skill("Religion", "Wisdom");
+            Skill society = new Skill("Society", "Intelligence");
             Skill stealth = new Skill("Stealth", "Dexterity");
+            Skill survival = new Skill("Survival", "Wisdom");
+            Skill thievery = new Skill("Thievery", "Dexterity");
 
             skillRepo.saveAll(List.of(
                     acrobatics,
                     athletics,
                     arcana,
+                    crafting,
+                    deception,
+                    diplomacy,
                     intimidation,
+                    medicine,
                     nature,
                     occultism,
+                    performance,
                     religion,
-                    stealth
+                    society,
+                    stealth,
+                    survival,
+                    thievery
             ));
+
+            Weapon crossbow = new Weapon();
+            crossbow.setName("Crossbow");
+            crossbow.setCategory(WeaponCategory.SIMPLE);
+
+            Weapon warhammer = new Weapon();
+            warhammer.setName("Warhammer");
+            warhammer.setCategory(WeaponCategory.MARTIAL);
+
+            weaponRepo.saveAll(List.of(crossbow, warhammer));
+
+            Deity abadar = new Deity();
+            abadar.setName("Abadar");
+            abadar.setFavoredWeapon(crossbow);
+            abadar.setGrantedSkill(society);
+
+            Deity torag = new Deity();
+            torag.setName("Torag");
+            torag.setFavoredWeapon(warhammer);
+            torag.setGrantedSkill(crafting);
+
+            deityRepo.saveAll(List.of(abadar, torag));
 
             CharacterClass fighter = new CharacterClass("Fighter", 10, List.of("Strength", "Dexterity"));
             fighter.setInitialProficiencies(List.of(
@@ -140,7 +180,40 @@ public class DataSeeder {
                     new InitialProficiency("Rogue Class DC", ProficiencyCategory.CLASS_DC, ProficiencyRank.TRAINED)
             ));
 
-            characterClassRepo.saveAll(List.of(fighter, psychic, rogue, thaumaturge, wizard));
+            CharacterClass bard = new CharacterClass("Bard", 8, List.of("Charisma"));
+            bard.setInitialProficiencies(List.of(
+                    new InitialProficiency("Perception", ProficiencyCategory.PERCEPTION, ProficiencyRank.EXPERT),
+                    new InitialProficiency("Fortitude", ProficiencyCategory.SAVE, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Reflex", ProficiencyCategory.SAVE, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Will", ProficiencyCategory.SAVE, ProficiencyRank.EXPERT),
+                    new InitialProficiency("Occultism", ProficiencyCategory.SKILL, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Performance", ProficiencyCategory.SKILL, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Simple Weapons", ProficiencyCategory.ATTACK, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Martial Weapons", ProficiencyCategory.ATTACK, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Unarmed Attacks", ProficiencyCategory.ATTACK, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Light Armor", ProficiencyCategory.DEFENSE, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Unarmored Defense", ProficiencyCategory.DEFENSE, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Spell Attack Modifier", ProficiencyCategory.SPELL, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Spell DC", ProficiencyCategory.SPELL, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Bard Class DC", ProficiencyCategory.CLASS_DC, ProficiencyRank.TRAINED)
+            ));
+            CharacterClass cleric = new CharacterClass("Cleric", 8, List.of("Wisdom"));
+            cleric.setInitialProficiencies(List.of(
+                    new InitialProficiency("Perception", ProficiencyCategory.PERCEPTION, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Fortitude", ProficiencyCategory.SAVE, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Reflex", ProficiencyCategory.SAVE, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Will", ProficiencyCategory.SAVE, ProficiencyRank.EXPERT),
+                    new InitialProficiency("Religion", ProficiencyCategory.SKILL, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Simple Weapons", ProficiencyCategory.ATTACK, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Unarmed Attacks", ProficiencyCategory.ATTACK, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Unarmored Defense", ProficiencyCategory.DEFENSE, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Spell Attack Modifier", ProficiencyCategory.SPELL, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Spell DC", ProficiencyCategory.SPELL, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Cleric Class DC", ProficiencyCategory.CLASS_DC, ProficiencyRank.TRAINED)
+            ));
+
+
+            characterClassRepo.saveAll(List.of(bard, cleric, fighter, psychic, rogue, thaumaturge, wizard));
 
             Ancestry human = new Ancestry("Human", 8, 25, "MEDIUM");
             human.setTraits(List.of("Human", "Humanoid"));
@@ -169,6 +242,7 @@ public class DataSeeder {
             Feat terrainExpert = new Feat("Terrain Expertise", 1, FeatType.SKILL, "You are particularly skilled in rough terrain.");
             Feat assurance = new Feat("Assurance", 1, FeatType.SKILL, "Even in the worst circumstances, you can perform basic tasks.");
             Feat adoptedAncestry = new Feat("Adopted Ancestry", 1, FeatType.GENERAL, "You’re fully immersed in another ancestry’s culture and traditions, whether born into them, earned through rite of passage, or bonded through a deep friendship or romance.");
+            Feat shieldBlock = new Feat("Shield Block", 1, FeatType.GENERAL, "You snap your shield in place to ward off a blow.");
             Feat combatAssessment = new Feat("Combat Assessment", 1, FeatType.CLASS, "You make a telegraphed attack to learn about your foe.");
             combatAssessment.setCharacterClass(fighter);
             Feat spellbookProdigy = new Feat("Spellbook Prodigy", 1, FeatType.CLASS, "You are particularly adept at learning spells to add to your spellbook.");
@@ -179,6 +253,12 @@ public class DataSeeder {
             ammunitionThaumaturgy.setCharacterClass(thaumaturge);
             Feat nimbleDodge = new Feat("Nimble Dodge", 1, FeatType.CLASS, "You deftly dodge out of the way, gaining a +2 circumstance bonus to AC against the triggering attack.");
             nimbleDodge.setCharacterClass(rogue);
+            Feat bardicLore = new Feat("Bardic Lore", 1, FeatType.CLASS, "Your studies make you informed on every subject.");
+            bardicLore.setCharacterClass(bard);
+            Feat domainInitiate = new Feat("Domain Initiate", 1, FeatType.CLASS, "Your deity bestows a special spell related to their powers.");
+            domainInitiate.setCharacterClass(cleric);
+            Feat deadlySimplicity = new Feat("Deadly Simplicity", 1, FeatType.CLASS, "When you are wielding your deity’s favored weapon, increase the damage die size of that weapon by one step.");
+            deadlySimplicity.setCharacterClass(cleric);
             Feat adaptedCantrip = new Feat("Adapted Cantrip", 1, FeatType.ANCESTRY, "Through study of multiple magical traditions, you’ve altered a spell to suit your spellcasting style.");
             adaptedCantrip.setAncestry(human);
             Feat dwarvenDoughtiness = new Feat("Dwarven Doughtiness", 1, FeatType.ANCESTRY, "You are naturally calm and collected in the face of imminent danger.");
@@ -193,8 +273,8 @@ public class DataSeeder {
             supernaturalCharm.setHeritage(aiuvarin);
             featRepo.saveAll(List.of(
                     intimidatingGlare, terrainExpert, assurance,
-                    adoptedAncestry,
-                    combatAssessment, spellbookProdigy, ancestralMind, ammunitionThaumaturgy, nimbleDodge,
+                    adoptedAncestry, shieldBlock,
+                    combatAssessment, spellbookProdigy, ancestralMind, ammunitionThaumaturgy, nimbleDodge, bardicLore, domainInitiate, deadlySimplicity,
                     adaptedCantrip, dwarvenDoughtiness, ancestralLongevity, nimbleElf, earnedGlory, supernaturalCharm));
 
             Background warrior = new Background("Warrior", "You served as a soldier or mercenary.", List.of(intimidation), "Warfare Lore");
@@ -263,11 +343,47 @@ public class DataSeeder {
                     ruffianMediumArmor
             ));
 
+            ClassFeatureChoice cloisteredCleric = new ClassFeatureChoice();
+            cloisteredCleric.setCharacterClass(cleric);
+            cloisteredCleric.setFeatureName("Doctrine");
+            cloisteredCleric.setOptionName("Cloistered Cleric");
+
+            FeatureGrantedFeat cloisteredDomainInitiate = new FeatureGrantedFeat();
+            cloisteredDomainInitiate.setClassFeatureChoice(cloisteredCleric);
+            cloisteredDomainInitiate.setFeat(domainInitiate);
+
+            cloisteredCleric.setGrantedFeats(List.of(cloisteredDomainInitiate));
+
+            ClassFeatureChoice warpriest = new ClassFeatureChoice();
+            warpriest.setCharacterClass(cleric);
+            warpriest.setFeatureName("Doctrine");
+            warpriest.setOptionName("Warpriest");
+
+            warpriest.setGrantedProficiencies(List.of(
+                    new FeatureGrantedProficiency(warpriest, "Light Armor", ProficiencyCategory.DEFENSE, ProficiencyRank.TRAINED),
+                    new FeatureGrantedProficiency(warpriest, "Medium Armor", ProficiencyCategory.DEFENSE, ProficiencyRank.TRAINED),
+                    new FeatureGrantedProficiency(warpriest, "Fortitude", ProficiencyCategory.SAVE, ProficiencyRank.EXPERT)
+            ));
+
+            FeatureGrantedFeat warpriestShieldBlock = new FeatureGrantedFeat();
+            warpriestShieldBlock.setClassFeatureChoice(warpriest);
+            warpriestShieldBlock.setFeat(shieldBlock);
+
+            FeatureGrantedFeat warpriestDeadlySimplicity = new FeatureGrantedFeat();
+            warpriestDeadlySimplicity.setClassFeatureChoice(warpriest);
+            warpriestDeadlySimplicity.setFeat(deadlySimplicity);
+            warpriestDeadlySimplicity.setRequiresSimpleOrUnarmedDeityWeapon(true);
+
+            warpriest.setGrantedFeats(List.of(warpriestShieldBlock, warpriestDeadlySimplicity));
+
+
             classFeatureChoiceRepo.saveAll(List.of(
                     emotionalAcceptance,
                     gatheredLore,
                     mastermind,
-                    ruffian
+                    ruffian,
+                    cloisteredCleric,
+                    warpriest
             ));
 
             AttributeBoostRule humanBoosts = new AttributeBoostRule();
@@ -385,6 +501,18 @@ public class DataSeeder {
             thaumaturgeBoost.setAttributeOptions(List.of(AttributeName.CHARISMA));
             thaumaturgeBoost.setNumberToChoose(1);
 
+            AttributeBoostRule bardBoost = new AttributeBoostRule();
+            bardBoost.setCharacterClass(bard);
+            bardBoost.setBoostType(AttributeBoostType.FIXED);
+            bardBoost.setAttributeOptions(List.of(AttributeName.CHARISMA));
+            bardBoost.setNumberToChoose(1);
+
+            AttributeBoostRule clericBoost = new AttributeBoostRule();
+            clericBoost.setCharacterClass(cleric);
+            clericBoost.setBoostType(AttributeBoostType.FIXED);
+            clericBoost.setAttributeOptions(List.of(AttributeName.WISDOM));
+            clericBoost.setNumberToChoose(1);
+
             attributeBoostRuleRepo.saveAll(List.of(
                     humanBoosts,
                     dwarfConBoost,
@@ -404,7 +532,9 @@ public class DataSeeder {
                     rogueDexBoost,
                     mastermindBoost,
                     ruffianBoost,
-                    thaumaturgeBoost
+                    thaumaturgeBoost,
+                    bardBoost,
+                    clericBoost
             ));
 
             System.out.println("===== PATHFINDER DATA SEEDED =====");

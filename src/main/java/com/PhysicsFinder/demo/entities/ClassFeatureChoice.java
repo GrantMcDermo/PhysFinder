@@ -37,4 +37,7 @@ public class ClassFeatureChoice {
 
     @OneToMany(mappedBy = "classFeatureChoice", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<FeatureSkillChoice> skillChoices = new ArrayList<>();
+
+    @OneToMany(mappedBy = "classFeatureChoice", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<FeatureGrantedFeat> grantedFeats = new ArrayList<>();
 }

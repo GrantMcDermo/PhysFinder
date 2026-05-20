@@ -21,6 +21,7 @@ public class CharacterCreationService {
     private final SkillRepo skillRepo;
     private final AttributeBoostRuleRepo attributeBoostRuleRepo;
     private final ClassFeatureChoiceRepo classFeatureChoiceRepo;
+    private final DeityRepo deityRepo;
 
     public PlayerCharacter createBlankCharacter(CreateCharacterRequest request){
         PlayerCharacter sheet = new PlayerCharacter();
@@ -80,6 +81,13 @@ public class CharacterCreationService {
         List<Skill> chosenSkills = skillRepo.findAllById(request.chosenClassSkillIds());
         List<Skill> chosenFeatureSkills = skillRepo.findAllById(request.chosenFeatureSkillIds());
 
+        Deity deity = null;
+
+        if (request.deityId() != null){
+            deity = deityRepo.findById(request.deityId()).orElseThrow(() -> new RuntimeException("Deity not found"));
+            sheet.setDeity(deity);
+        }
+
         validateClassSkillChoices(characterClass, chosenSkills);
         validateFeatureSkillChoices(selectedFeatureChoices, chosenFeatureSkills);
 
@@ -124,9 +132,26 @@ public class CharacterCreationService {
             addProficiency(sheet, skill.getName(), ProficiencyCategory.SKILL, ProficiencyRank.TRAINED);
         }
 
+        if(sheet.getDeity() != null){
+            addProficiency(sheet, sheet.getDeity().getGrantedSkill().getName(), ProficiencyCategory.SKILL, ProficiencyRank.TRAINED);
+            addProficiency(sheet, sheet.getDeity().getFavoredWeapon().getName(), ProficiencyCategory.WEAPON, ProficiencyRank.TRAINED);
+        }
+
         for (ClassFeatureChoice featureChoice : selectedFeatureChoices) {
             for (FeatureGrantedProficiency granted : featureChoice.getGrantedProficiencies()) {
                 addProficiency(sheet, granted.getProficiencyName(), granted.getCategory(), granted.getRank());
+            }
+        }
+
+        for(ClassFeatureChoice featureChoice : selectedFeatureChoices){
+            for (FeatureGrantedFeat grantedFeat : featureChoice.getGrantedFeats()){
+                if(grantedFeat.getRequiresSimpleOrUnarmedDeityWeapon()){
+                    Weapon deityWeapon = sheet.getDeity().getFavoredWeapon();
+                    boolean qualifies = deityWeapon.getCategory() == WeaponCategory.SIMPLE || deityWeapon.getCategory() == WeaponCategory.UNARMED;
+                    if(!qualifies)
+                        continue;
+                }
+                addSelectedFeat(sheet, grantedFeat.getFeat());
             }
         }
 
@@ -143,6 +168,13 @@ public class CharacterCreationService {
         proficiency.setRank(rank);
 
         character.getProficiencies().add(proficiency);
+    }
+
+    private void addSelectedFeat(PlayerCharacter sheet, Feat feat){
+        SelectedFeat selectedFeat = new SelectedFeat();
+        selectedFeat.setPlayerCharacter(sheet);
+        selectedFeat.setFeat(feat);
+        sheet.getSelectedFeats().add(selectedFeat);
     }
 
     private void recalculateDerivedStats(PlayerCharacter sheet){

@@ -33,6 +33,8 @@ public class PlayerCharacter {
     private String chosenClassKeyAttribute;
     @ManyToOne
     private Skill chosenBackgroundSkill;
+    @ManyToOne
+    private Deity deity;
 
     @ManyToMany
     private List<Skill> chosenClassSkills = new ArrayList<>();
