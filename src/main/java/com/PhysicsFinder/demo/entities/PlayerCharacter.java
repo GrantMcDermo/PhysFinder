@@ -51,6 +51,9 @@ public class PlayerCharacter {
     @OneToMany(mappedBy = "playerCharacter", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ChosenAttributeBoost> chosenAttributeBoosts = new ArrayList<>();
 
+    @OneToMany(mappedBy = "playerCharacter", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ChosenAttributeFlaw> chosenAttributeFlaws = new ArrayList<>();
+
     @ManyToMany
     private List<ClassFeatureChoice> selectedClassFeatureChoices = new ArrayList<>();
 

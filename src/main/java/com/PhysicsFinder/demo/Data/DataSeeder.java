@@ -20,6 +20,7 @@ public class DataSeeder {
             FeatRepo featRepo,
             SkillRepo skillRepo,
             AttributeBoostRuleRepo attributeBoostRuleRepo,
+            AttributeFlawRuleRepo attributeFlawRuleRepo,
             ClassFeatureChoiceRepo classFeatureChoiceRepo,
             WeaponRepo weaponRepo,
             DeityRepo deityRepo){
@@ -247,8 +248,21 @@ public class DataSeeder {
                     new InitialProficiency("Ranger Class DC", ProficiencyCategory.CLASS_DC, ProficiencyRank.TRAINED)
             ));
 
+            CharacterClass witch = new CharacterClass("Witch", 6, List.of("Intelligence"));
+            witch.setInitialProficiencies(List.of(
+                    new InitialProficiency("Perception", ProficiencyCategory.PERCEPTION, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Fortitude", ProficiencyCategory.SAVE, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Reflex", ProficiencyCategory.SAVE, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Will", ProficiencyCategory.SAVE, ProficiencyRank.EXPERT),
+                    new InitialProficiency("Simple Weapons", ProficiencyCategory.ATTACK, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Unarmed Attacks", ProficiencyCategory.ATTACK, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Unarmored Defense", ProficiencyCategory.DEFENSE, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Spell Attack Modifier", ProficiencyCategory.SPELL, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Spell DC", ProficiencyCategory.SPELL, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Witch Class DC", ProficiencyCategory.CLASS_DC, ProficiencyRank.TRAINED)
+            ));
 
-            characterClassRepo.saveAll(List.of(bard, cleric, druid, fighter, psychic, ranger, rogue, thaumaturge, wizard));
+            characterClassRepo.saveAll(List.of(bard, cleric, druid, fighter, psychic, ranger, rogue, thaumaturge, witch, wizard));
 
             Ancestry human = new Ancestry("Human", 8, 25, "MEDIUM");
             human.setTraits(List.of("Human", "Humanoid"));
@@ -262,16 +276,24 @@ public class DataSeeder {
             elf.setTraits(List.of("ELF", "HUMANOID"));
             elf.setLanguages(List.of("Common", "Elven"));
 
-            ancestryRepo.saveAll(List.of(human, dwarf, elf));
+            Ancestry gnome = new Ancestry("Gnome", 8, 25, "SMALL");
+            gnome.setTraits(List.of("GNOME", "HUMANOID"));
+            gnome.setLanguages(List.of("Common", "Fey", "Gnomish"));
+
+            ancestryRepo.saveAll(List.of(human, dwarf, elf, gnome));
 
             Heritage skilledHuman = new Heritage("Skilled Human", "You gain an additional trained skill.", HeritageType.ANCESTRY_SPECIFIC, human);
 
             Heritage ancientBlooded = new Heritage("Ancient Blooded", "Your ancestors' memory grants resistance to magic", HeritageType.ANCESTRY_SPECIFIC, dwarf);
 
+            Heritage ancientElf = new Heritage("Ancient Elf", "In your long life, you've dabbled in many paths and many styles.", HeritageType.ANCESTRY_SPECIFIC, elf);
+
+            Heritage chameleonGnome = new Heritage("Chameleon Gnome", "The color of your hair and skin is mutable, possibly due to latent magic from First World influences or lingering illusion effects.", HeritageType.ANCESTRY_SPECIFIC, gnome);
+
             Heritage aiuvarin = new Heritage("Aiuvarin", "You have the blood of Elves mixed into your ancestry.", HeritageType.VERSATILE, null);
             aiuvarin.setGrantedAncestryFeatAccess(List.of(elf));
 
-            heritageRepo.saveAll(List.of(skilledHuman, ancientBlooded, aiuvarin));
+            heritageRepo.saveAll(List.of(skilledHuman, ancientBlooded, ancientElf, chameleonGnome, aiuvarin));
 
             Feat intimidatingGlare = new Feat("Intimidating Glare", 1, FeatType.SKILL, "Demoralize a creature using only a look.");
             Feat terrainExpert = new Feat("Terrain Expertise", 1, FeatType.SKILL, "You are particularly skilled in rough terrain.");
@@ -300,6 +322,8 @@ public class DataSeeder {
             animalCompanion.setAvailableToClasses(List.of(druid, ranger));
             Feat huntedShot = new Feat("Hunted Shot", 1, FeatType.CLASS, "You take two quick shots against the one you hunt.");
             huntedShot.setAvailableToClasses(List.of(ranger));
+            Feat cackle = new Feat("Cackle", 1, FeatType.CLASS, "Your patron’s power fills you with confidence, letting you sustain a magical working even as a quick burst of laughter leaves your lips.");
+            cackle.setAvailableToClasses(List.of(witch));
             Feat adaptedCantrip = new Feat("Adapted Cantrip", 1, FeatType.ANCESTRY, "Through study of multiple magical traditions, you’ve altered a spell to suit your spellcasting style.");
             adaptedCantrip.setAncestry(human);
             Feat dwarvenDoughtiness = new Feat("Dwarven Doughtiness", 1, FeatType.ANCESTRY, "You are naturally calm and collected in the face of imminent danger.");
@@ -308,6 +332,8 @@ public class DataSeeder {
             ancestralLongevity.setAncestry(elf);
             Feat nimbleElf = new Feat("Nimble Elf", 1, FeatType.ANCESTRY, "Your muscles are tightly honed.");
             nimbleElf.setAncestry(elf);
+            Feat animalAccomplice = new Feat("Animal Accomplice", 1, FeatType.ANCESTRY, "You build a rapport with an animal, which becomes magically bonded to you.");
+            animalAccomplice.setAncestry(gnome);
             Feat earnedGlory = new Feat("Earned Glory", 1, FeatType.ANCESTRY, "Elves often struggle with underestimating aiuvarins, and you are experienced at telling stories of your accomplishments to gain their respect.");
             earnedGlory.setHeritage(aiuvarin);
             Feat supernaturalCharm = new Feat("Supernatural Charm", 5, FeatType.ANCESTRY, "The elven magic in your blood manifests as a force you can use to become more appealing or alluring.");
@@ -315,8 +341,8 @@ public class DataSeeder {
             featRepo.saveAll(List.of(
                     intimidatingGlare, terrainExpert, assurance,
                     adoptedAncestry, shieldBlock,
-                    combatAssessment, spellbookProdigy, ancestralMind, ammunitionThaumaturgy, nimbleDodge, bardicLore, domainInitiate, deadlySimplicity, leshyFamiliar, animalCompanion, huntedShot,
-                    adaptedCantrip, dwarvenDoughtiness, ancestralLongevity, nimbleElf, earnedGlory, supernaturalCharm));
+                    combatAssessment, spellbookProdigy, ancestralMind, ammunitionThaumaturgy, nimbleDodge, bardicLore, domainInitiate, deadlySimplicity, leshyFamiliar, animalCompanion, huntedShot, cackle,
+                    adaptedCantrip, dwarvenDoughtiness, ancestralLongevity, nimbleElf, earnedGlory, supernaturalCharm, animalAccomplice));
 
             Background warrior = new Background("Warrior", "You served as a soldier or mercenary.", List.of(intimidation), "Warfare Lore");
             warrior.setGrantedSkillFeat(intimidatingGlare);
@@ -455,6 +481,32 @@ public class DataSeeder {
 
             leafOrder.setGrantedFeats(List.of(leafOrderFeat));
 
+            ClassFeatureChoice faithsFlamekeeper = new ClassFeatureChoice();
+            faithsFlamekeeper.setCharacterClass(witch);
+            faithsFlamekeeper.setFeatureName("Patron Theme");
+            faithsFlamekeeper.setOptionName("Faith's Flamekeeper");
+
+            FeatureGrantedProficiency faithReligion = new FeatureGrantedProficiency();
+            faithReligion.setClassFeatureChoice(faithsFlamekeeper);
+            faithReligion.setProficiencyName("Religion");
+            faithReligion.setCategory(ProficiencyCategory.SKILL);
+            faithReligion.setRank(ProficiencyRank.TRAINED);
+
+            faithsFlamekeeper.setGrantedProficiencies(List.of(faithReligion));
+
+            ClassFeatureChoice silenceInSnow = new ClassFeatureChoice();
+            silenceInSnow.setCharacterClass(witch);
+            silenceInSnow.setFeatureName("Patron Theme");
+            silenceInSnow.setOptionName("Silence in Snow");
+
+            FeatureGrantedProficiency snowNature = new FeatureGrantedProficiency();
+            snowNature.setClassFeatureChoice(silenceInSnow);
+            snowNature.setProficiencyName("Nature");
+            snowNature.setCategory(ProficiencyCategory.SKILL);
+            snowNature.setRank(ProficiencyRank.TRAINED);
+
+            silenceInSnow.setGrantedProficiencies(List.of(snowNature));
+
             classFeatureChoiceRepo.saveAll(List.of(
                     emotionalAcceptance,
                     gatheredLore,
@@ -463,7 +515,9 @@ public class DataSeeder {
                     cloisteredCleric,
                     warpriest,
                     animalOrder,
-                    leafOrder
+                    leafOrder,
+                    faithsFlamekeeper,
+                    silenceInSnow
             ));
 
             AttributeBoostRule humanBoosts = new AttributeBoostRule();
@@ -504,6 +558,23 @@ public class DataSeeder {
             elfFreeBoost.setAncestry(elf);
             elfFreeBoost.setBoostType(AttributeBoostType.FREE);
             elfFreeBoost.setNumberToChoose(1);
+
+            AttributeBoostRule gnomeConBoost = new AttributeBoostRule();
+            gnomeConBoost.setAncestry(gnome);
+            gnomeConBoost.setBoostType(AttributeBoostType.FIXED);
+            gnomeConBoost.setAttributeOptions(List.of(AttributeName.CONSTITUTION));
+            gnomeConBoost.setNumberToChoose(1);
+
+            AttributeBoostRule gnomeChaBoost = new AttributeBoostRule();
+            gnomeChaBoost.setAncestry(gnome);
+            gnomeChaBoost.setBoostType(AttributeBoostType.FIXED);
+            gnomeChaBoost.setAttributeOptions(List.of(AttributeName.CHARISMA));
+            gnomeChaBoost.setNumberToChoose(1);
+
+            AttributeBoostRule gnomeFreeBoost = new AttributeBoostRule();
+            gnomeFreeBoost.setAncestry(gnome);
+            gnomeFreeBoost.setBoostType(AttributeBoostType.FREE);
+            gnomeFreeBoost.setNumberToChoose(1);
 
             AttributeBoostRule scholarMentalBoost = new AttributeBoostRule();
             scholarMentalBoost.setBackground(scholar);
@@ -608,6 +679,12 @@ public class DataSeeder {
             ));
             rangerBoost.setNumberToChoose(1);
 
+            AttributeBoostRule witchBoost = new AttributeBoostRule();
+            witchBoost.setCharacterClass(witch);
+            witchBoost.setBoostType(AttributeBoostType.FIXED);
+            witchBoost.setAttributeOptions(List.of(AttributeName.INTELLIGENCE));
+            witchBoost.setNumberToChoose(1);
+
             attributeBoostRuleRepo.saveAll(List.of(
                     humanBoosts,
                     dwarfConBoost,
@@ -631,7 +708,29 @@ public class DataSeeder {
                     bardBoost,
                     clericBoost,
                     druidBoost,
-                    rangerBoost
+                    rangerBoost,
+                    witchBoost
+            ));
+
+            AttributeFlawRule dwarfFlaw = new AttributeFlawRule();
+            dwarfFlaw.setAncestry(dwarf);
+            dwarfFlaw.setAttributeOptions(List.of(AttributeName.CHARISMA));
+            dwarfFlaw.setNumberToChoose(1);
+
+            AttributeFlawRule elfFlaw = new AttributeFlawRule();
+            elfFlaw.setAncestry(elf);
+            elfFlaw.setAttributeOptions(List.of(AttributeName.CONSTITUTION));
+            elfFlaw.setNumberToChoose(1);
+
+            AttributeFlawRule gnomeFlaw = new AttributeFlawRule();
+            gnomeFlaw.setAncestry(gnome);
+            gnomeFlaw.setAttributeOptions(List.of(AttributeName.STRENGTH));
+            gnomeFlaw.setNumberToChoose(1);
+
+            attributeFlawRuleRepo.saveAll(List.of(
+                    dwarfFlaw,
+                    elfFlaw,
+                    gnomeFlaw
             ));
 
             System.out.println("===== PATHFINDER DATA SEEDED =====");

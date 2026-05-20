@@ -20,6 +20,7 @@ public class CharacterCreationService {
     private final BackgroundRepo backgroundRepo;
     private final SkillRepo skillRepo;
     private final AttributeBoostRuleRepo attributeBoostRuleRepo;
+    private final AttributeFlawRuleRepo attributeFlawRuleRepo;
     private final ClassFeatureChoiceRepo classFeatureChoiceRepo;
     private final DeityRepo deityRepo;
 
@@ -237,10 +238,12 @@ public class CharacterCreationService {
         validateAttributeBoosts(sheet, request);
 
         sheet.getChosenAttributeBoosts().clear();
+        sheet.getChosenAttributeFlaws().clear();
 
         AttributeModifiers attributes = new AttributeModifiers();
 
         applyBoostList(sheet, attributes, request.ancestryBoosts(), "ANCESTRY");
+        applyFlawList(sheet, attributes, request.ancestryFlaws(), "ANCESTRY");
         applyBoostList(sheet, attributes, request.backgroundBoosts(), "BACKGROUND");
         applyBoostList(sheet, attributes, request.classBoosts(), "CLASS");
         applyBoostList(sheet, attributes, request.freeBoosts(), "FREE");
@@ -261,6 +264,7 @@ public class CharacterCreationService {
             throw new RuntimeException("Choose a class before applying class boosts.");
 
         validateBoostGroup(attributeBoostRuleRepo.findByAncestryId(sheet.getAncestry().getId()), request.ancestryBoosts(), "ancestry");
+        validateFlawGroup(attributeFlawRuleRepo.findByAncestryId(sheet.getAncestry().getId()), request.ancestryFlaws(), "ancestry");
         validateBoostGroup(attributeBoostRuleRepo.findByBackgroundId(sheet.getBackground().getId()), request.backgroundBoosts(), "background");
         validateBoostGroup(getClassBoostRules(sheet), request.classBoosts(), "class");
     }
@@ -313,6 +317,30 @@ public class CharacterCreationService {
             throw new RuntimeException("Invalid extra " + source + " boost choices.");
     }
 
+    private void validateFlawGroup(List<AttributeFlawRule> rules, List<AttributeName> chosenFlaws, String source){
+        if(chosenFlaws == null)
+            chosenFlaws = List.of();
+
+        int requiredFlawCount = rules.stream().mapToInt(AttributeFlawRule::getNumberToChoose).sum();
+
+        if(chosenFlaws.size() != requiredFlawCount)
+            throw new RuntimeException("Invalid number of " + source + " flaws. Expected " + requiredFlawCount + ", got " + chosenFlaws.size());
+
+        List<AttributeName> remainingChoices = new ArrayList<>(chosenFlaws);
+
+        for(AttributeFlawRule rule : rules){
+            List<AttributeName> selectedForRule = remainingChoices.stream().filter(attribute -> rule.getAttributeOptions().contains(attribute)).limit(rule.getNumberToChoose()).toList();
+
+            if(selectedForRule.size() != rule.getNumberToChoose())
+                throw new RuntimeException("Invalid " + source + " flaw choice.");
+
+            remainingChoices.removeAll(selectedForRule);
+        }
+
+        if(!remainingChoices.isEmpty())
+            throw new RuntimeException("Invalid extra " + source + " flaw choices.");
+    }
+
     private boolean isValidForRule(AttributeName attribute, AttributeBoostRule rule){
         if(rule.getBoostType() == AttributeBoostType.FREE)
             return true;
@@ -333,5 +361,22 @@ public class CharacterCreationService {
 
             sheet.getChosenAttributeBoosts().add(chosenBoost);
         }
+    }
+
+    private void applyFlawList(PlayerCharacter sheet, AttributeModifiers attributes, List<AttributeName> flaws, String source){
+        if(flaws == null)
+            return;
+
+        for (AttributeName flaw : flaws) {
+            attributes.decrease(flaw);
+
+            ChosenAttributeFlaw chosenFlaw = new ChosenAttributeFlaw();
+            chosenFlaw.setPlayerCharacter(sheet);
+            chosenFlaw.setAttributeName(flaw);
+            chosenFlaw.setSource(source);
+
+            sheet.getChosenAttributeFlaws().add(chosenFlaw);
+        }
+
     }
 }

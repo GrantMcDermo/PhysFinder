@@ -29,4 +29,15 @@ public class AttributeModifiers {
             case CHARISMA -> charisma++;
         }
     }
+
+    public void decrease(AttributeName attributeName) {
+        switch (attributeName) {
+            case STRENGTH -> strength--;
+            case DEXTERITY -> dexterity--;
+            case CONSTITUTION -> constitution--;
+            case INTELLIGENCE -> intelligence--;
+            case WISDOM -> wisdom--;
+            case CHARISMA -> charisma--;
+        }
+    }
 }
