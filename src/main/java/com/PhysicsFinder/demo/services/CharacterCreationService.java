@@ -51,9 +51,27 @@ public class CharacterCreationService {
         sheet.setHeritage(heritage);
         sheet.setSpeed(ancestry.getSpeed());
         sheet.setSize(ancestry.getSize());
+        copyAncestrySenses(sheet, ancestry);
         recalculateDerivedStats(sheet);
 
         return playerCharacterRepo.save(sheet);
+    }
+
+    private void copyAncestrySenses(PlayerCharacter character, Ancestry ancestry){
+        character.getSenses().clear();
+        for(SenseType sense : ancestry.getSenses()){
+            addSense(character, sense);
+        }
+    }
+
+    private void addSense(PlayerCharacter character, SenseType senseType){
+        if(senseType == SenseType.DARKVISION)
+            character.getSenses().remove(SenseType.LOW_LIGHT_VISION);
+
+        if (senseType == SenseType.LOW_LIGHT_VISION && character.getSenses().contains(SenseType.DARKVISION))
+            return;
+
+        character.getSenses().add(senseType);
     }
 
     public PlayerCharacter assignBackground(UUID characterId, AssignBackgroundRequest request){

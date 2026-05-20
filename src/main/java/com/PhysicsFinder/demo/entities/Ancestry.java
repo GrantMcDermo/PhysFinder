@@ -3,9 +3,7 @@ package com.PhysicsFinder.demo.entities;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Data
 @Entity
@@ -25,6 +23,13 @@ public class Ancestry {
 
     @ElementCollection
     private List<String> languages = new ArrayList<>();
+
+    @ElementCollection
+    @Enumerated(EnumType.STRING)
+    private Set<SenseType> senses = new HashSet<>();
+
+    @OneToMany(mappedBy = "ancestry", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<AncestryFeature> features = new ArrayList<>();
 
     protected Ancestry() {}
     public Ancestry(String name, Integer hitPoints, Integer speed, String size){

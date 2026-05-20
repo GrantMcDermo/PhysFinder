@@ -6,9 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Entity
 @Getter
@@ -35,6 +33,10 @@ public class PlayerCharacter {
     private Skill chosenBackgroundSkill;
     @ManyToOne
     private Deity deity;
+
+    @ElementCollection
+    @Enumerated(EnumType.STRING)
+    private Set<SenseType> senses = new HashSet<>();
 
     @ManyToMany
     private List<Skill> chosenClassSkills = new ArrayList<>();

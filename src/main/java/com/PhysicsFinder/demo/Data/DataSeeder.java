@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.List;
+import java.util.Set;
 
 @Configuration
 public class DataSeeder {
@@ -77,7 +78,11 @@ public class DataSeeder {
             sawtoothSaber.setName("Sawtooth Saber");
             sawtoothSaber.setCategory(WeaponCategory.ADVANCED);
 
-            weaponRepo.saveAll(List.of(crossbow, warhammer, sawtoothSaber));
+            Weapon clanDagger = new Weapon();
+            clanDagger.setName("Clan Dagger");
+            clanDagger.setCategory(WeaponCategory.SIMPLE);
+
+            weaponRepo.saveAll(List.of(crossbow, warhammer, sawtoothSaber, clanDagger));
 
             Armor explorersClothing = new Armor();
             explorersClothing.setName("Explorer's Clothing");
@@ -288,22 +293,65 @@ public class DataSeeder {
             characterClassRepo.saveAll(List.of(bard, cleric, druid, fighter, psychic, ranger, rogue, thaumaturge, witch, wizard));
 
             Ancestry human = new Ancestry("Human", 8, 25, "MEDIUM");
-            human.setTraits(List.of("Human", "Humanoid"));
+            human.setTraits(List.of("HUMAN", "HUMANOID"));
             human.setLanguages(List.of("Common"));
 
             Ancestry dwarf = new Ancestry("Dwarf", 10, 20, "MEDIUM");
             dwarf.setTraits(List.of("DWARF", "HUMANOID"));
             dwarf.setLanguages(List.of("Common", "Dwarven"));
+            dwarf.setSenses(Set.of(SenseType.DARKVISION));
+
+            AncestryFeature clanDaggerMechanic = new AncestryFeature();
+            clanDaggerMechanic.setAncestry(dwarf);
+            clanDaggerMechanic.setName("Clan Dagger");
+            clanDaggerMechanic.setDescription("You receive a clan dagger tied to your dwarven clan.");
+
+            dwarf.setFeatures(List.of(clanDaggerMechanic));
 
             Ancestry elf = new Ancestry("Elf", 6, 30, "MEDIUM");
             elf.setTraits(List.of("ELF", "HUMANOID"));
             elf.setLanguages(List.of("Common", "Elven"));
+            elf.setSenses(Set.of(SenseType.LOW_LIGHT_VISION));
 
             Ancestry gnome = new Ancestry("Gnome", 8, 25, "SMALL");
             gnome.setTraits(List.of("GNOME", "HUMANOID"));
             gnome.setLanguages(List.of("Common", "Fey", "Gnomish"));
+            gnome.setSenses(Set.of(SenseType.LOW_LIGHT_VISION));
 
-            ancestryRepo.saveAll(List.of(human, dwarf, elf, gnome));
+            Ancestry goblin = new Ancestry("Goblin", 6, 25, "SMALL");
+            goblin.setTraits(List.of("GOBLIN", "HUMANOID"));
+            goblin.setLanguages(List.of("Common", "Goblin"));
+            goblin.setSenses(Set.of(SenseType.DARKVISION));
+
+            Ancestry halfling = new Ancestry("Halfling", 6, 25, "SMALL");
+            halfling.setTraits(List.of("HALFLING", "HUMANOID"));
+            halfling.setLanguages(List.of("Common", "Halfling"));
+
+            AncestryFeature keenEyes = new AncestryFeature();
+            keenEyes.setAncestry(halfling);
+            keenEyes.setName("Keen Eyes");
+            keenEyes.setDescription("Your eyes are sharp, allowing you to make out small details about concealed or even invisible creatures that others might miss.");
+
+            halfling.setFeatures(List.of(keenEyes));
+
+            Ancestry leshy = new Ancestry("Leshy", 8, 25, "SMALL");
+            leshy.setTraits(List.of("LESHY", "PLANT"));
+            leshy.setLanguages(List.of("Common", "Fey"));
+            leshy.setSenses(Set.of(SenseType.LOW_LIGHT_VISION));
+
+            AncestryFeature plantNourishment = new AncestryFeature();
+            plantNourishment.setAncestry(leshy);
+            plantNourishment.setName("Plant Nourishment");
+            plantNourishment.setDescription("You can sustain yourself through sunlight, water, and soil.");
+
+            leshy.setFeatures(List.of(plantNourishment));
+
+            Ancestry orc = new Ancestry("Orc", 10, 25, "MEDIUM");
+            orc.setTraits(List.of("HUMANOID", "ORC"));
+            orc.setLanguages(List.of("Common", "Orcish"));
+            orc.setSenses(Set.of(SenseType.DARKVISION));
+
+            ancestryRepo.saveAll(List.of(human, dwarf, elf, gnome, goblin, halfling, leshy, orc));
 
             Heritage skilledHuman = new Heritage("Skilled Human", "You gain an additional trained skill.", HeritageType.ANCESTRY_SPECIFIC, human);
 
@@ -313,10 +361,22 @@ public class DataSeeder {
 
             Heritage chameleonGnome = new Heritage("Chameleon Gnome", "The color of your hair and skin is mutable, possibly due to latent magic from First World influences or lingering illusion effects.", HeritageType.ANCESTRY_SPECIFIC, gnome);
 
+            Heritage charhideGoblin = new Heritage("Charhide Goblin", "Your ancestors have always had a connection to fire and a thicker skin, which allows you to resist burning.", HeritageType.ANCESTRY_SPECIFIC, goblin);
+
+            Heritage gutsyHalfling = new Heritage("Gutsy Halfling", "Your family line is known for keeping a level head and staving off fear when the chips were down.", HeritageType.ANCESTRY_SPECIFIC, halfling);
+
+            Heritage cactusLeshy = new Heritage("Cactus Leshy", "Spines cover your body.", HeritageType.ANCESTRY_SPECIFIC, leshy);
+
+            Heritage badlandsOrc = new Heritage("Badlands Orc", "You come from sun-scorched badlands, where long legs and an ability to withstand the elements helped you thrive.", HeritageType.ANCESTRY_SPECIFIC, orc);
+
             Heritage aiuvarin = new Heritage("Aiuvarin", "You have the blood of Elves mixed into your ancestry.", HeritageType.VERSATILE, null);
             aiuvarin.setGrantedAncestryFeatAccess(List.of(elf));
+            aiuvarin.setTraits(List.of("AIUVARIN", "ELF"));
 
-            heritageRepo.saveAll(List.of(skilledHuman, ancientBlooded, ancientElf, chameleonGnome, aiuvarin));
+            Heritage dromaar = new Heritage("Dromaar", "You have the blood of Orcs mixed into your ancestry.", HeritageType.VERSATILE, null);
+            dromaar.setGrantedAncestryFeatAccess(List.of(orc));
+
+            heritageRepo.saveAll(List.of(skilledHuman, ancientBlooded, ancientElf, chameleonGnome, charhideGoblin, gutsyHalfling, cactusLeshy, badlandsOrc, aiuvarin, dromaar));
 
             Feat intimidatingGlare = new Feat("Intimidating Glare", 1, FeatType.SKILL, "Demoralize a creature using only a look.");
             Feat terrainExpert = new Feat("Terrain Expertise", 1, FeatType.SKILL, "You are particularly skilled in rough terrain.");
@@ -357,15 +417,25 @@ public class DataSeeder {
             nimbleElf.setAncestry(elf);
             Feat animalAccomplice = new Feat("Animal Accomplice", 1, FeatType.ANCESTRY, "You build a rapport with an animal, which becomes magically bonded to you.");
             animalAccomplice.setAncestry(gnome);
+            Feat burnIt = new Feat("Burn It!", 1, FeatType.ANCESTRY, "Fire fascinates you.");
+            burnIt.setAncestry(goblin);
+            Feat distractingShadows = new Feat("Distracting Shadows", 1, FeatType.ANCESTRY, "You have learned to remain hidden by using larger folk as a distraction to avoid drawing attention to yourself.");
+            distractingShadows.setAncestry(halfling);
+            Feat graspingReach = new Feat("Grasping Reach", 1, FeatType.ANCESTRY, "You can extend a tangle of vines or tendrils to support your arms and extend your reach.");
+            graspingReach.setAncestry(leshy);
+            Feat beastTrainer = new Feat("Beast Trainer", 1, FeatType.ANCESTRY, "You have an impressive innate ability to tame and command ferocious beasts.");
+            beastTrainer.setAncestry(orc);
             Feat earnedGlory = new Feat("Earned Glory", 1, FeatType.ANCESTRY, "Elves often struggle with underestimating aiuvarins, and you are experienced at telling stories of your accomplishments to gain their respect.");
             earnedGlory.setHeritage(aiuvarin);
             Feat supernaturalCharm = new Feat("Supernatural Charm", 5, FeatType.ANCESTRY, "The elven magic in your blood manifests as a force you can use to become more appealing or alluring.");
             supernaturalCharm.setHeritage(aiuvarin);
+            Feat monstrousPeacemaker = new Feat("Monstrous Peacemaker", 1, FeatType.ANCESTRY, "Your dual human and orc nature has given you a unique perspective, allowing you to bridge the gap between humans and the many intelligent creatures in the world that humans consider monsters.");
+            monstrousPeacemaker.setHeritage(dromaar);
             featRepo.saveAll(List.of(
                     intimidatingGlare, terrainExpert, assurance,
                     adoptedAncestry, shieldBlock,
                     combatAssessment, spellbookProdigy, ancestralMind, ammunitionThaumaturgy, nimbleDodge, bardicLore, domainInitiate, deadlySimplicity, leshyFamiliar, animalCompanion, huntedShot, cackle,
-                    adaptedCantrip, dwarvenDoughtiness, ancestralLongevity, nimbleElf, earnedGlory, supernaturalCharm, animalAccomplice));
+                    adaptedCantrip, dwarvenDoughtiness, ancestralLongevity, nimbleElf, earnedGlory, supernaturalCharm, animalAccomplice, burnIt, distractingShadows, graspingReach, beastTrainer, monstrousPeacemaker));
 
             Background warrior = new Background("Warrior", "You served as a soldier or mercenary.", List.of(intimidation), "Warfare Lore");
             warrior.setGrantedSkillFeat(intimidatingGlare);
@@ -599,6 +669,62 @@ public class DataSeeder {
             gnomeFreeBoost.setBoostType(AttributeBoostType.FREE);
             gnomeFreeBoost.setNumberToChoose(1);
 
+            AttributeBoostRule goblinDexBoost = new AttributeBoostRule();
+            goblinDexBoost.setAncestry(goblin);
+            goblinDexBoost.setBoostType(AttributeBoostType.FIXED);
+            goblinDexBoost.setAttributeOptions(List.of(AttributeName.DEXTERITY));
+            goblinDexBoost.setNumberToChoose(1);
+
+            AttributeBoostRule goblinChaBoost = new AttributeBoostRule();
+            goblinChaBoost.setAncestry(goblin);
+            goblinChaBoost.setBoostType(AttributeBoostType.FIXED);
+            goblinChaBoost.setAttributeOptions(List.of(AttributeName.CHARISMA));
+            goblinChaBoost.setNumberToChoose(1);
+
+            AttributeBoostRule goblinFreeBoost = new AttributeBoostRule();
+            goblinFreeBoost.setAncestry(goblin);
+            goblinFreeBoost.setBoostType(AttributeBoostType.FREE);
+            goblinFreeBoost.setNumberToChoose(1);
+
+            AttributeBoostRule halflingDexBoost = new AttributeBoostRule();
+            halflingDexBoost.setAncestry(halfling);
+            halflingDexBoost.setBoostType(AttributeBoostType.FIXED);
+            halflingDexBoost.setAttributeOptions(List.of(AttributeName.DEXTERITY));
+            halflingDexBoost.setNumberToChoose(1);
+
+            AttributeBoostRule halflingWisBoost = new AttributeBoostRule();
+            halflingWisBoost.setAncestry(halfling);
+            halflingWisBoost.setBoostType(AttributeBoostType.FIXED);
+            halflingWisBoost.setAttributeOptions(List.of(AttributeName.WISDOM));
+            halflingWisBoost.setNumberToChoose(1);
+
+            AttributeBoostRule halflingFreeBoost = new AttributeBoostRule();
+            halflingFreeBoost.setAncestry(halfling);
+            halflingFreeBoost.setBoostType(AttributeBoostType.FREE);
+            halflingFreeBoost.setNumberToChoose(1);
+
+            AttributeBoostRule leshyConBoost = new AttributeBoostRule();
+            leshyConBoost.setAncestry(leshy);
+            leshyConBoost.setBoostType(AttributeBoostType.FIXED);
+            leshyConBoost.setAttributeOptions(List.of(AttributeName.CONSTITUTION));
+            leshyConBoost.setNumberToChoose(1);
+
+            AttributeBoostRule leshyWisBoost = new AttributeBoostRule();
+            leshyWisBoost.setAncestry(leshy);
+            leshyWisBoost.setBoostType(AttributeBoostType.FIXED);
+            leshyWisBoost.setAttributeOptions(List.of(AttributeName.WISDOM));
+            leshyWisBoost.setNumberToChoose(1);
+
+            AttributeBoostRule leshyFreeBoost = new AttributeBoostRule();
+            leshyFreeBoost.setAncestry(leshy);
+            leshyFreeBoost.setBoostType(AttributeBoostType.FREE);
+            leshyFreeBoost.setNumberToChoose(1);
+
+            AttributeBoostRule orcBoosts = new AttributeBoostRule();
+            orcBoosts.setAncestry(orc);
+            orcBoosts.setBoostType(AttributeBoostType.FREE);
+            orcBoosts.setNumberToChoose(2);
+
             AttributeBoostRule scholarMentalBoost = new AttributeBoostRule();
             scholarMentalBoost.setBackground(scholar);
             scholarMentalBoost.setBoostType(AttributeBoostType.CHOICE);
@@ -716,6 +842,19 @@ public class DataSeeder {
                     elfDexBoost,
                     elfIntBoost,
                     elfFreeBoost,
+                    gnomeConBoost,
+                    gnomeChaBoost,
+                    gnomeFreeBoost,
+                    goblinDexBoost,
+                    goblinChaBoost,
+                    goblinFreeBoost,
+                    halflingDexBoost,
+                    halflingWisBoost,
+                    halflingFreeBoost,
+                    leshyConBoost,
+                    leshyWisBoost,
+                    leshyFreeBoost,
+                    orcBoosts,
                     scholarMentalBoost,
                     scholarFreeBoost,
                     warriorPhysBoost,
@@ -750,10 +889,28 @@ public class DataSeeder {
             gnomeFlaw.setAttributeOptions(List.of(AttributeName.STRENGTH));
             gnomeFlaw.setNumberToChoose(1);
 
+            AttributeFlawRule goblinFlaw = new AttributeFlawRule();
+            goblinFlaw.setAncestry(goblin);
+            goblinFlaw.setAttributeOptions(List.of(AttributeName.WISDOM));
+            goblinFlaw.setNumberToChoose(1);
+
+            AttributeFlawRule halflingFlaw = new AttributeFlawRule();
+            halflingFlaw.setAncestry(halfling);
+            halflingFlaw.setAttributeOptions(List.of(AttributeName.STRENGTH));
+            halflingFlaw.setNumberToChoose(1);
+
+            AttributeFlawRule leshyFlaw = new AttributeFlawRule();
+            leshyFlaw.setAncestry(leshy);
+            leshyFlaw.setAttributeOptions(List.of(AttributeName.INTELLIGENCE));
+            leshyFlaw.setNumberToChoose(1);
+
             attributeFlawRuleRepo.saveAll(List.of(
                     dwarfFlaw,
                     elfFlaw,
-                    gnomeFlaw
+                    gnomeFlaw,
+                    goblinFlaw,
+                    halflingFlaw,
+                    leshyFlaw
             ));
 
             System.out.println("===== PATHFINDER DATA SEEDED =====");

@@ -25,6 +25,9 @@ public class Heritage {
     @ManyToOne
     private Ancestry ancestry;
 
+    @ElementCollection
+    private List<String> traits = new ArrayList<>();
+
     @ManyToMany
     private List<Ancestry> grantedAncestryFeatAccess = new ArrayList<>();
 
