@@ -212,8 +212,43 @@ public class DataSeeder {
                     new InitialProficiency("Cleric Class DC", ProficiencyCategory.CLASS_DC, ProficiencyRank.TRAINED)
             ));
 
+            CharacterClass druid = new CharacterClass("Druid", 8, List.of("Wisdom"));
+            druid.setInitialProficiencies(List.of(
+                    new InitialProficiency("Perception", ProficiencyCategory.PERCEPTION, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Fortitude", ProficiencyCategory.SAVE, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Reflex", ProficiencyCategory.SAVE, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Will", ProficiencyCategory.SAVE, ProficiencyRank.EXPERT),
+                    new InitialProficiency("Nature", ProficiencyCategory.SKILL, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Simple Weapons", ProficiencyCategory.ATTACK, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Martial Weapons", ProficiencyCategory.ATTACK, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Unarmed Attacks", ProficiencyCategory.ATTACK, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Light Armor", ProficiencyCategory.DEFENSE, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Medium Armor", ProficiencyCategory.DEFENSE, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Unarmored Defense", ProficiencyCategory.DEFENSE, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Spell Attack Modifier", ProficiencyCategory.SPELL, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Spell DC", ProficiencyCategory.SPELL, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Druid Class DC", ProficiencyCategory.CLASS_DC, ProficiencyRank.TRAINED)
+            ));
 
-            characterClassRepo.saveAll(List.of(bard, cleric, fighter, psychic, rogue, thaumaturge, wizard));
+            CharacterClass ranger = new CharacterClass("Ranger", 10, List.of("Strength", "Dexterity"));
+            ranger.setInitialProficiencies(List.of(
+                    new InitialProficiency("Perception", ProficiencyCategory.PERCEPTION, ProficiencyRank.EXPERT),
+                    new InitialProficiency("Fortitude", ProficiencyCategory.SAVE, ProficiencyRank.EXPERT),
+                    new InitialProficiency("Reflex", ProficiencyCategory.SAVE, ProficiencyRank.EXPERT),
+                    new InitialProficiency("Will", ProficiencyCategory.SAVE, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Nature", ProficiencyCategory.SKILL, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Survival", ProficiencyCategory.SKILL, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Simple Weapons", ProficiencyCategory.ATTACK, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Martial Weapons", ProficiencyCategory.ATTACK, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Unarmed Attacks", ProficiencyCategory.ATTACK, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Light Armor", ProficiencyCategory.DEFENSE, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Medium Armor", ProficiencyCategory.DEFENSE, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Unarmored Defense", ProficiencyCategory.DEFENSE, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Ranger Class DC", ProficiencyCategory.CLASS_DC, ProficiencyRank.TRAINED)
+            ));
+
+
+            characterClassRepo.saveAll(List.of(bard, cleric, druid, fighter, psychic, ranger, rogue, thaumaturge, wizard));
 
             Ancestry human = new Ancestry("Human", 8, 25, "MEDIUM");
             human.setTraits(List.of("Human", "Humanoid"));
@@ -244,21 +279,27 @@ public class DataSeeder {
             Feat adoptedAncestry = new Feat("Adopted Ancestry", 1, FeatType.GENERAL, "You’re fully immersed in another ancestry’s culture and traditions, whether born into them, earned through rite of passage, or bonded through a deep friendship or romance.");
             Feat shieldBlock = new Feat("Shield Block", 1, FeatType.GENERAL, "You snap your shield in place to ward off a blow.");
             Feat combatAssessment = new Feat("Combat Assessment", 1, FeatType.CLASS, "You make a telegraphed attack to learn about your foe.");
-            combatAssessment.setCharacterClass(fighter);
+            combatAssessment.setAvailableToClasses(List.of(fighter));
             Feat spellbookProdigy = new Feat("Spellbook Prodigy", 1, FeatType.CLASS, "You are particularly adept at learning spells to add to your spellbook.");
-            spellbookProdigy.setCharacterClass(wizard);
+            spellbookProdigy.setAvailableToClasses(List.of(wizard));
             Feat ancestralMind = new Feat("Ancestral Mind", 1, FeatType.CLASS, "By unraveling memories and connections passed down from your progenitors and buried within your unconscious mind, you learn to convert your inherent magic into psychic power.");
-            ancestralMind.setCharacterClass(psychic);
+            ancestralMind.setAvailableToClasses(List.of(psychic));
             Feat ammunitionThaumaturgy = new Feat("Ammunition Thaumaturgy", 1, FeatType.CLASS, "You're so used to handling your implement, weapon, and esoterica in the heat of combat that adding a few bullets or arrows to the mix is no extra burden.");
-            ammunitionThaumaturgy.setCharacterClass(thaumaturge);
+            ammunitionThaumaturgy.setAvailableToClasses(List.of(thaumaturge));
             Feat nimbleDodge = new Feat("Nimble Dodge", 1, FeatType.CLASS, "You deftly dodge out of the way, gaining a +2 circumstance bonus to AC against the triggering attack.");
-            nimbleDodge.setCharacterClass(rogue);
+            nimbleDodge.setAvailableToClasses(List.of(rogue));
             Feat bardicLore = new Feat("Bardic Lore", 1, FeatType.CLASS, "Your studies make you informed on every subject.");
-            bardicLore.setCharacterClass(bard);
+            bardicLore.setAvailableToClasses(List.of(bard));
             Feat domainInitiate = new Feat("Domain Initiate", 1, FeatType.CLASS, "Your deity bestows a special spell related to their powers.");
-            domainInitiate.setCharacterClass(cleric);
+            domainInitiate.setAvailableToClasses(List.of(cleric));
             Feat deadlySimplicity = new Feat("Deadly Simplicity", 1, FeatType.CLASS, "When you are wielding your deity’s favored weapon, increase the damage die size of that weapon by one step.");
-            deadlySimplicity.setCharacterClass(cleric);
+            deadlySimplicity.setAvailableToClasses(List.of(cleric));
+            Feat leshyFamiliar = new Feat("Leshy Familiar", 1, FeatType.CLASS, "You call a minor spirit of nature into a plant body, creating a leshy companion to aid you in your spellcasting.");
+            leshyFamiliar.setAvailableToClasses(List.of(druid));
+            Feat animalCompanion = new Feat("Animal Companion", 1, FeatType.CLASS, "You gain the service of a young animal companion that travels with you on your adventures and obeys any simple commands you give it to the best of its abilities.");
+            animalCompanion.setAvailableToClasses(List.of(druid, ranger));
+            Feat huntedShot = new Feat("Hunted Shot", 1, FeatType.CLASS, "You take two quick shots against the one you hunt.");
+            huntedShot.setAvailableToClasses(List.of(ranger));
             Feat adaptedCantrip = new Feat("Adapted Cantrip", 1, FeatType.ANCESTRY, "Through study of multiple magical traditions, you’ve altered a spell to suit your spellcasting style.");
             adaptedCantrip.setAncestry(human);
             Feat dwarvenDoughtiness = new Feat("Dwarven Doughtiness", 1, FeatType.ANCESTRY, "You are naturally calm and collected in the face of imminent danger.");
@@ -274,7 +315,7 @@ public class DataSeeder {
             featRepo.saveAll(List.of(
                     intimidatingGlare, terrainExpert, assurance,
                     adoptedAncestry, shieldBlock,
-                    combatAssessment, spellbookProdigy, ancestralMind, ammunitionThaumaturgy, nimbleDodge, bardicLore, domainInitiate, deadlySimplicity,
+                    combatAssessment, spellbookProdigy, ancestralMind, ammunitionThaumaturgy, nimbleDodge, bardicLore, domainInitiate, deadlySimplicity, leshyFamiliar, animalCompanion, huntedShot,
                     adaptedCantrip, dwarvenDoughtiness, ancestralLongevity, nimbleElf, earnedGlory, supernaturalCharm));
 
             Background warrior = new Background("Warrior", "You served as a soldier or mercenary.", List.of(intimidation), "Warfare Lore");
@@ -376,6 +417,43 @@ public class DataSeeder {
 
             warpriest.setGrantedFeats(List.of(warpriestShieldBlock, warpriestDeadlySimplicity));
 
+            ClassFeatureChoice animalOrder = new ClassFeatureChoice();
+            animalOrder.setCharacterClass(druid);
+            animalOrder.setFeatureName("Druidic Order");
+            animalOrder.setOptionName("Animal");
+
+            FeatureGrantedProficiency animalAthletics = new FeatureGrantedProficiency();
+            animalAthletics.setClassFeatureChoice(animalOrder);
+            animalAthletics.setProficiencyName("Athletics");
+            animalAthletics.setCategory(ProficiencyCategory.SKILL);
+            animalAthletics.setRank(ProficiencyRank.TRAINED);
+
+            animalOrder.setGrantedProficiencies(List.of(animalAthletics));
+
+            FeatureGrantedFeat animalOrderFeat = new FeatureGrantedFeat();
+            animalOrderFeat.setClassFeatureChoice(animalOrder);
+            animalOrderFeat.setFeat(animalCompanion);
+
+            animalOrder.setGrantedFeats(List.of(animalOrderFeat));
+
+            ClassFeatureChoice leafOrder = new ClassFeatureChoice();
+            leafOrder.setCharacterClass(druid);
+            leafOrder.setFeatureName("Druidic Order");
+            leafOrder.setOptionName("Leaf");
+
+            FeatureGrantedProficiency leafDiplomacy = new FeatureGrantedProficiency();
+            leafDiplomacy.setClassFeatureChoice(leafOrder);
+            leafDiplomacy.setProficiencyName("Diplomacy");
+            leafDiplomacy.setCategory(ProficiencyCategory.SKILL);
+            leafDiplomacy.setRank(ProficiencyRank.TRAINED);
+
+            leafOrder.setGrantedProficiencies(List.of(leafDiplomacy));
+
+            FeatureGrantedFeat leafOrderFeat = new FeatureGrantedFeat();
+            leafOrderFeat.setClassFeatureChoice(leafOrder);
+            leafOrderFeat.setFeat(leshyFamiliar);
+
+            leafOrder.setGrantedFeats(List.of(leafOrderFeat));
 
             classFeatureChoiceRepo.saveAll(List.of(
                     emotionalAcceptance,
@@ -383,7 +461,9 @@ public class DataSeeder {
                     mastermind,
                     ruffian,
                     cloisteredCleric,
-                    warpriest
+                    warpriest,
+                    animalOrder,
+                    leafOrder
             ));
 
             AttributeBoostRule humanBoosts = new AttributeBoostRule();
@@ -513,6 +593,21 @@ public class DataSeeder {
             clericBoost.setAttributeOptions(List.of(AttributeName.WISDOM));
             clericBoost.setNumberToChoose(1);
 
+            AttributeBoostRule druidBoost = new AttributeBoostRule();
+            druidBoost.setCharacterClass(druid);
+            druidBoost.setBoostType(AttributeBoostType.FIXED);
+            druidBoost.setAttributeOptions(List.of(AttributeName.WISDOM));
+            druidBoost.setNumberToChoose(1);
+
+            AttributeBoostRule rangerBoost = new AttributeBoostRule();
+            rangerBoost.setCharacterClass(ranger);
+            rangerBoost.setBoostType(AttributeBoostType.CHOICE);
+            rangerBoost.setAttributeOptions(List.of(
+                    AttributeName.STRENGTH,
+                    AttributeName.DEXTERITY
+            ));
+            rangerBoost.setNumberToChoose(1);
+
             attributeBoostRuleRepo.saveAll(List.of(
                     humanBoosts,
                     dwarfConBoost,
@@ -534,7 +629,9 @@ public class DataSeeder {
                     ruffianBoost,
                     thaumaturgeBoost,
                     bardBoost,
-                    clericBoost
+                    clericBoost,
+                    druidBoost,
+                    rangerBoost
             ));
 
             System.out.println("===== PATHFINDER DATA SEEDED =====");

@@ -9,7 +9,7 @@ import java.util.UUID;
 
 public interface FeatRepo extends JpaRepository<Feat, UUID> {
     List<Feat> findByFeatType(FeatType featType);
-    List<Feat> findByCharacterClassId(UUID characterClassId);
+    List<Feat> findByAvailableToClassesId(UUID classId);
 
     List<Feat> findByAncestryId(UUID ancestryId);
 

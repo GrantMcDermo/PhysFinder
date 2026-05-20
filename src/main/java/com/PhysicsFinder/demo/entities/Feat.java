@@ -3,6 +3,8 @@ package com.PhysicsFinder.demo.entities;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -18,8 +20,9 @@ public class Feat {
     @Enumerated(EnumType.STRING)
     private FeatType featType; // ANCESTRY, CLASS, SKILL, GENERAL
 
-    @ManyToOne
-    private CharacterClass characterClass;
+    @ManyToMany
+    @JoinTable(name = "feat_available_classes", joinColumns = @JoinColumn(name = "feat_id"), inverseJoinColumns = @JoinColumn(name = "class_id"))
+    private List<CharacterClass> availableToClasses = new ArrayList<>();
 
     @ManyToOne
     private Ancestry ancestry;
