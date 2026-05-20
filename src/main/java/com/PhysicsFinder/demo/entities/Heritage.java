@@ -29,6 +29,10 @@ public class Heritage {
 
     @ElementCollection
     @Enumerated(EnumType.STRING)
+    private Set<TraitType> traitsToRemove = new HashSet<>();
+
+    @ElementCollection
+    @Enumerated(EnumType.STRING)
     private Set<SenseType> senses = new HashSet<>();
 
     @ManyToMany

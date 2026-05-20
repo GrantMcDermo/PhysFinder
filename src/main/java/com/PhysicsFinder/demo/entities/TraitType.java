@@ -14,5 +14,7 @@ public enum TraitType {
     HUMANOID,
     PLANT,
     CHANGELING,
-    NEPHILIM
+    NEPHILIM,
+    FEY,
+    FUNGUS
 }

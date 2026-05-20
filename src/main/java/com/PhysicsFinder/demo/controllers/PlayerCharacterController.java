@@ -29,6 +29,16 @@ public class PlayerCharacterController {
         return ResponseEntity.ok(updated);
     }
 
+    @PatchMapping("/{characterId}/heritage")
+    public ResponseEntity<PlayerCharacter> assignHeritage(
+            @PathVariable UUID characterId,
+            @RequestBody AssignHeritageRequest request
+    ) {
+        return ResponseEntity.ok(
+                characterCreationService.assignHeritage(characterId, request)
+        );
+    }
+
     @PatchMapping("/{characterId}/background")
     public ResponseEntity<PlayerCharacter> assignBackground(
             @PathVariable UUID characterId,

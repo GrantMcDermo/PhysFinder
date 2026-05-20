@@ -36,25 +36,65 @@ public class CharacterCreationService {
     public PlayerCharacter assignAncestry(UUID characterId, AssignAncestryRequest request){
         PlayerCharacter sheet = playerCharacterRepo.findById(characterId).orElseThrow(() -> new RuntimeException("Character not found."));
         Ancestry ancestry = ancestryRepo.findById(request.ancestryId()).orElseThrow(() -> new RuntimeException("Ancestry not found"));
+
+        sheet.setAncestry(ancestry);
+        sheet.setHeritage(null);
+        sheet.setSpeed(ancestry.getSpeed());
+        sheet.setSize(ancestry.getSize());
+        rebuildTraitsAndSenses(sheet);
+
+        recalculateDerivedStats(sheet);
+
+        return playerCharacterRepo.save(sheet);
+    }
+
+    public PlayerCharacter assignHeritage(UUID characterId, AssignHeritageRequest request){
+        PlayerCharacter character = playerCharacterRepo.findById(characterId).orElseThrow(() -> new RuntimeException("Character not found."));
+
+        if(character.getAncestry() == null)
+            throw new RuntimeException("Choose an ancestry before choosing a heritage");
+
         Heritage heritage = heritageRepo.findById(request.heritageId()).orElseThrow(() -> new RuntimeException("Heritage not found"));
 
         boolean isAncestrySpecific = heritage.getHeritageType() == HeritageType.ANCESTRY_SPECIFIC;
         boolean isVersatile = heritage.getHeritageType() == HeritageType.VERSATILE;
 
-        if(isAncestrySpecific && !heritage.getAncestry().getId().equals(ancestry.getId()))
+        if(isAncestrySpecific && !heritage.getAncestry().getId().equals(character.getAncestry().getId()))
             throw new RuntimeException("Heritage does not belong to selected ancestry");
 
         if(!isAncestrySpecific && !isVersatile)
             throw new RuntimeException("Invalid heritage type");
 
-        sheet.setAncestry(ancestry);
-        sheet.setHeritage(heritage);
-        sheet.setSpeed(ancestry.getSpeed());
-        sheet.setSize(ancestry.getSize());
-        copyAncestryAndHeritageTraitsAndSenses(sheet, ancestry, heritage);
-        recalculateDerivedStats(sheet);
+        character.setHeritage(heritage);
 
-        return playerCharacterRepo.save(sheet);
+        rebuildTraitsAndSenses(character);
+
+        return playerCharacterRepo.save(character);
+    }
+
+    private void rebuildTraitsAndSenses(PlayerCharacter character){
+        character.getTraits().clear();
+        character.getSenses().clear();
+
+        Ancestry ancestry = character.getAncestry();
+        Heritage heritage = character.getHeritage();
+
+        if (ancestry != null) {
+            character.getTraits().addAll(ancestry.getTraits());
+
+            for (SenseType sense : ancestry.getSenses()) {
+                addSense(character, sense);
+            }
+        }
+
+        if (heritage != null) {
+            character.getTraits().removeAll(heritage.getTraitsToRemove());
+            character.getTraits().addAll(heritage.getTraits());
+
+            for (SenseType sense : heritage.getSenses()) {
+                addSense(character, sense);
+            }
+        }
     }
 
     private void copyAncestryAndHeritageTraitsAndSenses(PlayerCharacter character, Ancestry ancestry, Heritage heritage){
