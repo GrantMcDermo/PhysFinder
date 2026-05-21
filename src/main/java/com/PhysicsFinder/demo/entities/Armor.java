@@ -23,4 +23,9 @@ public class Armor {
 
     @Enumerated(EnumType.STRING)
     private ArmorCategory category;
+
+    public Armor(String name, ArmorCategory category){
+        this.name = name;
+        this.category = category;
+    }
 }

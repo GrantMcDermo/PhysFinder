@@ -28,4 +28,9 @@ public class FeatureGrantedFeat {
     private Feat feat;
 
     private Boolean requiresSimpleOrUnarmedDeityWeapon = false;
+
+    public FeatureGrantedFeat(ClassFeatureChoice classFeatureChoice, Feat feat){
+        this.classFeatureChoice = classFeatureChoice;
+        this.feat = feat;
+    }
 }

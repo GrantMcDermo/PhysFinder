@@ -23,4 +23,9 @@ public class Weapon {
 
     @Enumerated(EnumType.STRING)
     private WeaponCategory category;
+
+    public Weapon(String name, WeaponCategory category){
+        this.name = name;
+        this.category = category;
+    }
 }

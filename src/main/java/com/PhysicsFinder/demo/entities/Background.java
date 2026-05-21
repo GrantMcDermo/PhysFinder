@@ -29,10 +29,11 @@ public class Background {
     @ManyToOne
     private Feat grantedSkillFeat;
 
-    public Background(String name, String description, List<Skill> trainedSkillOptions, String loreSkill) {
+    public Background(String name, String description, List<Skill> trainedSkillOptions, String loreSkill, Feat grantedSkillFeat) {
         this.name = name;
         this.description = description;
         this.trainedSkillOptions = trainedSkillOptions;
         this.loreSkill = loreSkill;
+        this.grantedSkillFeat = grantedSkillFeat;
     }
 }

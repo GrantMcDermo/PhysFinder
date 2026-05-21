@@ -37,6 +37,7 @@ public class DataSeeder {
             Skill deception = new Skill("Deception", "Charisma");
             Skill diplomacy = new Skill("Diplomacy", "Charisma");
             Skill intimidation = new Skill("Intimidation", "Charisma");
+            Skill lore = new Skill("Lore", "Intelligence");
             Skill medicine = new Skill("Medicine", "Wisdom");
             Skill nature = new Skill("Nature", "Wisdom");
             Skill occultism = new Skill("Occultism", "Intelligence");
@@ -66,59 +67,24 @@ public class DataSeeder {
                     thievery
             ));
 
-            Weapon crossbow = new Weapon();
-            crossbow.setName("Crossbow");
-            crossbow.setCategory(WeaponCategory.SIMPLE);
-
-            Weapon warhammer = new Weapon();
-            warhammer.setName("Warhammer");
-            warhammer.setCategory(WeaponCategory.MARTIAL);
-
-            Weapon sawtoothSaber = new Weapon();
-            sawtoothSaber.setName("Sawtooth Saber");
-            sawtoothSaber.setCategory(WeaponCategory.ADVANCED);
-
-            Weapon clanDagger = new Weapon();
-            clanDagger.setName("Clan Dagger");
-            clanDagger.setCategory(WeaponCategory.SIMPLE);
-
-            Weapon jaws = new Weapon();
-            jaws.setName("Jaws");
-            jaws.setCategory(WeaponCategory.UNARMED);
-
-            Weapon spine = new Weapon();
-            spine.setName("Spine");
-            spine.setCategory(WeaponCategory.UNARMED);
+            Weapon crossbow = new Weapon("Crossbow", WeaponCategory.SIMPLE);
+            Weapon warhammer = new Weapon("Warhammer", WeaponCategory.MARTIAL);
+            Weapon sawtoothSaber = new Weapon("Sawtooth Saber", WeaponCategory.ADVANCED);
+            Weapon clanDagger = new Weapon("Clan Dagger", WeaponCategory.SIMPLE);
+            Weapon jaws = new Weapon("Jaws", WeaponCategory.UNARMED);
+            Weapon spine = new Weapon("Spine", WeaponCategory.UNARMED);
 
             weaponRepo.saveAll(List.of(crossbow, warhammer, sawtoothSaber, clanDagger, jaws, spine));
 
-            Armor explorersClothing = new Armor();
-            explorersClothing.setName("Explorer's Clothing");
-            explorersClothing.setCategory(ArmorCategory.UNARMORED);
-
-            Armor paddedArmor = new Armor();
-            paddedArmor.setName("Padded Armor");
-            paddedArmor.setCategory(ArmorCategory.LIGHT);
-
-            Armor hideArmor = new Armor();
-            hideArmor.setName("Hide Armor");
-            hideArmor.setCategory(ArmorCategory.MEDIUM);
-
-            Armor splintMail = new Armor();
-            splintMail.setName("Splint Mail");
-            splintMail.setCategory(ArmorCategory.HEAVY);
+            Armor explorersClothing = new Armor("Explorer's Clothing", ArmorCategory.UNARMORED);
+            Armor paddedArmor = new Armor("Padded Armor", ArmorCategory.LIGHT);
+            Armor hideArmor = new Armor("Hide Armor", ArmorCategory.MEDIUM);
+            Armor splintMail = new Armor("Splint Mail", ArmorCategory.HEAVY);
 
             armorRepo.saveAll(List.of(explorersClothing, paddedArmor, hideArmor, splintMail));
 
-            Deity abadar = new Deity();
-            abadar.setName("Abadar");
-            abadar.setFavoredWeapon(crossbow);
-            abadar.setGrantedSkill(society);
-
-            Deity torag = new Deity();
-            torag.setName("Torag");
-            torag.setFavoredWeapon(warhammer);
-            torag.setGrantedSkill(crafting);
+            Deity abadar = new Deity("Abadar", crossbow, society);
+            Deity torag = new Deity("Torag", warhammer, crafting);
 
             deityRepo.saveAll(List.of(abadar, torag));
 
@@ -138,9 +104,7 @@ public class DataSeeder {
                     new InitialProficiency("Unarmored Defense", ProficiencyCategory.DEFENSE, ProficiencyRank.TRAINED),
                     new InitialProficiency("Fighter Class DC", ProficiencyCategory.CLASS_DC, ProficiencyRank.TRAINED)
             ));
-            ClassSkillChoice fighterSkillChoice = new ClassSkillChoice();
-            fighterSkillChoice.setCharacterClass(fighter);
-            fighterSkillChoice.setSkillOptions(List.of(acrobatics, athletics));
+            ClassSkillChoice fighterSkillChoice = new ClassSkillChoice(fighter, List.of(acrobatics, athletics));
             fighterSkillChoice.setRank(ProficiencyRank.TRAINED);
             fighterSkillChoice.setNumberToChoose(1);
             fighter.setSkillChoices(List.of(fighterSkillChoice));
@@ -189,17 +153,9 @@ public class DataSeeder {
                     new InitialProficiency("Unarmored Defense", ProficiencyCategory.DEFENSE, ProficiencyRank.TRAINED),
                     new InitialProficiency("Thaumaturge Class DC", ProficiencyCategory.CLASS_DC, ProficiencyRank.TRAINED)
             ));
-            ClassSkillChoice thaumaturgeSkillChoice = new ClassSkillChoice();
-            thaumaturgeSkillChoice.setCharacterClass(thaumaturge);
-            thaumaturgeSkillChoice.setSkillOptions(List.of(
-                    arcana,
-                    nature,
-                    occultism,
-                    religion
-            ));
+            ClassSkillChoice thaumaturgeSkillChoice = new ClassSkillChoice(thaumaturge, List.of(arcana, nature, occultism, religion));
             thaumaturgeSkillChoice.setRank(ProficiencyRank.TRAINED);
             thaumaturgeSkillChoice.setNumberToChoose(1);
-
             thaumaturge.setSkillChoices(List.of(thaumaturgeSkillChoice));
 
             CharacterClass rogue = new CharacterClass("Rogue", 8, List.of());
@@ -234,6 +190,7 @@ public class DataSeeder {
                     new InitialProficiency("Spell DC", ProficiencyCategory.SPELL, ProficiencyRank.TRAINED),
                     new InitialProficiency("Bard Class DC", ProficiencyCategory.CLASS_DC, ProficiencyRank.TRAINED)
             ));
+
             CharacterClass cleric = new CharacterClass("Cleric", 8, List.of("Wisdom"));
             cleric.setInitialProficiencies(List.of(
                     new InitialProficiency("Perception", ProficiencyCategory.PERCEPTION, ProficiencyRank.TRAINED),
@@ -248,6 +205,8 @@ public class DataSeeder {
                     new InitialProficiency("Spell DC", ProficiencyCategory.SPELL, ProficiencyRank.TRAINED),
                     new InitialProficiency("Cleric Class DC", ProficiencyCategory.CLASS_DC, ProficiencyRank.TRAINED)
             ));
+            cleric.setUsesDeitySkill(true);
+            cleric.setUsesDeityFavoredWeapon(true);
 
             CharacterClass druid = new CharacterClass("Druid", 8, List.of("Wisdom"));
             druid.setInitialProficiencies(List.of(
@@ -298,65 +257,143 @@ public class DataSeeder {
                     new InitialProficiency("Witch Class DC", ProficiencyCategory.CLASS_DC, ProficiencyRank.TRAINED)
             ));
 
-            characterClassRepo.saveAll(List.of(bard, cleric, druid, fighter, psychic, ranger, rogue, thaumaturge, witch, wizard));
+            CharacterClass commander = new CharacterClass("Commander", 8, List.of("Intelligence"));
+            commander.setInitialProficiencies(List.of(
+                    new InitialProficiency("Perception", ProficiencyCategory.PERCEPTION, ProficiencyRank.EXPERT),
+                    new InitialProficiency("Fortitude", ProficiencyCategory.SAVE, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Reflex", ProficiencyCategory.SAVE, ProficiencyRank.EXPERT),
+                    new InitialProficiency("Will", ProficiencyCategory.SAVE, ProficiencyRank.EXPERT),
+                    new InitialProficiency("Society", ProficiencyCategory.SKILL, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Warfare Lore", ProficiencyCategory.SKILL, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Simple Weapons", ProficiencyCategory.ATTACK, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Martial Weapons", ProficiencyCategory.ATTACK, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Unarmed Attacks", ProficiencyCategory.ATTACK, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Light Armor", ProficiencyCategory.DEFENSE, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Medium Armor", ProficiencyCategory.DEFENSE, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Heavy Armor", ProficiencyCategory.DEFENSE, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Unarmored Defense", ProficiencyCategory.DEFENSE, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Commander Class DC", ProficiencyCategory.CLASS_DC, ProficiencyRank.TRAINED)
 
-            Ancestry human = new Ancestry("Human", 8, 25, "MEDIUM");
-            human.setTraits(Set.of(TraitType.HUMAN, TraitType.HUMANOID));
-            human.setLanguages(List.of("Common"));
+            ));
 
-            Ancestry dwarf = new Ancestry("Dwarf", 10, 20, "MEDIUM");
-            dwarf.setTraits(Set.of(TraitType.DWARF, TraitType.HUMANOID));
-            dwarf.setLanguages(List.of("Common", "Dwarven"));
+            CharacterClass guardian = new CharacterClass("Guardian", 12, List.of("Strength"));
+            guardian.setInitialProficiencies(List.of(
+                    new InitialProficiency("Perception", ProficiencyCategory.PERCEPTION, ProficiencyRank.EXPERT),
+                    new InitialProficiency("Fortitude", ProficiencyCategory.SAVE, ProficiencyRank.EXPERT),
+                    new InitialProficiency("Reflex", ProficiencyCategory.SAVE, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Will", ProficiencyCategory.SAVE, ProficiencyRank.EXPERT),
+                    new InitialProficiency("Athletics", ProficiencyCategory.SKILL, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Simple Weapons", ProficiencyCategory.ATTACK, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Martial Weapons", ProficiencyCategory.ATTACK, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Unarmed Attacks", ProficiencyCategory.ATTACK, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Light Armor", ProficiencyCategory.DEFENSE, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Medium Armor", ProficiencyCategory.DEFENSE, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Heavy Armor", ProficiencyCategory.DEFENSE, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Unarmored Defense", ProficiencyCategory.DEFENSE, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Guardian Class DC", ProficiencyCategory.CLASS_DC, ProficiencyRank.TRAINED)
+            ));
+
+            CharacterClass barbarian = new CharacterClass("Barbarian", 12, List.of("Strength"));
+            barbarian.setInitialProficiencies(List.of(
+                    new InitialProficiency("Perception", ProficiencyCategory.PERCEPTION, ProficiencyRank.EXPERT),
+                    new InitialProficiency("Fortitude", ProficiencyCategory.SAVE, ProficiencyRank.EXPERT),
+                    new InitialProficiency("Reflex", ProficiencyCategory.SAVE, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Will", ProficiencyCategory.SAVE, ProficiencyRank.EXPERT),
+                    new InitialProficiency("Athletics", ProficiencyCategory.SKILL, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Simple Weapons", ProficiencyCategory.ATTACK, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Martial Weapons", ProficiencyCategory.ATTACK, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Unarmed Attacks", ProficiencyCategory.ATTACK, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Light Armor", ProficiencyCategory.DEFENSE, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Medium Armor", ProficiencyCategory.DEFENSE, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Unarmored Defense", ProficiencyCategory.DEFENSE, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Barbarian Class DC", ProficiencyCategory.CLASS_DC, ProficiencyRank.TRAINED)
+            ));
+
+            CharacterClass exemplar = new CharacterClass("Exemplar", 10, List.of("Strength", "Dexterity"));
+            exemplar.setInitialProficiencies(List.of(
+                    new InitialProficiency("Perception", ProficiencyCategory.PERCEPTION, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Fortitude", ProficiencyCategory.SAVE, ProficiencyRank.EXPERT),
+                    new InitialProficiency("Reflex", ProficiencyCategory.SAVE, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Will", ProficiencyCategory.SAVE, ProficiencyRank.EXPERT),
+                    new InitialProficiency("Religion", ProficiencyCategory.SKILL, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Simple Weapons", ProficiencyCategory.ATTACK, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Martial Weapons", ProficiencyCategory.ATTACK, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Unarmed Attacks", ProficiencyCategory.ATTACK, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Light Armor", ProficiencyCategory.DEFENSE, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Medium Armor", ProficiencyCategory.DEFENSE, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Unarmored Defense", ProficiencyCategory.DEFENSE, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Exemplar Class DC", ProficiencyCategory.CLASS_DC, ProficiencyRank.TRAINED)
+            ));
+
+            CharacterClass champion = new CharacterClass("Champion", 10, List.of("Strength", "Dexterity"));
+            champion.setInitialProficiencies(List.of(
+                    new InitialProficiency("Perception", ProficiencyCategory.PERCEPTION, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Fortitude", ProficiencyCategory.SAVE, ProficiencyRank.EXPERT),
+                    new InitialProficiency("Reflex", ProficiencyCategory.SAVE, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Will", ProficiencyCategory.SAVE, ProficiencyRank.EXPERT),
+                    new InitialProficiency("Religion", ProficiencyCategory.SKILL, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Simple Weapons", ProficiencyCategory.ATTACK, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Martial Weapons", ProficiencyCategory.ATTACK, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Unarmed Attacks", ProficiencyCategory.ATTACK, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Light Armor", ProficiencyCategory.DEFENSE, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Medium Armor", ProficiencyCategory.DEFENSE, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Heavy Armor", ProficiencyCategory.DEFENSE, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Unarmored Defense", ProficiencyCategory.DEFENSE, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Spell Attack Modifier", ProficiencyCategory.SPELL, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Spell DC", ProficiencyCategory.SPELL, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Champion Class DC", ProficiencyCategory.CLASS_DC, ProficiencyRank.TRAINED)
+            ));
+            champion.setUsesDeitySkill(true);
+            champion.setUsesDeityFavoredWeapon(false);
+
+            CharacterClass investigator = new CharacterClass("Investigator", 8, List.of("Intelligence"));
+            investigator.setInitialProficiencies(List.of(
+                    new InitialProficiency("Perception", ProficiencyCategory.PERCEPTION, ProficiencyRank.EXPERT),
+                    new InitialProficiency("Fortitude", ProficiencyCategory.SAVE, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Reflex", ProficiencyCategory.SAVE, ProficiencyRank.EXPERT),
+                    new InitialProficiency("Will", ProficiencyCategory.SAVE, ProficiencyRank.EXPERT),
+                    new InitialProficiency("Society", ProficiencyCategory.SKILL, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Simple Weapons", ProficiencyCategory.ATTACK, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Martial Weapons", ProficiencyCategory.ATTACK, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Unarmed Attacks", ProficiencyCategory.ATTACK, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Light Armor", ProficiencyCategory.DEFENSE, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Unarmored Defense", ProficiencyCategory.DEFENSE, ProficiencyRank.TRAINED),
+                    new InitialProficiency("Investigator Class DC", ProficiencyCategory.CLASS_DC, ProficiencyRank.TRAINED)
+            ));
+
+            characterClassRepo.saveAll(List.of(
+                    bard, cleric, druid, fighter, ranger, rogue, witch, wizard,
+                    commander, guardian,
+                    barbarian, champion, investigator,
+                    psychic, thaumaturge,
+                    exemplar));
+
+            Ancestry human = new Ancestry("Human", 8, 25, "MEDIUM", Set.of(TraitType.HUMAN, TraitType.HUMANOID), List.of("Common"));
+
+            Ancestry dwarf = new Ancestry("Dwarf", 10, 20, "MEDIUM", Set.of(TraitType.DWARF, TraitType.HUMANOID), List.of("Common", "Dwarven"));
             dwarf.setSenses(Set.of(SenseType.DARKVISION));
-
-            AncestryFeature clanDaggerMechanic = new AncestryFeature();
-            clanDaggerMechanic.setAncestry(dwarf);
-            clanDaggerMechanic.setName("Clan Dagger");
-            clanDaggerMechanic.setDescription("You receive a clan dagger tied to your dwarven clan.");
-
+            AncestryFeature clanDaggerMechanic = new AncestryFeature(dwarf, "Clan Dagger", "You receive a clan dagger tied to your dwarven clan.");
             dwarf.setFeatures(List.of(clanDaggerMechanic));
 
-            Ancestry elf = new Ancestry("Elf", 6, 30, "MEDIUM");
-            elf.setTraits(Set.of(TraitType.ELF, TraitType.HUMANOID));
-            elf.setLanguages(List.of("Common", "Elven"));
+            Ancestry elf = new Ancestry("Elf", 6, 30, "MEDIUM", Set.of(TraitType.ELF, TraitType.HUMANOID), List.of("Common", "Elven"));
             elf.setSenses(Set.of(SenseType.LOW_LIGHT_VISION));
 
-            Ancestry gnome = new Ancestry("Gnome", 8, 25, "SMALL");
-            gnome.setTraits(Set.of(TraitType.GNOME, TraitType.HUMANOID));
-            gnome.setLanguages(List.of("Common", "Fey", "Gnomish"));
+            Ancestry gnome = new Ancestry("Gnome", 8, 25, "SMALL", Set.of(TraitType.GNOME, TraitType.HUMANOID), List.of("Common", "Fey", "Gnomish"));
             gnome.setSenses(Set.of(SenseType.LOW_LIGHT_VISION));
 
-            Ancestry goblin = new Ancestry("Goblin", 6, 25, "SMALL");
-            goblin.setTraits(Set.of(TraitType.GOBLIN, TraitType.HUMANOID));
-            goblin.setLanguages(List.of("Common", "Goblin"));
+            Ancestry goblin = new Ancestry("Goblin", 6, 25, "SMALL", Set.of(TraitType.GOBLIN, TraitType.HUMANOID), List.of("Common", "Goblin"));
             goblin.setSenses(Set.of(SenseType.DARKVISION));
 
-            Ancestry halfling = new Ancestry("Halfling", 6, 25, "SMALL");
-            halfling.setTraits(Set.of(TraitType.HALFLING, TraitType.HUMANOID));
-            halfling.setLanguages(List.of("Common", "Halfling"));
-
-            AncestryFeature keenEyes = new AncestryFeature();
-            keenEyes.setAncestry(halfling);
-            keenEyes.setName("Keen Eyes");
-            keenEyes.setDescription("Your eyes are sharp, allowing you to make out small details about concealed or even invisible creatures that others might miss.");
-
+            Ancestry halfling = new Ancestry("Halfling", 6, 25, "SMALL", Set.of(TraitType.HALFLING, TraitType.HUMANOID), List.of("Common", "Halfling"));
+            AncestryFeature keenEyes = new AncestryFeature(halfling, "Keen Eyes", "Your eyes are sharp, allowing you to make out small details about concealed or even invisible creatures that others might miss.");
             halfling.setFeatures(List.of(keenEyes));
 
-            Ancestry leshy = new Ancestry("Leshy", 8, 25, "SMALL");
-            leshy.setTraits(Set.of(TraitType.LESHY, TraitType.PLANT));
-            leshy.setLanguages(List.of("Common", "Fey"));
+            Ancestry leshy = new Ancestry("Leshy", 8, 25, "SMALL", Set.of(TraitType.LESHY, TraitType.PLANT), List.of("Common", "Fey"));
             leshy.setSenses(Set.of(SenseType.LOW_LIGHT_VISION));
-
-            AncestryFeature plantNourishment = new AncestryFeature();
-            plantNourishment.setAncestry(leshy);
-            plantNourishment.setName("Plant Nourishment");
-            plantNourishment.setDescription("You can sustain yourself through sunlight, water, and soil.");
-
+            AncestryFeature plantNourishment = new AncestryFeature(leshy, "Plant Nourishment", "You can sustain yourself through sunlight, water, and soil.");
             leshy.setFeatures(List.of(plantNourishment));
 
-            Ancestry orc = new Ancestry("Orc", 10, 25, "MEDIUM");
-            orc.setTraits(Set.of(TraitType.HUMANOID, TraitType.ORC));
-            orc.setLanguages(List.of("Common", "Orcish"));
+            Ancestry orc = new Ancestry("Orc", 10, 25, "MEDIUM", Set.of(TraitType.HUMANOID, TraitType.ORC), List.of("Common", "Orcish"));
             orc.setSenses(Set.of(SenseType.DARKVISION));
 
             ancestryRepo.saveAll(List.of(human, dwarf, elf, gnome, goblin, halfling, leshy, orc));
@@ -498,7 +535,107 @@ public class DataSeeder {
             Feat shieldBlock = new Feat("Shield Block", 1, FeatType.GENERAL, "You snap your shield in place to ward off a blow.");
             Feat diehard = new Feat("Diehard", 1, FeatType.GENERAL, "It takes more to kill you than most.");
             Feat combatAssessment = new Feat("Combat Assessment", 1, FeatType.CLASS, "You make a telegraphed attack to learn about your foe.");
-            combatAssessment.setAvailableToClasses(List.of(fighter));
+            combatAssessment.setAvailableToClasses(List.of(fighter, commander));
+            Feat doubleSlice = new Feat("Double Slice", 1, FeatType.CLASS, "You lash out at your foe with both weapons.");
+            doubleSlice.setAvailableToClasses(List.of(fighter));
+            Feat exactingStrike = new Feat("Exacting Strike", 1, FeatType.CLASS, "You make a controlled follow-up attack, fully accounting for your momentum.");
+            exactingStrike.setAvailableToClasses(List.of(fighter));
+            Feat pointBlankStance = new Feat("Point Blank Stance", 1, FeatType.CLASS, "You take aim to pick off nearby enemies quickly.");
+            pointBlankStance.setAvailableToClasses(List.of(fighter));
+            Feat reactiveShield = new Feat("Reactive Shield", 1, FeatType.CLASS, "You can snap your shield into place just as you would take a blow, avoiding the hit at the last second.");
+            reactiveShield.setAvailableToClasses(List.of(fighter, guardian));
+            Feat snaggingStrike = new Feat("Snagging Strike", 1, FeatType.CLASS, "You combine an attack with quick grappling moves to throw an enemy off balance as long as it stays in your reach.");
+            snaggingStrike.setAvailableToClasses(List.of(fighter));
+            Feat suddenCharge = new Feat("Sudden Charge", 1, FeatType.CLASS, "With a quick sprint, you dash up to your foe and swing.");
+            suddenCharge.setAvailableToClasses(List.of(fighter, barbarian));
+            Feat viciousSwing = new Feat("Vicious Swing", 1, FeatType.CLASS, "You unleash a particularly powerful attack that clobbers your foe but leaves you a bit unsteady.");
+            viciousSwing.setAvailableToClasses(List.of(fighter));
+            Feat aggressiveBlock = new Feat("Aggressive Block", 2, FeatType.CLASS, "You push back as you block, knocking your foe away or off balance.");
+            aggressiveBlock.setAvailableToClasses(List.of(fighter, guardian));
+            Feat assistingShot = new Feat("Assisting Shot", 2, FeatType.CLASS, "Using your last shot to gauge your accuracy, you can fire off a quick shot to interfere with a foe in combat.");
+            assistingShot.setAvailableToClasses(List.of(fighter));
+            Feat bladeBrake = new Feat("Blade Brake", 2, FeatType.CLASS, "You plow your weapon into a floor, wall, or another sturdy surface, anchoring yourself in place.");
+            bladeBrake.setAvailableToClasses(List.of(fighter));
+            Feat brutishShove = new Feat("Brutish Shove", 2, FeatType.CLASS, "Using the momentum of your last attack to throw your weight into another, you make your opponent stumble back.");
+            brutishShove.setAvailableToClasses(List.of(fighter));
+            Feat combatGrab = new Feat("Combat Grab", 2, FeatType.CLASS, "Using your prior attack to shift your opponent’s guard, you take another swing and grab them.");
+            combatGrab.setAvailableToClasses(List.of(fighter));
+            Feat duelingParry1 = new Feat("Dueling Parry", 2, FeatType.CLASS, "You can parry attacks against you with your one-handed weapon.");
+            duelingParry1.setAvailableToClasses(List.of(fighter));
+            Feat intimidatingStrike = new Feat("Intimidating Strike", 2, FeatType.CLASS, "Your blow not only wounds creatures but also shatters their confidence.");
+            intimidatingStrike.setAvailableToClasses(List.of(fighter, barbarian));
+            Feat lightningSwap = new Feat("Lightning Swap", 2, FeatType.CLASS, "You have practiced quickly switching between combat styles and the equipment needed for them.");
+            lightningSwap.setAvailableToClasses(List.of(fighter, exemplar));
+            Feat lunge = new Feat("Lunge", 2, FeatType.CLASS, "You attack an enemy at the edge of your reach.");
+            lunge.setAvailableToClasses(List.of(fighter));
+            Feat reboundingToss = new Feat("Rebounding Toss", 2, FeatType.CLASS, "You bounce your weapon off one foe to strike another.");
+            reboundingToss.setAvailableToClasses(List.of(fighter));
+            Feat sleekReposition = new Feat("Sleek Reposition", 2, FeatType.CLASS, "While your opponent is still recovering from your prior attack, you snag its armor, clothing, or flesh to move it as you please.");
+            sleekReposition.setAvailableToClasses(List.of(fighter));
+            Feat barrelingCharge = new Feat("Barreling Charge", 4, FeatType.CLASS, "You rush forward, moving enemies aside to reach your foe.");
+            barrelingCharge.setAvailableToClasses(List.of(fighter, barbarian));
+            Feat doubleShot = new Feat("Double Shot", 4, FeatType.CLASS, "You shoot twice in blindingly fast succession.");
+            doubleShot.setAvailableToClasses(List.of(fighter));
+            Feat dualHandedAssault = new Feat("Dual-Handed Assault", 4, FeatType.CLASS, "You snap your free hand over to grip your weapon just long enough to add momentum and deliver a more powerful blow to your opponent.");
+            dualHandedAssault.setAvailableToClasses(List.of(fighter));
+            Feat partingShot = new Feat("Parting Shot", 4, FeatType.CLASS, "You jump back and make a quick shot that catches your opponent by surprise.");
+            partingShot.setAvailableToClasses(List.of(fighter));
+            Feat powerfulShove = new Feat("Powerful Shove", 4, FeatType.CLASS, "You can push larger foes around with your attack.");
+            powerfulShove.setAvailableToClasses(List.of(fighter));
+            Feat quickReversal = new Feat("Quick Reversal", 4, FeatType.CLASS, "You turn your foes’ flanking against them with a quick reverse.");
+            quickReversal.setAvailableToClasses(List.of(fighter));
+            Feat shieldedStride = new Feat("Shielded Stride", 4, FeatType.CLASS, "When your shield is up, your enemies’ blows can’t touch you.");
+            shieldedStride.setAvailableToClasses(List.of(fighter));
+            Feat slamDown = new Feat("Slam Down", 4, FeatType.CLASS, "You make an attack to knock a foe off balance, then follow up immediately with a sweep to topple them.");
+            slamDown.setAvailableToClasses(List.of(fighter));
+            Feat swipe = new Feat("Swipe", 4, FeatType.CLASS, "You make a wide, arcing swing.");
+            swipe.setAvailableToClasses(List.of(fighter, barbarian));
+            Feat twinParry = new Feat("Twin Parry", 4, FeatType.CLASS, "You use your two weapons to parry attacks.");
+            twinParry.setAvailableToClasses(List.of(fighter, ranger));
+            Feat advancedWeaponTraining = new Feat("Advanced Weapon Training", 6, FeatType.CLASS, "You’ve studied the art of wielding an advanced weapon.");
+            advancedWeaponTraining.setAvailableToClasses(List.of(fighter));
+            Feat advantageousAssault = new Feat("Advantageous Assault", 6, FeatType.CLASS, "After compromising your enemy’s movement, you deliver a more deadly blow.");
+            advantageousAssault.setAvailableToClasses(List.of(fighter));
+            Feat dazingBlow = new Feat("Dazing Blow", 6, FeatType.CLASS, "You pummel a held foe, hoping to stagger them.");
+            dazingBlow.setAvailableToClasses(List.of(fighter));
+            Feat disarmingStance = new Feat("Disarming Stance", 6, FeatType.CLASS, "You adopt a fencing stance that improves your control over your weapon.");
+            disarmingStance.setAvailableToClasses(List.of(fighter));
+            Feat furiousFocus = new Feat("Furious Focus", 6, FeatType.CLASS, "You’ve learned to maintain your balance even when swinging furiously.");
+            furiousFocus.setAvailableToClasses(List.of(fighter));
+            Feat guardiansDeflection = new Feat("Guardian's Deflection", 6, FeatType.CLASS, "You use your weapon to deflect the attack against your ally, granting a +2 circumstance bonus to their Armor Class against the triggering attack.");
+            guardiansDeflection.setAvailableToClasses(List.of(fighter));
+            Feat reflexiveShield = new Feat("Reflexive Shield", 6, FeatType.CLASS, "You can use your shield to fend off explosions and the like.");
+            reflexiveShield.setAvailableToClasses(List.of(fighter, guardian));
+            Feat revealingStab = new Feat("Revealing Stab", 6, FeatType.CLASS, "You drive your piercing weapon into an imperceptible foe, revealing its location to your allies.");
+            revealingStab.setAvailableToClasses(List.of(fighter));
+            Feat ricochetStance1 = new Feat("Ricochet Stance", 6, FeatType.CLASS, "You adopt a stance to rebound your thrown weapons toward you.");
+            ricochetStance1.setAvailableToClasses(List.of(fighter));
+            Feat shatterDefenses = new Feat("Shatter Defenses", 6, FeatType.CLASS, "Your offense exploits your enemy’s fear.");
+            shatterDefenses.setAvailableToClasses(List.of(fighter));
+            Feat shieldWarden = new Feat("Shield Warden", 6, FeatType.CLASS, "When you have a shield raised, you can use your Shield Block reaction when an attack is made against an ally adjacent to you.");
+            shieldWarden.setAvailableToClasses(List.of(fighter, commander, champion));
+            Feat tripleShot = new Feat("Triple Shot", 6, FeatType.CLASS, "You can quickly fire multiple shots with greater control.");
+            tripleShot.setAvailableToClasses(List.of(fighter));
+            Feat blindFight = new Feat("Blind-Fight", 8, FeatType.CLASS, "Your battle instincts make you more aware of concealed and invisible opponents.");
+            blindFight.setAvailableToClasses(List.of(fighter, investigator, ranger, rogue));
+            Feat disorientingOpening = new Feat("Disorienting Opening", 8, FeatType.CLASS, "You use your foes’ openings to expose even greater weaknesses.");
+            disorientingOpening.setAvailableToClasses(List.of(fighter));
+            Feat duelingRiposte = new Feat("Dueling Riposte", 8, FeatType.CLASS, "You elegantly counterattack against your flailing enemy.");
+            duelingRiposte.setAvailableToClasses(List.of(fighter));
+            Feat fellingStrike = new Feat("Felling Strike", 8, FeatType.CLASS, "Your attack can ground an airborne foe.");
+            fellingStrike.setAvailableToClasses(List.of(fighter));
+            Feat incredibleAim = new Feat("Incredible Aim", 8, FeatType.CLASS, "By spending a moment to focus, you can ensure your attack strikes true.");
+            incredibleAim.setAvailableToClasses(List.of(fighter));
+            Feat mobileShotStance = new Feat("Mobile Shot Stance", 8, FeatType.CLASS, "Your shots become nimble and deadly.");
+            mobileShotStance.setAvailableToClasses(List.of(fighter));
+            Feat positioningAssault = new Feat("Positioning Assault", 8, FeatType.CLASS, "With punishing blows, you force your opponent into position.");
+            positioningAssault.setAvailableToClasses(List.of(fighter));
+            Feat quickShieldBlock = new Feat("Quick Shield Block", 8, FeatType.CLASS, "You can bring your shield into place with hardly a thought.");
+            quickShieldBlock.setAvailableToClasses(List.of(fighter, champion));
+            Feat resoundingBravery = new Feat("Resounding Bravery", 8, FeatType.CLASS, "Even your fears serve as fuel for your fighting spirit.");
+            resoundingBravery.setAvailableToClasses(List.of(fighter));
+            Feat suddenLeap = new Feat("Sudden Leap", 8, FeatType.CLASS, "You make an impressive leap and swing while you soar.");
+            suddenLeap.setAvailableToClasses(List.of(fighter, barbarian));
             Feat spellbookProdigy = new Feat("Spellbook Prodigy", 1, FeatType.CLASS, "You are particularly adept at learning spells to add to your spellbook.");
             spellbookProdigy.setAvailableToClasses(List.of(wizard));
             Feat ancestralMind = new Feat("Ancestral Mind", 1, FeatType.CLASS, "By unraveling memories and connections passed down from your progenitors and buried within your unconscious mind, you learn to convert your inherent magic into psychic power.");
@@ -507,6 +644,8 @@ public class DataSeeder {
             ammunitionThaumaturgy.setAvailableToClasses(List.of(thaumaturge));
             Feat nimbleDodge = new Feat("Nimble Dodge", 1, FeatType.CLASS, "You deftly dodge out of the way, gaining a +2 circumstance bonus to AC against the triggering attack.");
             nimbleDodge.setAvailableToClasses(List.of(rogue));
+            Feat ricochetStance2 = new Feat("Ricochet Stance", 8, FeatType.CLASS, "You adopt a stance to rebound your thrown weapons toward you.");
+            ricochetStance2.setAvailableToClasses(List.of(rogue));
             Feat bardicLore = new Feat("Bardic Lore", 1, FeatType.CLASS, "Your studies make you informed on every subject.");
             bardicLore.setAvailableToClasses(List.of(bard));
             Feat domainInitiate = new Feat("Domain Initiate", 1, FeatType.CLASS, "Your deity bestows a special spell related to their powers.");
@@ -521,6 +660,18 @@ public class DataSeeder {
             huntedShot.setAvailableToClasses(List.of(ranger));
             Feat cackle = new Feat("Cackle", 1, FeatType.CLASS, "Your patron’s power fills you with confidence, letting you sustain a magical working even as a quick burst of laughter leaves your lips.");
             cackle.setAvailableToClasses(List.of(witch));
+            Feat armorRegimentTraining = new Feat("Armor Regiment Training", 1, FeatType.CLASS, "You've trained for grueling marches in full battle kit.");
+            armorRegimentTraining.setAvailableToClasses(List.of(commander));
+            Feat bodyguard = new Feat("Bodyguard", 1, FeatType.CLASS, "You swear a vow to protect one of your allies at all costs, regardless of the risk this might pose to you.");
+            bodyguard.setAvailableToClasses(List.of(guardian));
+            Feat acuteVision = new Feat("Acute Vision", 1, FeatType.CLASS, "When you are raging, your visual senses improve, granting you darkvision.");
+            acuteVision.setAvailableToClasses(List.of(barbarian));
+            Feat energizedSpark = new Feat("Energized Spark", 1, FeatType.CLASS, "The energy of your spirit manifests as crackling lightning, the chill of winter, or the power of an element.");
+            energizedSpark.setAvailableToClasses(List.of(exemplar));
+            Feat brilliantFlash = new Feat("Brilliant Flash", 1, FeatType.CLASS, "Your light cleanses souls of fear.");
+            brilliantFlash.setAvailableToClasses(List.of(champion));
+            Feat eliminateRedHerrings = new Feat("Eliminate Red Herrings", 1, FeatType.CLASS, "You have a keen sense for avoiding spurious lines of inquiry.");
+            eliminateRedHerrings.setAvailableToClasses(List.of(investigator));
             Feat adaptedCantrip = new Feat("Adapted Cantrip", 1, FeatType.ANCESTRY, "Through study of multiple magical traditions, you’ve altered a spell to suit your spellcasting style.");
             adaptedCantrip.setAncestry(human);
             Feat dwarvenDoughtiness = new Feat("Dwarven Doughtiness", 1, FeatType.ANCESTRY, "You are naturally calm and collected in the face of imminent danger.");
@@ -550,38 +701,26 @@ public class DataSeeder {
             featRepo.saveAll(List.of(
                     intimidatingGlare, terrainExpert, assurance, multilingual, quickClimb, combatClimber,
                     adoptedAncestry, shieldBlock, diehard,
-                    combatAssessment, spellbookProdigy, ancestralMind, ammunitionThaumaturgy, nimbleDodge, bardicLore, domainInitiate, deadlySimplicity, leshyFamiliar, animalCompanion, huntedShot, cackle,
+                    combatAssessment, doubleSlice, exactingStrike, pointBlankStance, reactiveShield, snaggingStrike, suddenCharge, viciousSwing,
+                    aggressiveBlock, assistingShot, bladeBrake, brutishShove, combatGrab, duelingParry1, intimidatingStrike, lightningSwap, lunge, reboundingToss, sleekReposition,
+                    barrelingCharge, doubleShot, dualHandedAssault, partingShot, powerfulShove, quickReversal, shieldedStride, slamDown, swipe, twinParry,
+                    advancedWeaponTraining, advantageousAssault, dazingBlow, disarmingStance, furiousFocus, guardiansDeflection, reflexiveShield, revealingStab, ricochetStance1, shatterDefenses, shieldWarden, tripleShot,
+                    blindFight, disorientingOpening, duelingRiposte, fellingStrike, incredibleAim, mobileShotStance, positioningAssault, quickShieldBlock, resoundingBravery, suddenLeap,
+                    spellbookProdigy,
+                    nimbleDodge, ricochetStance2,
+                    bardicLore, domainInitiate, deadlySimplicity, leshyFamiliar, animalCompanion, huntedShot, cackle, armorRegimentTraining, bodyguard, acuteVision, energizedSpark, ancestralMind, ammunitionThaumaturgy, brilliantFlash, eliminateRedHerrings,
                     adaptedCantrip, dwarvenDoughtiness, ancestralLongevity, nimbleElf, earnedGlory, supernaturalCharm, animalAccomplice, burnIt, distractingShadows, halflingLuck, graspingReach, beastTrainer, monstrousPeacemaker));
 
-            Background warrior = new Background("Warrior", "You served as a soldier or mercenary.", List.of(intimidation), "Warfare Lore");
-            warrior.setGrantedSkillFeat(intimidatingGlare);
-
-            Background scholar = new Background("Scholar", "You studied ancient texts and forgotten lore.", List.of(arcana, nature, occultism, religion), "Academia Lore");
-            scholar.setGrantedSkillFeat(assurance);
+            Background warrior = new Background("Warrior", "You served as a soldier or mercenary.", List.of(intimidation), "Warfare Lore", intimidatingGlare);
+            Background scholar = new Background("Scholar", "You studied ancient texts and forgotten lore.", List.of(arcana, nature, occultism, religion), "Academia Lore", assurance);
 
             backgroundRepo.saveAll(List.of(warrior, scholar));
 
-            ClassFeatureChoice emotionalAcceptance = new ClassFeatureChoice();
-            emotionalAcceptance.setCharacterClass(psychic);
-            emotionalAcceptance.setFeatureName("Subconscious Mind");
-            emotionalAcceptance.setOptionName("Emotional Acceptance");
+            ClassFeatureChoice emotionalAcceptance = new ClassFeatureChoice(psychic, "Subconscious Mind", "Emotional Acceptance");
+            ClassFeatureChoice gatheredLore = new ClassFeatureChoice(psychic, "Subconscious Mind", "Gathered Lore");
 
-            ClassFeatureChoice gatheredLore = new ClassFeatureChoice();
-            gatheredLore.setCharacterClass(psychic);
-            gatheredLore.setFeatureName("Subconscious Mind");
-            gatheredLore.setOptionName("Gathered Lore");
-
-            ClassFeatureChoice mastermind = new ClassFeatureChoice();
-            mastermind.setCharacterClass(rogue);
-            mastermind.setFeatureName("Racket");
-            mastermind.setOptionName("Mastermind");
-
-            FeatureGrantedProficiency mastermindSociety = new FeatureGrantedProficiency();
-            mastermindSociety.setClassFeatureChoice(mastermind);
-            mastermindSociety.setProficiencyName("Society");
-            mastermindSociety.setCategory(ProficiencyCategory.SKILL);
-            mastermindSociety.setRank(ProficiencyRank.TRAINED);
-
+            ClassFeatureChoice mastermind = new ClassFeatureChoice(rogue, "Racket", "Mastermind");
+            FeatureGrantedProficiency mastermindSociety = new FeatureGrantedProficiency(mastermind, "Society", ProficiencyCategory.SKILL, ProficiencyRank.TRAINED);
             mastermind.setGrantedProficiencies(List.of(mastermindSociety));
 
             FeatureSkillChoice mastermindSkillChoice = new FeatureSkillChoice();
@@ -597,43 +736,19 @@ public class DataSeeder {
 
             mastermind.setSkillChoices(List.of(mastermindSkillChoice));
 
-            ClassFeatureChoice ruffian = new ClassFeatureChoice();
-            ruffian.setCharacterClass(rogue);
-            ruffian.setFeatureName("Racket");
-            ruffian.setOptionName("Ruffian");
-
-            FeatureGrantedProficiency ruffianIntimidation = new FeatureGrantedProficiency();
-            ruffianIntimidation.setClassFeatureChoice(ruffian);
-            ruffianIntimidation.setProficiencyName("Intimidation");
-            ruffianIntimidation.setCategory(ProficiencyCategory.SKILL);
-            ruffianIntimidation.setRank(ProficiencyRank.TRAINED);
-
-            FeatureGrantedProficiency ruffianMediumArmor = new FeatureGrantedProficiency();
-            ruffianMediumArmor.setClassFeatureChoice(ruffian);
-            ruffianMediumArmor.setProficiencyName("Medium Armor");
-            ruffianMediumArmor.setCategory(ProficiencyCategory.DEFENSE);
-            ruffianMediumArmor.setRank(ProficiencyRank.TRAINED);
-
+            ClassFeatureChoice ruffian = new ClassFeatureChoice(rogue, "Racket", "Ruffian");
+            FeatureGrantedProficiency ruffianIntimidation = new FeatureGrantedProficiency(ruffian, "Intimidation", ProficiencyCategory.SKILL, ProficiencyRank.TRAINED);
+            FeatureGrantedProficiency ruffianMediumArmor = new FeatureGrantedProficiency(ruffian, "Medium Armor", ProficiencyCategory.DEFENSE, ProficiencyRank.TRAINED);
             ruffian.setGrantedProficiencies(List.of(
                     ruffianIntimidation,
                     ruffianMediumArmor
             ));
 
-            ClassFeatureChoice cloisteredCleric = new ClassFeatureChoice();
-            cloisteredCleric.setCharacterClass(cleric);
-            cloisteredCleric.setFeatureName("Doctrine");
-            cloisteredCleric.setOptionName("Cloistered Cleric");
-
-            FeatureGrantedFeat cloisteredDomainInitiate = new FeatureGrantedFeat();
-            cloisteredDomainInitiate.setClassFeatureChoice(cloisteredCleric);
-            cloisteredDomainInitiate.setFeat(domainInitiate);
-
+            ClassFeatureChoice cloisteredCleric = new ClassFeatureChoice(cleric, "Doctrine", "Cloistered Cleric");
+            FeatureGrantedFeat cloisteredDomainInitiate = new FeatureGrantedFeat(cloisteredCleric, domainInitiate);
             cloisteredCleric.setGrantedFeats(List.of(cloisteredDomainInitiate));
 
-            ClassFeatureChoice warpriest = new ClassFeatureChoice();
-            warpriest.setCharacterClass(cleric);
-            warpriest.setFeatureName("Doctrine");
-            warpriest.setOptionName("Warpriest");
+            ClassFeatureChoice warpriest = new ClassFeatureChoice(cleric, "Doctrine", "Warpriest");
 
             warpriest.setGrantedProficiencies(List.of(
                     new FeatureGrantedProficiency(warpriest, "Light Armor", ProficiencyCategory.DEFENSE, ProficiencyRank.TRAINED),
@@ -641,80 +756,52 @@ public class DataSeeder {
                     new FeatureGrantedProficiency(warpriest, "Fortitude", ProficiencyCategory.SAVE, ProficiencyRank.EXPERT)
             ));
 
-            FeatureGrantedFeat warpriestShieldBlock = new FeatureGrantedFeat();
-            warpriestShieldBlock.setClassFeatureChoice(warpriest);
-            warpriestShieldBlock.setFeat(shieldBlock);
-
-            FeatureGrantedFeat warpriestDeadlySimplicity = new FeatureGrantedFeat();
-            warpriestDeadlySimplicity.setClassFeatureChoice(warpriest);
-            warpriestDeadlySimplicity.setFeat(deadlySimplicity);
+            FeatureGrantedFeat warpriestShieldBlock = new FeatureGrantedFeat(warpriest, shieldBlock);
+            FeatureGrantedFeat warpriestDeadlySimplicity = new FeatureGrantedFeat(warpriest, deadlySimplicity);
             warpriestDeadlySimplicity.setRequiresSimpleOrUnarmedDeityWeapon(true);
-
             warpriest.setGrantedFeats(List.of(warpriestShieldBlock, warpriestDeadlySimplicity));
 
-            ClassFeatureChoice animalOrder = new ClassFeatureChoice();
-            animalOrder.setCharacterClass(druid);
-            animalOrder.setFeatureName("Druidic Order");
-            animalOrder.setOptionName("Animal");
-
-            FeatureGrantedProficiency animalAthletics = new FeatureGrantedProficiency();
-            animalAthletics.setClassFeatureChoice(animalOrder);
-            animalAthletics.setProficiencyName("Athletics");
-            animalAthletics.setCategory(ProficiencyCategory.SKILL);
-            animalAthletics.setRank(ProficiencyRank.TRAINED);
-
+            ClassFeatureChoice animalOrder = new ClassFeatureChoice(druid, "Druidic Order", "Animal");
+            FeatureGrantedProficiency animalAthletics = new FeatureGrantedProficiency(animalOrder, "Athletics", ProficiencyCategory.SKILL, ProficiencyRank.TRAINED);
             animalOrder.setGrantedProficiencies(List.of(animalAthletics));
-
-            FeatureGrantedFeat animalOrderFeat = new FeatureGrantedFeat();
-            animalOrderFeat.setClassFeatureChoice(animalOrder);
-            animalOrderFeat.setFeat(animalCompanion);
-
+            FeatureGrantedFeat animalOrderFeat = new FeatureGrantedFeat(animalOrder, animalCompanion);
             animalOrder.setGrantedFeats(List.of(animalOrderFeat));
 
-            ClassFeatureChoice leafOrder = new ClassFeatureChoice();
-            leafOrder.setCharacterClass(druid);
-            leafOrder.setFeatureName("Druidic Order");
-            leafOrder.setOptionName("Leaf");
-
-            FeatureGrantedProficiency leafDiplomacy = new FeatureGrantedProficiency();
-            leafDiplomacy.setClassFeatureChoice(leafOrder);
-            leafDiplomacy.setProficiencyName("Diplomacy");
-            leafDiplomacy.setCategory(ProficiencyCategory.SKILL);
-            leafDiplomacy.setRank(ProficiencyRank.TRAINED);
-
+            ClassFeatureChoice leafOrder = new ClassFeatureChoice(druid, "Druidic Order", "Leaf");
+            FeatureGrantedProficiency leafDiplomacy = new FeatureGrantedProficiency(leafOrder, "Diplomacy", ProficiencyCategory.SKILL, ProficiencyRank.TRAINED);
             leafOrder.setGrantedProficiencies(List.of(leafDiplomacy));
-
-            FeatureGrantedFeat leafOrderFeat = new FeatureGrantedFeat();
-            leafOrderFeat.setClassFeatureChoice(leafOrder);
-            leafOrderFeat.setFeat(leshyFamiliar);
-
+            FeatureGrantedFeat leafOrderFeat = new FeatureGrantedFeat(leafOrder, leshyFamiliar);
             leafOrder.setGrantedFeats(List.of(leafOrderFeat));
 
-            ClassFeatureChoice faithsFlamekeeper = new ClassFeatureChoice();
-            faithsFlamekeeper.setCharacterClass(witch);
-            faithsFlamekeeper.setFeatureName("Patron Theme");
-            faithsFlamekeeper.setOptionName("Faith's Flamekeeper");
-
-            FeatureGrantedProficiency faithReligion = new FeatureGrantedProficiency();
-            faithReligion.setClassFeatureChoice(faithsFlamekeeper);
-            faithReligion.setProficiencyName("Religion");
-            faithReligion.setCategory(ProficiencyCategory.SKILL);
-            faithReligion.setRank(ProficiencyRank.TRAINED);
-
+            ClassFeatureChoice faithsFlamekeeper = new ClassFeatureChoice(witch, "Patron Theme", "Faith's Flamekeeper");
+            FeatureGrantedProficiency faithReligion = new FeatureGrantedProficiency(faithsFlamekeeper, "Religion", ProficiencyCategory.SKILL, ProficiencyRank.TRAINED);
             faithsFlamekeeper.setGrantedProficiencies(List.of(faithReligion));
 
-            ClassFeatureChoice silenceInSnow = new ClassFeatureChoice();
-            silenceInSnow.setCharacterClass(witch);
-            silenceInSnow.setFeatureName("Patron Theme");
-            silenceInSnow.setOptionName("Silence in Snow");
-
-            FeatureGrantedProficiency snowNature = new FeatureGrantedProficiency();
-            snowNature.setClassFeatureChoice(silenceInSnow);
-            snowNature.setProficiencyName("Nature");
-            snowNature.setCategory(ProficiencyCategory.SKILL);
-            snowNature.setRank(ProficiencyRank.TRAINED);
-
+            ClassFeatureChoice silenceInSnow = new ClassFeatureChoice(witch, "Patron Theme", "Silence in Snow");
+            FeatureGrantedProficiency snowNature = new FeatureGrantedProficiency(silenceInSnow, "Nature", ProficiencyCategory.SKILL, ProficiencyRank.TRAINED);
             silenceInSnow.setGrantedProficiencies(List.of(snowNature));
+
+            ClassFeatureChoice alchemicalSciences = new ClassFeatureChoice(investigator, "Methodology", "Alchemical Sciences");
+            FeatureGrantedProficiency alchemicalCrafting = new FeatureGrantedProficiency(alchemicalSciences, "Crafting", ProficiencyCategory.SKILL, ProficiencyRank.TRAINED);
+            alchemicalSciences.setGrantedProficiencies(List.of(alchemicalCrafting));
+
+            List<Skill> intelligenceSkills = List.of(
+                    arcana,
+                    crafting,
+                    lore,
+                    occultism,
+                    society
+            );
+
+            ClassFeatureChoice empiricism = new ClassFeatureChoice(investigator, "Methodology", "Empiricism");
+
+            FeatureSkillChoice empiricismSkillChoice = new FeatureSkillChoice();
+            empiricismSkillChoice.setClassFeatureChoice(empiricism);
+            empiricismSkillChoice.setSkillOptions(intelligenceSkills);
+            empiricismSkillChoice.setNumberToChoose(1);
+            empiricismSkillChoice.setRank(ProficiencyRank.TRAINED);
+
+            empiricism.setSkillChoices(List.of(empiricismSkillChoice));
 
             classFeatureChoiceRepo.saveAll(List.of(
                     emotionalAcceptance,
@@ -726,299 +813,159 @@ public class DataSeeder {
                     animalOrder,
                     leafOrder,
                     faithsFlamekeeper,
-                    silenceInSnow
+                    silenceInSnow,
+                    alchemicalSciences,
+                    empiricism
             ));
 
-            AttributeBoostRule humanBoosts = new AttributeBoostRule();
+            List<AttributeName> allSix = List.of(AttributeName.STRENGTH, AttributeName.DEXTERITY, AttributeName.CONSTITUTION, AttributeName.INTELLIGENCE, AttributeName.WISDOM, AttributeName.CHARISMA);
+
+            AttributeBoostRule humanBoosts = new AttributeBoostRule(AttributeBoostType.FREE, allSix, 2);
             humanBoosts.setAncestry(human);
-            humanBoosts.setBoostType(AttributeBoostType.FREE);
-            humanBoosts.setNumberToChoose(2);
 
-            AttributeBoostRule dwarfConBoost = new AttributeBoostRule();
+            AttributeBoostRule dwarfConBoost = new AttributeBoostRule(AttributeBoostType.FIXED, List.of(AttributeName.CONSTITUTION), 1);
             dwarfConBoost.setAncestry(dwarf);
-            dwarfConBoost.setBoostType(AttributeBoostType.FIXED);
-            dwarfConBoost.setAttributeOptions(List.of(AttributeName.CONSTITUTION));
-            dwarfConBoost.setNumberToChoose(1);
-
-            AttributeBoostRule dwarfWisBoost = new AttributeBoostRule();
+            AttributeBoostRule dwarfWisBoost = new AttributeBoostRule(AttributeBoostType.FIXED, List.of(AttributeName.WISDOM), 1);
             dwarfWisBoost.setAncestry(dwarf);
-            dwarfWisBoost.setBoostType(AttributeBoostType.FIXED);
-            dwarfWisBoost.setAttributeOptions(List.of(AttributeName.WISDOM));
-            dwarfWisBoost.setNumberToChoose(1);
-
-            AttributeBoostRule dwarfFreeBoost = new AttributeBoostRule();
+            AttributeBoostRule dwarfFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE, allSix, 1);
             dwarfFreeBoost.setAncestry(dwarf);
-            dwarfFreeBoost.setBoostType(AttributeBoostType.FREE);
-            dwarfFreeBoost.setNumberToChoose(1);
 
-            AttributeBoostRule elfDexBoost = new AttributeBoostRule();
+            AttributeBoostRule elfDexBoost = new AttributeBoostRule(AttributeBoostType.FIXED, List.of(AttributeName.DEXTERITY), 1);
             elfDexBoost.setAncestry(elf);
-            elfDexBoost.setBoostType(AttributeBoostType.FIXED);
-            elfDexBoost.setAttributeOptions(List.of(AttributeName.DEXTERITY));
-            elfDexBoost.setNumberToChoose(1);
-
-            AttributeBoostRule elfIntBoost = new AttributeBoostRule();
+            AttributeBoostRule elfIntBoost = new AttributeBoostRule(AttributeBoostType.FIXED, List.of(AttributeName.INTELLIGENCE), 1);
             elfIntBoost.setAncestry(elf);
-            elfIntBoost.setBoostType(AttributeBoostType.FIXED);
-            elfIntBoost.setAttributeOptions(List.of(AttributeName.INTELLIGENCE));
-            elfIntBoost.setNumberToChoose(1);
-
-            AttributeBoostRule elfFreeBoost = new AttributeBoostRule();
+            AttributeBoostRule elfFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE, allSix, 1);
             elfFreeBoost.setAncestry(elf);
-            elfFreeBoost.setBoostType(AttributeBoostType.FREE);
-            elfFreeBoost.setNumberToChoose(1);
 
-            AttributeBoostRule gnomeConBoost = new AttributeBoostRule();
+            AttributeBoostRule gnomeConBoost = new AttributeBoostRule(AttributeBoostType.FIXED, List.of(AttributeName.CONSTITUTION), 1);
             gnomeConBoost.setAncestry(gnome);
-            gnomeConBoost.setBoostType(AttributeBoostType.FIXED);
-            gnomeConBoost.setAttributeOptions(List.of(AttributeName.CONSTITUTION));
-            gnomeConBoost.setNumberToChoose(1);
-
-            AttributeBoostRule gnomeChaBoost = new AttributeBoostRule();
+            AttributeBoostRule gnomeChaBoost = new AttributeBoostRule(AttributeBoostType.FIXED, List.of(AttributeName.CHARISMA), 1);
             gnomeChaBoost.setAncestry(gnome);
-            gnomeChaBoost.setBoostType(AttributeBoostType.FIXED);
-            gnomeChaBoost.setAttributeOptions(List.of(AttributeName.CHARISMA));
-            gnomeChaBoost.setNumberToChoose(1);
-
-            AttributeBoostRule gnomeFreeBoost = new AttributeBoostRule();
+            AttributeBoostRule gnomeFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE, allSix, 1);
             gnomeFreeBoost.setAncestry(gnome);
-            gnomeFreeBoost.setBoostType(AttributeBoostType.FREE);
-            gnomeFreeBoost.setNumberToChoose(1);
 
-            AttributeBoostRule goblinDexBoost = new AttributeBoostRule();
+            AttributeBoostRule goblinDexBoost = new AttributeBoostRule(AttributeBoostType.FIXED, List.of(AttributeName.DEXTERITY), 1);
             goblinDexBoost.setAncestry(goblin);
-            goblinDexBoost.setBoostType(AttributeBoostType.FIXED);
-            goblinDexBoost.setAttributeOptions(List.of(AttributeName.DEXTERITY));
-            goblinDexBoost.setNumberToChoose(1);
-
-            AttributeBoostRule goblinChaBoost = new AttributeBoostRule();
+            AttributeBoostRule goblinChaBoost = new AttributeBoostRule(AttributeBoostType.FIXED, List.of(AttributeName.CHARISMA), 1);
             goblinChaBoost.setAncestry(goblin);
-            goblinChaBoost.setBoostType(AttributeBoostType.FIXED);
-            goblinChaBoost.setAttributeOptions(List.of(AttributeName.CHARISMA));
-            goblinChaBoost.setNumberToChoose(1);
-
-            AttributeBoostRule goblinFreeBoost = new AttributeBoostRule();
+            AttributeBoostRule goblinFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE, allSix, 1);
             goblinFreeBoost.setAncestry(goblin);
-            goblinFreeBoost.setBoostType(AttributeBoostType.FREE);
-            goblinFreeBoost.setNumberToChoose(1);
 
-            AttributeBoostRule halflingDexBoost = new AttributeBoostRule();
+            AttributeBoostRule halflingDexBoost = new AttributeBoostRule(AttributeBoostType.FIXED, List.of(AttributeName.DEXTERITY), 1);
             halflingDexBoost.setAncestry(halfling);
-            halflingDexBoost.setBoostType(AttributeBoostType.FIXED);
-            halflingDexBoost.setAttributeOptions(List.of(AttributeName.DEXTERITY));
-            halflingDexBoost.setNumberToChoose(1);
-
-            AttributeBoostRule halflingWisBoost = new AttributeBoostRule();
+            AttributeBoostRule halflingWisBoost = new AttributeBoostRule(AttributeBoostType.FIXED, List.of(AttributeName.WISDOM), 1);
             halflingWisBoost.setAncestry(halfling);
-            halflingWisBoost.setBoostType(AttributeBoostType.FIXED);
-            halflingWisBoost.setAttributeOptions(List.of(AttributeName.WISDOM));
-            halflingWisBoost.setNumberToChoose(1);
-
-            AttributeBoostRule halflingFreeBoost = new AttributeBoostRule();
+            AttributeBoostRule halflingFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE, allSix, 1);
             halflingFreeBoost.setAncestry(halfling);
-            halflingFreeBoost.setBoostType(AttributeBoostType.FREE);
-            halflingFreeBoost.setNumberToChoose(1);
 
-            AttributeBoostRule leshyConBoost = new AttributeBoostRule();
+            AttributeBoostRule leshyConBoost = new AttributeBoostRule(AttributeBoostType.FIXED, List.of(AttributeName.CONSTITUTION), 1);
             leshyConBoost.setAncestry(leshy);
-            leshyConBoost.setBoostType(AttributeBoostType.FIXED);
-            leshyConBoost.setAttributeOptions(List.of(AttributeName.CONSTITUTION));
-            leshyConBoost.setNumberToChoose(1);
-
-            AttributeBoostRule leshyWisBoost = new AttributeBoostRule();
+            AttributeBoostRule leshyWisBoost = new AttributeBoostRule(AttributeBoostType.FIXED, List.of(AttributeName.WISDOM), 1);
             leshyWisBoost.setAncestry(leshy);
-            leshyWisBoost.setBoostType(AttributeBoostType.FIXED);
-            leshyWisBoost.setAttributeOptions(List.of(AttributeName.WISDOM));
-            leshyWisBoost.setNumberToChoose(1);
-
-            AttributeBoostRule leshyFreeBoost = new AttributeBoostRule();
+            AttributeBoostRule leshyFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE, allSix, 1);
             leshyFreeBoost.setAncestry(leshy);
-            leshyFreeBoost.setBoostType(AttributeBoostType.FREE);
-            leshyFreeBoost.setNumberToChoose(1);
 
-            AttributeBoostRule orcBoosts = new AttributeBoostRule();
+            AttributeBoostRule orcBoosts = new AttributeBoostRule(AttributeBoostType.FREE, allSix, 2);
             orcBoosts.setAncestry(orc);
-            orcBoosts.setBoostType(AttributeBoostType.FREE);
-            orcBoosts.setNumberToChoose(2);
 
-            AttributeBoostRule scholarMentalBoost = new AttributeBoostRule();
+            AttributeBoostRule scholarMentalBoost = new AttributeBoostRule(AttributeBoostType.CHOICE, List.of(AttributeName.INTELLIGENCE, AttributeName.WISDOM), 1);
             scholarMentalBoost.setBackground(scholar);
-            scholarMentalBoost.setBoostType(AttributeBoostType.CHOICE);
-            scholarMentalBoost.setAttributeOptions(List.of(
-                    AttributeName.INTELLIGENCE,
-                    AttributeName.WISDOM
-            ));
-            scholarMentalBoost.setNumberToChoose(1);
-
-            AttributeBoostRule scholarFreeBoost = new AttributeBoostRule();
+            AttributeBoostRule scholarFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE, allSix, 1);
             scholarFreeBoost.setBackground(scholar);
-            scholarFreeBoost.setBoostType(AttributeBoostType.FREE);
-            scholarFreeBoost.setNumberToChoose(1);
 
-            AttributeBoostRule warriorPhysBoost = new AttributeBoostRule();
+            AttributeBoostRule warriorPhysBoost = new AttributeBoostRule(AttributeBoostType.CHOICE, List.of(AttributeName.STRENGTH, AttributeName.CONSTITUTION), 1);
             warriorPhysBoost.setBackground(warrior);
-            warriorPhysBoost.setBoostType(AttributeBoostType.CHOICE);
-            warriorPhysBoost.setAttributeOptions(List.of(AttributeName.STRENGTH, AttributeName.CONSTITUTION));
-            warriorPhysBoost.setNumberToChoose(1);
-
-            AttributeBoostRule warriorFreeBoost = new AttributeBoostRule();
+            AttributeBoostRule warriorFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE,  allSix, 1);
             warriorFreeBoost.setBackground(warrior);
-            warriorFreeBoost.setBoostType(AttributeBoostType.FREE);
-            warriorFreeBoost.setNumberToChoose(1);
 
-            AttributeBoostRule fighterBoost = new AttributeBoostRule();
+            AttributeBoostRule fighterBoost = new AttributeBoostRule(AttributeBoostType.CHOICE, List.of(AttributeName.STRENGTH, AttributeName.DEXTERITY), 1);
             fighterBoost.setCharacterClass(fighter);
-            fighterBoost.setBoostType(AttributeBoostType.CHOICE);
-            fighterBoost.setAttributeOptions(List.of(
-                    AttributeName.STRENGTH,
-                    AttributeName.DEXTERITY
-            ));
-            fighterBoost.setNumberToChoose(1);
 
-            AttributeBoostRule wizardBoost = new AttributeBoostRule();
+            AttributeBoostRule wizardBoost = new AttributeBoostRule(AttributeBoostType.FIXED, List.of(AttributeName.INTELLIGENCE), 1);
             wizardBoost.setCharacterClass(wizard);
-            wizardBoost.setBoostType(AttributeBoostType.FIXED);
-            wizardBoost.setAttributeOptions(List.of(AttributeName.INTELLIGENCE));
-            wizardBoost.setNumberToChoose(1);
 
-            AttributeBoostRule emotionalAcceptanceBoost = new AttributeBoostRule();
+            AttributeBoostRule emotionalAcceptanceBoost = new AttributeBoostRule(AttributeBoostType.FIXED, List.of(AttributeName.CHARISMA), 1);
             emotionalAcceptanceBoost.setClassFeatureChoice(emotionalAcceptance);
-            emotionalAcceptanceBoost.setBoostType(AttributeBoostType.FIXED);
-            emotionalAcceptanceBoost.setAttributeOptions(List.of(AttributeName.CHARISMA));
-            emotionalAcceptanceBoost.setNumberToChoose(1);
-
-            AttributeBoostRule gatheredLoreBoost = new AttributeBoostRule();
+            AttributeBoostRule gatheredLoreBoost = new AttributeBoostRule(AttributeBoostType.FIXED,List.of(AttributeName.INTELLIGENCE), 1);
             gatheredLoreBoost.setClassFeatureChoice(gatheredLore);
-            gatheredLoreBoost.setBoostType(AttributeBoostType.FIXED);
-            gatheredLoreBoost.setAttributeOptions(List.of(AttributeName.INTELLIGENCE));
-            gatheredLoreBoost.setNumberToChoose(1);
 
-            AttributeBoostRule rogueDexBoost = new AttributeBoostRule();
+            AttributeBoostRule rogueDexBoost = new AttributeBoostRule(AttributeBoostType.CHOICE,List.of(AttributeName.DEXTERITY),1);
             rogueDexBoost.setCharacterClass(rogue);
-            rogueDexBoost.setBoostType(AttributeBoostType.CHOICE);
-            rogueDexBoost.setAttributeOptions(List.of(AttributeName.DEXTERITY));
-            rogueDexBoost.setNumberToChoose(1);
-
-            AttributeBoostRule mastermindBoost = new AttributeBoostRule();
+            AttributeBoostRule mastermindBoost = new AttributeBoostRule(AttributeBoostType.CHOICE, List.of(AttributeName.INTELLIGENCE), 1);
             mastermindBoost.setClassFeatureChoice(mastermind);
-            mastermindBoost.setBoostType(AttributeBoostType.CHOICE);
-            mastermindBoost.setAttributeOptions(List.of(AttributeName.INTELLIGENCE));
-            mastermindBoost.setNumberToChoose(1);
-
-            AttributeBoostRule ruffianBoost = new AttributeBoostRule();
+            AttributeBoostRule ruffianBoost = new AttributeBoostRule(AttributeBoostType.CHOICE, List.of(AttributeName.STRENGTH), 1);
             ruffianBoost.setClassFeatureChoice(ruffian);
-            ruffianBoost.setBoostType(AttributeBoostType.CHOICE);
-            ruffianBoost.setAttributeOptions(List.of(AttributeName.STRENGTH));
-            ruffianBoost.setNumberToChoose(1);
 
-            AttributeBoostRule thaumaturgeBoost = new AttributeBoostRule();
+            AttributeBoostRule thaumaturgeBoost = new AttributeBoostRule(AttributeBoostType.FIXED, List.of(AttributeName.CHARISMA), 1);
             thaumaturgeBoost.setCharacterClass(thaumaturge);
-            thaumaturgeBoost.setBoostType(AttributeBoostType.FIXED);
-            thaumaturgeBoost.setAttributeOptions(List.of(AttributeName.CHARISMA));
-            thaumaturgeBoost.setNumberToChoose(1);
 
-            AttributeBoostRule bardBoost = new AttributeBoostRule();
+            AttributeBoostRule bardBoost = new AttributeBoostRule(AttributeBoostType.FIXED, List.of(AttributeName.CHARISMA), 1);
             bardBoost.setCharacterClass(bard);
-            bardBoost.setBoostType(AttributeBoostType.FIXED);
-            bardBoost.setAttributeOptions(List.of(AttributeName.CHARISMA));
-            bardBoost.setNumberToChoose(1);
 
-            AttributeBoostRule clericBoost = new AttributeBoostRule();
+            AttributeBoostRule clericBoost = new AttributeBoostRule(AttributeBoostType.FIXED, List.of(AttributeName.WISDOM), 1);
             clericBoost.setCharacterClass(cleric);
-            clericBoost.setBoostType(AttributeBoostType.FIXED);
-            clericBoost.setAttributeOptions(List.of(AttributeName.WISDOM));
-            clericBoost.setNumberToChoose(1);
 
-            AttributeBoostRule druidBoost = new AttributeBoostRule();
+            AttributeBoostRule druidBoost = new AttributeBoostRule(AttributeBoostType.FIXED, List.of(AttributeName.WISDOM), 1);
             druidBoost.setCharacterClass(druid);
-            druidBoost.setBoostType(AttributeBoostType.FIXED);
-            druidBoost.setAttributeOptions(List.of(AttributeName.WISDOM));
-            druidBoost.setNumberToChoose(1);
 
-            AttributeBoostRule rangerBoost = new AttributeBoostRule();
+            AttributeBoostRule rangerBoost = new AttributeBoostRule(AttributeBoostType.CHOICE, List.of(AttributeName.STRENGTH, AttributeName.DEXTERITY), 1);
             rangerBoost.setCharacterClass(ranger);
-            rangerBoost.setBoostType(AttributeBoostType.CHOICE);
-            rangerBoost.setAttributeOptions(List.of(
-                    AttributeName.STRENGTH,
-                    AttributeName.DEXTERITY
-            ));
-            rangerBoost.setNumberToChoose(1);
 
-            AttributeBoostRule witchBoost = new AttributeBoostRule();
+            AttributeBoostRule witchBoost = new AttributeBoostRule(AttributeBoostType.FIXED, List.of(AttributeName.INTELLIGENCE), 1);
             witchBoost.setCharacterClass(witch);
-            witchBoost.setBoostType(AttributeBoostType.FIXED);
-            witchBoost.setAttributeOptions(List.of(AttributeName.INTELLIGENCE));
-            witchBoost.setNumberToChoose(1);
+
+            AttributeBoostRule commanderBoost = new AttributeBoostRule(AttributeBoostType.FIXED, List.of(AttributeName.INTELLIGENCE), 1);
+            commanderBoost.setCharacterClass(commander);
+
+            AttributeBoostRule guardianBoost = new AttributeBoostRule(AttributeBoostType.FIXED, List.of(AttributeName.STRENGTH), 1);
+            guardianBoost.setCharacterClass(guardian);
+
+            AttributeBoostRule barbarianBoost = new AttributeBoostRule(AttributeBoostType.FIXED, List.of(AttributeName.STRENGTH), 1);
+            barbarianBoost.setCharacterClass(barbarian);
+
+            AttributeBoostRule exemplarBoost = new AttributeBoostRule(AttributeBoostType.CHOICE, List.of(AttributeName.STRENGTH, AttributeName.DEXTERITY), 1);
+            exemplarBoost.setCharacterClass(exemplar);
+
+            AttributeBoostRule championBoost = new AttributeBoostRule(AttributeBoostType.CHOICE, List.of(AttributeName.STRENGTH, AttributeName.DEXTERITY), 1);
+            championBoost.setCharacterClass(champion);
+
+            AttributeBoostRule investigatorBoost = new AttributeBoostRule(AttributeBoostType.FIXED, List.of(AttributeName.INTELLIGENCE), 1);
+            investigatorBoost.setCharacterClass(investigator);
 
             attributeBoostRuleRepo.saveAll(List.of(
                     humanBoosts,
-                    dwarfConBoost,
-                    dwarfWisBoost,
-                    dwarfFreeBoost,
-                    elfDexBoost,
-                    elfIntBoost,
-                    elfFreeBoost,
-                    gnomeConBoost,
-                    gnomeChaBoost,
-                    gnomeFreeBoost,
-                    goblinDexBoost,
-                    goblinChaBoost,
-                    goblinFreeBoost,
-                    halflingDexBoost,
-                    halflingWisBoost,
-                    halflingFreeBoost,
-                    leshyConBoost,
-                    leshyWisBoost,
-                    leshyFreeBoost,
+                    dwarfConBoost, dwarfWisBoost, dwarfFreeBoost,
+                    elfDexBoost, elfIntBoost, elfFreeBoost,
+                    gnomeConBoost, gnomeChaBoost, gnomeFreeBoost,
+                    goblinDexBoost, goblinChaBoost, goblinFreeBoost,
+                    halflingDexBoost, halflingWisBoost, halflingFreeBoost,
+                    leshyConBoost, leshyWisBoost, leshyFreeBoost,
                     orcBoosts,
-                    scholarMentalBoost,
-                    scholarFreeBoost,
-                    warriorPhysBoost,
-                    warriorFreeBoost,
+                    scholarMentalBoost, scholarFreeBoost,
+                    warriorPhysBoost, warriorFreeBoost,
                     fighterBoost,
                     wizardBoost,
-                    emotionalAcceptanceBoost,
-                    gatheredLoreBoost,
-                    rogueDexBoost,
-                    mastermindBoost,
-                    ruffianBoost,
+                    emotionalAcceptanceBoost, gatheredLoreBoost,
+                    rogueDexBoost, mastermindBoost, ruffianBoost,
                     thaumaturgeBoost,
                     bardBoost,
                     clericBoost,
                     druidBoost,
                     rangerBoost,
-                    witchBoost
+                    witchBoost,
+                    commanderBoost,
+                    guardianBoost,
+                    barbarianBoost,
+                    exemplarBoost,
+                    championBoost
             ));
 
-            AttributeFlawRule dwarfFlaw = new AttributeFlawRule();
-            dwarfFlaw.setAncestry(dwarf);
-            dwarfFlaw.setAttributeOptions(List.of(AttributeName.CHARISMA));
-            dwarfFlaw.setNumberToChoose(1);
-
-            AttributeFlawRule elfFlaw = new AttributeFlawRule();
-            elfFlaw.setAncestry(elf);
-            elfFlaw.setAttributeOptions(List.of(AttributeName.CONSTITUTION));
-            elfFlaw.setNumberToChoose(1);
-
-            AttributeFlawRule gnomeFlaw = new AttributeFlawRule();
-            gnomeFlaw.setAncestry(gnome);
-            gnomeFlaw.setAttributeOptions(List.of(AttributeName.STRENGTH));
-            gnomeFlaw.setNumberToChoose(1);
-
-            AttributeFlawRule goblinFlaw = new AttributeFlawRule();
-            goblinFlaw.setAncestry(goblin);
-            goblinFlaw.setAttributeOptions(List.of(AttributeName.WISDOM));
-            goblinFlaw.setNumberToChoose(1);
-
-            AttributeFlawRule halflingFlaw = new AttributeFlawRule();
-            halflingFlaw.setAncestry(halfling);
-            halflingFlaw.setAttributeOptions(List.of(AttributeName.STRENGTH));
-            halflingFlaw.setNumberToChoose(1);
-
-            AttributeFlawRule leshyFlaw = new AttributeFlawRule();
-            leshyFlaw.setAncestry(leshy);
-            leshyFlaw.setAttributeOptions(List.of(AttributeName.INTELLIGENCE));
-            leshyFlaw.setNumberToChoose(1);
+            AttributeFlawRule dwarfFlaw = new AttributeFlawRule(dwarf, List.of(AttributeName.CHARISMA), 1);
+            AttributeFlawRule elfFlaw = new AttributeFlawRule(elf, List.of(AttributeName.CONSTITUTION), 1);
+            AttributeFlawRule gnomeFlaw = new AttributeFlawRule(gnome, List.of(AttributeName.STRENGTH), 1);
+            AttributeFlawRule goblinFlaw = new AttributeFlawRule(goblin, List.of(AttributeName.WISDOM), 1);
+            AttributeFlawRule halflingFlaw = new AttributeFlawRule(halfling, List.of(AttributeName.STRENGTH), 1);
+            AttributeFlawRule leshyFlaw = new AttributeFlawRule(leshy, List.of(AttributeName.INTELLIGENCE), 1);
 
             attributeFlawRuleRepo.saveAll(List.of(
                     dwarfFlaw,

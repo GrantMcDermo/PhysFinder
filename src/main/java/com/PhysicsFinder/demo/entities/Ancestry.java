@@ -33,11 +33,13 @@ public class Ancestry {
     private List<AncestryFeature> features = new ArrayList<>();
 
     protected Ancestry() {}
-    public Ancestry(String name, Integer hitPoints, Integer speed, String size){
+    public Ancestry(String name, Integer hitPoints, Integer speed, String size, Set<TraitType> traits, List<String> languages){
         this.name = name;
         this.hitPoints = hitPoints;
         this.speed = speed;
         this.size = size;
+        this.traits = traits;
+        this.languages = languages;
     }
 
 }

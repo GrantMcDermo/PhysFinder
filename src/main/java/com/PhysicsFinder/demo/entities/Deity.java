@@ -27,4 +27,10 @@ public class Deity {
 
     @ManyToOne(optional = false)
     private Skill grantedSkill;
+
+    public Deity(String name, Weapon favoredWeapon, Skill grantedSkill){
+        this.name = name;
+        this.favoredWeapon = favoredWeapon;
+        this.grantedSkill = grantedSkill;
+    }
 }

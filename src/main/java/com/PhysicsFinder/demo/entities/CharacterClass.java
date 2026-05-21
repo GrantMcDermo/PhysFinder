@@ -27,6 +27,9 @@ public class CharacterClass {
     @OneToMany(mappedBy = "characterClass", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ClassSkillChoice> skillChoices = new ArrayList<>();
 
+    private Boolean usesDeitySkill = false;
+    private Boolean usesDeityFavoredWeapon = false;
+
     protected CharacterClass() {}
 
     public CharacterClass(String name, Integer hitPointsPerLevel, List<String> keyAttributeOptions) {

@@ -26,4 +26,10 @@ public class AncestryFeature {
 
     @Column(length = 3000)
     private String description;
+
+    public AncestryFeature(Ancestry ancestry, String name, String description){
+        this.ancestry = ancestry;
+        this.name = name;
+        this.description = description;
+    }
 }

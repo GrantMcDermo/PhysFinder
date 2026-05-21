@@ -40,4 +40,10 @@ public class AttributeBoostRule {
 
     @ManyToOne
     private ClassFeatureChoice classFeatureChoice;
+
+    public AttributeBoostRule(AttributeBoostType boostType, List<AttributeName> attributeOptions, Integer numberToChoose){
+        this.boostType = boostType;
+        this.attributeOptions = attributeOptions;
+        this.numberToChoose = numberToChoose;
+    }
 }

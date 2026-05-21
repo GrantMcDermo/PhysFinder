@@ -30,4 +30,9 @@ public class ClassSkillChoice {
     private ProficiencyRank rank = ProficiencyRank.TRAINED;
 
     private Integer numberToChoose = 1;
+
+    public ClassSkillChoice(CharacterClass characterClass, List<Skill> skillOptions){
+        this.characterClass = characterClass;
+        this.skillOptions = skillOptions;
+    }
 }

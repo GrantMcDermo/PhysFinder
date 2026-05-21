@@ -218,8 +218,11 @@ public class CharacterCreationService {
             addProficiency(sheet, skill.getName(), ProficiencyCategory.SKILL, ProficiencyRank.TRAINED);
         }
 
-        if(sheet.getDeity() != null){
+        if(sheet.getDeity() != null && characterClass.getUsesDeitySkill()){
             addProficiency(sheet, sheet.getDeity().getGrantedSkill().getName(), ProficiencyCategory.SKILL, ProficiencyRank.TRAINED);
+        }
+
+        if(sheet.getDeity() != null && characterClass.getUsesDeityFavoredWeapon()){
             addProficiency(sheet, sheet.getDeity().getFavoredWeapon().getName(), ProficiencyCategory.WEAPON, ProficiencyRank.TRAINED);
         }
 

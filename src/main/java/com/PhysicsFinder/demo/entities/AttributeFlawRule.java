@@ -29,4 +29,10 @@ public class AttributeFlawRule {
 
     @ManyToOne
     private Ancestry ancestry;
+
+    public  AttributeFlawRule(Ancestry ancestry, List<AttributeName> attributeOptions, Integer numberToChoose){
+        this.ancestry = ancestry;
+        this.attributeOptions = attributeOptions;
+        this.numberToChoose = numberToChoose;
+    }
 }

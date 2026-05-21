@@ -40,4 +40,10 @@ public class ClassFeatureChoice {
 
     @OneToMany(mappedBy = "classFeatureChoice", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<FeatureGrantedFeat> grantedFeats = new ArrayList<>();
+
+    public ClassFeatureChoice(CharacterClass characterClass, String featureName, String optionName){
+        this.characterClass = characterClass;
+        this.featureName = featureName;
+        this.optionName = optionName;
+    }
 }
