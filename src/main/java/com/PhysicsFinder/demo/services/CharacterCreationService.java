@@ -97,25 +97,6 @@ public class CharacterCreationService {
         }
     }
 
-    private void copyAncestryAndHeritageTraitsAndSenses(PlayerCharacter character, Ancestry ancestry, Heritage heritage){
-        character.getTraits().clear();
-        character.getSenses().clear();
-
-        character.getTraits().addAll(ancestry.getTraits());
-
-        for(SenseType sense : ancestry.getSenses()){
-            addSense(character, sense);
-        }
-
-        if(heritage != null){
-            character.getTraits().addAll(heritage.getTraits());
-
-            for (SenseType sense : heritage.getSenses()) {
-                addSense(character, sense);
-            }
-        }
-    }
-
     private void addSense(PlayerCharacter character, SenseType senseType){
         if (senseType == SenseType.DARKVISION) {
             character.getSenses().remove(SenseType.LOW_LIGHT_VISION);
@@ -260,9 +241,7 @@ public class CharacterCreationService {
     }
 
     private void addSelectedFeat(PlayerCharacter sheet, Feat feat){
-        SelectedFeat selectedFeat = new SelectedFeat();
-        selectedFeat.setPlayerCharacter(sheet);
-        selectedFeat.setFeat(feat);
+        SelectedFeat selectedFeat = new SelectedFeat(sheet, feat);
         sheet.getSelectedFeats().add(selectedFeat);
     }
 
@@ -311,9 +290,7 @@ public class CharacterCreationService {
                 throw new RuntimeException("This ancestry feat is not available to this character");
         }
 
-        SelectedFeat selectedFeat = new SelectedFeat();
-        selectedFeat.setPlayerCharacter(sheet);
-        selectedFeat.setFeat(feat);
+        SelectedFeat selectedFeat = new SelectedFeat(sheet, feat);
 
         sheet.getSelectedFeats().add(selectedFeat);
 

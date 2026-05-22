@@ -27,4 +27,9 @@ public class SelectedFeat {
 
     @ManyToOne(optional = false)
     private Feat feat;
+
+    public SelectedFeat(PlayerCharacter playerCharacter, Feat feat){
+        this.playerCharacter = playerCharacter;
+        this.feat = feat;
+    }
 }

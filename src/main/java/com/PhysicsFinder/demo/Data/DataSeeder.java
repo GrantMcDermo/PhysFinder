@@ -25,7 +25,8 @@ public class DataSeeder {
             ClassFeatureChoiceRepo classFeatureChoiceRepo,
             WeaponRepo weaponRepo,
             ArmorRepo armorRepo,
-            DeityRepo deityRepo){
+            DeityRepo deityRepo,
+            GameActionRepo gameActionRepo){
         return args -> {
             if(ancestryRepo.count() > 0)
                 return;
@@ -666,6 +667,14 @@ public class DataSeeder {
             bodyguard.setAvailableToClasses(List.of(guardian));
             Feat acuteVision = new Feat("Acute Vision", 1, FeatType.CLASS, "When you are raging, your visual senses improve, granting you darkvision.");
             acuteVision.setAvailableToClasses(List.of(barbarian));
+            Feat reactiveStrikeFeat = new Feat("Reactive Strike", 6, FeatType.CLASS, "You lash out at a foe that leaves an opening.");
+            reactiveStrikeFeat.setAvailableToClasses(List.of(
+                    champion,
+                    barbarian,
+                    commander,
+                    exemplar,
+                    guardian
+            ));
             Feat energizedSpark = new Feat("Energized Spark", 1, FeatType.CLASS, "The energy of your spirit manifests as crackling lightning, the chill of winter, or the power of an element.");
             energizedSpark.setAvailableToClasses(List.of(exemplar));
             Feat brilliantFlash = new Feat("Brilliant Flash", 1, FeatType.CLASS, "Your light cleanses souls of fear.");
@@ -975,6 +984,224 @@ public class DataSeeder {
                     halflingFlaw,
                     leshyFlaw
             ));
+
+            GameAction stride = new GameAction("Stride", ActionType.SINGLE_ACTION, "Move up to your Speed");
+            stride.setSourceType(ActionSourceType.UNIVERSAL);
+
+            GameAction strike = new GameAction("Strike", ActionType.SINGLE_ACTION, "Attack with a weapon or unarmed attack.");
+            strike.setSourceType(ActionSourceType.UNIVERSAL);
+
+            GameAction balance = new GameAction("Balance", ActionType.SINGLE_ACTION, "You move across a narrow surface or uneven ground, attempting an Acrobatics check against its Balance DC.");
+            balance.setSourceType(ActionSourceType.SKILL);
+
+            GameAction squeeze = new GameAction("Squeeze", ActionType.ACTIVITY, "You contort yourself to squeeze through a space so small you can barely fit through.");
+            GameActionGrant squeezeGrant = new GameActionGrant(squeeze, ActionSourceType.SKILL);
+            squeezeGrant.setSkill(acrobatics);
+            squeezeGrant.setRequiredSkillRank(ProficiencyRank.TRAINED);
+            squeeze.setGrants(List.of(squeezeGrant));
+
+            GameAction recallKnowledge = new GameAction("Recall Knowledge", ActionType.SINGLE_ACTION, "You attempt a skill check to try to remember a bit of knowledge regarding a topic related to that skill.");
+            recallKnowledge.setSourceType(ActionSourceType.SKILL);
+
+            GameAction borrowAnArcaneSpell = new GameAction("Borrow an Arcane Spell", ActionType.ACTIVITY, "If you're an arcane spellcaster who prepares spells, you can attempt to prepare a spell from someone else's arcane spellbook, arcane witch familiar, or the like.");
+            GameActionGrant borrowArcaneSpellGrant = new GameActionGrant(borrowAnArcaneSpell, ActionSourceType.SKILL);
+            borrowArcaneSpellGrant.setSkill(arcana);
+            borrowArcaneSpellGrant.setRequiredSkillRank(ProficiencyRank.TRAINED);
+            borrowAnArcaneSpell.setGrants(List.of(borrowArcaneSpellGrant));
+
+            GameAction climb = new GameAction("Climb", ActionType.SINGLE_ACTION, "You attempt an Athletics check to move a maximum distance of 5 feet up, down, or across an incline.");
+            climb.setSourceType(ActionSourceType.SKILL);
+
+            GameAction disarm = new GameAction("Disarm", ActionType.SINGLE_ACTION, "You try to knock an item out of a creature's grasp.");
+            GameActionGrant disarmGrant = new GameActionGrant(disarm, ActionSourceType.SKILL);
+            disarmGrant.setSkill(athletics);
+            disarmGrant.setRequiredSkillRank(ProficiencyRank.TRAINED);
+            disarm.setGrants(List.of(disarmGrant));
+
+            GameAction repair = new GameAction("Repair", ActionType.ACTIVITY, "You spend 10 minutes attempting to fix a damaged item, placing the item on a stable surface and using the repair toolkit with both hands.");
+            repair.setSourceType(ActionSourceType.SKILL);
+
+            GameAction craft = new GameAction("Craft", ActionType.ACTIVITY, "You can make an item from raw materials.");
+            GameActionGrant craftGrant = new GameActionGrant(craft, ActionSourceType.SKILL);
+            craftGrant.setSkill(crafting);
+            craftGrant.setRequiredSkillRank(ProficiencyRank.TRAINED);
+            craft.setGrants(List.of(craftGrant));
+
+            GameAction createADiversion = new GameAction("Create a Diversion", ActionType.SINGLE_ACTION, "With a gesture, a trick, or some distracting words, you can create a diversion that draws creatures' attention elsewhere.");
+            createADiversion.setSourceType(ActionSourceType.SKILL);
+
+            GameAction feint = new GameAction("Feint", ActionType.SINGLE_ACTION, "With a misleading flourish, you leave an opponent unprepared for your real attack.");
+            GameActionGrant feintGrant = new GameActionGrant(feint, ActionSourceType.SKILL);
+            feintGrant.setSkill(deception);
+            feintGrant.setRequiredSkillRank(ProficiencyRank.TRAINED);
+            feint.setGrants(List.of(feintGrant));
+
+            GameAction gatherInformation = new GameAction("Gather Information", ActionType.ACTIVITY, "You canvass local markets, taverns, and gathering places in an attempt to learn about a specific individual or topic.");
+            gatherInformation.setSourceType(ActionSourceType.SKILL);
+
+            GameAction coerce = new GameAction("Coerce", ActionType.ACTIVITY, "With threats either veiled or overt, you attempt to bully a creature into doing what you want.");
+            coerce.setSourceType(ActionSourceType.SKILL);
+
+            GameAction administerFirstAid = new GameAction("Administer First Aid", ActionType.TWO_ACTIONS, "You perform first aid on an adjacent creature that is dying or bleeding.");
+            administerFirstAid.setSourceType(ActionSourceType.SKILL);
+
+            GameAction treatWounds = new GameAction("Treat Wounds", ActionType.ACTIVITY, "Use Medicine to heal a living creature.");
+            GameActionGrant treatWoundsGrant = new GameActionGrant(treatWounds, ActionSourceType.SKILL);
+            treatWoundsGrant.setSkill(medicine);
+            treatWoundsGrant.setRequiredSkillRank(ProficiencyRank.TRAINED);
+            treatWounds.setGrants(List.of(treatWoundsGrant));
+
+            GameAction commandAnAnimal = new GameAction("Command an Animal", ActionType.SINGLE_ACTION, "You issue an order to an animal.");
+            commandAnAnimal.setSourceType(ActionSourceType.SKILL);
+
+            GameAction identifyMagic = new GameAction("Identify Magic", ActionType.ACTIVITY, "Once you discover that an item, location, or ongoing effect is magical, you can spend 10 minutes to try to identify the particulars of its magic.");
+            GameActionGrant identifyArcaneMagic = new GameActionGrant(identifyMagic, ActionSourceType.SKILL);
+            identifyArcaneMagic.setSkill(arcana);
+            identifyArcaneMagic.setRequiredSkillRank(ProficiencyRank.TRAINED);
+            GameActionGrant identifyPrimalMagic = new GameActionGrant(identifyMagic, ActionSourceType.SKILL);
+            identifyPrimalMagic.setSkill(nature);
+            identifyPrimalMagic.setRequiredSkillRank(ProficiencyRank.TRAINED);
+            GameActionGrant identifyOccultMagic = new GameActionGrant(identifyMagic, ActionSourceType.SKILL);
+            identifyOccultMagic.setSkill(occultism);
+            identifyOccultMagic.setRequiredSkillRank(ProficiencyRank.TRAINED);
+            GameActionGrant identifyDivineMagic = new GameActionGrant(identifyMagic, ActionSourceType.SKILL);
+            identifyDivineMagic.setSkill(religion);
+            identifyDivineMagic.setRequiredSkillRank(ProficiencyRank.TRAINED);
+            identifyMagic.setGrants(List.of(identifyArcaneMagic, identifyPrimalMagic, identifyOccultMagic, identifyDivineMagic));
+
+            GameAction decipherWriting = new GameAction("Decipher Writing", ActionType.ACTIVITY, "You attempt to decipher complicated writing or literature on an obscure topic.");
+            GameActionGrant decipherArcaneTheory = new GameActionGrant(decipherWriting, ActionSourceType.SKILL);
+            decipherArcaneTheory.setSkill(arcana);
+            decipherArcaneTheory.setRequiredSkillRank(ProficiencyRank.TRAINED);
+            GameActionGrant decipherOccultTopics = new GameActionGrant(decipherWriting, ActionSourceType.SKILL);
+            decipherOccultTopics.setSkill(occultism);
+            decipherOccultTopics.setRequiredSkillRank(ProficiencyRank.TRAINED);
+            GameActionGrant decipherReligiousText = new GameActionGrant(decipherWriting, ActionSourceType.SKILL);
+            decipherReligiousText.setSkill(religion);
+            decipherReligiousText.setRequiredSkillRank(ProficiencyRank.TRAINED);
+            GameActionGrant decipherCodedMessage = new GameActionGrant(decipherWriting, ActionSourceType.SKILL);
+            decipherCodedMessage.setSkill(society);
+            decipherCodedMessage.setRequiredSkillRank(ProficiencyRank.TRAINED);
+            decipherWriting.setGrants(List.of(decipherArcaneTheory, decipherOccultTopics, decipherReligiousText, decipherCodedMessage));
+
+            GameAction perform = new GameAction("Perform", ActionType.SINGLE_ACTION, "When making a brief performance—one song, a quick dance, or a few jokes—you use the Perform action.");
+            perform.setSourceType(ActionSourceType.SKILL);
+
+            GameAction earnIncome = new GameAction("Earn Income", ActionType.ACTIVITY, "You use one of your skills to make money during downtime.");
+            GameActionGrant earnByCrafting = new GameActionGrant(earnIncome, ActionSourceType.SKILL);
+            earnByCrafting.setSkill(crafting);
+            earnByCrafting.setRequiredSkillRank(ProficiencyRank.TRAINED);
+            GameActionGrant earnByPerforming = new GameActionGrant(earnIncome, ActionSourceType.SKILL);
+            earnByPerforming.setSkill(performance);
+            earnByPerforming.setRequiredSkillRank(ProficiencyRank.TRAINED);
+            earnIncome.setGrants(List.of(earnByCrafting, earnByPerforming));
+
+            GameAction learnASpell = new GameAction("Learn A Spell", ActionType.ACTIVITY, "You can gain access to a new spell of your tradition from someone who knows that spell or from magical writing like a spellbook or scroll.");
+            GameActionGrant learnArcaneSpell = new GameActionGrant(learnASpell, ActionSourceType.SKILL);
+            learnArcaneSpell.setSkill(arcana);
+            learnArcaneSpell.setRequiredSkillRank(ProficiencyRank.TRAINED);
+            GameActionGrant learnPrimalSpell = new GameActionGrant(learnASpell, ActionSourceType.SKILL);
+            learnPrimalSpell.setSkill(nature);
+            learnPrimalSpell.setRequiredSkillRank(ProficiencyRank.TRAINED);
+            GameActionGrant learnOccultSpell = new GameActionGrant(learnASpell, ActionSourceType.SKILL);
+            learnOccultSpell.setSkill(occultism);
+            learnOccultSpell.setRequiredSkillRank(ProficiencyRank.TRAINED);
+            GameActionGrant learnDivineSpell = new GameActionGrant(learnASpell, ActionSourceType.SKILL);
+            learnDivineSpell.setSkill(religion);
+            learnDivineSpell.setRequiredSkillRank(ProficiencyRank.TRAINED);
+            learnASpell.setGrants(List.of(learnArcaneSpell, learnPrimalSpell, learnOccultSpell, learnDivineSpell));
+
+            GameAction subsist = new GameAction("Subsist", ActionType.ACTIVITY, "You try to provide food and shelter for yourself, and possibly others as well.");
+            subsist.setSourceType(ActionSourceType.SKILL);
+
+            GameAction createForgery = new GameAction("Create Forgery", ActionType.ACTIVITY, "You create a forged document, usually over the course of a day or a week.");
+            GameActionGrant createForgeryGrant = new GameActionGrant(createForgery, ActionSourceType.SKILL);
+            createForgeryGrant.setSkill(society);
+            createForgeryGrant.setRequiredSkillRank(ProficiencyRank.TRAINED);
+            createForgery.setGrants(List.of(createForgeryGrant));
+
+            GameAction concealAnObject = new GameAction("Conceal an Object", ActionType.SINGLE_ACTION, "You hide a small object on your person (such as a weapon of light Bulk).");
+            concealAnObject.setSourceType(ActionSourceType.SKILL);
+
+            GameAction senseDirection = new GameAction("Sense Direction", ActionType.ACTIVITY, "Using the stars, the position of the sun, traits of the geography or flora, or the behavior of fauna, you can stay oriented in the wild.");
+            senseDirection.setSourceType(ActionSourceType.SKILL);
+
+            GameAction coverTracks = new GameAction("Cover Tracks", ActionType.ACTIVITY, "You cover your tracks, moving up to half your travel Speed.");
+            GameActionGrant coverTracksGrant = new GameActionGrant(coverTracks, ActionSourceType.SKILL);
+            coverTracksGrant.setSkill(survival);
+            coverTracksGrant.setRequiredSkillRank(ProficiencyRank.TRAINED);
+            coverTracks.setGrants(List.of(coverTracksGrant));
+
+            GameAction palmAnObject = new GameAction("Palm an Object", ActionType.SINGLE_ACTION, "You pick up a small, unattended object and try not to be noticed.");
+            palmAnObject.setSourceType(ActionSourceType.SKILL);
+
+            GameAction disableADevice = new GameAction("Disable a Device", ActionType.TWO_ACTIONS, "This action allows you to disarm a trap or another complex device.");
+            GameActionGrant disableDeviceGrant = new GameActionGrant(disableADevice, ActionSourceType.SKILL);
+            disableDeviceGrant.setSkill(thievery);
+            disableDeviceGrant.setRequiredSkillRank(ProficiencyRank.TRAINED);
+            disableADevice.setGrants(List.of(disableDeviceGrant));
+
+            GameAction shieldBlockAction = new GameAction("Shield Block", ActionType.REACTION, "Use your shield to reduce damage from a physical attack.");
+            GameActionGrant shieldBlockGrant = new GameActionGrant(shieldBlockAction, ActionSourceType.FEAT);
+            shieldBlockGrant.setFeat(shieldBlock);
+            shieldBlockAction.setGrants(List.of(shieldBlockGrant));
+
+            GameAction deviseAStratagem = new GameAction("Devise a Stratagem", ActionType.SINGLE_ACTION, "Assess a foe and plan your attack.");
+            GameActionGrant investigatorGrant = new GameActionGrant(deviseAStratagem, ActionSourceType.CLASS);
+            investigatorGrant.setCharacterClass(investigator);
+            deviseAStratagem.setGrants(List.of(investigatorGrant));
+
+            GameAction huntPrey = new GameAction("Hunt Prey", ActionType.SINGLE_ACTION, "You designate a single creature as your prey and focus your attacks against that creature.");
+            GameActionGrant huntPreyGrant = new GameActionGrant(huntPrey, ActionSourceType.CLASS);
+            huntPreyGrant.setCharacterClass(ranger);
+            huntPrey.setGrants(List.of(huntPreyGrant));
+
+            GameAction reactiveStrikeAction = new GameAction("Reactive Strike", ActionType.REACTION, "Make a melee Strike against a triggering creature.");
+            GameActionGrant fighterReactiveStrike = new GameActionGrant(reactiveStrikeAction, ActionSourceType.CLASS);
+            fighterReactiveStrike.setCharacterClass(fighter);
+            GameActionGrant featReactiveStrike = new GameActionGrant(reactiveStrikeAction, ActionSourceType.FEAT);
+            featReactiveStrike.setFeat(reactiveStrikeFeat);
+            reactiveStrikeAction.setGrants(List.of(
+                    fighterReactiveStrike,
+                    featReactiveStrike
+            ));
+
+            GameAction drainBondedItem = new GameAction("Drain Bonded Item", ActionType.FREE_ACTION, "You expend the magical power stored in your bonded item.");
+            GameActionGrant wizardDrainBondedItem = new GameActionGrant(drainBondedItem, ActionSourceType.CLASS);
+            wizardDrainBondedItem.setCharacterClass(wizard);
+            drainBondedItem.setGrants(List.of(wizardDrainBondedItem));
+
+            GameAction callOnAncientBlood = new GameAction("Call on Ancient Blood", ActionType.REACTION, "Your ancestors' innate resistance to magic surges, before slowly ebbing down.");
+            GameActionGrant ancientBloodGrant = new GameActionGrant(callOnAncientBlood, ActionSourceType.HERITAGE);
+            ancientBloodGrant.setHeritage(ancientBlooded);
+            callOnAncientBlood.setGrants(List.of(ancientBloodGrant));
+
+            GameAction jinx = new GameAction("Jinx", ActionType.TWO_ACTIONS, "You can curse another creature with clumsiness.");
+            GameActionGrant heritageJinxGrant = new GameActionGrant(jinx, ActionSourceType.HERITAGE);
+            heritageJinxGrant.setHeritage(jinxedHalfling);
+            jinx.setGrants(List.of(heritageJinxGrant));
+
+            gameActionRepo.saveAll(List.of(
+                    stride, strike,
+                    recallKnowledge, identifyMagic, decipherWriting, earnIncome, learnASpell, subsist,
+                    balance, squeeze,
+                    borrowAnArcaneSpell,
+                    climb, disarm,
+                    repair, craft,
+                    createADiversion, feint,
+                    gatherInformation,
+                    coerce,
+                    administerFirstAid, treatWounds,
+                    commandAnAnimal,
+                    perform,
+                    createForgery,
+                    concealAnObject,
+                    senseDirection, coverTracks,
+                    palmAnObject, disableADevice,
+                    shieldBlockAction,
+                    deviseAStratagem, huntPrey, drainBondedItem,
+                    reactiveStrikeAction,
+                    callOnAncientBlood, jinx));
 
             System.out.println("===== PATHFINDER DATA SEEDED =====");
 
