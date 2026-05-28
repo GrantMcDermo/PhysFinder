@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -22,15 +24,15 @@ public class Deity {
     @Column(nullable = false, unique = true)
     private String name;
 
-    @ManyToOne(optional = false)
-    private Weapon favoredWeapon;
+    @ManyToMany
+    private List<Weapon> favoredWeaponOptions = new ArrayList<>();
 
-    @ManyToOne(optional = false)
-    private Skill grantedSkill;
+    @ManyToMany
+    private List<Skill> grantedSkillOptions = new ArrayList<>();
 
-    public Deity(String name, Weapon favoredWeapon, Skill grantedSkill){
+    public Deity(String name, List<Weapon> favoredWeaponOptions, List<Skill> grantedSkillOptions){
         this.name = name;
-        this.favoredWeapon = favoredWeapon;
-        this.grantedSkill = grantedSkill;
+        this.favoredWeaponOptions = favoredWeaponOptions;
+        this.grantedSkillOptions = grantedSkillOptions;
     }
 }

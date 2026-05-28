@@ -33,6 +33,10 @@ public class PlayerCharacter {
     private Skill chosenBackgroundSkill;
     @ManyToOne
     private Deity deity;
+    @ManyToOne
+    private Weapon chosenDeityWeapon;
+    @ManyToOne
+    private Skill chosenDeitySkill;
 
     @ElementCollection
     @Enumerated(EnumType.STRING)

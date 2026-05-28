@@ -23,6 +23,7 @@ public class CharacterCreationService {
     private final AttributeFlawRuleRepo attributeFlawRuleRepo;
     private final ClassFeatureChoiceRepo classFeatureChoiceRepo;
     private final DeityRepo deityRepo;
+    private final WeaponRepo weaponRepo;
 
     public PlayerCharacter createBlankCharacter(CreateCharacterRequest request){
         PlayerCharacter sheet = new PlayerCharacter();
@@ -155,13 +156,31 @@ public class CharacterCreationService {
             sheet.setDeity(deity);
         }
 
+        if (deity != null && request.chosenDeityWeaponId() != null) {
+            Weapon chosenDeityWeapon = weaponRepo.findById(request.chosenDeityWeaponId()).orElseThrow(() -> new RuntimeException("Chosen deity weapon not found"));
+
+            if (!deity.getFavoredWeaponOptions().contains(chosenDeityWeapon))
+                throw new RuntimeException("Chosen weapon is not available for this deity");
+
+            sheet.setChosenDeityWeapon(chosenDeityWeapon);
+        }
+
+        if (deity != null && request.chosenDeitySkillId() != null) {
+            Skill chosenDeitySkill = skillRepo.findById(request.chosenDeitySkillId()).orElseThrow(() -> new RuntimeException("Chosen deity skill not found"));
+
+            if (!deity.getGrantedSkillOptions().contains(chosenDeitySkill))
+                throw new RuntimeException("Chosen skill is not available for this deity");
+
+            sheet.setChosenDeitySkill(chosenDeitySkill);
+        }
+
         validateClassSkillChoices(characterClass, chosenSkills);
         validateFeatureSkillChoices(selectedFeatureChoices, chosenFeatureSkills);
 
         sheet.setCharacterClass(characterClass);
         sheet.setSelectedClassFeatureChoices(selectedFeatureChoices);
         sheet.setChosenClassSkills(chosenSkills);
-        copyInitialClassProficiences(sheet, characterClass, chosenSkills, selectedFeatureChoices, chosenFeatureSkills);
+        copyInitialClassProficiencies(sheet, characterClass, chosenSkills, selectedFeatureChoices, chosenFeatureSkills);
         recalculateDerivedStats(sheet);
         return playerCharacterRepo.save(sheet);
     }
@@ -188,7 +207,7 @@ public class CharacterCreationService {
         }
     }
 
-    private void copyInitialClassProficiences(PlayerCharacter sheet, CharacterClass characterClass, List<Skill> chosenSkills, List<ClassFeatureChoice> selectedFeatureChoices, List<Skill> chosenFeatureSkills){
+    private void copyInitialClassProficiencies(PlayerCharacter sheet, CharacterClass characterClass, List<Skill> chosenSkills, List<ClassFeatureChoice> selectedFeatureChoices, List<Skill> chosenFeatureSkills){
         sheet.getProficiencies().clear();
 
         for(InitialProficiency proficiency : characterClass.getInitialProficiencies()){
@@ -199,12 +218,12 @@ public class CharacterCreationService {
             addProficiency(sheet, skill.getName(), ProficiencyCategory.SKILL, ProficiencyRank.TRAINED);
         }
 
-        if(sheet.getDeity() != null && characterClass.getUsesDeitySkill()){
-            addProficiency(sheet, sheet.getDeity().getGrantedSkill().getName(), ProficiencyCategory.SKILL, ProficiencyRank.TRAINED);
+        if(sheet.getDeity() != null && characterClass.getUsesDeitySkill() && sheet.getChosenDeitySkill() != null){
+            addProficiency(sheet, sheet.getChosenDeitySkill().getName(), ProficiencyCategory.SKILL, ProficiencyRank.TRAINED);
         }
 
-        if(sheet.getDeity() != null && characterClass.getUsesDeityFavoredWeapon()){
-            addProficiency(sheet, sheet.getDeity().getFavoredWeapon().getName(), ProficiencyCategory.WEAPON, ProficiencyRank.TRAINED);
+        if(sheet.getDeity() != null && characterClass.getUsesDeityFavoredWeapon() && sheet.getChosenDeityWeapon() != null){
+            addProficiency(sheet, sheet.getChosenDeityWeapon().getName(), ProficiencyCategory.WEAPON, ProficiencyRank.TRAINED);
         }
 
         for (ClassFeatureChoice featureChoice : selectedFeatureChoices) {
@@ -216,7 +235,7 @@ public class CharacterCreationService {
         for(ClassFeatureChoice featureChoice : selectedFeatureChoices){
             for (FeatureGrantedFeat grantedFeat : featureChoice.getGrantedFeats()){
                 if(grantedFeat.getRequiresSimpleOrUnarmedDeityWeapon()){
-                    Weapon deityWeapon = sheet.getDeity().getFavoredWeapon();
+                    Weapon deityWeapon = sheet.getChosenDeityWeapon();
                     boolean qualifies = deityWeapon.getCategory() == WeaponCategory.SIMPLE || deityWeapon.getCategory() == WeaponCategory.UNARMED;
                     if(!qualifies)
                         continue;

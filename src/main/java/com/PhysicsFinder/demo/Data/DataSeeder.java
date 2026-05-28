@@ -68,26 +68,297 @@ public class DataSeeder {
                     thievery
             ));
 
-            Weapon crossbow = new Weapon("Crossbow", WeaponCategory.SIMPLE);
-            Weapon warhammer = new Weapon("Warhammer", WeaponCategory.MARTIAL);
-            Weapon sawtoothSaber = new Weapon("Sawtooth Saber", WeaponCategory.ADVANCED);
-            Weapon clanDagger = new Weapon("Clan Dagger", WeaponCategory.SIMPLE);
-            Weapon jaws = new Weapon("Jaws", WeaponCategory.UNARMED);
-            Weapon spine = new Weapon("Spine", WeaponCategory.UNARMED);
+            Weapon crossbow = new Weapon("Crossbow", WeaponCategory.SIMPLE, WeaponType.RANGED, WeaponGroup.CROSSBOW, 1, 8, DamageType.PIERCING);
+            crossbow.setRangeFeet(120);
+            crossbow.setReloadActions(1);
+            crossbow.setAmmunition("Bolts");
+            crossbow.setBulk(1.0);
+            crossbow.setHandUsageType(HandUsageType.TWO_HAND);
+            crossbow.setHandsRequiredToAttack(2);
+            Weapon warhammer = new Weapon("Warhammer", WeaponCategory.MARTIAL, WeaponType.MELEE, WeaponGroup.HAMMER, 1, 8 ,DamageType.BLUDGEONING);
+            warhammer.setTraits(Set.of(new WeaponTraitEntry(WeaponTrait.SHOVE, null, null, null)));
+            warhammer.setBulk(1.0);
+            warhammer.setHandUsageType(HandUsageType.ONE_HAND);
+            warhammer.setHandsRequiredToAttack(1);
+            Weapon sawtoothSaber = new Weapon("Sawtooth Saber", WeaponCategory.ADVANCED, WeaponType.MELEE, WeaponGroup.SWORD, 1, 6, DamageType.SLASHING);
+            sawtoothSaber.setTraits(Set.of(
+                    new WeaponTraitEntry(WeaponTrait.AGILE, null, null, null),
+                    new WeaponTraitEntry(WeaponTrait.FINESSE, null, null, null),
+                    new WeaponTraitEntry(WeaponTrait.TWIN, null, null, null)));
+            sawtoothSaber.setBulk(0.1);
+            sawtoothSaber.setHandUsageType(HandUsageType.ONE_HAND);
+            sawtoothSaber.setHandsRequiredToAttack(1);
+            Weapon clanDagger = new Weapon("Clan Dagger", WeaponCategory.SIMPLE, WeaponType.MELEE, WeaponGroup.KNIFE, 1, 4, DamageType.PIERCING);
+            clanDagger.setTraits(Set.of(
+                    new WeaponTraitEntry(WeaponTrait.AGILE, null, null, null),
+                    new WeaponTraitEntry(WeaponTrait.DWARF, null, null, null),
+                    new WeaponTraitEntry(WeaponTrait.PARRY, null, null, null),
+                    new WeaponTraitEntry(WeaponTrait.VERSATILE, DamageType.BLUDGEONING, null, null)));
+            clanDagger.setBulk(0.1);
+            clanDagger.setHandUsageType(HandUsageType.ONE_HAND);
+            clanDagger.setHandsRequiredToAttack(1);
+            Weapon jaws = new Weapon("Jaws", WeaponCategory.UNARMED, WeaponType.MELEE, WeaponGroup.BRAWLING, 1, 6, DamageType.PIERCING);
+            jaws.setTraits(Set.of(
+                    new WeaponTraitEntry(WeaponTrait.FINESSE, null, null, null),
+                    new WeaponTraitEntry(WeaponTrait.UNARMED, null, null, null)));
+            Weapon spine = new Weapon("Spine", WeaponCategory.UNARMED, WeaponType.MELEE, WeaponGroup.BRAWLING, 1, 6, DamageType.PIERCING);
+            spine.setTraits(Set.of(
+                    new WeaponTraitEntry(WeaponTrait.FINESSE, null, null, null),
+                    new WeaponTraitEntry(WeaponTrait.UNARMED, null, null, null)));
+            Weapon dagger = new Weapon("Dagger", WeaponCategory.SIMPLE, WeaponType.MELEE, WeaponGroup.KNIFE, 1, 4, DamageType.PIERCING);
+            dagger.setBulk(0.1);
+            dagger.setHandUsageType(HandUsageType.ONE_HAND);
+            dagger.setHandsRequiredToAttack(1);
+            dagger.setRangeFeet(10);
+            dagger.setTraits(Set.of(
+                    new WeaponTraitEntry(WeaponTrait.AGILE, null, null, null),
+                    new WeaponTraitEntry(WeaponTrait.FINESSE, null, null, null),
+                    new WeaponTraitEntry(WeaponTrait.THROWN, null, null, null),
+                    new WeaponTraitEntry(WeaponTrait.VERSATILE, DamageType.SLASHING, null, null)
+            ));
+            Weapon battleAxe = new Weapon("Battle Axe", WeaponCategory.MARTIAL, WeaponType.MELEE, WeaponGroup.AXE, 1, 8, DamageType.SLASHING);
+            battleAxe.setBulk(1.0);
+            battleAxe.setHandUsageType(HandUsageType.ONE_HAND);
+            battleAxe.setHandsRequiredToAttack(1);
+            battleAxe.setTraits(Set.of(new WeaponTraitEntry(WeaponTrait.SWEEP, null, null, null)));
+            Weapon greatsword = new Weapon("Greatsword", WeaponCategory.MARTIAL, WeaponType.MELEE, WeaponGroup.SWORD, 1, 12, DamageType.SLASHING);
+            greatsword.setBulk(2.0);
+            greatsword.setHandUsageType(HandUsageType.TWO_HAND);
+            greatsword.setHandsRequiredToAttack(2);
+            greatsword.setTraits(Set.of(new WeaponTraitEntry(WeaponTrait.VERSATILE, DamageType.PIERCING, null, null)));
+            Weapon compositeLongbow = new Weapon("Composite Longbow", WeaponCategory.MARTIAL, WeaponType.RANGED, WeaponGroup.BOW, 1, 8, DamageType.PIERCING);
+            compositeLongbow.setBulk(2.0);
+            compositeLongbow.setHandUsageType(HandUsageType.ONE_PLUS_HAND);
+            compositeLongbow.setHandsRequiredToAttack(2);
+            compositeLongbow.setRangeFeet(100);
+            compositeLongbow.setReloadActions(0);
+            compositeLongbow.setAmmunition("Arrows");
+            compositeLongbow.setTraits(Set.of(
+                    new WeaponTraitEntry(WeaponTrait.DEADLY, null, 10, null),
+                    new WeaponTraitEntry(WeaponTrait.PROPULSIVE, null, null, null),
+                    new WeaponTraitEntry(WeaponTrait.VOLLEY, null, null, 30)
+            ));
+            Weapon club = new Weapon("Club", WeaponCategory.SIMPLE, WeaponType.MELEE, WeaponGroup.CLUB, 1, 6, DamageType.BLUDGEONING);
+            club.setBulk(1.0);
+            club.setHandUsageType(HandUsageType.ONE_HAND);
+            club.setHandsRequiredToAttack(1);
+            club.setRangeFeet(10);
+            club.setTraits(Set.of(new WeaponTraitEntry(WeaponTrait.THROWN, null, null, null)));
+            Weapon greatpick = new Weapon("Greatpick", WeaponCategory.MARTIAL, WeaponType.MELEE, WeaponGroup.PICK, 1, 10, DamageType.PIERCING);
+            greatpick.setBulk(2.0);
+            greatpick.setHandUsageType(HandUsageType.TWO_HAND);
+            greatpick.setHandsRequiredToAttack(2);
+            greatpick.setTraits(Set.of(new WeaponTraitEntry(WeaponTrait.FATAL, null, 12, null)));
+            Weapon mace = new Weapon("Mace", WeaponCategory.SIMPLE, WeaponType.MELEE, WeaponGroup.CLUB,1, 6, DamageType.BLUDGEONING);
+            mace.setBulk(1.0);
+            mace.setHandUsageType(HandUsageType.ONE_HAND);
+            mace.setHandsRequiredToAttack(1);
+            mace.setTraits(Set.of(new WeaponTraitEntry(WeaponTrait.SHOVE, null, null, null)));
+            Weapon whip = new Weapon("Whip", WeaponCategory.MARTIAL, WeaponType.MELEE, WeaponGroup.FLAIL, 1, 4, DamageType.SLASHING);
+            whip.setBulk(1.0);
+            whip.setHandUsageType(HandUsageType.ONE_HAND);
+            whip.setHandsRequiredToAttack(1);
+            whip.setTraits(Set.of(
+                    new WeaponTraitEntry(WeaponTrait.DISARM, null, null, null),
+                    new WeaponTraitEntry(WeaponTrait.FINESSE, null, null, null),
+                    new WeaponTraitEntry(WeaponTrait.NONLETHAL, null, null, null),
+                    new WeaponTraitEntry(WeaponTrait.REACH, null, null, null),
+                    new WeaponTraitEntry(WeaponTrait.TRIP, null, null, null)
+            ));
+            Weapon rapier = new Weapon("Rapier", WeaponCategory.MARTIAL, WeaponType.MELEE, WeaponGroup.SWORD, 1, 6, DamageType.PIERCING);
+            rapier.setBulk(1.0);
+            rapier.setHandUsageType(HandUsageType.ONE_HAND);
+            rapier.setHandsRequiredToAttack(1);
+            rapier.setTraits(Set.of(
+                    new WeaponTraitEntry(WeaponTrait.DISARM, null, 8, null),
+                    new WeaponTraitEntry(WeaponTrait.DISARM, null, null, null),
+                    new WeaponTraitEntry(WeaponTrait.FINESSE, null, null, null)
+            ));
+            Weapon starknife = new Weapon("Starknife", WeaponCategory.MARTIAL, WeaponType.MELEE, WeaponGroup.KNIFE, 1, 4, DamageType.PIERCING);
+            starknife.setBulk(0.1);
+            starknife.setHandUsageType(HandUsageType.ONE_HAND);
+            starknife.setHandsRequiredToAttack(1);
+            starknife.setRangeFeet(20);
+            starknife.setTraits(Set.of(
+                    new WeaponTraitEntry(WeaponTrait.AGILE, null, null, null),
+                    new WeaponTraitEntry(WeaponTrait.DEADLY, null, 6, null),
+                    new WeaponTraitEntry(WeaponTrait.FINESSE, null, null, null),
+                    new WeaponTraitEntry(WeaponTrait.THROWN, null, null, null),
+                    new WeaponTraitEntry(WeaponTrait.VERSATILE, DamageType.SLASHING, null, null)
+            ));
+            Weapon longbow = new Weapon("Longbow", WeaponCategory.MARTIAL, WeaponType.RANGED, WeaponGroup.BOW, 1, 8, DamageType.PIERCING);
+            longbow.setBulk(2.0);
+            longbow.setHandUsageType(HandUsageType.ONE_PLUS_HAND);
+            longbow.setHandsRequiredToAttack(2);
+            longbow.setRangeFeet(100);
+            longbow.setReloadActions(0);
+            longbow.setAmmunition("Arrows");
+            longbow.setTraits(Set.of(
+                    new WeaponTraitEntry(WeaponTrait.DEADLY, null, 10, null),
+                    new WeaponTraitEntry(WeaponTrait.VOLLEY, null, null, 30)
+            ));
+            Weapon trident = new Weapon("Trident", WeaponCategory.MARTIAL, WeaponType.MELEE, WeaponGroup.SPEAR, 1, 8, DamageType.PIERCING);
+            trident.setBulk(1.0);
+            trident.setHandUsageType(HandUsageType.ONE_HAND);
+            trident.setHandsRequiredToAttack(1);
+            trident.setRangeFeet(20);
+            trident.setTraits(Set.of(new WeaponTraitEntry(WeaponTrait.THROWN, null, null, null)));
+            Weapon sickle = new Weapon("Sickle", WeaponCategory.SIMPLE, WeaponType.MELEE, WeaponGroup.KNIFE, 1, 4, DamageType.SLASHING);
+            sickle.setBulk(0.1);
+            sickle.setHandUsageType(HandUsageType.ONE_HAND);
+            sickle.setHandsRequiredToAttack(1);
+            sickle.setTraits(Set.of(
+                    new WeaponTraitEntry(WeaponTrait.AGILE, null, null, null),
+                    new WeaponTraitEntry(WeaponTrait.FINESSE, null, null, null),
+                    new WeaponTraitEntry(WeaponTrait.TRIP, null, null, null)
+            ));
+            Weapon longsword = new Weapon("Longsword", WeaponCategory.MARTIAL, WeaponType.MELEE, WeaponGroup.SWORD, 1, 8, DamageType.SLASHING);
+            longsword.setBulk(1.0);
+            longsword.setHandUsageType(HandUsageType.ONE_HAND);
+            longsword.setHandsRequiredToAttack(1);
+            longsword.setTraits(Set.of(new WeaponTraitEntry(WeaponTrait.VERSATILE, DamageType.PIERCING, null, null)));
+            Weapon fist = new Weapon("Fist", WeaponCategory.UNARMED, WeaponType.MELEE, WeaponGroup.BRAWLING, 1, 4, DamageType.BLUDGEONING);
+            fist.setHandUsageType(HandUsageType.ONE_HAND);
+            fist.setHandsRequiredToAttack(1);
+            fist.setTraits(Set.of(
+                    new WeaponTraitEntry(WeaponTrait.AGILE, null, null, null),
+                    new WeaponTraitEntry(WeaponTrait.FINESSE, null, null, null),
+                    new WeaponTraitEntry(WeaponTrait.NONLETHAL, null, null, null),
+                    new WeaponTraitEntry(WeaponTrait.UNARMED, null, null, null)
+            ));
+            Weapon falchion = new Weapon("Falchion", WeaponCategory.MARTIAL, WeaponType.MELEE, WeaponGroup.SWORD, 1, 10, DamageType.SLASHING);
+            falchion.setBulk(2.0);
+            falchion.setHandUsageType(HandUsageType.TWO_HAND);
+            falchion.setHandsRequiredToAttack(2);
+            falchion.setTraits(Set.of(
+                    new WeaponTraitEntry(WeaponTrait.FORCEFUL, null, null, null),
+                    new WeaponTraitEntry(WeaponTrait.SWEEP, null, null, null)
+            ));
+            Weapon staff = new Weapon("Staff", WeaponCategory.SIMPLE, WeaponType.MELEE, WeaponGroup.CLUB, 1, 4, DamageType.BLUDGEONING);
+            staff.setBulk(1.0);
+            staff.setHandUsageType(HandUsageType.ONE_HAND);
+            staff.setHandsRequiredToAttack(1);
+            staff.setTraits(Set.of(
+                    new WeaponTraitEntry(WeaponTrait.MONK, null, null, null),
+                    new WeaponTraitEntry(WeaponTrait.TWO_HAND, null, 8, null)
+            ));
+            Weapon claw = new Weapon("Claw", WeaponCategory.UNARMED, WeaponType.MELEE, WeaponGroup.BRAWLING, 1, 4, DamageType.SLASHING);
+            claw.setHandUsageType(HandUsageType.ONE_HAND);
+            claw.setHandsRequiredToAttack(1);
+            claw.setTraits(Set.of(
+                    new WeaponTraitEntry(WeaponTrait.AGILE, null, null, null),
+                    new WeaponTraitEntry(WeaponTrait.FINESSE, null, null, null),
+                    new WeaponTraitEntry(WeaponTrait.NONLETHAL, null, null, null),
+                    new WeaponTraitEntry(WeaponTrait.UNARMED, null, null, null)
+            ));
+            Weapon shortsword = new Weapon("Shortsword", WeaponCategory.MARTIAL, WeaponType.MELEE, WeaponGroup.SWORD, 1, 6, DamageType.PIERCING);
+            shortsword.setBulk(1.0);
+            shortsword.setHandUsageType(HandUsageType.ONE_HAND);
+            shortsword.setHandsRequiredToAttack(1);
+            shortsword.setTraits(Set.of(
+                    new WeaponTraitEntry(WeaponTrait.AGILE, null, null,null),
+                    new WeaponTraitEntry(WeaponTrait.FINESSE, null, null, null),
+                    new WeaponTraitEntry(WeaponTrait.VERSATILE, DamageType.SLASHING, null, null)
+            ));
+            Weapon greataxe = new Weapon("Greataxe", WeaponCategory.MARTIAL, WeaponType.MELEE, WeaponGroup.AXE, 1, 12, DamageType.SLASHING);
+            greataxe.setBulk(2.0);
+            greataxe.setHandUsageType(HandUsageType.TWO_HAND);
+            greataxe.setHandsRequiredToAttack(2);
+            greataxe.setTraits(Set.of(new WeaponTraitEntry(WeaponTrait.SWEEP, null, null, null)));
+            Weapon scimitar = new Weapon("Scimitar", WeaponCategory.MARTIAL, WeaponType.MELEE, WeaponGroup.SWORD, 1, 6, DamageType.SLASHING);
+            scimitar.setBulk(1.0);
+            scimitar.setHandUsageType(HandUsageType.ONE_HAND);
+            scimitar.setHandsRequiredToAttack(1);
+            scimitar.setTraits(Set.of(
+                    new WeaponTraitEntry(WeaponTrait.FORCEFUL, null, null, null),
+                    new WeaponTraitEntry(WeaponTrait.SWEEP, null, null, null)
+            ));
+            Weapon glaive = new Weapon("Glaive", WeaponCategory.MARTIAL, WeaponType.MELEE, WeaponGroup.POLEARM, 1, 8, DamageType.SLASHING);
+            glaive.setBulk(2.0);
+            glaive.setHandUsageType(HandUsageType.TWO_HAND);
+            glaive.setHandsRequiredToAttack(2);
+            glaive.setTraits(Set.of(
+                    new WeaponTraitEntry(WeaponTrait.DEADLY, null, 8, null),
+                    new WeaponTraitEntry(WeaponTrait.FORCEFUL, null, null, null),
+                    new WeaponTraitEntry(WeaponTrait.REACH, null, null, null)
+            ));
+            Weapon scythe = new Weapon("Scythe", WeaponCategory.MARTIAL, WeaponType.MELEE, WeaponGroup.POLEARM, 1, 10, DamageType.SLASHING);
+            scythe.setBulk(2.0);
+            scythe.setHandUsageType(HandUsageType.TWO_HAND);
+            scythe.setHandsRequiredToAttack(2);
+            scythe.setTraits(Set.of(
+                    new WeaponTraitEntry(WeaponTrait.DEADLY, null, 10, null),
+                    new WeaponTraitEntry(WeaponTrait.TRIP, null, null, null)
+            ));
+            Weapon spikedChain = new Weapon("Spiked Chain", WeaponCategory.MARTIAL, WeaponType.MELEE, WeaponGroup.FLAIL, 1, 8, DamageType.SLASHING);
+            spikedChain.setBulk(1.0);
+            spikedChain.setHandUsageType(HandUsageType.TWO_HAND);
+            spikedChain.setHandsRequiredToAttack(2);
+            spikedChain.setTraits(Set.of(
+                    new WeaponTraitEntry(WeaponTrait.DISARM, null, null, null),
+                    new WeaponTraitEntry(WeaponTrait.FINESSE, null, null, null),
+                    new WeaponTraitEntry(WeaponTrait.TRIP, null, null, null)
+            ));
 
-            weaponRepo.saveAll(List.of(crossbow, warhammer, sawtoothSaber, clanDagger, jaws, spine));
+            weaponRepo.saveAll(List.of(
+                    crossbow,
+                    warhammer,
+                    sawtoothSaber, greatsword, rapier, longsword, falchion, shortsword, scimitar,
+                    clanDagger, dagger, starknife, sickle,
+                    jaws, spine, fist, claw,
+                    battleAxe, greataxe,
+                    compositeLongbow, longbow,
+                    club, mace, staff,
+                    greatpick,
+                    whip, spikedChain,
+                    trident,
+                    glaive, scythe));
 
-            Armor explorersClothing = new Armor("Explorer's Clothing", ArmorCategory.UNARMORED);
-            Armor paddedArmor = new Armor("Padded Armor", ArmorCategory.LIGHT);
-            Armor hideArmor = new Armor("Hide Armor", ArmorCategory.MEDIUM);
-            Armor splintMail = new Armor("Splint Mail", ArmorCategory.HEAVY);
+            Armor explorersClothing = new Armor("Explorer's Clothing", ArmorCategory.UNARMORED, ArmorGroup.CLOTH, 0, 5, 0, 0, 0.1);
+            explorersClothing.setTraits(Set.of(ArmorTrait.COMFORT));
+            Armor paddedArmor = new Armor("Padded Armor", ArmorCategory.LIGHT, ArmorGroup.CLOTH, 1, 3, 0, 0, 0.1);
+            paddedArmor.setStrengthRequirement(0);
+            paddedArmor.setTraits(Set.of(ArmorTrait.COMFORT));
+            Armor hideArmor = new Armor("Hide Armor", ArmorCategory.MEDIUM, ArmorGroup.LEATHER, 3, 2, -2, -5, 3.0);
+            hideArmor.setStrengthRequirement(2);
+            Armor splintMail = new Armor("Splint Mail", ArmorCategory.HEAVY, ArmorGroup.COMPOSITE, 5, 1, -3, -10, 3.0);
+            splintMail.setStrengthRequirement(3);
+            Armor chainShirt = new Armor("Chain Shirt", ArmorCategory.LIGHT, ArmorGroup.CHAIN, 2, 3, -1, 0, 1.0);
+            chainShirt.setStrengthRequirement(1);
+            Armor breastplate = new Armor("Breastplate", ArmorCategory.MEDIUM, ArmorGroup.PLATE, 4, 1, -2, -5, 2.0);
+            breastplate.setStrengthRequirement(3);
+            Armor coralArmor = new Armor("Coral Armor", ArmorCategory.MEDIUM, ArmorGroup.SKELETAL, 3, 2, -2, -5, 2.0);
+            coralArmor.setStrengthRequirement(2);
+            coralArmor.setTraits(Set.of(ArmorTrait.AQUADYNAMIC));
+            Armor leafWeave = new Armor("Leaf Weave", ArmorCategory.LIGHT, ArmorGroup.WOOD, 1, 4, -1, 0, 1.0);
+            leafWeave.setStrengthRequirement(0);
+            leafWeave.setTraits(Set.of(ArmorTrait.LAMINAR));
 
-            armorRepo.saveAll(List.of(explorersClothing, paddedArmor, hideArmor, splintMail));
+            armorRepo.saveAll(List.of(explorersClothing, paddedArmor, hideArmor, splintMail, chainShirt, breastplate, coralArmor, leafWeave));
 
-            Deity abadar = new Deity("Abadar", crossbow, society);
-            Deity torag = new Deity("Torag", warhammer, crafting);
+            Deity abadar = new Deity("Abadar", List.of(crossbow), List.of(society));
+            Deity asmodeus = new Deity("Asmodeus", List.of(mace), List.of(deception));
+            Deity calistria = new Deity("Calistria", List.of(whip), List.of(deception));
+            Deity caydenCailean = new Deity("Cayden Cailean", List.of(rapier), List.of(athletics));
+            Deity desna = new Deity("Desna", List.of(starknife), List.of(acrobatics));
+            Deity erastil = new Deity("Erastil", List.of(longbow), List.of(survival));
+            Deity gorum = new Deity("Gorum", List.of(greatsword), List.of(athletics));
+            Deity gozreh = new Deity("Gozreh", List.of(trident), List.of(survival));
+            Deity greenFaith = new Deity("Green Faith", List.of(sickle, claw), List.of(nature));
+            Deity iomedae = new Deity("Iomedae", List.of(longsword), List.of(intimidation));
+            Deity irori = new Deity("Irori", List.of(fist), List.of(athletics));
+            Deity lamashtu = new Deity("Lamashtu", List.of(falchion), List.of(survival));
+            Deity nethys = new Deity("Nethys", List.of(staff), List.of(arcana));
+            Deity norgorber = new Deity("Norgorber", List.of(shortsword), List.of(stealth));
+            Deity pharasma = new Deity("Pharasma", List.of(dagger), List.of(medicine));
+            Deity rovagug = new Deity("Rovagug", List.of(greataxe), List.of(athletics));
+            Deity sarenrae = new Deity("Sarenrae", List.of(scimitar), List.of(medicine));
+            Deity shelyn = new Deity("Shelyn", List.of(glaive), List.of(crafting, performance));
+            Deity torag = new Deity("Torag", List.of(warhammer), List.of(crafting));
+            Deity urgathoa = new Deity("Urgathoa", List.of(scythe), List.of(intimidation));
+            Deity zonKuthon = new Deity("Zon-Kuthon", List.of(spikedChain), List.of(intimidation));
 
-            deityRepo.saveAll(List.of(abadar, torag));
+            deityRepo.saveAll(List.of(abadar, asmodeus, calistria, caydenCailean, desna, erastil, gorum, gozreh, greenFaith, iomedae, irori, lamashtu, nethys, norgorber, pharasma, rovagug, sarenrae, shelyn, torag, urgathoa, zonKuthon));
 
             CharacterClass fighter = new CharacterClass("Fighter", 10, List.of("Strength", "Dexterity"));
             fighter.setInitialProficiencies(List.of(
