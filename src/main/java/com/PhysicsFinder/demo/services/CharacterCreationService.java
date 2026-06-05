@@ -128,11 +128,11 @@ public class CharacterCreationService {
         Background background = backgroundRepo.findById(request.backgroundId()).orElseThrow(() -> new RuntimeException("Background not found"));
         Skill chosenSkill = skillRepo.findById(request.chosenBackgroundSkillId()).orElseThrow(() -> new RuntimeException("Skill not found"));
 
-        if(!background.getTrainedSkillOptions().contains(chosenSkill))
-            throw new RuntimeException("Invalid background skill choice");
+        validateBackgroundSkillChoice(background, chosenSkill);
 
         sheet.setBackground(background);
         sheet.setChosenBackgroundSkill(chosenSkill);
+        rebuildProficiencies(sheet);
         return playerCharacterRepo.save(sheet);
     }
 
@@ -378,6 +378,7 @@ public class CharacterCreationService {
         validateBoostGroup(attributeBoostRuleRepo.findByBackgroundId(sheet.getBackground().getId()), request.backgroundBoosts(), "background");
         validateBoostGroup(getClassBoostRules(sheet), request.classBoosts(), "class");
     }
+
     private List<AttributeBoostRule> getClassBoostRules(PlayerCharacter sheet) {
         List<AttributeBoostRule> rules = new ArrayList<>();
 
