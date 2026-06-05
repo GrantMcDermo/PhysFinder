@@ -67,6 +67,9 @@ public class PlayerCharacter {
     @ManyToMany
     private List<ClassFeatureChoice> selectedClassFeatureChoices = new ArrayList<>();
 
+    @ManyToMany
+    private List<Skill> chosenAdditionalTrainedSkills = new ArrayList<>();
+
     private Integer maxHitPoints;
     private Integer speed;
     private Integer armorClass;

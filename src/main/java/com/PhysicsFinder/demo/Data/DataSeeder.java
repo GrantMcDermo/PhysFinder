@@ -360,7 +360,7 @@ public class DataSeeder {
 
             deityRepo.saveAll(List.of(abadar, asmodeus, calistria, caydenCailean, desna, erastil, gorum, gozreh, greenFaith, iomedae, irori, lamashtu, nethys, norgorber, pharasma, rovagug, sarenrae, shelyn, torag, urgathoa, zonKuthon));
 
-            CharacterClass fighter = new CharacterClass("Fighter", 10, List.of("Strength", "Dexterity"));
+            CharacterClass fighter = new CharacterClass("Fighter", 10, List.of("Strength", "Dexterity"), 3);
             fighter.setInitialProficiencies(List.of(
                     new InitialProficiency("Perception", ProficiencyCategory.PERCEPTION, ProficiencyRank.EXPERT),
                     new InitialProficiency("Fortitude", ProficiencyCategory.SAVE, ProficiencyRank.EXPERT),
@@ -381,7 +381,7 @@ public class DataSeeder {
             fighterSkillChoice.setNumberToChoose(1);
             fighter.setSkillChoices(List.of(fighterSkillChoice));
 
-            CharacterClass wizard = new CharacterClass("Wizard", 6, List.of("Intelligence"));
+            CharacterClass wizard = new CharacterClass("Wizard", 6, List.of("Intelligence"), 2);
             wizard.setInitialProficiencies(List.of(
                     new InitialProficiency("Perception", ProficiencyCategory.PERCEPTION, ProficiencyRank.TRAINED),
                     new InitialProficiency("Fortitude", ProficiencyCategory.SAVE, ProficiencyRank.TRAINED),
@@ -396,7 +396,7 @@ public class DataSeeder {
                     new InitialProficiency("Wizard Class DC", ProficiencyCategory.CLASS_DC, ProficiencyRank.TRAINED)
             ));
 
-            CharacterClass psychic = new CharacterClass("Psychic", 6, List.of());
+            CharacterClass psychic = new CharacterClass("Psychic", 6, List.of(), 3);
             psychic.setInitialProficiencies(List.of(
                     new InitialProficiency("Perception", ProficiencyCategory.PERCEPTION, ProficiencyRank.TRAINED),
                     new InitialProficiency("Fortitude", ProficiencyCategory.SAVE, ProficiencyRank.TRAINED),
@@ -411,7 +411,7 @@ public class DataSeeder {
                     new InitialProficiency("Psychic Class DC", ProficiencyCategory.CLASS_DC, ProficiencyRank.TRAINED)
             ));
 
-            CharacterClass thaumaturge = new CharacterClass("Thaumaturge", 8, List.of("Charisma"));
+            CharacterClass thaumaturge = new CharacterClass("Thaumaturge", 8, List.of("Charisma"), 3);
             thaumaturge.setInitialProficiencies(List.of(
                     new InitialProficiency("Perception", ProficiencyCategory.PERCEPTION, ProficiencyRank.EXPERT),
                     new InitialProficiency("Fortitude", ProficiencyCategory.SAVE, ProficiencyRank.EXPERT),
@@ -430,7 +430,7 @@ public class DataSeeder {
             thaumaturgeSkillChoice.setNumberToChoose(1);
             thaumaturge.setSkillChoices(List.of(thaumaturgeSkillChoice));
 
-            CharacterClass rogue = new CharacterClass("Rogue", 8, List.of());
+            CharacterClass rogue = new CharacterClass("Rogue", 8, List.of(), 7);
             rogue.setInitialProficiencies(List.of(
                     new InitialProficiency("Perception", ProficiencyCategory.PERCEPTION, ProficiencyRank.EXPERT),
                     new InitialProficiency("Fortitude", ProficiencyCategory.SAVE, ProficiencyRank.TRAINED),
@@ -445,7 +445,7 @@ public class DataSeeder {
                     new InitialProficiency("Rogue Class DC", ProficiencyCategory.CLASS_DC, ProficiencyRank.TRAINED)
             ));
 
-            CharacterClass bard = new CharacterClass("Bard", 8, List.of("Charisma"));
+            CharacterClass bard = new CharacterClass("Bard", 8, List.of("Charisma"), 4);
             bard.setInitialProficiencies(List.of(
                     new InitialProficiency("Perception", ProficiencyCategory.PERCEPTION, ProficiencyRank.EXPERT),
                     new InitialProficiency("Fortitude", ProficiencyCategory.SAVE, ProficiencyRank.TRAINED),
@@ -463,7 +463,7 @@ public class DataSeeder {
                     new InitialProficiency("Bard Class DC", ProficiencyCategory.CLASS_DC, ProficiencyRank.TRAINED)
             ));
 
-            CharacterClass cleric = new CharacterClass("Cleric", 8, List.of("Wisdom"));
+            CharacterClass cleric = new CharacterClass("Cleric", 8, List.of("Wisdom"), 2);
             cleric.setInitialProficiencies(List.of(
                     new InitialProficiency("Perception", ProficiencyCategory.PERCEPTION, ProficiencyRank.TRAINED),
                     new InitialProficiency("Fortitude", ProficiencyCategory.SAVE, ProficiencyRank.TRAINED),
@@ -480,7 +480,7 @@ public class DataSeeder {
             cleric.setUsesDeitySkill(true);
             cleric.setUsesDeityFavoredWeapon(true);
 
-            CharacterClass druid = new CharacterClass("Druid", 8, List.of("Wisdom"));
+            CharacterClass druid = new CharacterClass("Druid", 8, List.of("Wisdom"), 2);
             druid.setInitialProficiencies(List.of(
                     new InitialProficiency("Perception", ProficiencyCategory.PERCEPTION, ProficiencyRank.TRAINED),
                     new InitialProficiency("Fortitude", ProficiencyCategory.SAVE, ProficiencyRank.TRAINED),
@@ -498,7 +498,7 @@ public class DataSeeder {
                     new InitialProficiency("Druid Class DC", ProficiencyCategory.CLASS_DC, ProficiencyRank.TRAINED)
             ));
 
-            CharacterClass ranger = new CharacterClass("Ranger", 10, List.of("Strength", "Dexterity"));
+            CharacterClass ranger = new CharacterClass("Ranger", 10, List.of("Strength", "Dexterity"), 4);
             ranger.setInitialProficiencies(List.of(
                     new InitialProficiency("Perception", ProficiencyCategory.PERCEPTION, ProficiencyRank.EXPERT),
                     new InitialProficiency("Fortitude", ProficiencyCategory.SAVE, ProficiencyRank.EXPERT),
@@ -515,7 +515,7 @@ public class DataSeeder {
                     new InitialProficiency("Ranger Class DC", ProficiencyCategory.CLASS_DC, ProficiencyRank.TRAINED)
             ));
 
-            CharacterClass witch = new CharacterClass("Witch", 6, List.of("Intelligence"));
+            CharacterClass witch = new CharacterClass("Witch", 6, List.of("Intelligence"), 3);
             witch.setInitialProficiencies(List.of(
                     new InitialProficiency("Perception", ProficiencyCategory.PERCEPTION, ProficiencyRank.TRAINED),
                     new InitialProficiency("Fortitude", ProficiencyCategory.SAVE, ProficiencyRank.TRAINED),
@@ -529,7 +529,7 @@ public class DataSeeder {
                     new InitialProficiency("Witch Class DC", ProficiencyCategory.CLASS_DC, ProficiencyRank.TRAINED)
             ));
 
-            CharacterClass commander = new CharacterClass("Commander", 8, List.of("Intelligence"));
+            CharacterClass commander = new CharacterClass("Commander", 8, List.of("Intelligence"), 2);
             commander.setInitialProficiencies(List.of(
                     new InitialProficiency("Perception", ProficiencyCategory.PERCEPTION, ProficiencyRank.EXPERT),
                     new InitialProficiency("Fortitude", ProficiencyCategory.SAVE, ProficiencyRank.TRAINED),
@@ -548,7 +548,7 @@ public class DataSeeder {
 
             ));
 
-            CharacterClass guardian = new CharacterClass("Guardian", 12, List.of("Strength"));
+            CharacterClass guardian = new CharacterClass("Guardian", 12, List.of("Strength"), 3);
             guardian.setInitialProficiencies(List.of(
                     new InitialProficiency("Perception", ProficiencyCategory.PERCEPTION, ProficiencyRank.EXPERT),
                     new InitialProficiency("Fortitude", ProficiencyCategory.SAVE, ProficiencyRank.EXPERT),
@@ -565,7 +565,7 @@ public class DataSeeder {
                     new InitialProficiency("Guardian Class DC", ProficiencyCategory.CLASS_DC, ProficiencyRank.TRAINED)
             ));
 
-            CharacterClass barbarian = new CharacterClass("Barbarian", 12, List.of("Strength"));
+            CharacterClass barbarian = new CharacterClass("Barbarian", 12, List.of("Strength"), 3);
             barbarian.setInitialProficiencies(List.of(
                     new InitialProficiency("Perception", ProficiencyCategory.PERCEPTION, ProficiencyRank.EXPERT),
                     new InitialProficiency("Fortitude", ProficiencyCategory.SAVE, ProficiencyRank.EXPERT),
@@ -581,7 +581,7 @@ public class DataSeeder {
                     new InitialProficiency("Barbarian Class DC", ProficiencyCategory.CLASS_DC, ProficiencyRank.TRAINED)
             ));
 
-            CharacterClass exemplar = new CharacterClass("Exemplar", 10, List.of("Strength", "Dexterity"));
+            CharacterClass exemplar = new CharacterClass("Exemplar", 10, List.of("Strength", "Dexterity"), 3);
             exemplar.setInitialProficiencies(List.of(
                     new InitialProficiency("Perception", ProficiencyCategory.PERCEPTION, ProficiencyRank.TRAINED),
                     new InitialProficiency("Fortitude", ProficiencyCategory.SAVE, ProficiencyRank.EXPERT),
@@ -597,7 +597,7 @@ public class DataSeeder {
                     new InitialProficiency("Exemplar Class DC", ProficiencyCategory.CLASS_DC, ProficiencyRank.TRAINED)
             ));
 
-            CharacterClass champion = new CharacterClass("Champion", 10, List.of("Strength", "Dexterity"));
+            CharacterClass champion = new CharacterClass("Champion", 10, List.of("Strength", "Dexterity"), 2);
             champion.setInitialProficiencies(List.of(
                     new InitialProficiency("Perception", ProficiencyCategory.PERCEPTION, ProficiencyRank.TRAINED),
                     new InitialProficiency("Fortitude", ProficiencyCategory.SAVE, ProficiencyRank.EXPERT),
@@ -618,7 +618,7 @@ public class DataSeeder {
             champion.setUsesDeitySkill(true);
             champion.setUsesDeityFavoredWeapon(false);
 
-            CharacterClass investigator = new CharacterClass("Investigator", 8, List.of("Intelligence"));
+            CharacterClass investigator = new CharacterClass("Investigator", 8, List.of("Intelligence"), 4);
             investigator.setInitialProficiencies(List.of(
                     new InitialProficiency("Perception", ProficiencyCategory.PERCEPTION, ProficiencyRank.EXPERT),
                     new InitialProficiency("Fortitude", ProficiencyCategory.SAVE, ProficiencyRank.TRAINED),

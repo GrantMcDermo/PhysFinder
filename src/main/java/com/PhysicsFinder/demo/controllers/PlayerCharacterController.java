@@ -78,4 +78,14 @@ public class PlayerCharacterController {
                 characterCreationService.applyAttributeBoosts(characterId, request)
         );
     }
+
+    @PatchMapping("/{characterId}/additional-skills")
+    public ResponseEntity<PlayerCharacter> assignAdditionalSkills(
+            @PathVariable UUID characterId,
+            @RequestBody AssignAdditionalSkillsRequest request
+    ) {
+        return ResponseEntity.ok(
+                characterCreationService.assignAdditionalSkills(characterId, request)
+        );
+    }
 }

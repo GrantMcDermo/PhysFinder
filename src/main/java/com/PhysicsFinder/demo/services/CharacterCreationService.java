@@ -148,6 +148,7 @@ public class CharacterCreationService {
 
         List<Skill> chosenSkills = skillRepo.findAllById(request.chosenClassSkillIds());
         List<Skill> chosenFeatureSkills = skillRepo.findAllById(request.chosenFeatureSkillIds());
+        List<Skill> chosenAdditionalSkills = skillRepo.findAllById(request.chosenAdditionalSkillIds());
 
         Deity deity = null;
 
@@ -176,13 +177,26 @@ public class CharacterCreationService {
 
         validateClassSkillChoices(characterClass, chosenSkills);
         validateFeatureSkillChoices(selectedFeatureChoices, chosenFeatureSkills);
+        validateAdditionalTrainedSkills(sheet, characterClass, chosenAdditionalSkills);
 
         sheet.setCharacterClass(characterClass);
         sheet.setSelectedClassFeatureChoices(selectedFeatureChoices);
         sheet.setChosenClassSkills(chosenSkills);
-        copyInitialClassProficiencies(sheet, characterClass, chosenSkills, selectedFeatureChoices, chosenFeatureSkills);
+        sheet.setChosenAdditionalTrainedSkills(chosenAdditionalSkills);
+        copyInitialClassProficiencies(sheet, characterClass, chosenSkills, selectedFeatureChoices, chosenFeatureSkills, chosenAdditionalSkills);
         recalculateDerivedStats(sheet);
         return playerCharacterRepo.save(sheet);
+    }
+
+    private void validateAdditionalTrainedSkills(PlayerCharacter character, CharacterClass characterClass, List<Skill> chosenAdditionalSkills){
+        if(chosenAdditionalSkills == null)
+            chosenAdditionalSkills = List.of();
+
+        int intelligenceModifier = character.getAttributes() == null ? 0 : character.getAttributes().getIntelligence();
+        int expectedCount = characterClass.getAdditionalTrainedSkillsBase() + intelligenceModifier;
+
+        if(chosenAdditionalSkills.size() != expectedCount)
+            throw new RuntimeException("Invalid number of additional trained skills. Expected " + expectedCount + ", got " + chosenAdditionalSkills.size());
     }
 
     private void validateClassSkillChoices(CharacterClass characterClass, List<Skill> chosenSkills){
@@ -207,7 +221,7 @@ public class CharacterCreationService {
         }
     }
 
-    private void copyInitialClassProficiencies(PlayerCharacter sheet, CharacterClass characterClass, List<Skill> chosenSkills, List<ClassFeatureChoice> selectedFeatureChoices, List<Skill> chosenFeatureSkills){
+    private void copyInitialClassProficiencies(PlayerCharacter sheet, CharacterClass characterClass, List<Skill> chosenSkills, List<ClassFeatureChoice> selectedFeatureChoices, List<Skill> chosenFeatureSkills, List<Skill> chosenAdditionalSkills){
         sheet.getProficiencies().clear();
 
         for(InitialProficiency proficiency : characterClass.getInitialProficiencies()){
@@ -247,9 +261,21 @@ public class CharacterCreationService {
         for (Skill skill : chosenFeatureSkills) {
             addProficiency(sheet, skill.getName(), ProficiencyCategory.SKILL, ProficiencyRank.TRAINED);
         }
+
+        for(Skill skill : chosenAdditionalSkills){
+            addProficiency(sheet, skill.getName(), ProficiencyCategory.SKILL, ProficiencyRank.TRAINED);
+        }
     }
 
     private void addProficiency(PlayerCharacter character, String name, ProficiencyCategory category, ProficiencyRank rank){
+        Optional<CharacterProficiency> existing = character.getProficiencies().stream().filter(p -> p.getProficiencyName().equals(name) && p.getCategory() == category).findFirst();
+
+        if (existing.isPresent()) {
+            if (rank.ordinal() > existing.get().getRank().ordinal())
+                existing.get().setRank(rank);
+
+            return;
+        }
         CharacterProficiency proficiency = new CharacterProficiency();
         proficiency.setPlayerCharacter(character);
         proficiency.setProficiencyName(name);
@@ -462,5 +488,149 @@ public class CharacterCreationService {
             sheet.getChosenAttributeFlaws().add(chosenFlaw);
         }
 
+    }
+
+    public PlayerCharacter assignAdditionalSkills(UUID characterId, AssignAdditionalSkillsRequest request){
+        PlayerCharacter character = playerCharacterRepo.findById(characterId).orElseThrow(() -> new RuntimeException("Character not found"));
+
+        if(character.getCharacterClass() == null)
+            throw new RuntimeException("Choose a class before choosing additional skills.");
+
+        List<Skill> chosenSkills = skillRepo.findAllById(request.chosenAdditionalSkillIds());
+
+        validateAdditionalTrainedSkills(character, chosenSkills);
+        character.setChosenAdditionalTrainedSkills(chosenSkills);
+        rebuildProficiencies(character);
+        return playerCharacterRepo.save(character);
+    }
+
+    private void validateAdditionalTrainedSkills(PlayerCharacter character, List<Skill> chosenSkills) {
+        int allowedCount = getAllowedAdditionalSkillCount(character);
+        if(chosenSkills.size() != allowedCount)
+            throw new RuntimeException("Invalid number of additional trained skills. Expected " + allowedCount + ", got " + chosenSkills.size());
+    }
+
+    private int getAllowedAdditionalSkillCount(PlayerCharacter character) {
+        int base = character.getCharacterClass().getAdditionalTrainedSkillsBase();
+        int intelligenceModifier = character.getAttributes() == null ? 0 : character.getAttributes().getIntelligence();
+        return base + intelligenceModifier;
+    }
+
+    private boolean hasValidAdditionalSkillCount(PlayerCharacter character) {
+        return character.getChosenAdditionalTrainedSkills().size()
+                == getAllowedAdditionalSkillCount(character);
+    }
+
+    private void rebuildProficiencies(PlayerCharacter character) {
+        character.getProficiencies().clear();
+        applyClassProficiencies(character);
+        applyBackgroundProficiencies(character);
+        applyDeityProficiencies(character);
+        applyFeatureChoiceProficiencies(character);
+        applyAdditionalSkillProficiencies(character);
+        applyFeatProficiencies(character);
+    }
+
+    private void applyClassProficiencies(PlayerCharacter character) {
+
+        CharacterClass characterClass = character.getCharacterClass();
+
+        if (characterClass == null) {
+            return;
+        }
+
+        for (InitialProficiency proficiency :
+                characterClass.getInitialProficiencies()) {
+
+            addProficiency(
+                    character,
+                    proficiency.getProficiencyName(),
+                    proficiency.getProficiencyCategory(),
+                    proficiency.getRank()
+            );
+        }
+    }
+
+    private void applyBackgroundProficiencies(PlayerCharacter character) {
+
+        if (character.getBackground() == null) {
+            return;
+        }
+
+        if (character.getChosenBackgroundSkill() != null) {
+
+            addProficiency(
+                    character,
+                    character.getChosenBackgroundSkill().getName(),
+                    ProficiencyCategory.SKILL,
+                    ProficiencyRank.TRAINED
+            );
+        }
+    }
+
+    private void applyDeityProficiencies(PlayerCharacter character) {
+
+        if (character.getDeity() == null)
+            return;
+
+        CharacterClass characterClass = character.getCharacterClass();
+
+        if (characterClass == null)
+            return;
+
+        if (characterClass.getUsesDeitySkill() && character.getChosenDeitySkill() != null) {
+            addProficiency(
+                    character,
+                    character.getChosenDeitySkill().getName(),
+                    ProficiencyCategory.SKILL,
+                    ProficiencyRank.TRAINED
+            );
+        }
+
+        if (characterClass.getUsesDeityFavoredWeapon() && character.getChosenDeityWeapon() != null) {
+
+            addProficiency(
+                    character,
+                    character.getChosenDeityWeapon().getName(),
+                    ProficiencyCategory.WEAPON,
+                    ProficiencyRank.TRAINED
+            );
+        }
+    }
+
+    private void applyFeatureChoiceProficiencies(PlayerCharacter character) {
+        for (ClassFeatureChoice choice : character.getSelectedClassFeatureChoices()) {
+            for (FeatureGrantedProficiency granted : choice.getGrantedProficiencies()) {
+                addProficiency(
+                        character,
+                        granted.getProficiencyName(),
+                        granted.getCategory(),
+                        granted.getRank()
+                );
+            }
+        }
+    }
+
+    private void applyAdditionalSkillProficiencies(PlayerCharacter character) {
+        for (Skill skill : character.getChosenAdditionalTrainedSkills()) {
+            addProficiency(
+                    character,
+                    skill.getName(),
+                    ProficiencyCategory.SKILL,
+                    ProficiencyRank.TRAINED
+            );
+        }
+    }
+
+    private void applyFeatProficiencies(PlayerCharacter character) {
+        for (SelectedFeat selectedFeat : character.getSelectedFeats()) {
+            Feat feat = selectedFeat.getFeat();
+            // future feat-granted proficiencies
+        }
+    }
+
+    private void validateBackgroundSkillChoice(Background background, Skill chosenSkill) {
+        if (!background.getTrainedSkillOptions().contains(chosenSkill))
+            throw new RuntimeException("Selected skill is not valid for background " + background.getName());
     }
 }

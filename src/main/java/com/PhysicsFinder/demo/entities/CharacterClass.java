@@ -30,11 +30,14 @@ public class CharacterClass {
     private Boolean usesDeitySkill = false;
     private Boolean usesDeityFavoredWeapon = false;
 
+    private Integer additionalTrainedSkillsBase;
+
     protected CharacterClass() {}
 
-    public CharacterClass(String name, Integer hitPointsPerLevel, List<String> keyAttributeOptions) {
+    public CharacterClass(String name, Integer hitPointsPerLevel, List<String> keyAttributeOptions, Integer additionalTrainedSkillsBase) {
         this.name = name;
         this.hitPointsPerLevel = hitPointsPerLevel;
         this.keyAttributeOptions = keyAttributeOptions;
+        this.additionalTrainedSkillsBase = additionalTrainedSkillsBase;
     }
 }
