@@ -24,6 +24,7 @@ public class CharacterCreationService {
     private final ClassFeatureChoiceRepo classFeatureChoiceRepo;
     private final DeityRepo deityRepo;
     private final WeaponRepo weaponRepo;
+    private final LanguageRepo languageRepo;
 
     public PlayerCharacter createBlankCharacter(CreateCharacterRequest request){
         PlayerCharacter sheet = new PlayerCharacter();
@@ -43,10 +44,43 @@ public class CharacterCreationService {
         sheet.setSpeed(ancestry.getSpeed());
         sheet.setSize(ancestry.getSize());
         rebuildTraitsAndSenses(sheet);
+        rebuildLanguages(sheet);
 
         recalculateDerivedStats(sheet);
 
         return playerCharacterRepo.save(sheet);
+    }
+
+    private void rebuildLanguages(PlayerCharacter character){
+        character.getKnownLanguages().clear();
+
+        if(character.getAncestry() == null)
+            return;
+
+        character.getKnownLanguages().addAll(character.getAncestry().getStartingLanguages());
+        character.getKnownLanguages().addAll(character.getChosenAdditionalLanguages());
+    }
+
+    public PlayerCharacter assignAdditionalLanguages(UUID characterId, AssignLanguagesRequest request){
+        PlayerCharacter character = playerCharacterRepo.findById(characterId).orElseThrow(() -> new RuntimeException("Character not found."));
+        List<Language> chosenLanguages = new ArrayList<>();
+        for(UUID additionalLanguageId : request.chosenAdditionalLanguageIds()){
+            Language chosenLanguage = languageRepo.findById(additionalLanguageId).orElseThrow(() -> new RuntimeException("Language not found."));
+            chosenLanguages.add(chosenLanguage);
+        }
+
+        validateAdditionalLanguages(character, chosenLanguages);
+        character.setChosenAdditionalLanguages(chosenLanguages);
+        rebuildLanguages(character);
+        return playerCharacterRepo.save(character);
+    }
+
+    private void validateAdditionalLanguages(PlayerCharacter character, List<Language> selectedLanguages) {
+        int intelligenceModifier = character.getAttributes().getIntelligence();
+        int expectedCount = character.getAncestry().getAdditionalLanguageBase() + Math.max(0, intelligenceModifier);
+
+        if (selectedLanguages.size() != expectedCount)
+            throw new RuntimeException("Expected " + expectedCount + " additional languages.");
     }
 
     public PlayerCharacter assignHeritage(UUID characterId, AssignHeritageRequest request){

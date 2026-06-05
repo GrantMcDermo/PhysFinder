@@ -16,5 +16,10 @@ public enum TraitType {
     CHANGELING,
     NEPHILIM,
     FEY,
-    FUNGUS
+    FUNGUS,
+    KOBOLD,
+    SAMSARAN,
+    KHOLO,
+    SHADOW,
+    WAYANG
 }

@@ -29,6 +29,11 @@ public class PlayerCharacterController {
         return ResponseEntity.ok(updated);
     }
 
+    @PatchMapping("/{characterId}/languages")
+    public ResponseEntity<PlayerCharacter> assignLanguages(@PathVariable UUID characterId, @RequestBody AssignLanguagesRequest request){
+        return ResponseEntity.ok(characterCreationService.assignAdditionalLanguages(characterId, request));
+    }
+
     @PatchMapping("/{characterId}/heritage")
     public ResponseEntity<PlayerCharacter> assignHeritage(
             @PathVariable UUID characterId,

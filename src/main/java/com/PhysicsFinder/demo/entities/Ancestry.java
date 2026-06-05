@@ -22,8 +22,13 @@ public class Ancestry {
     @Enumerated(EnumType.STRING)
     private Set<TraitType> traits = new HashSet<>();
 
-    @ElementCollection
-    private List<String> languages = new ArrayList<>();
+    @ManyToMany
+    private List<Language> startingLanguages = new ArrayList<>();
+
+    @ManyToMany
+    private List<Language> recommendedAdditionalLanguages = new ArrayList<>();
+
+    private Integer additionalLanguageBase;
 
     @ElementCollection
     @Enumerated(EnumType.STRING)
@@ -33,13 +38,15 @@ public class Ancestry {
     private List<AncestryFeature> features = new ArrayList<>();
 
     protected Ancestry() {}
-    public Ancestry(String name, Integer hitPoints, Integer speed, String size, Set<TraitType> traits, List<String> languages){
+    public Ancestry(String name, Integer hitPoints, Integer speed, String size, Set<TraitType> traits, List<Language> startingLanguages, List<Language> recommendedAdditionalLanguages, Integer additionalLanguageBase){
         this.name = name;
         this.hitPoints = hitPoints;
         this.speed = speed;
         this.size = size;
         this.traits = traits;
-        this.languages = languages;
+        this.startingLanguages = startingLanguages;
+        this.recommendedAdditionalLanguages = recommendedAdditionalLanguages;
+        this.additionalLanguageBase = additionalLanguageBase;
     }
 
 }

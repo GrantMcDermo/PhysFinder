@@ -70,6 +70,12 @@ public class PlayerCharacter {
     @ManyToMany
     private List<Skill> chosenAdditionalTrainedSkills = new ArrayList<>();
 
+    @ManyToMany
+    private List<Language> knownLanguages = new ArrayList<>();
+
+    @ManyToMany
+    private List<Language> chosenAdditionalLanguages = new ArrayList<>();
+
     private Integer maxHitPoints;
     private Integer speed;
     private Integer armorClass;

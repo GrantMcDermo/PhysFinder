@@ -26,7 +26,8 @@ public class DataSeeder {
             WeaponRepo weaponRepo,
             ArmorRepo armorRepo,
             DeityRepo deityRepo,
-            GameActionRepo gameActionRepo){
+            GameActionRepo gameActionRepo,
+            LanguageRepo languageRepo){
         return args -> {
             if(ancestryRepo.count() > 0)
                 return;
@@ -360,6 +361,42 @@ public class DataSeeder {
 
             deityRepo.saveAll(List.of(abadar, asmodeus, calistria, caydenCailean, desna, erastil, gorum, gozreh, greenFaith, iomedae, irori, lamashtu, nethys, norgorber, pharasma, rovagug, sarenrae, shelyn, torag, urgathoa, zonKuthon));
 
+            Language aklo = new Language("Aklo");
+            Language chthonian = new Language("Chthonian");
+            Language common = new Language("Common");
+            Language diabolic = new Language("Diabolic");
+            Language draconic = new Language("Draconic");
+            Language dwarven = new Language("Dwarven");
+            Language elven = new Language("Elven");
+            Language empyrean = new Language("Empyrean");
+            Language feyLanguage = new Language("Fey");
+            Language gnomish = new Language("Gnomish");
+            Language goblinLanguage = new Language("Goblin");
+            Language halflingLanguage = new Language("Halfling");
+            Language jotun = new Language("Jotun");
+            Language kholoLanguage = new Language("Kholo");
+            Language necril = new Language("Necril");
+            Language orcish = new Language("Orcish");
+            Language petran = new Language("Petran");
+            Language pyric = new Language("Pyric");
+            Language sakvroth = new Language("Sakvroth");
+            Language shadowTongue = new Language("Shadowtongue");
+            Language sussuran = new Language("Sussuran");
+            Language thalassic = new Language("Thalassic");
+            Language wildSong = new Language("Wildsong");
+            Language samsaranLanguage = new Language("Samsaran");
+            Language iruxi = new Language("Iruxi");
+            Language wayangLanguage = new Language("Wayang");
+            Language dZiriakLanguage = new Language("D'ziriak");
+            Language minatan = new Language("Minatan");
+            Language nagajiLanguage = new Language("Nagaji");
+            Language vudrani = new Language("Vudrani");
+            Language yakshaLanguage = new Language("Yaksha");
+
+            languageRepo.saveAll(List.of(aklo, chthonian,  diabolic, necril, pyric, shadowTongue, sussuran, thalassic, wildSong,
+                    samsaranLanguage, iruxi, wayangLanguage, dZiriakLanguage, minatan, nagajiLanguage, vudrani, yakshaLanguage,
+                    common, draconic, dwarven, elven, empyrean, feyLanguage, gnomish, goblinLanguage, halflingLanguage, jotun, kholoLanguage, orcish, petran, sakvroth));
+
             CharacterClass fighter = new CharacterClass("Fighter", 10, List.of("Strength", "Dexterity"), 3);
             fighter.setInitialProficiencies(List.of(
                     new InitialProficiency("Perception", ProficiencyCategory.PERCEPTION, ProficiencyRank.EXPERT),
@@ -640,35 +677,52 @@ public class DataSeeder {
                     psychic, thaumaturge,
                     exemplar));
 
-            Ancestry human = new Ancestry("Human", 8, 25, "MEDIUM", Set.of(TraitType.HUMAN, TraitType.HUMANOID), List.of("Common"));
+            Ancestry human = new Ancestry("Human", 8, 25, "MEDIUM", Set.of(TraitType.HUMAN, TraitType.HUMANOID), List.of(common), List.of(), 1);
 
-            Ancestry dwarf = new Ancestry("Dwarf", 10, 20, "MEDIUM", Set.of(TraitType.DWARF, TraitType.HUMANOID), List.of("Common", "Dwarven"));
+            Ancestry dwarf = new Ancestry("Dwarf", 10, 20, "MEDIUM", Set.of(TraitType.DWARF, TraitType.HUMANOID), List.of(common, dwarven), List.of(gnomish, goblinLanguage, jotun, orcish, petran, sakvroth), 0);
             dwarf.setSenses(Set.of(SenseType.DARKVISION));
             AncestryFeature clanDaggerMechanic = new AncestryFeature(dwarf, "Clan Dagger", "You receive a clan dagger tied to your dwarven clan.");
             dwarf.setFeatures(List.of(clanDaggerMechanic));
 
-            Ancestry elf = new Ancestry("Elf", 6, 30, "MEDIUM", Set.of(TraitType.ELF, TraitType.HUMANOID), List.of("Common", "Elven"));
+            Ancestry elf = new Ancestry("Elf", 6, 30, "MEDIUM", Set.of(TraitType.ELF, TraitType.HUMANOID), List.of(common, elven), List.of(draconic, empyrean, feyLanguage, gnomish, goblinLanguage, kholoLanguage, orcish), 0);
             elf.setSenses(Set.of(SenseType.LOW_LIGHT_VISION));
 
-            Ancestry gnome = new Ancestry("Gnome", 8, 25, "SMALL", Set.of(TraitType.GNOME, TraitType.HUMANOID), List.of("Common", "Fey", "Gnomish"));
+            Ancestry gnome = new Ancestry("Gnome", 8, 25, "SMALL", Set.of(TraitType.GNOME, TraitType.HUMANOID), List.of(common, feyLanguage, gnomish), List.of(draconic, dwarven, elven, goblinLanguage, jotun, orcish), 0);
             gnome.setSenses(Set.of(SenseType.LOW_LIGHT_VISION));
 
-            Ancestry goblin = new Ancestry("Goblin", 6, 25, "SMALL", Set.of(TraitType.GOBLIN, TraitType.HUMANOID), List.of("Common", "Goblin"));
+            Ancestry goblin = new Ancestry("Goblin", 6, 25, "SMALL", Set.of(TraitType.GOBLIN, TraitType.HUMANOID), List.of(common, goblinLanguage), List.of(draconic, dwarven, gnomish, halflingLanguage, kholoLanguage, orcish), 0);
             goblin.setSenses(Set.of(SenseType.DARKVISION));
 
-            Ancestry halfling = new Ancestry("Halfling", 6, 25, "SMALL", Set.of(TraitType.HALFLING, TraitType.HUMANOID), List.of("Common", "Halfling"));
+            Ancestry halfling = new Ancestry("Halfling", 6, 25, "SMALL", Set.of(TraitType.HALFLING, TraitType.HUMANOID), List.of(common, halflingLanguage), List.of(dwarven, elven, gnomish, goblinLanguage), 0);
             AncestryFeature keenEyes = new AncestryFeature(halfling, "Keen Eyes", "Your eyes are sharp, allowing you to make out small details about concealed or even invisible creatures that others might miss.");
             halfling.setFeatures(List.of(keenEyes));
 
-            Ancestry leshy = new Ancestry("Leshy", 8, 25, "SMALL", Set.of(TraitType.LESHY, TraitType.PLANT), List.of("Common", "Fey"));
+            Ancestry leshy = new Ancestry("Leshy", 8, 25, "SMALL", Set.of(TraitType.LESHY, TraitType.PLANT), List.of(common, feyLanguage), List.of(draconic, elven, gnomish, goblinLanguage, halflingLanguage, sakvroth), 0);
             leshy.setSenses(Set.of(SenseType.LOW_LIGHT_VISION));
             AncestryFeature plantNourishment = new AncestryFeature(leshy, "Plant Nourishment", "You can sustain yourself through sunlight, water, and soil.");
             leshy.setFeatures(List.of(plantNourishment));
 
-            Ancestry orc = new Ancestry("Orc", 10, 25, "MEDIUM", Set.of(TraitType.HUMANOID, TraitType.ORC), List.of("Common", "Orcish"));
+            Ancestry orc = new Ancestry("Orc", 10, 25, "MEDIUM", Set.of(TraitType.HUMANOID, TraitType.ORC), List.of(common, orcish), List.of(goblinLanguage, jotun, petran, sakvroth), 0);
             orc.setSenses(Set.of(SenseType.DARKVISION));
 
-            ancestryRepo.saveAll(List.of(human, dwarf, elf, gnome, goblin, halfling, leshy, orc));
+            Ancestry kobold = new Ancestry("Kobold", 6, 25, "SMALL", Set.of(TraitType.HUMANOID, TraitType.KOBOLD), List.of(common, sakvroth), List.of(aklo, diabolic, draconic, dwarven, empyrean, feyLanguage, gnomish, petran), 0);
+            kobold.setSenses(Set.of(SenseType.DARKVISION));
+
+            Ancestry samsaran = new Ancestry("Samsaran", 8, 25, "MEDIUM", Set.of(TraitType.HUMANOID, TraitType.SAMSARAN), List.of(common, samsaranLanguage), List.of(chthonian, diabolic, draconic, empyrean, jotun, petran, pyric, sussuran, thalassic), 0);
+            samsaran.setSenses(Set.of(SenseType.LOW_LIGHT_VISION));
+            AncestryFeature cryptomnesia = new AncestryFeature(samsaran, "Cryptomnesia", "You retain bits of knowledge from your former lives.");
+            AncestryFeature wanderersSoul = new AncestryFeature(samsaran, "Wanderer's Soul", "Your soul is especially able to return to the cycle of reincarnation.");
+            samsaran.setFeatures(List.of(cryptomnesia, wanderersSoul));
+
+            Ancestry kholo = new Ancestry("Kholo", 8, 25, "MEDIUM", Set.of(TraitType.HUMANOID, TraitType.KHOLO), List.of(common, kholoLanguage), List.of(draconic, elven, feyLanguage, iruxi, necril, orcish), 0);
+            kholo.setSenses(Set.of(SenseType.LOW_LIGHT_VISION));
+            AncestryFeature kholoBite = new AncestryFeature(kholo, "Bite", "Your sharp teeth and powerful jaws are fearsome weapons.");
+            kholo.setFeatures(List.of(kholoBite));
+
+            Ancestry wayang = new Ancestry("Wayang", 8, 25, "SMALL", Set.of(TraitType.HUMANOID, TraitType.SHADOW, TraitType.WAYANG), List.of(common, shadowTongue, wayangLanguage), List.of(dZiriakLanguage, diabolic, minatan, nagajiLanguage, thalassic, vudrani, yakshaLanguage), 0);
+            wayang.setSenses(Set.of(SenseType.DARKVISION));
+
+            ancestryRepo.saveAll(List.of(human, dwarf, elf, gnome, goblin, halfling, leshy, orc, kobold, samsaran, kholo, wayang));
 
             Heritage skilledHuman = new Heritage("Skilled Human", "You gain an additional trained skill.", HeritageType.ANCESTRY_SPECIFIC, human);
 
@@ -1148,6 +1202,34 @@ public class DataSeeder {
             AttributeBoostRule orcBoosts = new AttributeBoostRule(AttributeBoostType.FREE, allSix, 2);
             orcBoosts.setAncestry(orc);
 
+            AttributeBoostRule koboldDexBoost = new AttributeBoostRule(AttributeBoostType.FIXED, List.of(AttributeName.DEXTERITY), 1);
+            koboldDexBoost.setAncestry(kobold);
+            AttributeBoostRule koboldChaBoost = new AttributeBoostRule(AttributeBoostType.FIXED, List.of(AttributeName.CHARISMA), 1);
+            koboldChaBoost.setAncestry(kobold);
+            AttributeBoostRule koboldFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE, allSix, 1);
+            koboldFreeBoost.setAncestry(kobold);
+
+            AttributeBoostRule samsaranConBoost = new AttributeBoostRule(AttributeBoostType.FIXED, List.of(AttributeName.CONSTITUTION), 1);
+            samsaranConBoost.setAncestry(samsaran);
+            AttributeBoostRule samsaranWisBoost = new AttributeBoostRule(AttributeBoostType.FIXED, List.of(AttributeName.WISDOM), 1);
+            samsaranWisBoost.setAncestry(samsaran);
+            AttributeBoostRule samsaranFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE, allSix, 1);
+            samsaranFreeBoost.setAncestry(samsaran);
+
+            AttributeBoostRule kholoStrBoost = new AttributeBoostRule(AttributeBoostType.FIXED, List.of(AttributeName.STRENGTH), 1);
+            kholoStrBoost.setAncestry(kholo);
+            AttributeBoostRule kholoIntBoost = new AttributeBoostRule(AttributeBoostType.FIXED, List.of(AttributeName.INTELLIGENCE), 1);
+            kholoIntBoost.setAncestry(kholo);
+            AttributeBoostRule kholoFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE, allSix, 1);
+            kholoFreeBoost.setAncestry(kholo);
+
+            AttributeBoostRule wayangDexBoost = new AttributeBoostRule(AttributeBoostType.FIXED, List.of(AttributeName.DEXTERITY), 1);
+            wayangDexBoost.setAncestry(wayang);
+            AttributeBoostRule wayangChaBoost = new AttributeBoostRule(AttributeBoostType.FIXED, List.of(AttributeName.CHARISMA), 1);
+            wayangChaBoost.setAncestry(wayang);
+            AttributeBoostRule wayangFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE, allSix, 1);
+            wayangFreeBoost.setAncestry(wayang);
+
             AttributeBoostRule scholarMentalBoost = new AttributeBoostRule(AttributeBoostType.CHOICE, List.of(AttributeName.INTELLIGENCE, AttributeName.WISDOM), 1);
             scholarMentalBoost.setBackground(scholar);
             AttributeBoostRule scholarFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE, allSix, 1);
@@ -1221,6 +1303,10 @@ public class DataSeeder {
                     halflingDexBoost, halflingWisBoost, halflingFreeBoost,
                     leshyConBoost, leshyWisBoost, leshyFreeBoost,
                     orcBoosts,
+                    koboldDexBoost, koboldChaBoost, koboldFreeBoost,
+                    samsaranConBoost, samsaranWisBoost, samsaranFreeBoost,
+                    kholoStrBoost, kholoIntBoost, kholoFreeBoost,
+                    wayangDexBoost, wayangChaBoost, warriorFreeBoost,
                     scholarMentalBoost, scholarFreeBoost,
                     warriorPhysBoost, warriorFreeBoost,
                     fighterBoost,
@@ -1246,6 +1332,10 @@ public class DataSeeder {
             AttributeFlawRule goblinFlaw = new AttributeFlawRule(goblin, List.of(AttributeName.WISDOM), 1);
             AttributeFlawRule halflingFlaw = new AttributeFlawRule(halfling, List.of(AttributeName.STRENGTH), 1);
             AttributeFlawRule leshyFlaw = new AttributeFlawRule(leshy, List.of(AttributeName.INTELLIGENCE), 1);
+            AttributeFlawRule koboldFlaw = new AttributeFlawRule(kobold, List.of(AttributeName.CONSTITUTION), 1);
+            AttributeFlawRule samsaranFlaw = new AttributeFlawRule(samsaran, List.of(AttributeName.CHARISMA), 1);
+            AttributeFlawRule kholoFlaw = new AttributeFlawRule(kholo, List.of(AttributeName.WISDOM), 1);
+            AttributeFlawRule wayangFlaw = new AttributeFlawRule(wayang, List.of(AttributeName.CONSTITUTION), 1);
 
             attributeFlawRuleRepo.saveAll(List.of(
                     dwarfFlaw,
@@ -1253,7 +1343,11 @@ public class DataSeeder {
                     gnomeFlaw,
                     goblinFlaw,
                     halflingFlaw,
-                    leshyFlaw
+                    leshyFlaw,
+                    koboldFlaw,
+                    samsaranFlaw,
+                    kholoFlaw,
+                    wayangFlaw
             ));
 
             GameAction stride = new GameAction("Stride", ActionType.SINGLE_ACTION, "Move up to your Speed");
