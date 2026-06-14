@@ -38,9 +38,8 @@ public class PlayerCharacter {
     @ManyToOne
     private Skill chosenDeitySkill;
 
-    @ElementCollection
-    @Enumerated(EnumType.STRING)
-    private Set<TraitType> traits = new HashSet<>();
+    @ManyToMany
+    private Set<Trait> traits = new HashSet<>();
 
     @ElementCollection
     @Enumerated(EnumType.STRING)

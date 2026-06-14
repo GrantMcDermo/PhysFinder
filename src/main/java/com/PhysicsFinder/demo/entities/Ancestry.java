@@ -18,9 +18,8 @@ public class Ancestry {
     private Integer speed;
     private String size;
 
-    @ElementCollection
-    @Enumerated(EnumType.STRING)
-    private Set<TraitType> traits = new HashSet<>();
+    @ManyToMany
+    private Set<Trait> traits = new HashSet<>();
 
     @ManyToMany
     private List<Language> startingLanguages = new ArrayList<>();
@@ -38,7 +37,7 @@ public class Ancestry {
     private List<AncestryFeature> features = new ArrayList<>();
 
     protected Ancestry() {}
-    public Ancestry(String name, Integer hitPoints, Integer speed, String size, Set<TraitType> traits, List<Language> startingLanguages, List<Language> recommendedAdditionalLanguages, Integer additionalLanguageBase){
+    public Ancestry(String name, Integer hitPoints, Integer speed, String size, Set<Trait> traits, List<Language> startingLanguages, List<Language> recommendedAdditionalLanguages, Integer additionalLanguageBase){
         this.name = name;
         this.hitPoints = hitPoints;
         this.speed = speed;

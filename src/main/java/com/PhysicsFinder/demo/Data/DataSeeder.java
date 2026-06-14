@@ -27,7 +27,8 @@ public class DataSeeder {
             ArmorRepo armorRepo,
             DeityRepo deityRepo,
             GameActionRepo gameActionRepo,
-            LanguageRepo languageRepo){
+            LanguageRepo languageRepo,
+            TraitRepo traitRepo){
         return args -> {
             if(ancestryRepo.count() > 0)
                 return;
@@ -68,6 +69,64 @@ public class DataSeeder {
                     survival,
                     thievery
             ));
+
+            Trait generalTrait = new Trait("General", TraitCategory.GENERAL);
+            Trait skillTrait = new Trait("Skill",  TraitCategory.SKILL);
+            Trait fortuneTrait = new Trait("Fortune", TraitCategory.GENERAL);
+            Trait commanderTrait = new Trait("Commander", TraitCategory.CLASS);
+            Trait fighterTrait = new Trait("Fighter", TraitCategory.CLASS);
+            Trait pressTrait = new Trait("Press", TraitCategory.ACTION);
+            Trait stanceTrait = new Trait("Stance", TraitCategory.ACTION);
+            Trait guardianTrait = new Trait("Guardian", TraitCategory.CLASS);
+            Trait barbarianTrait = new Trait("Barbarian", TraitCategory.CLASS);
+            Trait flourishTrait = new Trait("Flourish", TraitCategory.ACTION);
+            Trait manipulateTrait = new Trait("Manipulate", TraitCategory.MAGIC);
+            Trait emotionTrait = new Trait("Emotion", TraitCategory.ACTION);
+            Trait fearTrait = new Trait("Fear",  TraitCategory.ACTION);
+            Trait mentalTrait = new Trait("Mental",  TraitCategory.ACTION);
+            Trait exemplarTrait = new Trait("Exemplar", TraitCategory.CLASS);
+            Trait rangerTrait = new Trait("Ranger",   TraitCategory.CLASS);
+            Trait championTrait = new Trait("Champion",   TraitCategory.CLASS);
+            Trait investigatorTrait = new Trait("Investigator",   TraitCategory.CLASS);
+            Trait rogueTrait = new Trait("Rogue",    TraitCategory.CLASS);
+            Trait concentrateTrait = new Trait("Concentrate",  TraitCategory.MAGIC);
+            Trait wizardTrait = new Trait("Wizard", TraitCategory.CLASS);
+            Trait psychicTrait = new Trait("Psychic", TraitCategory.CLASS);
+            Trait thaumaturgeTrait = new Trait("Thaumaturge", TraitCategory.CLASS);
+            Trait bardTrait = new Trait("Bard", TraitCategory.CLASS);
+            Trait clericTrait = new Trait("Cleric", TraitCategory.CLASS);
+            Trait druidTrait = new Trait("Druid", TraitCategory.CLASS);
+            Trait witchTrait = new Trait("Witch",  TraitCategory.CLASS);
+            Trait magusTrait = new Trait("Magus",   TraitCategory.CLASS);
+            Trait swashbucklerTrait = new Trait("Swashbuckler",  TraitCategory.CLASS);
+            Trait humanTrait = new Trait("Human",  TraitCategory.ANCESTRY);
+            Trait dwarfTrait = new Trait("Dwarf",   TraitCategory.ANCESTRY);
+            Trait elfTrait = new Trait("Elf",    TraitCategory.ANCESTRY);
+            Trait gnomeTrait = new Trait("Gnome",   TraitCategory.ANCESTRY);
+            Trait goblinFeat = new Trait("Goblin",    TraitCategory.ANCESTRY);
+            Trait halflingTrait = new Trait("Halfling", TraitCategory.ANCESTRY);
+            Trait leshyTrait = new Trait("Leshy",    TraitCategory.ANCESTRY);
+            Trait orcTrait = new Trait("Orc", TraitCategory.ANCESTRY);
+            Trait aiuvarinTrait = new Trait("Aiuvarin",  TraitCategory.ANCESTRY);
+            Trait dromaarTrait = new Trait("Dromaar", TraitCategory.ANCESTRY);
+            Trait changelingTrait = new Trait("Changeling",  TraitCategory.ANCESTRY);
+            Trait lineageTrait = new Trait("Lineage", TraitCategory.HERITAGE);
+            Trait humanoidTrait = new Trait("Humanoid", TraitCategory.CREATURE);
+            Trait plantTrait = new Trait("Plant", TraitCategory.CREATURE);
+            Trait nephilimTrait = new Trait("Nephilim", TraitCategory.ANCESTRY);
+            Trait koboldTrait = new Trait("Kobold", TraitCategory.ANCESTRY);
+            Trait samsaranTrait = new Trait("Samsaran", TraitCategory.ANCESTRY);
+            Trait kholoTrait = new Trait("Kholo", TraitCategory.ANCESTRY);
+            Trait shadowTrait = new Trait("Shadow", TraitCategory.CREATURE);
+            Trait wayangTrait = new Trait("Wayang", TraitCategory.ANCESTRY);
+            Trait fungusTrait = new Trait("Fungus", TraitCategory.CREATURE);
+            Trait feyTrait = new Trait("Fey", TraitCategory.CREATURE);
+
+            traitRepo.saveAll(List.of(dwarfTrait, elfTrait, gnomeTrait, goblinFeat, halflingTrait, humanTrait, kholoTrait, koboldTrait, leshyTrait, orcTrait, samsaranTrait, wayangTrait,
+                    aiuvarinTrait, changelingTrait, dromaarTrait, nephilimTrait,
+                    bardTrait, clericTrait, druidTrait, fighterTrait, rangerTrait, rogueTrait, witchTrait, wizardTrait,
+                    barbarianTrait, championTrait, commanderTrait, exemplarTrait, guardianTrait, investigatorTrait, magusTrait, psychicTrait, swashbucklerTrait, thaumaturgeTrait,
+                    concentrateTrait, emotionTrait, fearTrait, feyTrait, flourishTrait, fortuneTrait, fungusTrait, generalTrait, humanoidTrait, lineageTrait, manipulateTrait, mentalTrait, plantTrait, pressTrait, shadowTrait, skillTrait, stanceTrait));
 
             Weapon crossbow = new Weapon("Crossbow", WeaponCategory.SIMPLE, WeaponType.RANGED, WeaponGroup.CROSSBOW, 1, 8, DamageType.PIERCING);
             crossbow.setRangeFeet(120);
@@ -677,49 +736,49 @@ public class DataSeeder {
                     psychic, thaumaturge,
                     exemplar));
 
-            Ancestry human = new Ancestry("Human", 8, 25, "MEDIUM", Set.of(TraitType.HUMAN, TraitType.HUMANOID), List.of(common), List.of(), 1);
+            Ancestry human = new Ancestry("Human", 8, 25, "MEDIUM", Set.of(humanTrait, humanoidTrait), List.of(common), List.of(), 1);
 
-            Ancestry dwarf = new Ancestry("Dwarf", 10, 20, "MEDIUM", Set.of(TraitType.DWARF, TraitType.HUMANOID), List.of(common, dwarven), List.of(gnomish, goblinLanguage, jotun, orcish, petran, sakvroth), 0);
+            Ancestry dwarf = new Ancestry("Dwarf", 10, 20, "MEDIUM", Set.of(dwarfTrait, humanoidTrait), List.of(common, dwarven), List.of(gnomish, goblinLanguage, jotun, orcish, petran, sakvroth), 0);
             dwarf.setSenses(Set.of(SenseType.DARKVISION));
             AncestryFeature clanDaggerMechanic = new AncestryFeature(dwarf, "Clan Dagger", "You receive a clan dagger tied to your dwarven clan.");
             dwarf.setFeatures(List.of(clanDaggerMechanic));
 
-            Ancestry elf = new Ancestry("Elf", 6, 30, "MEDIUM", Set.of(TraitType.ELF, TraitType.HUMANOID), List.of(common, elven), List.of(draconic, empyrean, feyLanguage, gnomish, goblinLanguage, kholoLanguage, orcish), 0);
+            Ancestry elf = new Ancestry("Elf", 6, 30, "MEDIUM", Set.of(elfTrait, humanoidTrait), List.of(common, elven), List.of(draconic, empyrean, feyLanguage, gnomish, goblinLanguage, kholoLanguage, orcish), 0);
             elf.setSenses(Set.of(SenseType.LOW_LIGHT_VISION));
 
-            Ancestry gnome = new Ancestry("Gnome", 8, 25, "SMALL", Set.of(TraitType.GNOME, TraitType.HUMANOID), List.of(common, feyLanguage, gnomish), List.of(draconic, dwarven, elven, goblinLanguage, jotun, orcish), 0);
+            Ancestry gnome = new Ancestry("Gnome", 8, 25, "SMALL", Set.of(gnomeTrait, humanoidTrait), List.of(common, feyLanguage, gnomish), List.of(draconic, dwarven, elven, goblinLanguage, jotun, orcish), 0);
             gnome.setSenses(Set.of(SenseType.LOW_LIGHT_VISION));
 
-            Ancestry goblin = new Ancestry("Goblin", 6, 25, "SMALL", Set.of(TraitType.GOBLIN, TraitType.HUMANOID), List.of(common, goblinLanguage), List.of(draconic, dwarven, gnomish, halflingLanguage, kholoLanguage, orcish), 0);
+            Ancestry goblin = new Ancestry("Goblin", 6, 25, "SMALL", Set.of(goblinFeat, humanoidTrait), List.of(common, goblinLanguage), List.of(draconic, dwarven, gnomish, halflingLanguage, kholoLanguage, orcish), 0);
             goblin.setSenses(Set.of(SenseType.DARKVISION));
 
-            Ancestry halfling = new Ancestry("Halfling", 6, 25, "SMALL", Set.of(TraitType.HALFLING, TraitType.HUMANOID), List.of(common, halflingLanguage), List.of(dwarven, elven, gnomish, goblinLanguage), 0);
+            Ancestry halfling = new Ancestry("Halfling", 6, 25, "SMALL", Set.of(halflingTrait, humanoidTrait), List.of(common, halflingLanguage), List.of(dwarven, elven, gnomish, goblinLanguage), 0);
             AncestryFeature keenEyes = new AncestryFeature(halfling, "Keen Eyes", "Your eyes are sharp, allowing you to make out small details about concealed or even invisible creatures that others might miss.");
             halfling.setFeatures(List.of(keenEyes));
 
-            Ancestry leshy = new Ancestry("Leshy", 8, 25, "SMALL", Set.of(TraitType.LESHY, TraitType.PLANT), List.of(common, feyLanguage), List.of(draconic, elven, gnomish, goblinLanguage, halflingLanguage, sakvroth), 0);
+            Ancestry leshy = new Ancestry("Leshy", 8, 25, "SMALL", Set.of(leshyTrait, plantTrait), List.of(common, feyLanguage), List.of(draconic, elven, gnomish, goblinLanguage, halflingLanguage, sakvroth), 0);
             leshy.setSenses(Set.of(SenseType.LOW_LIGHT_VISION));
             AncestryFeature plantNourishment = new AncestryFeature(leshy, "Plant Nourishment", "You can sustain yourself through sunlight, water, and soil.");
             leshy.setFeatures(List.of(plantNourishment));
 
-            Ancestry orc = new Ancestry("Orc", 10, 25, "MEDIUM", Set.of(TraitType.HUMANOID, TraitType.ORC), List.of(common, orcish), List.of(goblinLanguage, jotun, petran, sakvroth), 0);
+            Ancestry orc = new Ancestry("Orc", 10, 25, "MEDIUM", Set.of(humanoidTrait, orcTrait), List.of(common, orcish), List.of(goblinLanguage, jotun, petran, sakvroth), 0);
             orc.setSenses(Set.of(SenseType.DARKVISION));
 
-            Ancestry kobold = new Ancestry("Kobold", 6, 25, "SMALL", Set.of(TraitType.HUMANOID, TraitType.KOBOLD), List.of(common, sakvroth), List.of(aklo, diabolic, draconic, dwarven, empyrean, feyLanguage, gnomish, petran), 0);
+            Ancestry kobold = new Ancestry("Kobold", 6, 25, "SMALL", Set.of(humanoidTrait, koboldTrait), List.of(common, sakvroth), List.of(aklo, diabolic, draconic, dwarven, empyrean, feyLanguage, gnomish, petran), 0);
             kobold.setSenses(Set.of(SenseType.DARKVISION));
 
-            Ancestry samsaran = new Ancestry("Samsaran", 8, 25, "MEDIUM", Set.of(TraitType.HUMANOID, TraitType.SAMSARAN), List.of(common, samsaranLanguage), List.of(chthonian, diabolic, draconic, empyrean, jotun, petran, pyric, sussuran, thalassic), 0);
+            Ancestry samsaran = new Ancestry("Samsaran", 8, 25, "MEDIUM", Set.of(humanoidTrait, samsaranTrait), List.of(common, samsaranLanguage), List.of(chthonian, diabolic, draconic, empyrean, jotun, petran, pyric, sussuran, thalassic), 0);
             samsaran.setSenses(Set.of(SenseType.LOW_LIGHT_VISION));
             AncestryFeature cryptomnesia = new AncestryFeature(samsaran, "Cryptomnesia", "You retain bits of knowledge from your former lives.");
             AncestryFeature wanderersSoul = new AncestryFeature(samsaran, "Wanderer's Soul", "Your soul is especially able to return to the cycle of reincarnation.");
             samsaran.setFeatures(List.of(cryptomnesia, wanderersSoul));
 
-            Ancestry kholo = new Ancestry("Kholo", 8, 25, "MEDIUM", Set.of(TraitType.HUMANOID, TraitType.KHOLO), List.of(common, kholoLanguage), List.of(draconic, elven, feyLanguage, iruxi, necril, orcish), 0);
+            Ancestry kholo = new Ancestry("Kholo", 8, 25, "MEDIUM", Set.of(humanoidTrait, kholoTrait), List.of(common, kholoLanguage), List.of(draconic, elven, feyLanguage, iruxi, necril, orcish), 0);
             kholo.setSenses(Set.of(SenseType.LOW_LIGHT_VISION));
             AncestryFeature kholoBite = new AncestryFeature(kholo, "Bite", "Your sharp teeth and powerful jaws are fearsome weapons.");
             kholo.setFeatures(List.of(kholoBite));
 
-            Ancestry wayang = new Ancestry("Wayang", 8, 25, "SMALL", Set.of(TraitType.HUMANOID, TraitType.SHADOW, TraitType.WAYANG), List.of(common, shadowTongue, wayangLanguage), List.of(dZiriakLanguage, diabolic, minatan, nagajiLanguage, thalassic, vudrani, yakshaLanguage), 0);
+            Ancestry wayang = new Ancestry("Wayang", 8, 25, "SMALL", Set.of(humanoidTrait, shadowTrait, wayangTrait), List.of(common, shadowTongue, wayangLanguage), List.of(dZiriakLanguage, diabolic, minatan, nagajiLanguage, thalassic, vudrani, yakshaLanguage), 0);
             wayang.setSenses(Set.of(SenseType.DARKVISION));
 
             ancestryRepo.saveAll(List.of(human, dwarf, elf, gnome, goblin, halfling, leshy, orc, kobold, samsaran, kholo, wayang));
@@ -754,7 +813,7 @@ public class DataSeeder {
             Heritage chameleonGnome = new Heritage("Chameleon Gnome", "The color of your hair and skin is mutable, possibly due to latent magic from First World influences or lingering illusion effects.", HeritageType.ANCESTRY_SPECIFIC, gnome);
 
             Heritage feyTouchedGnome = new Heritage("Fey-Touched Gnome", "The blood of the fey flows through your veins, saturating you with their magic and making you truly one of them.", HeritageType.ANCESTRY_SPECIFIC, gnome);
-            feyTouchedGnome.setTraits(Set.of(TraitType.FEY));
+            feyTouchedGnome.setTraits(Set.of(feyTrait));
 
             Heritage sensateGnome = new Heritage("Sensate Gnome", "You see all colors as brighter, hear all sounds as richer, and especially smell all scents with incredible detail.", HeritageType.ANCESTRY_SPECIFIC, gnome);
             sensateGnome.setSenses(Set.of(SenseType.SCENT));
@@ -793,8 +852,8 @@ public class DataSeeder {
 
             Heritage fungusLeshy = new Heritage("Fungus Leshy", "Your body was made from fungi that grows in the shade of caves and trees, and you are at home in dark caverns and warrens.", HeritageType.ANCESTRY_SPECIFIC, leshy);
             fungusLeshy.setSenses(Set.of(SenseType.DARKVISION));
-            fungusLeshy.setTraitsToRemove(Set.of(TraitType.PLANT));
-            fungusLeshy.setTraits(Set.of(TraitType.FUNGUS));
+            fungusLeshy.setTraitsToRemove(Set.of(plantTrait));
+            fungusLeshy.setTraits(Set.of(fungusTrait));
 
             Heritage gourdLeshy = new Heritage("Gourd Leshy", "You have a large gourd for a skull, and since you don't have a physical brain, you can use the space inside your head.", HeritageType.ANCESTRY_SPECIFIC, leshy);
 
@@ -824,20 +883,20 @@ public class DataSeeder {
 
             Heritage aiuvarin = new Heritage("Aiuvarin", "You have the blood of Elves mixed into your ancestry.", HeritageType.VERSATILE, null);
             aiuvarin.setGrantedAncestryFeatAccess(List.of(elf));
-            aiuvarin.setTraits(Set.of(TraitType.ELF, TraitType.AIUVARIN));
+            aiuvarin.setTraits(Set.of(elfTrait, aiuvarinTrait));
             aiuvarin.setSenses(Set.of(SenseType.LOW_LIGHT_VISION));
 
             Heritage dromaar = new Heritage("Dromaar", "You have the blood of Orcs mixed into your ancestry.", HeritageType.VERSATILE, null);
             dromaar.setGrantedAncestryFeatAccess(List.of(orc));
-            dromaar.setTraits(Set.of(TraitType.DROMAAR, TraitType.ORC));
+            dromaar.setTraits(Set.of(dromaarTrait, orcTrait));
             dromaar.setSenses(Set.of(SenseType.LOW_LIGHT_VISION));
 
             Heritage changeling = new Heritage("Changeling", "Your mother was a hag.", HeritageType.VERSATILE, null);
-            changeling.setTraits(Set.of(TraitType.CHANGELING));
+            changeling.setTraits(Set.of(changelingTrait));
             changeling.setSenses(Set.of(SenseType.LOW_LIGHT_VISION));
 
             Heritage nephilim = new Heritage("Nephilim", "Your nature is influenced by celestials, fiends, or monitors.", HeritageType.VERSATILE, null);
-            nephilim.setTraits(Set.of(TraitType.NEPHILIM));
+            nephilim.setTraits(Set.of(nephilimTrait));
             nephilim.setSenses(Set.of(SenseType.LOW_LIGHT_VISION));
 
             heritageRepo.saveAll(List.of(
@@ -851,148 +910,148 @@ public class DataSeeder {
                     badlandsOrc, battleReadyOrc, deepOrc, graveOrc, holdScarredOrc, rainfallOrc, winterOrc,
                     aiuvarin, dromaar, changeling, nephilim));
 
-            Feat intimidatingGlare = new Feat("Intimidating Glare", 1, FeatType.SKILL, "Demoralize a creature using only a look.");
-            Feat terrainExpert = new Feat("Terrain Expertise", 1, FeatType.SKILL, "You are particularly skilled in rough terrain.");
-            Feat assurance = new Feat("Assurance", 1, FeatType.SKILL, "Even in the worst circumstances, you can perform basic tasks.");
-            Feat multilingual = new Feat("Multilingual", 1, FeatType.SKILL, "You easily pick up new languages.");
-            Feat quickClimb = new Feat("Quick Climb", 7, FeatType.SKILL, "When Climbing, you move 5 more feet on a success and 10 more feet on a critical success, up to your Speed.");
-            Feat combatClimber = new Feat("Combat Climber", 1, FeatType.SKILL, "Your techniques allow you to fight as you climb.");
-            Feat adoptedAncestry = new Feat("Adopted Ancestry", 1, FeatType.GENERAL, "You’re fully immersed in another ancestry’s culture and traditions, whether born into them, earned through rite of passage, or bonded through a deep friendship or romance.");
-            Feat shieldBlock = new Feat("Shield Block", 1, FeatType.GENERAL, "You snap your shield in place to ward off a blow.");
-            Feat diehard = new Feat("Diehard", 1, FeatType.GENERAL, "It takes more to kill you than most.");
-            Feat combatAssessment = new Feat("Combat Assessment", 1, FeatType.CLASS, "You make a telegraphed attack to learn about your foe.");
+            Feat intimidatingGlare = new Feat("Intimidating Glare", 1, Set.of(generalTrait, skillTrait), "Demoralize a creature using only a look.");
+            Feat terrainExpert = new Feat("Terrain Expertise", 1, Set.of(generalTrait, skillTrait), "You are particularly skilled in rough terrain.");
+            Feat assurance = new Feat("Assurance", 1, Set.of(fortuneTrait, generalTrait, skillTrait), "Even in the worst circumstances, you can perform basic tasks.");
+            Feat multilingual = new Feat("Multilingual", 1, Set.of(generalTrait, skillTrait), "You easily pick up new languages.");
+            Feat quickClimb = new Feat("Quick Climb", 7, Set.of(generalTrait, skillTrait), "When Climbing, you move 5 more feet on a success and 10 more feet on a critical success, up to your Speed.");
+            Feat combatClimber = new Feat("Combat Climber", 1, Set.of(generalTrait, skillTrait), "Your techniques allow you to fight as you climb.");
+            Feat adoptedAncestry = new Feat("Adopted Ancestry", 1, Set.of(generalTrait), "You’re fully immersed in another ancestry’s culture and traditions, whether born into them, earned through rite of passage, or bonded through a deep friendship or romance.");
+            Feat shieldBlock = new Feat("Shield Block", 1, Set.of(generalTrait), "You snap your shield in place to ward off a blow.");
+            Feat diehard = new Feat("Diehard", 1, Set.of(generalTrait), "It takes more to kill you than most.");
+            Feat combatAssessment = new Feat("Combat Assessment", 1, Set.of(commanderTrait, fighterTrait), "You make a telegraphed attack to learn about your foe.");
             combatAssessment.setAvailableToClasses(List.of(fighter, commander));
-            Feat doubleSlice = new Feat("Double Slice", 1, FeatType.CLASS, "You lash out at your foe with both weapons.");
+            Feat doubleSlice = new Feat("Double Slice", 1, Set.of(fighterTrait), "You lash out at your foe with both weapons.");
             doubleSlice.setAvailableToClasses(List.of(fighter));
-            Feat exactingStrike = new Feat("Exacting Strike", 1, FeatType.CLASS, "You make a controlled follow-up attack, fully accounting for your momentum.");
+            Feat exactingStrike = new Feat("Exacting Strike", 1, Set.of(fighterTrait, pressTrait), "You make a controlled follow-up attack, fully accounting for your momentum.");
             exactingStrike.setAvailableToClasses(List.of(fighter));
-            Feat pointBlankStance = new Feat("Point Blank Stance", 1, FeatType.CLASS, "You take aim to pick off nearby enemies quickly.");
+            Feat pointBlankStance = new Feat("Point Blank Stance", 1, Set.of(fighterTrait, stanceTrait), "You take aim to pick off nearby enemies quickly.");
             pointBlankStance.setAvailableToClasses(List.of(fighter));
-            Feat reactiveShield = new Feat("Reactive Shield", 1, FeatType.CLASS, "You can snap your shield into place just as you would take a blow, avoiding the hit at the last second.");
+            Feat reactiveShield = new Feat("Reactive Shield", 1, Set.of(fighterTrait, guardianTrait), "You can snap your shield into place just as you would take a blow, avoiding the hit at the last second.");
             reactiveShield.setAvailableToClasses(List.of(fighter, guardian));
-            Feat snaggingStrike = new Feat("Snagging Strike", 1, FeatType.CLASS, "You combine an attack with quick grappling moves to throw an enemy off balance as long as it stays in your reach.");
+            Feat snaggingStrike = new Feat("Snagging Strike", 1, Set.of(fighterTrait), "You combine an attack with quick grappling moves to throw an enemy off balance as long as it stays in your reach.");
             snaggingStrike.setAvailableToClasses(List.of(fighter));
-            Feat suddenCharge = new Feat("Sudden Charge", 1, FeatType.CLASS, "With a quick sprint, you dash up to your foe and swing.");
+            Feat suddenCharge = new Feat("Sudden Charge", 1, Set.of(barbarianTrait, fighterTrait, flourishTrait), "With a quick sprint, you dash up to your foe and swing.");
             suddenCharge.setAvailableToClasses(List.of(fighter, barbarian));
-            Feat viciousSwing = new Feat("Vicious Swing", 1, FeatType.CLASS, "You unleash a particularly powerful attack that clobbers your foe but leaves you a bit unsteady.");
+            Feat viciousSwing = new Feat("Vicious Swing", 1, Set.of(fighterTrait, flourishTrait), "You unleash a particularly powerful attack that clobbers your foe but leaves you a bit unsteady.");
             viciousSwing.setAvailableToClasses(List.of(fighter));
-            Feat aggressiveBlock = new Feat("Aggressive Block", 2, FeatType.CLASS, "You push back as you block, knocking your foe away or off balance.");
+            Feat aggressiveBlock = new Feat("Aggressive Block", 2, Set.of(fighterTrait, guardianTrait), "You push back as you block, knocking your foe away or off balance.");
             aggressiveBlock.setAvailableToClasses(List.of(fighter, guardian));
-            Feat assistingShot = new Feat("Assisting Shot", 2, FeatType.CLASS, "Using your last shot to gauge your accuracy, you can fire off a quick shot to interfere with a foe in combat.");
+            Feat assistingShot = new Feat("Assisting Shot", 2, Set.of(fighterTrait, pressTrait), "Using your last shot to gauge your accuracy, you can fire off a quick shot to interfere with a foe in combat.");
             assistingShot.setAvailableToClasses(List.of(fighter));
-            Feat bladeBrake = new Feat("Blade Brake", 2, FeatType.CLASS, "You plow your weapon into a floor, wall, or another sturdy surface, anchoring yourself in place.");
+            Feat bladeBrake = new Feat("Blade Brake", 2, Set.of(fighterTrait, manipulateTrait), "You plow your weapon into a floor, wall, or another sturdy surface, anchoring yourself in place.");
             bladeBrake.setAvailableToClasses(List.of(fighter));
-            Feat brutishShove = new Feat("Brutish Shove", 2, FeatType.CLASS, "Using the momentum of your last attack to throw your weight into another, you make your opponent stumble back.");
+            Feat brutishShove = new Feat("Brutish Shove", 2, Set.of(fighterTrait, pressTrait), "Using the momentum of your last attack to throw your weight into another, you make your opponent stumble back.");
             brutishShove.setAvailableToClasses(List.of(fighter));
-            Feat combatGrab = new Feat("Combat Grab", 2, FeatType.CLASS, "Using your prior attack to shift your opponent’s guard, you take another swing and grab them.");
+            Feat combatGrab = new Feat("Combat Grab", 2, Set.of(fighterTrait, pressTrait), "Using your prior attack to shift your opponent’s guard, you take another swing and grab them.");
             combatGrab.setAvailableToClasses(List.of(fighter));
-            Feat duelingParry1 = new Feat("Dueling Parry", 2, FeatType.CLASS, "You can parry attacks against you with your one-handed weapon.");
+            Feat duelingParry1 = new Feat("Dueling Parry", 2, Set.of(fighterTrait), "You can parry attacks against you with your one-handed weapon.");
             duelingParry1.setAvailableToClasses(List.of(fighter));
-            Feat intimidatingStrike = new Feat("Intimidating Strike", 2, FeatType.CLASS, "Your blow not only wounds creatures but also shatters their confidence.");
+            Feat intimidatingStrike = new Feat("Intimidating Strike", 2, Set.of(barbarianTrait, emotionTrait, fearTrait, fighterTrait, mentalTrait), "Your blow not only wounds creatures but also shatters their confidence.");
             intimidatingStrike.setAvailableToClasses(List.of(fighter, barbarian));
-            Feat lightningSwap = new Feat("Lightning Swap", 2, FeatType.CLASS, "You have practiced quickly switching between combat styles and the equipment needed for them.");
+            Feat lightningSwap = new Feat("Lightning Swap", 2, Set.of(exemplarTrait, fighterTrait, flourishTrait), "You have practiced quickly switching between combat styles and the equipment needed for them.");
             lightningSwap.setAvailableToClasses(List.of(fighter, exemplar));
-            Feat lunge = new Feat("Lunge", 2, FeatType.CLASS, "You attack an enemy at the edge of your reach.");
+            Feat lunge = new Feat("Lunge", 2, Set.of(fighterTrait), "You attack an enemy at the edge of your reach.");
             lunge.setAvailableToClasses(List.of(fighter));
-            Feat reboundingToss = new Feat("Rebounding Toss", 2, FeatType.CLASS, "You bounce your weapon off one foe to strike another.");
+            Feat reboundingToss = new Feat("Rebounding Toss", 2, Set.of(fighterTrait, flourishTrait), "You bounce your weapon off one foe to strike another.");
             reboundingToss.setAvailableToClasses(List.of(fighter));
-            Feat sleekReposition = new Feat("Sleek Reposition", 2, FeatType.CLASS, "While your opponent is still recovering from your prior attack, you snag its armor, clothing, or flesh to move it as you please.");
+            Feat sleekReposition = new Feat("Sleek Reposition", 2, Set.of(fighterTrait, pressTrait), "While your opponent is still recovering from your prior attack, you snag its armor, clothing, or flesh to move it as you please.");
             sleekReposition.setAvailableToClasses(List.of(fighter));
-            Feat barrelingCharge = new Feat("Barreling Charge", 4, FeatType.CLASS, "You rush forward, moving enemies aside to reach your foe.");
+            Feat barrelingCharge = new Feat("Barreling Charge", 4, Set.of(barbarianTrait, fighterTrait, flourishTrait), "You rush forward, moving enemies aside to reach your foe.");
             barrelingCharge.setAvailableToClasses(List.of(fighter, barbarian));
-            Feat doubleShot = new Feat("Double Shot", 4, FeatType.CLASS, "You shoot twice in blindingly fast succession.");
+            Feat doubleShot = new Feat("Double Shot", 4, Set.of(fighterTrait, flourishTrait), "You shoot twice in blindingly fast succession.");
             doubleShot.setAvailableToClasses(List.of(fighter));
-            Feat dualHandedAssault = new Feat("Dual-Handed Assault", 4, FeatType.CLASS, "You snap your free hand over to grip your weapon just long enough to add momentum and deliver a more powerful blow to your opponent.");
+            Feat dualHandedAssault = new Feat("Dual-Handed Assault", 4, Set.of(fighterTrait, flourishTrait), "You snap your free hand over to grip your weapon just long enough to add momentum and deliver a more powerful blow to your opponent.");
             dualHandedAssault.setAvailableToClasses(List.of(fighter));
-            Feat partingShot = new Feat("Parting Shot", 4, FeatType.CLASS, "You jump back and make a quick shot that catches your opponent by surprise.");
+            Feat partingShot = new Feat("Parting Shot", 4, Set.of(fighterTrait), "You jump back and make a quick shot that catches your opponent by surprise.");
             partingShot.setAvailableToClasses(List.of(fighter));
-            Feat powerfulShove = new Feat("Powerful Shove", 4, FeatType.CLASS, "You can push larger foes around with your attack.");
+            Feat powerfulShove = new Feat("Powerful Shove", 4, Set.of(fighterTrait), "You can push larger foes around with your attack.");
             powerfulShove.setAvailableToClasses(List.of(fighter));
-            Feat quickReversal = new Feat("Quick Reversal", 4, FeatType.CLASS, "You turn your foes’ flanking against them with a quick reverse.");
+            Feat quickReversal = new Feat("Quick Reversal", 4, Set.of(fighterTrait, flourishTrait, pressTrait), "You turn your foes’ flanking against them with a quick reverse.");
             quickReversal.setAvailableToClasses(List.of(fighter));
-            Feat shieldedStride = new Feat("Shielded Stride", 4, FeatType.CLASS, "When your shield is up, your enemies’ blows can’t touch you.");
+            Feat shieldedStride = new Feat("Shielded Stride", 4, Set.of(fighterTrait), "When your shield is up, your enemies’ blows can’t touch you.");
             shieldedStride.setAvailableToClasses(List.of(fighter));
-            Feat slamDown = new Feat("Slam Down", 4, FeatType.CLASS, "You make an attack to knock a foe off balance, then follow up immediately with a sweep to topple them.");
+            Feat slamDown = new Feat("Slam Down", 4, Set.of(fighterTrait, flourishTrait), "You make an attack to knock a foe off balance, then follow up immediately with a sweep to topple them.");
             slamDown.setAvailableToClasses(List.of(fighter));
-            Feat swipe = new Feat("Swipe", 4, FeatType.CLASS, "You make a wide, arcing swing.");
+            Feat swipe = new Feat("Swipe", 4, Set.of(barbarianTrait, fighterTrait, flourishTrait), "You make a wide, arcing swing.");
             swipe.setAvailableToClasses(List.of(fighter, barbarian));
-            Feat twinParry = new Feat("Twin Parry", 4, FeatType.CLASS, "You use your two weapons to parry attacks.");
+            Feat twinParry = new Feat("Twin Parry", 4, Set.of(fighterTrait, rangerTrait), "You use your two weapons to parry attacks.");
             twinParry.setAvailableToClasses(List.of(fighter, ranger));
-            Feat advancedWeaponTraining = new Feat("Advanced Weapon Training", 6, FeatType.CLASS, "You’ve studied the art of wielding an advanced weapon.");
+            Feat advancedWeaponTraining = new Feat("Advanced Weapon Training", 6, Set.of(fighterTrait), "You’ve studied the art of wielding an advanced weapon.");
             advancedWeaponTraining.setAvailableToClasses(List.of(fighter));
-            Feat advantageousAssault = new Feat("Advantageous Assault", 6, FeatType.CLASS, "After compromising your enemy’s movement, you deliver a more deadly blow.");
+            Feat advantageousAssault = new Feat("Advantageous Assault", 6, Set.of(fighterTrait, pressTrait), "After compromising your enemy’s movement, you deliver a more deadly blow.");
             advantageousAssault.setAvailableToClasses(List.of(fighter));
-            Feat dazingBlow = new Feat("Dazing Blow", 6, FeatType.CLASS, "You pummel a held foe, hoping to stagger them.");
+            Feat dazingBlow = new Feat("Dazing Blow", 6, Set.of(fighterTrait, pressTrait), "You pummel a held foe, hoping to stagger them.");
             dazingBlow.setAvailableToClasses(List.of(fighter));
-            Feat disarmingStance = new Feat("Disarming Stance", 6, FeatType.CLASS, "You adopt a fencing stance that improves your control over your weapon.");
+            Feat disarmingStance = new Feat("Disarming Stance", 6, Set.of(fighterTrait, stanceTrait), "You adopt a fencing stance that improves your control over your weapon.");
             disarmingStance.setAvailableToClasses(List.of(fighter));
-            Feat furiousFocus = new Feat("Furious Focus", 6, FeatType.CLASS, "You’ve learned to maintain your balance even when swinging furiously.");
+            Feat furiousFocus = new Feat("Furious Focus", 6, Set.of(fighterTrait), "You’ve learned to maintain your balance even when swinging furiously.");
             furiousFocus.setAvailableToClasses(List.of(fighter));
-            Feat guardiansDeflection = new Feat("Guardian's Deflection", 6, FeatType.CLASS, "You use your weapon to deflect the attack against your ally, granting a +2 circumstance bonus to their Armor Class against the triggering attack.");
+            Feat guardiansDeflection = new Feat("Guardian's Deflection", 6, Set.of(fighterTrait), "You use your weapon to deflect the attack against your ally, granting a +2 circumstance bonus to their Armor Class against the triggering attack.");
             guardiansDeflection.setAvailableToClasses(List.of(fighter));
-            Feat reflexiveShield = new Feat("Reflexive Shield", 6, FeatType.CLASS, "You can use your shield to fend off explosions and the like.");
+            Feat reflexiveShield = new Feat("Reflexive Shield", 6, Set.of(fighterTrait, guardianTrait), "You can use your shield to fend off explosions and the like.");
             reflexiveShield.setAvailableToClasses(List.of(fighter, guardian));
-            Feat revealingStab = new Feat("Revealing Stab", 6, FeatType.CLASS, "You drive your piercing weapon into an imperceptible foe, revealing its location to your allies.");
+            Feat revealingStab = new Feat("Revealing Stab", 6, Set.of(fighterTrait), "You drive your piercing weapon into an imperceptible foe, revealing its location to your allies.");
             revealingStab.setAvailableToClasses(List.of(fighter));
-            Feat ricochetStance1 = new Feat("Ricochet Stance", 6, FeatType.CLASS, "You adopt a stance to rebound your thrown weapons toward you.");
+            Feat ricochetStance1 = new Feat("Ricochet Stance", 6, Set.of(fighterTrait, stanceTrait), "You adopt a stance to rebound your thrown weapons toward you.");
             ricochetStance1.setAvailableToClasses(List.of(fighter));
-            Feat shatterDefenses = new Feat("Shatter Defenses", 6, FeatType.CLASS, "Your offense exploits your enemy’s fear.");
+            Feat shatterDefenses = new Feat("Shatter Defenses", 6, Set.of(fighterTrait, pressTrait), "Your offense exploits your enemy’s fear.");
             shatterDefenses.setAvailableToClasses(List.of(fighter));
-            Feat shieldWarden = new Feat("Shield Warden", 6, FeatType.CLASS, "When you have a shield raised, you can use your Shield Block reaction when an attack is made against an ally adjacent to you.");
+            Feat shieldWarden = new Feat("Shield Warden", 6, Set.of(championTrait, commanderTrait, fighterTrait), "When you have a shield raised, you can use your Shield Block reaction when an attack is made against an ally adjacent to you.");
             shieldWarden.setAvailableToClasses(List.of(fighter, commander, champion));
-            Feat tripleShot = new Feat("Triple Shot", 6, FeatType.CLASS, "You can quickly fire multiple shots with greater control.");
+            Feat tripleShot = new Feat("Triple Shot", 6, Set.of(fighterTrait), "You can quickly fire multiple shots with greater control.");
             tripleShot.setAvailableToClasses(List.of(fighter));
-            Feat blindFight = new Feat("Blind-Fight", 8, FeatType.CLASS, "Your battle instincts make you more aware of concealed and invisible opponents.");
+            Feat blindFight = new Feat("Blind-Fight", 8, Set.of(fighterTrait, investigatorTrait, rangerTrait, rogueTrait), "Your battle instincts make you more aware of concealed and invisible opponents.");
             blindFight.setAvailableToClasses(List.of(fighter, investigator, ranger, rogue));
-            Feat disorientingOpening = new Feat("Disorienting Opening", 8, FeatType.CLASS, "You use your foes’ openings to expose even greater weaknesses.");
+            Feat disorientingOpening = new Feat("Disorienting Opening", 8, Set.of(fighterTrait), "You use your foes’ openings to expose even greater weaknesses.");
             disorientingOpening.setAvailableToClasses(List.of(fighter));
-            Feat duelingRiposte = new Feat("Dueling Riposte", 8, FeatType.CLASS, "You elegantly counterattack against your flailing enemy.");
+            Feat duelingRiposte = new Feat("Dueling Riposte", 8, Set.of(fighterTrait), "You elegantly counterattack against your flailing enemy.");
             duelingRiposte.setAvailableToClasses(List.of(fighter));
-            Feat fellingStrike = new Feat("Felling Strike", 8, FeatType.CLASS, "Your attack can ground an airborne foe.");
+            Feat fellingStrike = new Feat("Felling Strike", 8, Set.of(fighterTrait), "Your attack can ground an airborne foe.");
             fellingStrike.setAvailableToClasses(List.of(fighter));
-            Feat incredibleAim = new Feat("Incredible Aim", 8, FeatType.CLASS, "By spending a moment to focus, you can ensure your attack strikes true.");
+            Feat incredibleAim = new Feat("Incredible Aim", 8, Set.of(concentrateTrait, fighterTrait), "By spending a moment to focus, you can ensure your attack strikes true.");
             incredibleAim.setAvailableToClasses(List.of(fighter));
-            Feat mobileShotStance = new Feat("Mobile Shot Stance", 8, FeatType.CLASS, "Your shots become nimble and deadly.");
+            Feat mobileShotStance = new Feat("Mobile Shot Stance", 8, Set.of(fighterTrait, stanceTrait), "Your shots become nimble and deadly.");
             mobileShotStance.setAvailableToClasses(List.of(fighter));
-            Feat positioningAssault = new Feat("Positioning Assault", 8, FeatType.CLASS, "With punishing blows, you force your opponent into position.");
+            Feat positioningAssault = new Feat("Positioning Assault", 8, Set.of(fighterTrait, flourishTrait), "With punishing blows, you force your opponent into position.");
             positioningAssault.setAvailableToClasses(List.of(fighter));
-            Feat quickShieldBlock = new Feat("Quick Shield Block", 8, FeatType.CLASS, "You can bring your shield into place with hardly a thought.");
+            Feat quickShieldBlock = new Feat("Quick Shield Block", 8, Set.of(championTrait, fighterTrait), "You can bring your shield into place with hardly a thought.");
             quickShieldBlock.setAvailableToClasses(List.of(fighter, champion));
-            Feat resoundingBravery = new Feat("Resounding Bravery", 8, FeatType.CLASS, "Even your fears serve as fuel for your fighting spirit.");
+            Feat resoundingBravery = new Feat("Resounding Bravery", 8, Set.of(fighterTrait), "Even your fears serve as fuel for your fighting spirit.");
             resoundingBravery.setAvailableToClasses(List.of(fighter));
-            Feat suddenLeap = new Feat("Sudden Leap", 8, FeatType.CLASS, "You make an impressive leap and swing while you soar.");
+            Feat suddenLeap = new Feat("Sudden Leap", 8, Set.of(barbarianTrait, fighterTrait), "You make an impressive leap and swing while you soar.");
             suddenLeap.setAvailableToClasses(List.of(fighter, barbarian));
-            Feat spellbookProdigy = new Feat("Spellbook Prodigy", 1, FeatType.CLASS, "You are particularly adept at learning spells to add to your spellbook.");
+            Feat spellbookProdigy = new Feat("Spellbook Prodigy", 1, Set.of(wizardTrait), "You are particularly adept at learning spells to add to your spellbook.");
             spellbookProdigy.setAvailableToClasses(List.of(wizard));
-            Feat ancestralMind = new Feat("Ancestral Mind", 1, FeatType.CLASS, "By unraveling memories and connections passed down from your progenitors and buried within your unconscious mind, you learn to convert your inherent magic into psychic power.");
+            Feat ancestralMind = new Feat("Ancestral Mind", 1, Set.of(psychicTrait), "By unraveling memories and connections passed down from your progenitors and buried within your unconscious mind, you learn to convert your inherent magic into psychic power.");
             ancestralMind.setAvailableToClasses(List.of(psychic));
-            Feat ammunitionThaumaturgy = new Feat("Ammunition Thaumaturgy", 1, FeatType.CLASS, "You're so used to handling your implement, weapon, and esoterica in the heat of combat that adding a few bullets or arrows to the mix is no extra burden.");
+            Feat ammunitionThaumaturgy = new Feat("Ammunition Thaumaturgy", 1, Set.of(thaumaturgeTrait), "You're so used to handling your implement, weapon, and esoterica in the heat of combat that adding a few bullets or arrows to the mix is no extra burden.");
             ammunitionThaumaturgy.setAvailableToClasses(List.of(thaumaturge));
-            Feat nimbleDodge = new Feat("Nimble Dodge", 1, FeatType.CLASS, "You deftly dodge out of the way, gaining a +2 circumstance bonus to AC against the triggering attack.");
+            Feat nimbleDodge = new Feat("Nimble Dodge", 1, Set.of(rogueTrait), "You deftly dodge out of the way, gaining a +2 circumstance bonus to AC against the triggering attack.");
             nimbleDodge.setAvailableToClasses(List.of(rogue));
-            Feat ricochetStance2 = new Feat("Ricochet Stance", 8, FeatType.CLASS, "You adopt a stance to rebound your thrown weapons toward you.");
+            Feat ricochetStance2 = new Feat("Ricochet Stance", 8, Set.of(rogueTrait, stanceTrait), "You adopt a stance to rebound your thrown weapons toward you.");
             ricochetStance2.setAvailableToClasses(List.of(rogue));
-            Feat bardicLore = new Feat("Bardic Lore", 1, FeatType.CLASS, "Your studies make you informed on every subject.");
+            Feat bardicLore = new Feat("Bardic Lore", 1, Set.of(bardTrait), "Your studies make you informed on every subject.");
             bardicLore.setAvailableToClasses(List.of(bard));
-            Feat domainInitiate = new Feat("Domain Initiate", 1, FeatType.CLASS, "Your deity bestows a special spell related to their powers.");
+            Feat domainInitiate = new Feat("Domain Initiate", 1, Set.of(clericTrait), "Your deity bestows a special spell related to their powers.");
             domainInitiate.setAvailableToClasses(List.of(cleric));
-            Feat deadlySimplicity = new Feat("Deadly Simplicity", 1, FeatType.CLASS, "When you are wielding your deity’s favored weapon, increase the damage die size of that weapon by one step.");
+            Feat deadlySimplicity = new Feat("Deadly Simplicity", 1, Set.of(clericTrait), "When you are wielding your deity’s favored weapon, increase the damage die size of that weapon by one step.");
             deadlySimplicity.setAvailableToClasses(List.of(cleric));
-            Feat leshyFamiliar = new Feat("Leshy Familiar", 1, FeatType.CLASS, "You call a minor spirit of nature into a plant body, creating a leshy companion to aid you in your spellcasting.");
+            Feat leshyFamiliar = new Feat("Leshy Familiar", 1, Set.of(druidTrait), "You call a minor spirit of nature into a plant body, creating a leshy companion to aid you in your spellcasting.");
             leshyFamiliar.setAvailableToClasses(List.of(druid));
-            Feat animalCompanion = new Feat("Animal Companion", 1, FeatType.CLASS, "You gain the service of a young animal companion that travels with you on your adventures and obeys any simple commands you give it to the best of its abilities.");
+            Feat animalCompanion = new Feat("Animal Companion", 1, Set.of(druidTrait, rangerTrait), "You gain the service of a young animal companion that travels with you on your adventures and obeys any simple commands you give it to the best of its abilities.");
             animalCompanion.setAvailableToClasses(List.of(druid, ranger));
-            Feat huntedShot = new Feat("Hunted Shot", 1, FeatType.CLASS, "You take two quick shots against the one you hunt.");
+            Feat huntedShot = new Feat("Hunted Shot", 1, Set.of(flourishTrait, rangerTrait), "You take two quick shots against the one you hunt.");
             huntedShot.setAvailableToClasses(List.of(ranger));
-            Feat cackle = new Feat("Cackle", 1, FeatType.CLASS, "Your patron’s power fills you with confidence, letting you sustain a magical working even as a quick burst of laughter leaves your lips.");
+            Feat cackle = new Feat("Cackle", 1, Set.of(witchTrait), "Your patron’s power fills you with confidence, letting you sustain a magical working even as a quick burst of laughter leaves your lips.");
             cackle.setAvailableToClasses(List.of(witch));
-            Feat armorRegimentTraining = new Feat("Armor Regiment Training", 1, FeatType.CLASS, "You've trained for grueling marches in full battle kit.");
+            Feat armorRegimentTraining = new Feat("Armor Regiment Training", 1, Set.of(commanderTrait), "You've trained for grueling marches in full battle kit.");
             armorRegimentTraining.setAvailableToClasses(List.of(commander));
-            Feat bodyguard = new Feat("Bodyguard", 1, FeatType.CLASS, "You swear a vow to protect one of your allies at all costs, regardless of the risk this might pose to you.");
+            Feat bodyguard = new Feat("Bodyguard", 1, Set.of(guardianTrait), "You swear a vow to protect one of your allies at all costs, regardless of the risk this might pose to you.");
             bodyguard.setAvailableToClasses(List.of(guardian));
-            Feat acuteVision = new Feat("Acute Vision", 1, FeatType.CLASS, "When you are raging, your visual senses improve, granting you darkvision.");
+            Feat acuteVision = new Feat("Acute Vision", 1, Set.of(barbarianTrait), "When you are raging, your visual senses improve, granting you darkvision.");
             acuteVision.setAvailableToClasses(List.of(barbarian));
-            Feat reactiveStrikeFeat = new Feat("Reactive Strike", 6, FeatType.CLASS, "You lash out at a foe that leaves an opening.");
+            Feat reactiveStrikeFeat = new Feat("Reactive Strike", 6, Set.of(barbarianTrait, championTrait, commanderTrait, exemplarTrait, guardianTrait, magusTrait, swashbucklerTrait), "You lash out at a foe that leaves an opening.");
             reactiveStrikeFeat.setAvailableToClasses(List.of(
                     champion,
                     barbarian,
@@ -1000,38 +1059,40 @@ public class DataSeeder {
                     exemplar,
                     guardian
             ));
-            Feat energizedSpark = new Feat("Energized Spark", 1, FeatType.CLASS, "The energy of your spirit manifests as crackling lightning, the chill of winter, or the power of an element.");
+            Feat energizedSpark = new Feat("Energized Spark", 1, Set.of(exemplarTrait), "The energy of your spirit manifests as crackling lightning, the chill of winter, or the power of an element.");
             energizedSpark.setAvailableToClasses(List.of(exemplar));
-            Feat brilliantFlash = new Feat("Brilliant Flash", 1, FeatType.CLASS, "Your light cleanses souls of fear.");
+            Feat brilliantFlash = new Feat("Brilliant Flash", 1, Set.of(championTrait), "Your light cleanses souls of fear.");
             brilliantFlash.setAvailableToClasses(List.of(champion));
-            Feat eliminateRedHerrings = new Feat("Eliminate Red Herrings", 1, FeatType.CLASS, "You have a keen sense for avoiding spurious lines of inquiry.");
+            Feat eliminateRedHerrings = new Feat("Eliminate Red Herrings", 1, Set.of(investigatorTrait), "You have a keen sense for avoiding spurious lines of inquiry.");
             eliminateRedHerrings.setAvailableToClasses(List.of(investigator));
-            Feat adaptedCantrip = new Feat("Adapted Cantrip", 1, FeatType.ANCESTRY, "Through study of multiple magical traditions, you’ve altered a spell to suit your spellcasting style.");
+            Feat adaptedCantrip = new Feat("Adapted Cantrip", 1, Set.of(humanTrait), "Through study of multiple magical traditions, you’ve altered a spell to suit your spellcasting style.");
             adaptedCantrip.setAncestry(human);
-            Feat dwarvenDoughtiness = new Feat("Dwarven Doughtiness", 1, FeatType.ANCESTRY, "You are naturally calm and collected in the face of imminent danger.");
+            Feat dwarvenDoughtiness = new Feat("Dwarven Doughtiness", 1, Set.of(dwarfTrait), "You are naturally calm and collected in the face of imminent danger.");
             adaptedCantrip.setAncestry(dwarf);
-            Feat ancestralLongevity = new Feat("Ancestral Longevity", 1, FeatType.ANCESTRY, "You have accumulated a vast array of lived knowledge over the years.");
+            Feat ancestralLongevity = new Feat("Ancestral Longevity", 1, Set.of(elfTrait), "You have accumulated a vast array of lived knowledge over the years.");
             ancestralLongevity.setAncestry(elf);
-            Feat nimbleElf = new Feat("Nimble Elf", 1, FeatType.ANCESTRY, "Your muscles are tightly honed.");
+            Feat nimbleElf = new Feat("Nimble Elf", 1, Set.of(elfTrait), "Your muscles are tightly honed.");
             nimbleElf.setAncestry(elf);
-            Feat animalAccomplice = new Feat("Animal Accomplice", 1, FeatType.ANCESTRY, "You build a rapport with an animal, which becomes magically bonded to you.");
+            Feat animalAccomplice = new Feat("Animal Accomplice", 1, Set.of(gnomeTrait), "You build a rapport with an animal, which becomes magically bonded to you.");
             animalAccomplice.setAncestry(gnome);
-            Feat burnIt = new Feat("Burn It!", 1, FeatType.ANCESTRY, "Fire fascinates you.");
+            Feat burnIt = new Feat("Burn It!", 1, Set.of(goblinFeat), "Fire fascinates you.");
             burnIt.setAncestry(goblin);
-            Feat distractingShadows = new Feat("Distracting Shadows", 1, FeatType.ANCESTRY, "You have learned to remain hidden by using larger folk as a distraction to avoid drawing attention to yourself.");
+            Feat distractingShadows = new Feat("Distracting Shadows", 1, Set.of(halflingTrait), "You have learned to remain hidden by using larger folk as a distraction to avoid drawing attention to yourself.");
             distractingShadows.setAncestry(halfling);
-            Feat halflingLuck = new Feat("Halfling Luck", 1, FeatType.ANCESTRY, "Your happy-go-lucky nature makes it seem like misfortune avoids you, and to an extent, that might even be true.");
+            Feat halflingLuck = new Feat("Halfling Luck", 1, Set.of(fortuneTrait, halflingTrait), "Your happy-go-lucky nature makes it seem like misfortune avoids you, and to an extent, that might even be true.");
             halflingLuck.setAncestry(halfling);
-            Feat graspingReach = new Feat("Grasping Reach", 1, FeatType.ANCESTRY, "You can extend a tangle of vines or tendrils to support your arms and extend your reach.");
+            Feat graspingReach = new Feat("Grasping Reach", 1, Set.of(leshyTrait), "You can extend a tangle of vines or tendrils to support your arms and extend your reach.");
             graspingReach.setAncestry(leshy);
-            Feat beastTrainer = new Feat("Beast Trainer", 1, FeatType.ANCESTRY, "You have an impressive innate ability to tame and command ferocious beasts.");
+            Feat beastTrainer = new Feat("Beast Trainer", 1, Set.of(orcTrait), "You have an impressive innate ability to tame and command ferocious beasts.");
             beastTrainer.setAncestry(orc);
-            Feat earnedGlory = new Feat("Earned Glory", 1, FeatType.ANCESTRY, "Elves often struggle with underestimating aiuvarins, and you are experienced at telling stories of your accomplishments to gain their respect.");
+            Feat earnedGlory = new Feat("Earned Glory", 1, Set.of(aiuvarinTrait), "Elves often struggle with underestimating aiuvarins, and you are experienced at telling stories of your accomplishments to gain their respect.");
             earnedGlory.setHeritage(aiuvarin);
-            Feat supernaturalCharm = new Feat("Supernatural Charm", 5, FeatType.ANCESTRY, "The elven magic in your blood manifests as a force you can use to become more appealing or alluring.");
+            Feat supernaturalCharm = new Feat("Supernatural Charm", 5, Set.of(aiuvarinTrait), "The elven magic in your blood manifests as a force you can use to become more appealing or alluring.");
             supernaturalCharm.setHeritage(aiuvarin);
-            Feat monstrousPeacemaker = new Feat("Monstrous Peacemaker", 1, FeatType.ANCESTRY, "Your dual human and orc nature has given you a unique perspective, allowing you to bridge the gap between humans and the many intelligent creatures in the world that humans consider monsters.");
+            Feat monstrousPeacemaker = new Feat("Monstrous Peacemaker", 1, Set.of(dromaarTrait), "Your dual human and orc nature has given you a unique perspective, allowing you to bridge the gap between humans and the many intelligent creatures in the world that humans consider monsters.");
             monstrousPeacemaker.setHeritage(dromaar);
+            Feat brineMay = new Feat("Brine May", 1, Set.of(changelingTrait, lineageTrait), "Your mother was a sea hag, granting you one sea-green or blue eye.");
+            Feat angelkin = new Feat("Angelkin", 1, Set.of(lineageTrait, nephilimTrait), "You descend from an angel, a winged messenger from Nirvana or one of the other celestial realms.");
             featRepo.saveAll(List.of(
                     intimidatingGlare, terrainExpert, assurance, multilingual, quickClimb, combatClimber,
                     adoptedAncestry, shieldBlock, diehard,
@@ -1043,7 +1104,7 @@ public class DataSeeder {
                     spellbookProdigy,
                     nimbleDodge, ricochetStance2,
                     bardicLore, domainInitiate, deadlySimplicity, leshyFamiliar, animalCompanion, huntedShot, cackle, armorRegimentTraining, bodyguard, acuteVision, energizedSpark, ancestralMind, ammunitionThaumaturgy, brilliantFlash, eliminateRedHerrings,
-                    adaptedCantrip, dwarvenDoughtiness, ancestralLongevity, nimbleElf, earnedGlory, supernaturalCharm, animalAccomplice, burnIt, distractingShadows, halflingLuck, graspingReach, beastTrainer, monstrousPeacemaker));
+                    adaptedCantrip, dwarvenDoughtiness, ancestralLongevity, nimbleElf, earnedGlory, supernaturalCharm, animalAccomplice, burnIt, distractingShadows, halflingLuck, graspingReach, beastTrainer, monstrousPeacemaker, brineMay, angelkin));
 
             Background warrior = new Background("Warrior", "You served as a soldier or mercenary.", List.of(intimidation), "Warfare Lore", intimidatingGlare);
             Background scholar = new Background("Scholar", "You studied ancient texts and forgotten lore.", List.of(arcana, nature, occultism, religion), "Academia Lore", assurance);

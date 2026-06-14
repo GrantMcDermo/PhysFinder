@@ -23,13 +23,11 @@ public class Heritage {
     @ManyToOne
     private Ancestry ancestry;
 
-    @ElementCollection
-    @Enumerated(EnumType.STRING)
-    private Set<TraitType> traits = new HashSet<>();
+    @ManyToMany
+    private Set<Trait> traits = new HashSet<>();
 
-    @ElementCollection
-    @Enumerated(EnumType.STRING)
-    private Set<TraitType> traitsToRemove = new HashSet<>();
+    @ManyToMany
+    private Set<Trait> traitsToRemove = new HashSet<>();
 
     @ElementCollection
     @Enumerated(EnumType.STRING)

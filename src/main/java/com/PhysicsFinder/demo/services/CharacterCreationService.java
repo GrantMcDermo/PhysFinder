@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -339,24 +340,16 @@ public class CharacterCreationService {
         }
     }
 
-    public List<Feat> getAvailableAncestryFeats(UUID characterId){
-        PlayerCharacter sheet = playerCharacterRepo.findById(characterId).orElseThrow(() -> new RuntimeException("Character not found"));
-        List<UUID> ancestryIds = new ArrayList<>();
+    public List<Feat> getAncestryFeats2(UUID characterId){
+        PlayerCharacter character = playerCharacterRepo.findById(characterId).orElseThrow(() -> new RuntimeException("Character not found"));
 
-        if(sheet.getAncestry() != null)
-            ancestryIds.add(sheet.getAncestry().getId());
+        Set<Trait> ancestryTraits = character.getTraits().stream()
+                .filter(t -> t.getCategory() == TraitCategory.ANCESTRY)
+                .collect(Collectors.toSet());
 
-        if (sheet.getHeritage() != null)
-            sheet.getHeritage().getGrantedAncestryFeatAccess().forEach(ancestry -> ancestryIds.add(ancestry.getId()));
+        if(ancestryTraits.isEmpty()) return List.of();
 
-        List<Feat> ancestryFeats = ancestryIds.isEmpty() ? List.of() : featRepo.findByAncestryIdIn(ancestryIds);
-
-        List<Feat> heritageFeats = sheet.getHeritage() == null ? List.of() : featRepo.findByHeritageIdAndFeatType(sheet.getHeritage().getId(), FeatType.ANCESTRY);
-
-        List<Feat> result = new ArrayList<>();
-        result.addAll(ancestryFeats);
-        result.addAll(heritageFeats);
-        return result;
+        return featRepo.findDistinctByTraitsInAndLevelLessThanEqual(ancestryTraits, character.getLevel());
     }
 
     public PlayerCharacter selectFeat(UUID characterId, SelectFeatRequest request){
@@ -364,7 +357,7 @@ public class CharacterCreationService {
         Feat feat = featRepo.findById(request.featId()).orElseThrow(() -> new RuntimeException("Feat not found"));
 
         if(feat.getFeatType() == FeatType.ANCESTRY){
-            List<Feat> availableFeats = getAvailableAncestryFeats(characterId);
+            List<Feat> availableFeats = getAncestryFeats2(characterId);
             if(!availableFeats.contains(feat))
                 throw new RuntimeException("This ancestry feat is not available to this character");
         }
