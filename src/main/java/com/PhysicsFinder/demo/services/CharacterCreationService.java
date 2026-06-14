@@ -362,10 +362,7 @@ public class CharacterCreationService {
                 throw new RuntimeException("This ancestry feat is not available to this character");
         }
 
-        SelectedFeat selectedFeat = new SelectedFeat(sheet, feat);
-
-        sheet.getSelectedFeats().add(selectedFeat);
-
+        addSelectedFeat(sheet, feat);
         return playerCharacterRepo.save(sheet);
     }
 
