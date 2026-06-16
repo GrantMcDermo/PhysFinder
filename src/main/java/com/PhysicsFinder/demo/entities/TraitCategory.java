@@ -8,5 +8,8 @@ public enum TraitCategory {
     ACTION,
     MAGIC,
     HERITAGE,
-    CREATURE
+    CREATURE,
+    ARMOR,
+    WEAPON,
+    ITEM
 }

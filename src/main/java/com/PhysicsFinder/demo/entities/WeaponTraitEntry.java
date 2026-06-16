@@ -3,6 +3,7 @@ package com.PhysicsFinder.demo.entities;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.ManyToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,8 +15,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class WeaponTraitEntry {
-    @Enumerated(EnumType.STRING)
-    private WeaponTrait trait;
+    @ManyToMany
+    private Trait trait;
 
     @Enumerated(EnumType.STRING)
     private DamageType alternateDamageType; // for VERSATILE

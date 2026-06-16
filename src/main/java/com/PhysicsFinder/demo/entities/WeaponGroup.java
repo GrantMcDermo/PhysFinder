@@ -12,5 +12,7 @@ public enum WeaponGroup {
     PICK,
     FLAIL,
     SPEAR,
-    POLEARM
+    POLEARM,
+    SLING,
+    SHIELD
 }

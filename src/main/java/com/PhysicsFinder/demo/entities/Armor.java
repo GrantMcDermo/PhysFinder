@@ -29,9 +29,8 @@ public class Armor {
     @Enumerated(EnumType.STRING)
     private ArmorGroup armorGroup;
 
-    @ElementCollection
-    @Enumerated(EnumType.STRING)
-    private Set<ArmorTrait> traits = new HashSet<>();
+    @ManyToMany
+    private Set<Trait> traits = new HashSet<>();
 
     private Integer acBonus;
 
