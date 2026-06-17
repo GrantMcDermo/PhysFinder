@@ -181,11 +181,14 @@ public class DataSeeder {
             Trait lightTrait = new Trait("Light", TraitCategory.MAGIC);
             Trait coldTrait = new Trait("Cold", TraitCategory.MAGIC);
             Trait earthTrait = new Trait("Earth", TraitCategory.MAGIC);
+            Trait sorcererTrait = new Trait("Sorcerer", TraitCategory.CLASS);
+            Trait oracleTrait = new Trait("Oracle", TraitCategory.CLASS);
+            Trait summonerTrait = new Trait("Summoner", TraitCategory.CLASS);
 
             traitRepo.saveAll(List.of(dwarfTrait, elfTrait, gnomeTrait, goblinFeat, halflingTrait, humanTrait, kholoTrait, koboldTrait, leshyTrait, orcTrait, samsaranTrait, wayangTrait,
                     aiuvarinTrait, changelingTrait, dromaarTrait, nephilimTrait,
                     bardTrait, clericTrait, druidTrait, fighterTrait, rangerTrait, rogueTrait, witchTrait, wizardTrait,
-                    barbarianTrait, championTrait, commanderTrait, exemplarTrait, guardianTrait, investigatorTrait, magusTrait, monkTrait, psychicTrait, swashbucklerTrait, thaumaturgeTrait,
+                    barbarianTrait, championTrait, commanderTrait, exemplarTrait, guardianTrait, investigatorTrait, magusTrait, monkTrait, oracleTrait, psychicTrait, sorcererTrait, summonerTrait, swashbucklerTrait, thaumaturgeTrait,
                     auditoryTrait, concentrateTrait, downtimeTrait, emotionTrait, explorationTrait, fearTrait, feyTrait, flourishTrait, fortuneTrait, fungusTrait, generalTrait, humanoidTrait, incapactitationTrait, lineageTrait, manipulateTrait, mentalTrait, moveTrait, plantTrait, pressTrait, secretTrait, shadowTrait, skillTrait, stanceTrait, visualTrait,
                     arcaneTrait, coldTrait, consecrationTrait, detectionTrait, divineTrait, earthTrait, healingTrait, illusionTrait, lightTrait, linguisticTrait, morphTrait, polymorphTrait, predictionTrait, primalTrait, sonicTrait, spellshapeTrait, teleportationTrait, vitalityTrait,
                     aquadynamicTrait, bulwarkTrait, comfortTrait, flexibleTrait, laminarTrait, noisyTrait,
@@ -1039,6 +1042,7 @@ public class DataSeeder {
                     aiuvarin, dromaar, changeling, nephilim));
 
             Feat assurance = new Feat("Assurance", 1, Set.of(fortuneTrait, generalTrait, skillTrait), "Even in the worst circumstances, you can perform basic tasks.");
+            Feat steadyBalance = new Feat("Steady Balance", 1, Set.of(generalTrait, skillTrait), "You can keep your balance easily, even in adverse conditions.");
             Feat combatClimber = new Feat("Combat Climber", 1, Set.of(generalTrait, skillTrait), "Your techniques allow you to fight as you climb.");
             Feat quickClimb = new Feat("Quick Climb", 7, Set.of(generalTrait, skillTrait), "When Climbing, you move 5 more feet on a success and 10 more feet on a critical success, up to your Speed.");
             Feat intimidatingGlare = new Feat("Intimidating Glare", 1, Set.of(generalTrait, skillTrait), "Demoralize a creature using only a look.");
@@ -1180,7 +1184,6 @@ public class DataSeeder {
             spellbookProdigy.setAvailableToClasses(List.of(wizard));
             Feat energyAblation = new Feat("Energy Ablation", 2, Set.of(spellshapeTrait, wizardTrait), "As you direct destructive energy at a foe, you can divert some of its power into a protective barrier that shields you from harm.");
             Feat nonlethalSpell = new Feat("Nonlethal Spell", 2, Set.of(manipulateTrait, spellshapeTrait, wizardTrait), "You can alter offensive spells to be less deadly.");
-            Feat bespellStrikes = new Feat("Bespell Strikes", 4, Set.of(wizardTrait), "You siphon spell energy into one weapon you’re wielding, or into one of your unarmed attacks, such as a fist.");
             Feat callWizardlyTools = new Feat("Call Wizardly Tools", 4, Set.of(concentrateTrait, teleportationTrait, wizardTrait), "You’re mystically connected to your wizardly tools, ensuring you can always find them when you’ve misplaced them.");
             Feat linkedFocus = new Feat("Linked Focus", 4, Set.of(wizardTrait), "You have linked your bonded item to the well of energy that powers your school spells.");
             Feat spellProtectionArray = new Feat("Spell Protection Array", 4, Set.of(arcaneTrait, manipulateTrait, wizardTrait), "You inscribe a circle of arcane runes that dampen enemies’ magic.");
@@ -1191,16 +1194,13 @@ public class DataSeeder {
             Feat advancedSchoolSpell = new Feat("Advanced School Spell", 8, Set.of(wizardTrait), "You gain access to the advanced teachings of your arcane institution, learning a powerful new school spell.");
             Feat bondConservation = new Feat("Bond Conservation", 8, Set.of(manipulateTrait, spellshapeTrait, wizardTrait), "By efficiently and carefully manipulating the arcane energies unleashed by your bonded item, you can conserve just enough power to cast another spell, though this second spell is slightly weaker.");
             Feat formRetention = new Feat("Form Retention", 8, Set.of(wizardTrait), "You have trained your mind and body to tolerate polymorph magic for longer periods of time, so long as you prepare for the change appropriately.");
-            Feat knowledgeIsPower = new Feat("Knowledge is Power", 8, Set.of(magusTrait, wizardTrait), "Your academic knowledge about a creature allows you to subtly alter your magic to defeat them.");
             Feat scrollAdept = new Feat("Scroll Adept", 10, Set.of(wizardTrait), "During your daily preparations, you can create two temporary scrolls containing arcane spells from your spellbook.");
             Feat cleverCounterspell = new Feat("Clever Counterspell", 12, Set.of(wizardTrait), "You creatively apply your prepared spells to Counterspell a much wider variety of your opponents’ magic.");
             Feat forcibleEnergy = new Feat("Forcible Energy", 12, Set.of(manipulateTrait, spellshapeTrait, wizardTrait), "You perform complex manipulations to make the energy from your spells so powerful that your enemies remain vulnerable to it afterward.");
             Feat keenMagicalDetection = new Feat("Keen Magical Detection", 12, Set.of(fortuneTrait, wizardTrait), "You sense magical dangers.");
-            Feat magicSense = new Feat("Magic Sense", 12, Set.of(arcaneTrait, detectionTrait, magusTrait, wizardTrait), "You have a literal sixth sense for ambient magic in your vicinity.");
             Feat bondedFocus = new Feat("Bonded Focus", 14, Set.of(wizardTrait), "Your connection to your bonded item increases your focus pool.");
             Feat secondaryDetonationArray = new Feat("Secondary Detonation Array", 14, Set.of(manipulateTrait, spellshapeTrait, wizardTrait), "You divert some of your spell’s energy into an unstable runic array.");
             Feat superiorBond = new Feat("Superior Bond", 14, Set.of(wizardTrait), "When you draw upon your bonded item, you can leave a bit of energy within it for later use.");
-            Feat scintillatingSpell = new Feat("Scintillating Spell", 16, Set.of(concentrateTrait, lightTrait, spellshapeTrait, wizardTrait), "Your spells become a radiant display of light and color.");
             Feat spellTinker = new Feat("Spell Tinker", 16, Set.of(concentrateTrait, wizardTrait), "You’ve learned to alter choices you make when casting spells on yourself.");
             Feat infinitePossibilities = new Feat("Infinite Possibilities", 18, Set.of(wizardTrait), "You can prepare a spell slot that exists in your mind as many different possibilities at once.");
             Feat reprepareSpell = new Feat("Reprepare Spell", 18, Set.of(wizardTrait), "You’ve discovered how to reuse some of your spell slots over and over.");
@@ -1208,14 +1208,21 @@ public class DataSeeder {
             Feat archwizardsMight = new Feat("Archwizard's Might", 20, Set.of(wizardTrait), "You have mastered the greatest secrets of arcane magic.");
             Feat spellCombination = new Feat("Spell Combination", 20, Set.of(wizardTrait), "You can merge spells, producing multiple effects with a single casting.");
             Feat spellMastery = new Feat("Spell Mastery", 20, Set.of(wizardTrait), "You have mastered a handful of spells to such a degree that you can cast them even if you haven’t prepared them in advance.");
-            Feat spellshapeMastery = new Feat("Spellshape Mastery", 20, Set.of(wizardTrait), "Your mastery of magic ensures that you can alter your spells just as easily as you can cast them normally.");
+
+            Feat bespellStrikes = new Feat("Bespell Strikes", 4, Set.of(oracleTrait, sorcererTrait, wizardTrait), "You siphon spell energy into one weapon you’re wielding, or into one of your unarmed attacks, such as a fist.");
+
+            Feat scintillatingSpell = new Feat("Scintillating Spell", 16, Set.of(concentrateTrait, lightTrait, sorcererTrait, spellshapeTrait, wizardTrait), "Your spells become a radiant display of light and color.");
+            Feat spellshapeMastery = new Feat("Spellshape Mastery", 20, Set.of(sorcererTrait, wizardTrait), "Your mastery of magic ensures that you can alter your spells just as easily as you can cast them normally.");
 
             Feat ancestralMind = new Feat("Ancestral Mind", 1, Set.of(psychicTrait), "By unraveling memories and connections passed down from your progenitors and buried within your unconscious mind, you learn to convert your inherent magic into psychic power.");
             ancestralMind.setAvailableToClasses(List.of(psychic));
 
             Feat ammunitionThaumaturgy = new Feat("Ammunition Thaumaturgy", 1, Set.of(thaumaturgeTrait), "You're so used to handling your implement, weapon, and esoterica in the heat of combat that adding a few bullets or arrows to the mix is no extra burden.");
             ammunitionThaumaturgy.setAvailableToClasses(List.of(thaumaturge));
-            Feat familiarFeat = new Feat("Familiar", 1, Set.of(magusTrait, thaumaturgeTrait, wizardTrait), "You make a pact with a creature that serves you and assists your spellcasting.");
+
+            Feat familiarFeat = new Feat("Familiar", 1, Set.of(magusTrait, sorcererTrait, thaumaturgeTrait, wizardTrait), "You make a pact with a creature that serves you and assists your spellcasting.");
+            Feat knowledgeIsPower = new Feat("Knowledge is Power", 8, Set.of(magusTrait, wizardTrait), "Your academic knowledge about a creature allows you to subtly alter your magic to defeat them.");
+            Feat magicSense = new Feat("Magic Sense", 12, Set.of(arcaneTrait, detectionTrait, magusTrait, oracleTrait, sorcererTrait, wizardTrait), "You have a literal sixth sense for ambient magic in your vicinity.");
 
             Feat nimbleDodge = new Feat("Nimble Dodge", 1, Set.of(rogueTrait), "You deftly dodge out of the way, gaining a +2 circumstance bonus to AC against the triggering attack.");
             nimbleDodge.setAvailableToClasses(List.of(rogue));
@@ -1295,16 +1302,74 @@ public class DataSeeder {
 
             Feat bardicLore = new Feat("Bardic Lore", 1, Set.of(bardTrait), "Your studies make you informed on every subject.");
             bardicLore.setAvailableToClasses(List.of(bard));
-            Feat reachSpell = new Feat("Reach Spell", 1, Set.of(bardTrait, clericTrait, concentrateTrait, druidTrait, spellshapeTrait, witchTrait, wizardTrait), "You can extend your spells’ range.");
-            Feat cantripExpansion = new Feat("Cantrip Expansion", 2, Set.of(bardTrait, clericTrait, magusTrait, psychicTrait, witchTrait, wizardTrait), "Study broadens your range of simple spells.");
+            Feat hymnOfHealing = new Feat("Hymn of Healing", 1, Set.of(bardTrait), "You learn the hymn of healing composition spell, which imbues your music with rich melodies that help your allies recover from harm.");
+            Feat lingeringComposition = new Feat("Lingering Composition",1, Set.of(bardTrait), "By adding a flourish, you make your compositions last longer.");
+            Feat martialPerformance = new Feat("Martial Performance", 1, Set.of(bardTrait), "Your muse has taught you how to handle a wider variety of weapons than most bards, empowering you to effortlessly blend your performance into combat tools.");
+            Feat reachSpell = new Feat("Reach Spell", 1, Set.of(bardTrait, clericTrait, concentrateTrait, druidTrait, oracleTrait, sorcererTrait, spellshapeTrait, witchTrait, wizardTrait), "You can extend your spells’ range.");
+            Feat versatilePerformance = new Feat("Versatile Performance", 1, Set.of(bardTrait), "You can rely on the grandeur of your performances rather than ordinary social skills.");
+            Feat wellVersed = new Feat("Well-Versed", 1, Set.of(bardTrait), "You’re resilient to performative influences that aren’t your own.");
+            Feat cantripExpansion = new Feat("Cantrip Expansion", 2, Set.of(bardTrait, clericTrait, magusTrait, oracleTrait, psychicTrait, sorcererTrait, witchTrait, wizardTrait), "Study broadens your range of simple spells.");
+            Feat directedAudience = new Feat("Directed Audience", 2, Set.of(bardTrait), "You can shape the area of your composition spells.");
+            Feat emotionalPush = new Feat("Emotional Push", 2, Set.of(bardTrait, concentrateTrait), "You prepare to take advantage of your enemy’s sudden change in emotions.");
+            Feat esotericPolymath = new Feat("Esoteric Polymath", 2, Set.of(bardTrait), "You keep a book of occult spells, similar to a wizard’s spellbook, and can use its spells to supplement your spell repertoire.");
+            Feat loremastersEtude = new Feat("Loremaster's Etude", 2, Set.of(bardTrait, fortuneTrait), "You magically unlock memories, making them easier to recall.");
+            Feat multifariousMuse = new Feat("Multifarious Muse", 2, Set.of(bardTrait), "Your muse doesn’t fall into a single label.");
+            Feat songOfStrength = new Feat("Song of Strength", 2, Set.of(bardTrait), "Your performances inspire strength in your allies to aid them at physical tasks.");
+            Feat upliftingOverture = new Feat("Uplifting Overture", 2, Set.of(bardTrait), "You learn the uplifting overture composition cantrip, which aids your allies’ skills with the inspiring nature of your performance.");
             Feat combatReading = new Feat("Combat Reading", 4, Set.of(bardTrait, secretTrait), "You use a performer’s cold reading techniques, aura reading, and other tricks to discover your foe’s strengths and weaknesses.");
-            Feat steadySpellcasting = new Feat("Steady Spellcasting", 6, Set.of(bardTrait, clericTrait, druidTrait, psychicTrait, witchTrait, wizardTrait), "You don’t lose spells easily.");
+            Feat courageousAdvance = new Feat("Courageous Advance", 4, Set.of(auditoryTrait, bardTrait, concentrateTrait, spellshapeTrait), "With a rousing call, you exhort an ally to advance.");
+            Feat inTune = new Feat("In Tune", 4, Set.of(bardTrait, concentrateTrait, spellshapeTrait), "You attune your great skill in performing to another, granting them a small measure of your skill as though anyone could do it.");
+            Feat melodiousSpell = new Feat("Melodious Spell", 4, Set.of(bardTrait, concentrateTrait, spellshapeTrait), "You subtly weave your spellcasting into a performance.");
+            Feat rallyingAnthemFeat = new Feat("Rallying Anthem", 4, Set.of(bardTrait), "You learn the rallying anthem composition cantrip, which protects you and allies.");
+            Feat ritualResearcher = new Feat("Ritual Researcher", 4, Set.of(bardTrait), "Careful research into the art of rituals has made you better at performing them.");
+            Feat tripleTimeFeat = new Feat("Triple Time", 4, Set.of(bardTrait), "You learn the triple time composition cantrip, which speeds up you and your allies for a round.");
+            Feat versatileSignature = new Feat("Versatile Signature", 4, Set.of(bardTrait), "While most bards are known for certain signature performances and spells, you’re always tweaking your available repertoire.");
+            Feat assuredLKnowledge = new Feat("Assured Knowledge", 6, Set.of(bardTrait, fortuneTrait), "You can procure information with confidence.");
+            Feat defensiveCoordination = new Feat("Defensive Coordination", 6, Set.of(auditoryTrait, bardTrait, concentrateTrait, spellshapeTrait), "Like the storied heroes who persist in the face of overwhelming odds, you and your allies will hold the line.");
+            Feat dirgeOfDoomFeat = new Feat("Dirge of Doom", 6, Set.of(bardTrait), "You learn the dirge of doom composition cantrip, which frightens your enemies and keeps them from fully recovering from their fear.");
+            Feat educateAllies = new Feat("Educate Allies", 6, Set.of(bardTrait, concentrateTrait), "You tweak the properties of your composition spell to convey a bit of your defensive knowledge.");
+            Feat harmonize = new Feat("Harmonize", 6, Set.of(bardTrait, concentrateTrait, manipulateTrait, spellshapeTrait), "You can perform multiple compositions simultaneously, typically by performing in multiple ways at the same time, using special vocal techniques to double your voice, or creating occult magic that replicates your song or speech.");
+            Feat songOfMarchingFeat = new Feat("Song of Marching", 6, Set.of(bardTrait), "You learn the song of marching composition cantrip, which enables you and your allies to cross vast distances without strain.");
+            Feat steadySpellcasting = new Feat("Steady Spellcasting", 6, Set.of(bardTrait, clericTrait, druidTrait, oracleTrait, psychicTrait, sorcererTrait, witchTrait, wizardTrait), "You don’t lose spells easily.");
+            Feat accompany = new Feat("Accompany", 8, Set.of(bardTrait, concentrateTrait, manipulateTrait), "You use your performance to supplement an ally’s spellcasting, providing magical energy for their spell in their stead.");
             Feat callAndResponse = new Feat("Call and Response", 8, Set.of(auditoryTrait, bardTrait, concentrateTrait, spellshapeTrait), "Your composition takes the form of a call-and-response chant that lets your allies continue the effect without you.");
+            Feat eclecticSkill = new Feat("Eclectic Skill", 8, Set.of(bardTrait), "Your broad experiences translate to a range of skills.");
+            Feat fortissimoCompositionFeat = new Feat("Fortissimo Composition", 8, Set.of(bardTrait), "Your anthems grow louder and more potent, bolstered by your muse’s power.");
+            Feat knowItAll = new Feat("Know-It-All", 8, Set.of(bardTrait, thaumaturgeTrait), "When you succeed at a check to Recall Knowledge, you gain additional information or context.");
+            Feat reflexiveCourage = new Feat("Reflexive Courage", 8, Set.of(auditoryTrait, bardTrait, concentrateTrait), "You bellow a ferocious call to arms, inspiring yourself to lash out at a foe.");
+            Feat soulsight = new Feat("Soulsight", 8, Set.of(bardTrait, sorcererTrait), "Your muse has opened your senses to the world beyond.");
             Feat annotateComposition = new Feat("Annotate Composition", 10, Set.of(bardTrait, explorationTrait, linguisticTrait), "By putting composition to paper, you can create a source of stirring words or song that others can read and understand.");
-            Feat quickenedCasting = new Feat("Quickened Casting", 10, Set.of(bardTrait, concentrateTrait, spellshapeTrait, witchTrait, wizardTrait), "If your next action is to cast a cantrip or a spell that is at least 2 ranks lower than the highest-rank spell slot you have, reduce the number of actions to cast it by 1 (minimum 1 action).");
-            Feat effortlessConcentration = new Feat("Effortless Concentration", 16, Set.of(bardTrait, druidTrait, witchTrait, wizardTrait), "You can maintain a spell with hardly a thought.");
+            Feat courageousAssault = new Feat("Courageous Assault", 10, Set.of(auditoryTrait, bardTrait, concentrateTrait, spellshapeTrait), "With a mighty shout, you can stir an ally to attack.");
+            Feat houseOfImaginaryWallsFeat = new Feat("House of Imaginary Walls", 10, Set.of(bardTrait), "You erect an imaginary barrier others believe to be real.");
+            Feat odeToOuroborosFeat = new Feat("Ode to Ouroboros", 10, Set.of(bardTrait), "You learn the ode to ouroboros composition spell, which enables you to temporarily spare your allies from death.");
+            Feat quickenedCasting = new Feat("Quickened Casting", 10, Set.of(bardTrait, concentrateTrait, oracleTrait, sorcererTrait, spellshapeTrait, witchTrait, wizardTrait), "If your next action is to cast a cantrip or a spell that is at least 2 ranks lower than the highest-rank spell slot you have, reduce the number of actions to cast it by 1 (minimum 1 action).");
+            Feat symphonyOfTheUnfetteredHeartFeat = new Feat("Symphony of the Unfettered Heart", 10, Set.of(bardTrait), "You learn the symphony of the unfettered heart composition spell, which enables you to protect an ally against incapacitating conditions.");
+            Feat unusualComposition = new Feat("Unusual Composition", 10, Set.of(bardTrait, concentrateTrait, manipulateTrait, spellshapeTrait), "You can translate the emotion and power of a composition to other mediums.");
+            Feat eclecticPolymath = new Feat("Eclectic Polymath", 12, Set.of(bardTrait), "Your flexible mind can quickly shift from one spell to another.");
+            Feat enigmasKnowledge = new Feat("Enigma's Knowledge", 12, Set.of(bardTrait), "Your muse whispers knowledge to you at all the right times.");
+            Feat inspirationalFocus = new Feat("Inspirational Focus", 12, Set.of(bardTrait), "Your connection to your muse has granted you unusual focus.");
+            Feat reverberate = new Feat("Reverberate", 12, Set.of(bardTrait), "You can manipulate the acoustics around you to deflect sonic damage back at its source.");
+            Feat sharedAssault = new Feat("Shared Assault", 12, Set.of(bardTrait), "In the triumph of battle, you can share the glory with another ally.");
+            Feat allegroFeat = new Feat("Allegro", 14, Set.of(bardTrait), "You can quicken your allies with a fast-paced performance.");
+            Feat earworm = new Feat("Earworm", 14, Set.of(bardTrait, explorationTrait), "By endlessly repeating a motif, you implant a memorable song that repeats over and over again in your allies’ heads, preparing them to respond to it later.");
+            Feat soothingBalladFeat = new Feat("Soothing Ballad", 14, Set.of(bardTrait), "You soothe your allies’ wounds with the power of performance.");
+            Feat triumphantInspiration = new Feat("Triumphant Inspiration", 14, Set.of(bardTrait), "With a triumphant shout, you inspire your allies.");
+            Feat trueHypercognition = new Feat("True Hypercognition", 14, Set.of(bardTrait), "Your mind works at an incredible pace.");
+            Feat vigorousAnthem = new Feat("Vigorous Anthem", 14, Set.of(auditoryTrait, bardTrait, concentrateTrait, spellshapeTrait), "You instill magical vigor in your allies when you inspire them to attack.");
+            Feat courageousOnslaught = new Feat("Courageous Onslaught", 16, Set.of(auditoryTrait, bardTrait, concentrateTrait, spellshapeTrait), "You use your performance to orchestrate an onslaught against your enemies.");
+            Feat effortlessConcentration = new Feat("Effortless Concentration", 16, Set.of(bardTrait, druidTrait, sorcererTrait, summonerTrait, witchTrait, wizardTrait), "You can maintain a spell with hardly a thought.");
+            Feat resoundingFinale = new Feat("Resounding Finale", 16, Set.of(bardTrait, concentrateTrait), "You bring your performance to a sudden, dramatic finish, drowning out other sounds.");
+            Feat studiousCapacity = new Feat("Studious Capacity", 16, Set.of(bardTrait), "Your continued study of occult magic has increased your magical capacity, allowing you to cast spells even when it seems impossible.");
             Feat allInMyHead = new Feat("All In My Head", 18, Set.of(bardTrait, illusionTrait, mentalTrait), "Using your occult connections and incredible powers of persuasion, you convince yourself that the triggering damage is a figment of your imagination.");
+            Feat deepLore = new Feat("Deep Lore", 18, Set.of(bardTrait), "Your repertoire is vast, containing far more spells than usual.");
             Feat discordantVoice = new Feat("Discordant Voice", 18, Set.of(bardTrait, sonicTrait), "Your courageous anthem lets loose a discordant shriek that imbues your allies’ attacks with powerful sonic reverberations.");
+            Feat eternalComposition = new Feat("Eternal Composition", 18, Set.of(bardTrait), "The world is a stage upon which you are always playing.");
+            Feat impossiblePolymath = new Feat("Impossible Polymath", 18, Set.of(bardTrait), "Your esoteric formulas are so unusual that they allow you to dabble in magic from diverse traditions that other bards don’t understand.");
+            Feat fatalAriaFeat = new Feat("Fatal Aria", 20, Set.of(bardTrait), "Your songs overwhelm the target with unbearable emotion, potentially striking them dead on the spot.");
+            Feat perfectEncore = new Feat("Perfect Encore", 20, Set.of(bardTrait), "You develop another incredible creation.");
+            Feat piedPipingFeat = new Feat("Pied Piping", 20, Set.of(bardTrait), "You learn the pied piping composition spell, which enables you to control the actions of weak-minded individuals.");
+            Feat symphonyOfTheMuse = new Feat("Symphony of the Muse", 20, Set.of(bardTrait), "You have learned how to weave countless performances together into a solo symphony with multitudinous effects.");
+            Feat ultimatePolymath = new Feat("Ultimate Polymath", 20, Set.of(bardTrait), "You can flexibly cast all of your spells, granting a dizzying array of possible options.");
 
             Feat domainInitiate = new Feat("Domain Initiate", 1, Set.of(clericTrait), "Your deity bestows a special spell related to their powers.");
             domainInitiate.setAvailableToClasses(List.of(cleric));
@@ -1319,10 +1384,10 @@ public class DataSeeder {
             leshyFamiliar.setAvailableToClasses(List.of(druid));
             Feat animalCompanion = new Feat("Animal Companion", 1, Set.of(druidTrait, rangerTrait), "You gain the service of a young animal companion that travels with you on your adventures and obeys any simple commands you give it to the best of its abilities.");
             animalCompanion.setAvailableToClasses(List.of(druid, ranger));
-            Feat widenSpell = new Feat("Widen Spell", 1, Set.of(druidTrait, manipulateTrait, spellshapeTrait, witchTrait, wizardTrait), "You manipulate the energy of your spell, causing it to spread out and affect a wider area.");
-            Feat enhancedFamiliar = new Feat("Enhanced Familiar", 2, Set.of(druidTrait, magusTrait, thaumaturgeTrait, witchTrait, wizardTrait), "You infuse your familiar with additional primal energy, increasing its abilities.");
+            Feat widenSpell = new Feat("Widen Spell", 1, Set.of(druidTrait, manipulateTrait, oracleTrait, sorcererTrait, spellshapeTrait, witchTrait, wizardTrait), "You manipulate the energy of your spell, causing it to spread out and affect a wider area.");
+            Feat enhancedFamiliar = new Feat("Enhanced Familiar", 2, Set.of(druidTrait, magusTrait, sorcererTrait, thaumaturgeTrait, witchTrait, wizardTrait), "You infuse your familiar with additional primal energy, increasing its abilities.");
             Feat snowdriftSpell = new Feat("Snowdrift Spell", 4, Set.of(coldTrait, druidTrait, manipulateTrait, spellshapeTrait), "The howling wind and precipitation of your magic turn to thick snow.");
-            Feat overwhelmingEnergy = new Feat("Overwhelming Energy", 10, Set.of(druidTrait, manipulateTrait, spellshapeTrait, wizardTrait), "With a complex gesture, you call upon the primal power of your spell to overcome enemies’ resistances.");
+            Feat overwhelmingEnergy = new Feat("Overwhelming Energy", 10, Set.of(druidTrait, manipulateTrait, sorcererTrait, spellshapeTrait, wizardTrait), "With a complex gesture, you call upon the primal power of your spell to overcome enemies’ resistances.");
 
             Feat huntedShot = new Feat("Hunted Shot", 1, Set.of(flourishTrait, rangerTrait), "You take two quick shots against the one you hunt.");
             huntedShot.setAvailableToClasses(List.of(ranger));
@@ -1416,6 +1481,22 @@ public class DataSeeder {
 
             Feat dwarvenDoughtiness = new Feat("Dwarven Doughtiness", 1, Set.of(dwarfTrait), "You are naturally calm and collected in the face of imminent danger.");
             adaptedCantrip.setAncestry(dwarf);
+            Feat dwarvenLore = new Feat("Dwarven Lore", 1, Set.of(dwarfTrait), "You eagerly absorbed the old stories and traditions of your ancestors, your gods, and your people, studying subjects and techniques passed down for generation upon generation.");
+            Feat dwarvenWeaponFamiliarity = new Feat("Dwarven Weapon Familiarity", 1, Set.of(dwarfTrait), "Your kin have instilled in you an affinity for hard-hitting weapons, and you prefer these to more elegant arms.");
+            Feat mountainStrategy = new Feat("Mountain Strategy", 1, Set.of(dwarfTrait), "Dwarves have a long history fighting common foes, and you've mastered the ancient tactics to better face these enemies.");
+            Feat rockRunner = new Feat("Rock Runner", 1, Set.of(dwarfTrait), "Your innate connection to stone makes you adept at moving across uneven surfaces.");
+            Feat stonemasonsEye = new Feat("Stonemason's Eye", 1, Set.of(dwarfTrait), "You understand the intricacies of stonework.");
+            Feat unburdenedIron = new Feat("Unburdened Iron", 1, Set.of(dwarfTrait), "You've learned techniques first devised by your ancestors during their ancient wars, allowing you to comfortably wear massive suits of armor.");
+            Feat boulderRoll = new Feat("Boulder Roll", 5, Set.of(dwarfTrait), "Your dwarven build allows you to push foes around, just like a mighty boulder tumbles through a subterranean cavern.");
+            Feat defyTheDarkness = new Feat("Defy the Darkness", 5, Set.of(dwarfTrait), "Using ancient dwarven methods developed to fight enemies wielding magical darkness, you've honed your darkvision and sworn not to use such magic yourself.");
+            Feat dwarvenReinforcement = new Feat("Dwarven Reinforcement", 5, Set.of(dwarfTrait), "You can use your knowledge of engineering and metalwork to temporarily strengthen thick objects and structures.");
+            Feat echoesInStone = new Feat("Echoes in Stone", 9, Set.of(concentrateTrait, dwarfTrait), "You pause a moment to attune your senses to the stone around you.");
+            Feat mountainsStoutness = new Feat("Mountain's Stoutness", 9, Set.of(dwarfTrait), "Your hardiness lets you withstand more punishment than most.");
+            Feat stoneBones = new Feat("Stone Bones", 9, Set.of(dwarfTrait), "Your intractable nature can help you shrug off even the most grievous injuries.");
+            Feat stonewalker = new Feat("Stonewalker", 9, Set.of(dwarfTrait), "You have a deep reverence for and connection to stone.");
+            Feat marchTheMines = new Feat("March the Mines", 13, Set.of(dwarfTrait), "You march through the earth and lead an ally along.");
+            Feat telluricPower = new Feat("Telluric Power", 13, Set.of(dwarfTrait), "You channel strength from the earth beneath your feet to pummel your enemies.");
+            Feat stonegate = new Feat("Stonegate", 17, Set.of(dwarfTrait), "Earthen barriers no longer impede your progress.");
             Feat stonewall = new Feat("Stonewall", 17, Set.of(dwarfTrait, earthTrait, polymorphTrait), "The strength of stone overcomes you so strongly that it replaces your stout body.");
 
             Feat ancestralLongevity = new Feat("Ancestral Longevity", 1, Set.of(elfTrait), "You have accumulated a vast array of lived knowledge over the years.");
@@ -1501,10 +1582,33 @@ public class DataSeeder {
             Feat hagMagic = new Feat("Hag Magic", 13, Set.of(changelingTrait), "Through your heritage, you can replicate a hag’s magic.");
 
             Feat angelkin = new Feat("Angelkin", 1, Set.of(lineageTrait, nephilimTrait), "You descend from an angel, a winged messenger from Nirvana or one of the other celestial realms.");
+            Feat bestialManifestation = new Feat("Bestial Manifestation", 1, Set.of(nephilimTrait), "Part of your body has an animalistic influence from a planar creature.");
+            Feat grimspawn = new Feat("Grimspawn", 1, Set.of(lineageTrait, nephilimTrait), "Your lineage traces back to a daemon, one of the manifestations of horrific forms of death that devour souls within their foul home of Abaddon.");
+            Feat halo = new Feat("Halo", 1, Set.of(nephilimTrait), "You have a halo of light and goodness that sheds light with the effects of a divine light cantrip.");
+            Feat hellspawn = new Feat("Hellspawn", 1, Set.of(lineageTrait, nephilimTrait), "Your lineage descends from devils, conniving schemers of Hell.");
+            Feat lawbringer = new Feat("Lawbringer", 1, Set.of(lineageTrait, nephilimTrait), "You trace your lineage to archons, guardians of the seventiered mountain of Heaven and nurturers of law and virtue within mortals.");
+            Feat musetouched = new Feat("Musetouched", 1, Set.of(lineageTrait, nephilimTrait), "Your blood sings with the liberating power of the azatas, living embodiments of freedom from the wild realm of Elysium.");
+            Feat nephilimEyes = new Feat("Nephilim Eyes", 1, Set.of(nephilimTrait), "Your eyes can see through darkness with visual acuity akin to that possessed by most extraplanar beings.");
+            Feat nephilimLore = new Feat("Nephilim Lore", 1, Set.of(nephilimTrait), "You know the secrets of the Multiverse.");
+            Feat nimbleHooves = new Feat("Nimble Hooves", 1, Set.of(nephilimTrait), "You possess hooves, ankle wings, or some other feature that hastens your movement.");
+            Feat pitborn = new Feat("Pitborn", 1, Set.of(lineageTrait, nephilimTrait), "Your blood bears the mark of a demon, a living embodiment of sin from the fetid depths of the Outer Rifts.");
+            Feat blessedBlood = new Feat("Blessed Blood", 5, Set.of(nephilimTrait), "Your spilled blood is sanctified, with effects similar to those of holy water.");
+            Feat extraplanarSupplication = new Feat("Extraplanar Supplication", 5, Set.of(nephilimTrait),  "You call upon divine power to place a benediction upon your allies or a malediction upon your foes.");
+            Feat nephilimResistance = new Feat("Nephilim Resistance", 5, Set.of(nephilimTrait), "You resist energy like your extraplanar predecessors.");
+            Feat scionOfManyPlanes = new Feat("Scion of Many Planes", 5, Set.of(nephilimTrait), "The long and complicated history of your bloodline manifests in your ability to draw power from more planar sources than most other nephilim.");
+            Feat skillfulTail = new Feat("Skillful Tail", 5, Set.of(nephilimTrait), "You’ve always had a tail, but with practice, you’ve learned to use it for more than signaling your mood.");
+            Feat celestialMagic = new Feat("Celestial Magic", 9, Set.of(nephilimTrait), "You possess celestial magic.");
+            Feat divineCountermeasures = new Feat("Divine Countermeasures", 9, Set.of(nephilimTrait), "You’ve studied your extraplanar heritage with the intent of better defending yourself, whether against creatures aligned with or opposed to your extraplanar lineage, and you’ve found that your techniques are equally powerful against celestials, fiends, and other divine entities.");
             Feat divineWings = new Feat("Divine Wings", 9, Set.of(divineTrait, morphTrait, nephilimTrait), "With effort, you can call forth magical wings from your back, similar in appearance to those of your extraplanar forebear, whether they be elegantly feathered wings or ominous bat wings.");
+            Feat fiendishMagic = new Feat("Fiendish Magic", 9, Set.of(nephilimTrait), "You possess fiendish magic.");
+            Feat celestialMercy = new Feat("Celestial Mercy", 13, Set.of(nephilimTrait), "Your celestial powers allow you to remove lesser afflictions with ease.");
+            Feat slipSideways = new Feat("Slip Sideways", 13, Set.of(nephilimTrait), "Like many fiends, you have the supernatural ability to teleport yourself to safety.");
+            Feat summonNephilimKin = new Feat("Summon Nephilim Kin", 13, Set.of(nephilimTrait), "You have a connection to the Outer Planes, allowing you to summon a divine ally.");
+            Feat divineDeclaration = new Feat("Divine Declaration", 17, Set.of(nephilimTrait), "You can call forth a holy or unholy word from the realms beyond to punish your foes.");
+            Feat eternalWings = new Feat("Eternal Wings", 17, Set.of(nephilimTrait), "Your wings are now a permanent part of your body.");
 
             featRepo.saveAll(List.of(
-                    advancedFirstAid, assurance, bondedAnimal, combatClimber, intimidatingGlare, multilingual, quickClimb, terrainExpert, studentOfTheCanon,
+                    advancedFirstAid, assurance, bondedAnimal, combatClimber, intimidatingGlare, multilingual, quickClimb, terrainExpert, studentOfTheCanon, steadyBalance,
                     adoptedAncestry, shieldBlock, diehard,
                     doubleSlice, exactingStrike, pointBlankStance, reactiveShield, snaggingStrike, viciousSwing,
                     aggressiveBlock, assistingShot, bladeBrake, brutishShove, combatGrab, duelingParry1, lunge, reboundingToss, sleekReposition,
@@ -1519,15 +1623,17 @@ public class DataSeeder {
                     boundlessReprisals, ultimateFlexibility, weaponSupremacy,
                     spellbookProdigy,
                     energyAblation, nonlethalSpell,
-                    bespellStrikes, callWizardlyTools, linkedFocus, spellProtectionArray,
+                    callWizardlyTools, linkedFocus, spellProtectionArray,
                     convincingIllusion, explosiveArrival, irresistibleMagic, splitSlot,
-                    advancedSchoolSpell, bondConservation, formRetention, knowledgeIsPower,
+                    advancedSchoolSpell, bondConservation, formRetention,
                     scrollAdept,
-                    cleverCounterspell, forcibleEnergy, keenMagicalDetection, magicSense,
+                    cleverCounterspell, forcibleEnergy, keenMagicalDetection,
                     bondedFocus, secondaryDetonationArray, superiorBond,
-                    scintillatingSpell, spellTinker,
+                    spellTinker,
                     infinitePossibilities, reprepareSpell, secondThoughts,
-                    archwizardsMight, spellCombination, spellMastery, spellshapeMastery,
+                    archwizardsMight, spellCombination, spellMastery,
+                    bespellStrikes,
+                    scintillatingSpell, spellshapeMastery,
                     nimbleDodge, overextendingFeint, plantEvidence, tumbleBehind1, twinFeint, youreNext,
                     brutalBeating, cleverGambit, distractingFeint, mobility, strongArm, unbalancingBlow, underhandedAssault,
                     dreadStriker, headStomp, mug, poisonWeapon, predictable, reactivePursuit, sabotage, scoundrelsSurprise, theHarderTheyFall2, twinDistraction,
@@ -1539,7 +1645,17 @@ public class DataSeeder {
                     blankSlate, cloudStep, cognitiveLoophole, dispellingSlice, perfectDistraction, swiftElusion,
                     implausibleInfiltration, implausiblePurchase2, powerfulSneak,
                     hiddenParagon, impossibleStriker, reactiveDistraction,
-                    bardicLore, reachSpell, cantripExpansion, combatReading, steadySpellcasting, callAndResponse, annotateComposition, quickenedCasting, effortlessConcentration, allInMyHead, discordantVoice,
+                    bardicLore, hymnOfHealing, lingeringComposition, martialPerformance, reachSpell, versatilePerformance, wellVersed,
+                    cantripExpansion, directedAudience, emotionalPush, esotericPolymath, loremastersEtude, multifariousMuse, songOfStrength, upliftingOverture,
+                    combatReading, courageousAdvance, inTune, melodiousSpell, rallyingAnthemFeat, ritualResearcher, tripleTimeFeat, versatileSignature,
+                    assuredLKnowledge, defensiveCoordination, dirgeOfDoomFeat, educateAllies, harmonize, songOfMarchingFeat, steadySpellcasting,
+                    accompany, callAndResponse, eclecticSkill, fortissimoCompositionFeat, knowItAll, reflexiveCourage, soulsight,
+                    annotateComposition, courageousAssault, houseOfImaginaryWallsFeat, odeToOuroborosFeat, quickenedCasting, symphonyOfTheUnfetteredHeartFeat, unusualComposition,
+                    eclecticPolymath, enigmasKnowledge, inspirationalFocus, reverberate, sharedAssault,
+                    allegroFeat, earworm, soothingBalladFeat, triumphantInspiration, trueHypercognition, vigorousAnthem,
+                    courageousOnslaught, effortlessConcentration, resoundingFinale, studiousCapacity,
+                    allInMyHead, deepLore, discordantVoice, eternalComposition, impossiblePolymath,
+                    fatalAriaFeat, perfectEncore, piedPipingFeat, symphonyOfTheMuse, ultimatePolymath,
                     domainInitiate, deadlySimplicity, premonitionOfAvoidance, communalHealing, channelSmite, sacredGround,
                     leshyFamiliar, animalCompanion, widenSpell, enhancedFamiliar, snowdriftSpell, overwhelmingEnergy,
                     huntedShot, quickDraw, scoutsWarning, skirmishStrike, theHarderTheyFall1, improvedTwinRiposte2,
@@ -1549,7 +1665,8 @@ public class DataSeeder {
                     acuteVision, suddenCharge, intimidatingStrike, barrelingCharge, swipe, reactiveStrikeFeat,  suddenLeap, overpoweringCharge, whirlwindStrikes,
                     energizedSpark, lightningSwap,
                     ancestralMind,
-                    ammunitionThaumaturgy, familiarFeat,
+                    ammunitionThaumaturgy,
+                    familiarFeat, knowledgeIsPower, magicSense,
                     brilliantFlash, shieldWarden, quickShieldBlock,
                     eliminateRedHerrings, trapFinder, predictivePurchase1, senseTheUnseen, implausiblePurchase1, reconstructTheSenses,
                     tumbleBehind2,
@@ -1558,7 +1675,11 @@ public class DataSeeder {
                     cooperativeSoul, groupAid, hardyTraveler, incredibleImprovisation, multitalented,
                     advancedGeneralTraining, bounceBack, stubbornPersistence,
                     heroicPresence,
-                    dwarvenDoughtiness, stonewall,
+                    dwarvenDoughtiness, dwarvenLore, dwarvenWeaponFamiliarity, mountainStrategy, rockRunner, stonemasonsEye, unburdenedIron,
+                    boulderRoll, defyTheDarkness, dwarvenReinforcement,
+                    echoesInStone, mountainsStoutness, stoneBones, stonewalker,
+                    marchTheMines, telluricPower,
+                    stonegate, stonewall,
                     ancestralLongevity, elvenLore, elvenWeaponFamiliarity, forlorn, nimbleElf, otherworldlyMagic, unwaveringMien,
                     agelessPatience, ancestralSuspicion, martialExperience,
                     elfStep, expertLongevity, otherworldlyAcumen, treeClimber,
@@ -1578,13 +1699,18 @@ public class DataSeeder {
                     called, mistChild,
                     accursedClaws, occultResistance,
                     hagMagic,
-                    angelkin, divineWings));
+                    angelkin, bestialManifestation, grimspawn, halo, hellspawn, lawbringer, musetouched, nephilimEyes, nephilimLore, nimbleHooves, pitborn,
+                    blessedBlood, extraplanarSupplication, nephilimResistance, scionOfManyPlanes, skillfulTail,
+                    celestialMagic, divineCountermeasures, divineWings, fiendishMagic,
+                    celestialMercy, slipSideways, summonNephilimKin,
+                    divineDeclaration, eternalWings));
 
-            Background warrior = new Background("Warrior", "You served as a soldier or mercenary.", List.of(intimidation), "Warfare Lore", intimidatingGlare);
+            Background warriorBackground = new Background("Warrior", "You served as a soldier or mercenary.", List.of(intimidation), "Warfare Lore", intimidatingGlare);
             Background scholar = new Background("Scholar", "You studied ancient texts and forgotten lore.", List.of(arcana, nature, occultism, religion), "Academia Lore", assurance);
             Background acolyte = new Background("Acolyte", "You spent your early days in a religious monastery or cloister.", List.of(religion), "Scribling Lore", studentOfTheCanon);
+            Background acrobat = new Background("Acrobat", "In a circus or on the streets, you earned your pay by performing as an acrobat.", List.of(acrobatics), "Circus Lore", steadyBalance);
 
-            backgroundRepo.saveAll(List.of(acolyte, warrior, scholar));
+            backgroundRepo.saveAll(List.of(acolyte, warriorBackground, scholar, acrobat));
 
             ClassFeatureChoice emotionalAcceptance = new ClassFeatureChoice(psychic, "Subconscious Mind", "Emotional Acceptance");
             ClassFeatureChoice gatheredLore = new ClassFeatureChoice(psychic, "Subconscious Mind", "Gathered Lore");
@@ -1679,6 +1805,22 @@ public class DataSeeder {
             ClassFeatureChoice spellSubstitution = new ClassFeatureChoice(wizard, "Arcane Thesis", "Spell Substitution");
             ClassFeatureChoice staffNexus = new ClassFeatureChoice(wizard, "Arcane Thesis", "Staff Nexus");
 
+            ClassFeatureChoice enigma = new ClassFeatureChoice(bard, "Muse", "Enigma");
+            FeatureGrantedFeat enigmaFeat = new FeatureGrantedFeat(enigma, bardicLore);
+            enigma.setGrantedFeats(List.of(enigmaFeat));
+
+            ClassFeatureChoice maestro = new ClassFeatureChoice(bard, "Muse", "Maestro");
+            FeatureGrantedFeat maestroFeat = new FeatureGrantedFeat(maestro, lingeringComposition);
+            maestro.setGrantedFeats(List.of(maestroFeat));
+
+            ClassFeatureChoice polymath = new ClassFeatureChoice(bard, "Muse", "Polymath");
+            FeatureGrantedFeat polymathFeat = new FeatureGrantedFeat(polymath, versatilePerformance);
+            polymath.setGrantedFeats(List.of(polymathFeat));
+
+            ClassFeatureChoice warriorMuse = new ClassFeatureChoice(bard, "Muse", "Warrior");
+            FeatureGrantedFeat warriorFeat = new FeatureGrantedFeat(warriorMuse, martialPerformance);
+            warriorMuse.setGrantedFeats(List.of(warriorFeat));
+
             ClassFeatureChoice alchemicalSciences = new ClassFeatureChoice(investigator, "Methodology", "Alchemical Sciences");
             FeatureGrantedProficiency alchemicalCrafting = new FeatureGrantedProficiency(alchemicalSciences, "Crafting", ProficiencyCategory.SKILL, ProficiencyRank.TRAINED);
             alchemicalSciences.setGrantedProficiencies(List.of(alchemicalCrafting));
@@ -1713,6 +1855,7 @@ public class DataSeeder {
                     silenceInSnow,
                     schoolOfArsGrammatica, schoolOfBattleMagic, schoolOfCivicWizardry, schoolOfMentalism, schoolOfProtenForm, schoolOfTheBoundary, schoolOfUnifiedMagicalTheory,
                     experimentalSpellshaping, improvedFamiliarAttunement, spellBlending, spellSubstitution, staffNexus,
+                    enigma, maestro, polymath, warriorMuse,
                     alchemicalSciences,
                     empiricism
             ));
@@ -1801,9 +1944,19 @@ public class DataSeeder {
             scholarFreeBoost.setBackground(scholar);
 
             AttributeBoostRule warriorPhysBoost = new AttributeBoostRule(AttributeBoostType.CHOICE, List.of(AttributeName.STRENGTH, AttributeName.CONSTITUTION), 1);
-            warriorPhysBoost.setBackground(warrior);
+            warriorPhysBoost.setBackground(warriorBackground);
             AttributeBoostRule warriorFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE,  allSix, 1);
-            warriorFreeBoost.setBackground(warrior);
+            warriorFreeBoost.setBackground(warriorBackground);
+
+            AttributeBoostRule acolyteMentalBoost = new AttributeBoostRule(AttributeBoostType.CHOICE, List.of(AttributeName.INTELLIGENCE, AttributeName.WISDOM), 1);
+            acolyteMentalBoost.setBackground(acolyte);
+            AttributeBoostRule acolyteFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE,  allSix, 1);
+            acolyteFreeBoost.setBackground(acolyte);
+
+            AttributeBoostRule acrobatPhysBoost = new AttributeBoostRule(AttributeBoostType.CHOICE, List.of(AttributeName.STRENGTH, AttributeName.DEXTERITY), 1);
+            acrobatPhysBoost.setBackground(acrobat);
+            AttributeBoostRule acrobatFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE,  allSix, 1);
+            acrobatFreeBoost.setBackground(acrobat);
 
             AttributeBoostRule fighterBoost = new AttributeBoostRule(AttributeBoostType.CHOICE, List.of(AttributeName.STRENGTH, AttributeName.DEXTERITY), 1);
             fighterBoost.setCharacterClass(fighter);
@@ -1876,6 +2029,8 @@ public class DataSeeder {
                     wayangDexBoost, wayangChaBoost, warriorFreeBoost,
                     scholarMentalBoost, scholarFreeBoost,
                     warriorPhysBoost, warriorFreeBoost,
+                    acolyteMentalBoost, acolyteFreeBoost,
+                    acrobatPhysBoost, acrobatFreeBoost,
                     fighterBoost,
                     wizardBoost,
                     emotionalAcceptanceBoost, gatheredLoreBoost,
