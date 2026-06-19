@@ -189,13 +189,15 @@ public class DataSeeder {
             Trait gunslingerTrait = new Trait("Gunslinger", TraitCategory.CLASS);
             Trait rageTrait = new Trait("Rage", TraitCategory.ACTION);
             Trait alchemistTrait = new Trait("Alchemist", TraitCategory.CLASS);
+            Trait misfortuneTrait = new Trait("Misfortunel", TraitCategory.MAGIC);
+            Trait wanderingTrait = new Trait("Wandering", TraitCategory.MAGIC);
 
             traitRepo.saveAll(List.of(dwarfTrait, elfTrait, gnomeTrait, goblinFeat, halflingTrait, humanTrait, kholoTrait, koboldTrait, leshyTrait, orcTrait, samsaranTrait, wayangTrait,
                     aiuvarinTrait, changelingTrait, dromaarTrait, nephilimTrait,
                     bardTrait, clericTrait, druidTrait, fighterTrait, rangerTrait, rogueTrait, witchTrait, wizardTrait,
                     alchemistTrait, animistTrait, barbarianTrait, championTrait, commanderTrait, exemplarTrait, guardianTrait, gunslingerTrait, investigatorTrait, magusTrait, monkTrait, oracleTrait, psychicTrait, sorcererTrait, summonerTrait, swashbucklerTrait, thaumaturgeTrait,
                     auditoryTrait, concentrateTrait, downtimeTrait, emotionTrait, explorationTrait, fearTrait, feyTrait, flourishTrait, fortuneTrait, fungusTrait, generalTrait, humanoidTrait, incapactitationTrait, lineageTrait, manipulateTrait, mentalTrait, moveTrait, plantTrait, pressTrait, rageTrait, secretTrait, shadowTrait, skillTrait, stanceTrait, visualTrait,
-                    arcaneTrait, coldTrait, consecrationTrait, curseboundTrait, detectionTrait, divineTrait, earthTrait, healingTrait, illusionTrait, lightTrait, linguisticTrait, morphTrait, polymorphTrait, predictionTrait, primalTrait, sonicTrait, spellshapeTrait, teleportationTrait, vitalityTrait,
+                    arcaneTrait, coldTrait, consecrationTrait, curseboundTrait, detectionTrait, divineTrait, earthTrait, healingTrait, illusionTrait, lightTrait, linguisticTrait, misfortuneTrait, morphTrait, polymorphTrait, predictionTrait, primalTrait, sonicTrait, spellshapeTrait, teleportationTrait, vitalityTrait, wanderingTrait,
                     aquadynamicTrait, bulwarkTrait, comfortTrait, flexibleTrait, laminarTrait, noisyTrait,
                     agileTrait, attachedToShieldTrait, backstabberTrait, backswingTrait, concealableTrait, deadlyTrait, disarmTrait, fatalTrait, finesseTrait, forcefulTrait, freeHandTrait, joustingTrait, nonlethal, parryTrait, propulsiveTrait, rangedTripTrait, reachTrait, shoveTrait, sweepTrait, thrownTrait, tripTrait, twinTrait, twoHandTrait, unarmedTrait, versatileTrait, volleyTrait,
                     magicalTrait, poisonTrait));
@@ -1049,12 +1051,15 @@ public class DataSeeder {
             Feat assurance = new Feat("Assurance", 1, Set.of(fortuneTrait, generalTrait, skillTrait), "Even in the worst circumstances, you can perform basic tasks.");
             Feat automaticKnowledge = new Feat("Automatic Knowledge", 2, Set.of(generalTrait, skillTrait), "You know basic facts off the top of your head.");
 
+            Feat catFall = new Feat("Cat Fall", 1, Set.of(generalTrait, skillTrait), "Your catlike aerial acrobatics allow you to cushion your falls.");
             Feat steadyBalance = new Feat("Steady Balance", 1, Set.of(generalTrait, skillTrait), "You can keep your balance easily, even in adverse conditions.");
+            Feat rollingLanding = new Feat("Rolling Landing", 2, Set.of(generalTrait, skillTrait), "You land with quick rolls that help you keep your momentum.");
             Feat combatClimber = new Feat("Combat Climber", 1, Set.of(generalTrait, skillTrait), "Your techniques allow you to fight as you climb.");
             Feat quickClimb = new Feat("Quick Climb", 7, Set.of(generalTrait, skillTrait), "When Climbing, you move 5 more feet on a success and 10 more feet on a critical success, up to your Speed.");
             Feat alchemicalCrafting = new Feat("Alchemical Crafting", 1, Set.of(generalTrait, skillTrait), "You can use the Craft activity to create alchemical items.");
             Feat specialtyCrafting = new Feat("Specialty Crafting", 1, Set.of(generalTrait, skillTrait), "Your training focused on Crafting one particular kind of item.");
             Feat impeccableCrafting = new Feat("Impeccable Crafting", 7, Set.of(generalTrait, skillTrait), "You craft flawless creations with great efficiency.");
+            Feat groupCoercion = new Feat("Group Coercion", 1, Set.of(generalTrait, skillTrait), "You can strong-arm people effectively, even when you don’t have them isolated.");
             Feat intimidatingGlare = new Feat("Intimidating Glare", 1, Set.of(generalTrait, skillTrait), "Demoralize a creature using only a look.");
             Feat advancedFirstAid = new Feat("Advanced First Aid", 7, Set.of(generalTrait, healingTrait, manipulateTrait, skillTrait), "You use your medical training to ameliorate sickness or assuage fears");
             Feat trainAnimal = new Feat("Train Animal", 1, Set.of(downtimeTrait, generalTrait, manipulateTrait, skillTrait), "You spend time teaching an animal to do a certain action.");
@@ -1454,10 +1459,12 @@ public class DataSeeder {
             Feat makerOfMiracles = new Feat("Maker of Miracles", 20, Set.of(clericTrait), "You are a conduit for truly deific power.");
             Feat spellshapeChannel = new Feat("Spellshape Channel", 20, Set.of(clericTrait, concentrateTrait), "Deep understanding of divine revelations into the nature of vital essence allows you to freely manipulate the energy of life and death.");
 
+            Feat spiritFamiliar1 = new Feat("Spirit Familiar", 1, Set.of(animistTrait), "When you attune to your apparitions during your daily preparations, you can choose to dedicate a small amount of your life force to allow one of them to physically manifest as a familiar, which gains the spirit trait. If your familiar is slain or destroyed, you lose all other benefits from the apparition until you remanifest the familiar during your next daily preparations. If you disperse the apparition you have manifested as a familiar, the familiar is destroyed.");
             Feat concealSpell = new Feat("Conceal Spell", 2, Set.of(animistTrait, concentrateTrait, spellshapeTrait, witchTrait, wizardTrait), "Through sheer mental effort, you can simplify the incantations and gestures needed to spellcast, leaving them barely noticeable.");
             Feat embodimentOfTheBalance = new Feat("Embodiment of the Balance", 2, Set.of(animistTrait), "Your place in the balance between the forces of life and entropy expands the spells you can pull from the spirit realms.");
             Feat enhancedFamiliar = new Feat("Enhanced Familiar", 2, Set.of(animistTrait, druidTrait, magusTrait, sorcererTrait, thaumaturgeTrait, witchTrait, wizardTrait), "You infuse your familiar with additional primal energy, increasing its abilities.");
             Feat incredibleFamiliar = new Feat("Incredible Familiar", 8, Set.of(animistTrait, thaumaturgeTrait, witchTrait), "Your familiar is imbued with even more magic than other familiars.");
+            Feat apparitionCloud = new Feat("Apparition Cloud", 12, Set.of(animistTrait, misfortuneTrait, wanderingTrait), "With a mere thought, you discorporate your familiar into a thousand shards of spiritual magic, protecting both it and yourself from physical harm while making it difficult for enemies to move near you.");
             Feat echoingChannel = new Feat("Echoing Channel", 18, Set.of(animistTrait, clericTrait, concentrateTrait, spellshapeTrait), "When you pull forth vitality or void energy, you also create a smaller pocket of that energy.");
 
             Feat animalCompanion = new Feat("Animal Companion", 1, Set.of(druidTrait, rangerTrait), "You gain the service of a young animal companion that travels with you on your adventures and obeys any simple commands you give it to the best of its abilities.");
@@ -1590,8 +1597,38 @@ public class DataSeeder {
 
             Feat cackle = new Feat("Cackle", 1, Set.of(witchTrait), "Your patron’s power fills you with confidence, letting you sustain a magical working even as a quick burst of laughter leaves your lips.");
             cackle.setAvailableToClasses(List.of(witch));
+            Feat cauldron = new Feat("Cauldron", 1, Set.of(witchTrait), "You can brew magic in your cauldron, creating useful magical concoctions.");
             Feat counterspell = new Feat("Counterspell", 1, Set.of(witchTrait, wizardTrait), "When a foe Casts a Spell and you can see its manifestations, you can use your magic to disrupt it.");
+            Feat witchsArmaments = new Feat("Witch's Armaments", 1, Set.of(witchTrait), "Your patron’s power changes your body to ensure you are never defenseless.");
+            Feat basicLesson = new Feat("Basic Lesson", 2, Set.of(witchTrait), "Your patron grants you a special lesson, revealing a hidden facet of its nature.");
+            Feat familiarsLanguage = new Feat("Familiar's Language", 2, Set.of(witchTrait), "You’ve learned to speak with your familiar and other creatures like it.");
+            Feat ritesOfConvocation = new Feat("Rites of Convocation", 4, Set.of(witchTrait), "Your patron grants you the power to summon other creatures to aid you.");
+            Feat sympatheticStrike = new Feat("Sympathetic Strike", 4, Set.of(witchTrait), "You collect your patron’s magic into one of your witch armaments, causing them to shine with runes, light, or another signifier of your patron.");
+            Feat ceremonialKnife = new Feat("Ceremonial Knife", 6, Set.of(witchTrait), "You have prepared a special knife to direct energies when spellcasting.");
+            Feat greaterLesson = new Feat("Greater Lesson", 6, Set.of(witchTrait), "Your patron grants you greater knowledge.");
+            Feat wildWitchsArmaments = new Feat("Wild Witch's Armaments", 6, Set.of(witchTrait), "Your patron's power continues to enhance your natural offensive capabilities.");
+            Feat witchsCharge = new Feat("Witch's Charge", 6, Set.of(detectionTrait, witchTrait), "You forge a magical link with another creature, granting you awareness of that creature’s condition and creating a conduit for spellcasting.");
+            Feat murksight = new Feat("Murksight", 8, Set.of(witchTrait), "Your vision pierces through non-magical fog, mist, rain, and snow.");
+            Feat spiritFamiliar2 = new Feat("Spirit Familiar", 8, Set.of(witchTrait), "Your familiar can subsume its body to become pure spirit.");
+            Feat stitchedFamiliar = new Feat("Stitched Familiar", 8, Set.of(witchTrait), "Your familiar can shed its material form, becoming a mass of animated magic.");
+            Feat witchsBottle = new Feat("Witch's Bottle", 8, Set.of(witchTrait), "You spend 10 minutes and 1 Focus Point brewing a special potion containing the power of one of your hexes that targets a creature.");
+            Feat doubleDouble = new Feat("Double, Double", 10, Set.of(witchTrait), "For each temporary oil or potion you brew during your daily preparations, you brew two copies of it.");
+            Feat majorLesson = new Feat("Major Lesson", 10, Set.of(witchTrait), "Your patron grants you even greater secrets.");
+            Feat witchsCommunion = new Feat("Witch's Communion", 10, Set.of(witchTrait), "You can keep watch over multiple charges.");
+            Feat covenSpell = new Feat("Coven Spell", 12, Set.of(spellshapeTrait, witchTrait), "You rhyme with your ally’s incantations or echo their movements, linking your magic to empower their spell in one of two ways:\n" +
+                    "If their spell deals damage and doesn’t have a duration, you grant that spell a status bonus to damage equal to its rank.\n" +
+                    "If their spell doesn’t have a spellshape effect applied to it, apply the effects of any one spellshape feat you know to the spell. The spellshape feat must be one that can be applied to the triggering spell, and you must be able to use it (for instance, if the spellshape feat is usable only a limited number of times per day).");
+            Feat hexFocus = new Feat("Hex Focus", 12, Set.of(witchTrait), "Your patron’s teachings have allowed you to achieve a deeper focus.");
+            Feat witchsBroom = new Feat("Witch's Broom", 12, Set.of(witchTrait), "A broom is the only steed you need to fly through the night sky.");
+            Feat patronsPresence = new Feat("Patron's Presence", 14, Set.of(witchTrait), "Your patron can direct its attention through your familiar, and its mere presence becomes an ominous weight on the minds of other beings to distract them and blot out their magic.");
             Feat reflectSpell = new Feat("Reflect Spell", 14, Set.of(witchTrait, wizardTrait), "When you successfully use Counterspell to counteract a spell that affects targeted creatures or an area, you can turn that spell’s effect back on its caster.");
+            Feat ritesOfTransfiguration = new Feat("Rites of Transfiguration", 14, Set.of(witchTrait), "You can adapt your patron’s power to transform other creatures into forms more befitting their behavior or your whims.");
+            Feat siphonPower = new Feat("Siphon Power", 16, Set.of(witchTrait), "You draw upon the reservoir of your patron’s magic that resides within your familiar.");
+            Feat patronsClaim = new Feat("Patron's Claim", 18, Set.of(witchTrait), "Your patron partially manifests itself through your familiar to claim a foe’s power for its own.");
+            Feat splitHex = new Feat("Split Hex", 18, Set.of(concentrateTrait, spellshapeTrait, witchTrait), "You siphon some of the power from an offensive hex you cast to direct it at a second target as well.");
+            Feat hexMaster = new Feat("Hex Master", 20, Set.of(witchTrait), "You embody the link to your patron so completely that you can cast your hexes in rapid succession.");
+            Feat patronsTruth = new Feat("Patron's Truth", 20, Set.of(witchTrait), "You have mastered the greatest secrets of your patron’s magic and learned a fundamental truth about your patron, even if their identity still remains a mystery.");
+            Feat witchsHut = new Feat("Witch's Hut", 20, Set.of(witchTrait), "Your home is an animated structure that obeys your commands.");
 
             Feat armorRegimentTraining = new Feat("Armor Regiment Training", 1, Set.of(commanderTrait), "You've trained for grueling marches in full battle kit.");
             armorRegimentTraining.setAvailableToClasses(List.of(commander));
@@ -1779,8 +1816,24 @@ public class DataSeeder {
 
             Feat graspingReach = new Feat("Grasping Reach", 1, Set.of(leshyTrait), "You can extend a tangle of vines or tendrils to support your arms and extend your reach.");
             graspingReach.setAncestry(leshy);
+            Feat harmlesslyCute = new Feat("Harmlessly Cute", 1, Set.of(leshyTrait), "Your size and demeanor make it easy for you to convince others that you mean no harm.");
+            Feat leshyLore = new Feat("Leshy Lore", 1, Set.of(leshyTrait), "You deeply understand your people’s cultural traditions and innate strengths.");
+            Feat leshySuperstition = new Feat("Leshy Superstition", 1, Set.of(leshyTrait), "You notice spirits that inhabit objects, learning which bring good fortune and which are unlucky.");
+            Feat seedpod = new Feat("Seedpod", 1, Set.of(leshyTrait), "Your body produces a nearly endless supply of hard seedpods.");
+            Feat shadowOfTheWilds = new Feat("Shadow of the Wilds", 1, Set.of(leshyTrait), "It’s difficult to notice your passage through wild areas.");
+            Feat undaunted = new Feat("Undaunted", 1, Set.of(leshyTrait), "Your spirit has endured many challenges over its long existence.");
+            Feat anchoringRoots = new Feat("Anchoring Roots", 5, Set.of(leshyTrait), "Small roots sprout from your feet, steadying you as you move.");
+            Feat leshyGlide = new Feat("Leshy Glide", 5, Set.of(leshyTrait), "Using your own leaves, you can control your descent.");
             Feat ritualReversion = new Feat("Ritual Reversion", 5, Set.of(leshyTrait, polymorphTrait, primalTrait), "You can temporarily revert to a less conspicuous form without diminishing your senses.");
+            Feat speakWithKindred = new Feat("Speak with Kindred", 5, Set.of(leshyTrait), "You have a connection with creatures that share your physiology.");
+            Feat barkAndTendril = new Feat("Bark and Tendril", 9, Set.of(leshyTrait), "You wield primal magic.");
+            Feat luckyKeepsake = new Feat("Lucky Keepsake", 9, Set.of(leshyTrait), "You have a keepsake that grants you luck.");
+            Feat solarRejuvenation = new Feat("Solar Rejuvenation", 9, Set.of(leshyTrait), "If you rest outdoors for 10 minutes during the day, you regain Hit Points equal to your Constitution modifier × half your level. You gain this benefit in addition to any healing from Treat Wounds. Leshies whose plant nourishment does not rely on photosynthesis require a similarly suitable environment. For example, fungus leshies need dark, damp environments and a pile of decaying plant matter.");
+            Feat thornedSeedpod = new Feat("Thorned Seedpod", 9, Set.of(leshyTrait), "When your seedpods strike a felling blow, they burst into viciously thorny vines.");
+            Feat callOfTheGreenMan = new Feat("Call of the Green Man", 13, Set.of(leshyTrait), "You can call forth nearby nature spirits to augment your body.");
             Feat cloakOfPoison = new Feat("Cloak of Poison", 13, Set.of(leshyTrait, poisonTrait), "You secrete a cloak of concentrated poison that harms any who dare attack you.");
+            Feat flourishAndRuin = new Feat("Flourish and Ruin", 17, Set.of(leshyTrait), "You can call upon the vital essence of your spirit to restore life to your allies and call forth vines to ensnare and bludgeon your foes.");
+            Feat regrowth = new Feat("Regrowth", 17, Set.of(leshyTrait), "Your command over your vital essence allows you or an ally to recover from grievous wounds.");
 
             Feat beastTrainer = new Feat("Beast Trainer", 1, Set.of(orcTrait), "You have an impressive innate ability to tame and command ferocious beasts.");
             beastTrainer.setAncestry(orc);
@@ -1854,12 +1907,13 @@ public class DataSeeder {
 
             featRepo.saveAll(List.of(
                     assurance, automaticKnowledge,
-                    steadyBalance,
+                    catFall, steadyBalance, rollingLanding,
                     combatClimber, quickClimb,
                     alchemicalCrafting, specialtyCrafting, impeccableCrafting,
+                    groupCoercion, intimidatingGlare,
                     advancedFirstAid,
                     trainAnimal, bondedAnimal,
-                    intimidatingGlare, studentOfTheCanon,
+                    studentOfTheCanon,
                     multilingual, legendaryLinguist,
                     experiencedTracker, terrainExpert,
                     adoptedAncestry, shieldBlock, diehard, numbToDeath,
@@ -1920,7 +1974,7 @@ public class DataSeeder {
                     eternalBane, eternalBlessing, reboundingSmite, remediate, resurrectionist,
                     divineApex, improvedSwiftBanishment, inviolable, miraculousPossibility, sharedClarity,
                     avatarsAudience, avatarsProtection, makerOfMiracles, spellshapeChannel,
-                    concealSpell, embodimentOfTheBalance, enhancedFamiliar, incredibleFamiliar, echoingChannel,
+                    spiritFamiliar1, concealSpell, embodimentOfTheBalance, enhancedFamiliar, incredibleFamiliar, apparitionCloud, echoingChannel,
                     animalCompanion, animalEmpathy1, leshyFamiliar, plantEmpathy, stormBorn, untamedFormFeat, verdantWeapon, widenSpell,
                     callOfTheWild, orderExplorer,
                     anthropomorphicShape, elementalSummons, forestPassage, formControl, leshyFamiliarSecrets, matureAnimalCompanion1, orderMagic, snowdriftSpell,
@@ -1945,7 +1999,17 @@ public class DataSeeder {
                     impossibleFlurry, manifoldEdge, masterfulCompanion, perfectShot, shadowHunter,
                     legendaryShot, toTheEndsOfTheEarth, tripleThreat, ultimateSkirmisher,
                     quickDraw, runningReload,
-                    cackle, counterspell, reflectSpell,
+                    cackle, cauldron, counterspell, witchsArmaments,
+                    basicLesson, familiarsLanguage,
+                    ritesOfConvocation, sympatheticStrike,
+                    ceremonialKnife, greaterLesson, wildWitchsArmaments, witchsCharge,
+                    murksight, spiritFamiliar2, stitchedFamiliar, witchsBottle,
+                    doubleDouble, majorLesson, witchsCommunion,
+                    covenSpell, hexFocus, witchsBroom,
+                    patronsPresence, reflectSpell, ritesOfTransfiguration,
+                    siphonPower,
+                    patronsClaim, splitHex,
+                    hexMaster, patronsTruth, witchsHut,
                     armorRegimentTraining, combatAssessment, observationalAnalysis, reactiveInterference,
                     bodyguard, repositioningBlock, openingStance2,
                     acuteVision, suddenCharge, acuteScent, intimidatingStrike, barrelingCharge, supernaturalSenses, swipe, nocturnalSenses, reactiveStrikeFeat, instinctiveStrike,  suddenLeap, overpoweringCharge, terrifyingHowl, whirlwindStrikes,
@@ -1987,7 +2051,11 @@ public class DataSeeder {
                     danceUnderfoot, guidingLuck, irrepressible, unhamperedPassage,
                     ceaselessShadows, topplingDance,
                     shadowSelf,
-                    graspingReach, ritualReversion, cloakOfPoison,
+                    graspingReach, harmlesslyCute, leshyLore, leshySuperstition, seedpod, shadowOfTheWilds, undaunted,
+                    anchoringRoots, leshyGlide, ritualReversion, speakWithKindred,
+                    barkAndTendril, luckyKeepsake, solarRejuvenation, thornedSeedpod,
+                    callOfTheGreenMan, cloakOfPoison,
+                    flourishAndRuin, regrowth,
                     beastTrainer, holdMark, ironFists, orcFerocity, orcLore, orcSuperstition, orcWeaponFamiliarity, tusksFeat,
                     athleticMight, bloodyBlows, defyDeath, scarThickSkin,
                     pervasiveSuperstition, undyingFerocity,
@@ -2011,8 +2079,9 @@ public class DataSeeder {
             Background animalWhisperer = new Background("Animal Whisperer", "You have always felt a connection to animals, and it was only a small leap to learn to train them.", List.of(nature), "Terrain Lore", trainAnimal);
             Background artisan = new Background("Artisan", "As an apprentice, you practiced a particular form of building or crafting, developing specialized skill.", List.of(crafting), "Guild Lore", specialtyCrafting);
             Background artist = new Background("Artist", "Your art is your greatest passion, whatever form it takes.", List.of(crafting), "Art Lore", specialtyCrafting);
+            Background bandit = new Background("Bandit", "Your past includes no small amount of rural banditry, robbing travelers on the road and scraping by.", List.of(intimidation), "Terrain Lore", groupCoercion);
 
-            backgroundRepo.saveAll(List.of(acolyte, warriorBackground, scholar, acrobat, animalWhisperer, artisan, artist));
+            backgroundRepo.saveAll(List.of(acolyte, warriorBackground, scholar, acrobat, animalWhisperer, artisan, artist, bandit));
 
             ClassFeatureChoice emotionalAcceptance = new ClassFeatureChoice(psychic, "Subconscious Mind", "Emotional Acceptance");
             ClassFeatureChoice gatheredLore = new ClassFeatureChoice(psychic, "Subconscious Mind", "Gathered Lore");
@@ -2103,6 +2172,35 @@ public class DataSeeder {
             FeatureGrantedProficiency snowNature = new FeatureGrantedProficiency(silenceInSnow, "Nature", ProficiencyCategory.SKILL, ProficiencyRank.TRAINED);
             silenceInSnow.setGrantedProficiencies(List.of(snowNature));
 
+            ClassFeatureChoice starlessShadow = new ClassFeatureChoice(witch, "Patron Theme", "Starless Shadow");
+            FeatureGrantedProficiency starlessOccultism = new FeatureGrantedProficiency(starlessShadow, "Occultism", ProficiencyCategory.SKILL, ProficiencyRank.TRAINED);
+            starlessShadow.setGrantedProficiencies(List.of(starlessOccultism));
+
+            ClassFeatureChoice theInscribedOne = new ClassFeatureChoice(witch, "Patron Theme", "The Inscribed One");
+            FeatureGrantedProficiency inscribedArcana = new FeatureGrantedProficiency(theInscribedOne, "Arcana", ProficiencyCategory.SKILL, ProficiencyRank.TRAINED);
+            theInscribedOne.setGrantedProficiencies(List.of(inscribedArcana));
+
+            ClassFeatureChoice theResentment = new ClassFeatureChoice(witch, "Patron Theme", "The Resentment");
+            FeatureGrantedProficiency resentmentOccultism = new FeatureGrantedProficiency(theResentment, "Occultism", ProficiencyCategory.SKILL, ProficiencyRank.TRAINED);
+            theResentment.setGrantedProficiencies(List.of(resentmentOccultism));
+
+            ClassFeatureChoice wildingSteward = new ClassFeatureChoice(witch, "Patron Theme", "Wilding Steward");
+            FeatureGrantedProficiency wildingNature = new FeatureGrantedProficiency(wildingSteward, "Nature", ProficiencyCategory.SKILL, ProficiencyRank.TRAINED);
+            wildingSteward.setGrantedProficiencies(List.of(wildingNature));
+
+            ClassFeatureChoice lessonOfDreams = new ClassFeatureChoice(witch, "Basic Lesson", "Lesson of Dreams");
+            ClassFeatureChoice lessonOfLife = new ClassFeatureChoice(witch, "Basic Lesson", "Lesson of Life");
+            ClassFeatureChoice lessonOfProtection = new ClassFeatureChoice(witch, "Basic Lesson", "Lesson of Protection");
+            ClassFeatureChoice lessonOfTheElements = new ClassFeatureChoice(witch, "Basic Lesson", "Lesson of the Elements");
+            ClassFeatureChoice lessonOfVengeance = new ClassFeatureChoice(witch, "Basic Lesson", "Lesson of Vengeance");
+
+            ClassFeatureChoice lessonOfMischief = new ClassFeatureChoice(witch, "Greater Lesson", "Lesson of Mischief");
+            ClassFeatureChoice lessonOfShadow = new ClassFeatureChoice(witch, "Greater Lesson", "Lesson of Shadow");
+            ClassFeatureChoice lessonOfSnow = new ClassFeatureChoice(witch, "Greater Lesson", "Lesson of Snow");
+
+            ClassFeatureChoice lessonOfDeath = new ClassFeatureChoice(witch, "Major Lesson", "Lesson of Death");
+            ClassFeatureChoice lessonOfRenewal = new ClassFeatureChoice(witch, "Major Lesson", "Lesson of Renewal");
+
             ClassFeatureChoice schoolOfArsGrammatica = new ClassFeatureChoice(wizard, "Arcane Schools", "School of Ars Grammatica");
             ClassFeatureChoice schoolOfBattleMagic = new ClassFeatureChoice(wizard, "Arcane Schools", "School of Battle Magic");
             ClassFeatureChoice schoolOfCivicWizardry = new ClassFeatureChoice(wizard, "Arcane Schools", "School of Civic Wizardry");
@@ -2168,8 +2266,10 @@ public class DataSeeder {
                     cloisteredCleric,
                     warpriest,
                     animalOrder, leafOrder, stormOrder, untamedOrder,
-                    faithsFlamekeeper,
-                    silenceInSnow,
+                    faithsFlamekeeper, silenceInSnow, starlessShadow, theInscribedOne, theResentment, wildingSteward,
+                    lessonOfDreams, lessonOfLife, lessonOfProtection, lessonOfTheElements, lessonOfVengeance,
+                    lessonOfMischief, lessonOfShadow, lessonOfSnow,
+                    lessonOfDeath, lessonOfRenewal,
                     schoolOfArsGrammatica, schoolOfBattleMagic, schoolOfCivicWizardry, schoolOfMentalism, schoolOfProtenForm, schoolOfTheBoundary, schoolOfUnifiedMagicalTheory,
                     experimentalSpellshaping, improvedFamiliarAttunement, spellBlending, spellSubstitution, staffNexus,
                     enigma, maestro, polymath, warriorMuse,
@@ -2291,6 +2391,11 @@ public class DataSeeder {
             AttributeBoostRule artistFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE,  allSix, 1);
             artistFreeBoost.setBackground(artist);
 
+            AttributeBoostRule banditFirstBoost = new AttributeBoostRule(AttributeBoostType.CHOICE, List.of(AttributeName.DEXTERITY, AttributeName.CHARISMA), 1);
+            banditFirstBoost.setBackground(bandit);
+            AttributeBoostRule banditFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE,  allSix, 1);
+            banditFreeBoost.setBackground(bandit);
+
             AttributeBoostRule fighterBoost = new AttributeBoostRule(AttributeBoostType.CHOICE, List.of(AttributeName.STRENGTH, AttributeName.DEXTERITY), 1);
             fighterBoost.setCharacterClass(fighter);
 
@@ -2367,6 +2472,7 @@ public class DataSeeder {
                     animalWhispererMentalBoost, animalWhispererFreeBoost,
                     artisanFirstBoost, artisanFreeBoost,
                     artistFirstBoost, artistFreeBoost,
+                    banditFirstBoost, banditFreeBoost,
                     fighterBoost,
                     wizardBoost,
                     emotionalAcceptanceBoost, gatheredLoreBoost,
