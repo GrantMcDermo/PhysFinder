@@ -60,6 +60,11 @@ public class OptionsController {
 
     @GetMapping("/characters/{characterId}/ancestry-feats")
     public List<Feat> getAvailableAncestryFeats(@PathVariable UUID characterId) {
-        return characterCreationService.getAncestryFeats2(characterId);
+        return characterCreationService.getAncestryFeats(characterId);
+    }
+
+    @GetMapping("/characters/{charactedId}/class-feats")
+    public List<Feat> getAvailableClassFeats(@PathVariable UUID charactedId) {
+        return characterCreationService.getClassFeats(charactedId);
     }
 }

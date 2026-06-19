@@ -340,7 +340,7 @@ public class CharacterCreationService {
         }
     }
 
-    public List<Feat> getAncestryFeats2(UUID characterId){
+    public List<Feat> getAncestryFeats(UUID characterId){
         PlayerCharacter character = playerCharacterRepo.findById(characterId).orElseThrow(() -> new RuntimeException("Character not found"));
 
         Set<Trait> ancestryTraits = character.getTraits().stream()
@@ -352,12 +352,22 @@ public class CharacterCreationService {
         return featRepo.findDistinctByTraitsInAndLevelLessThanEqual(ancestryTraits, character.getLevel());
     }
 
+    public List<Feat> getClassFeats(UUID characterId){
+        PlayerCharacter character = playerCharacterRepo.findById(characterId).orElseThrow(() -> new RuntimeException("Character not found"));
+
+        Set<Trait> classTraits = character.getTraits().stream().filter(t -> t.getCategory() == TraitCategory.CLASS).collect(Collectors.toSet());
+
+        if(classTraits.isEmpty()) return List.of();
+
+        return featRepo.findDistinctByTraitsInAndLevelLessThanEqual(classTraits, character.getLevel());
+    }
+
     public PlayerCharacter selectFeat(UUID characterId, SelectFeatRequest request){
         PlayerCharacter sheet = playerCharacterRepo.findById(characterId).orElseThrow(() -> new RuntimeException("Character not found"));
         Feat feat = featRepo.findById(request.featId()).orElseThrow(() -> new RuntimeException("Feat not found"));
 
         if(feat.getFeatType() == FeatType.ANCESTRY){
-            List<Feat> availableFeats = getAncestryFeats2(characterId);
+            List<Feat> availableFeats = getAncestryFeats(characterId);
             if(!availableFeats.contains(feat))
                 throw new RuntimeException("This ancestry feat is not available to this character");
         }
