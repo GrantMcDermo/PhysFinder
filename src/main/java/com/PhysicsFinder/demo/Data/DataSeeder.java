@@ -1049,25 +1049,50 @@ public class DataSeeder {
                     aiuvarin, dromaar, changeling, nephilim));
 
             Feat assurance = new Feat("Assurance", 1, Set.of(fortuneTrait, generalTrait, skillTrait), "Even in the worst circumstances, you can perform basic tasks.");
+            Feat dubiousKnowledge = new Feat("Dubious Knowledge", 1, Set.of(generalTrait, skillTrait), "You’re a treasure trove of information, but not all of it comes from reputable sources.");
             Feat automaticKnowledge = new Feat("Automatic Knowledge", 2, Set.of(generalTrait, skillTrait), "You know basic facts off the top of your head.");
 
             Feat catFall = new Feat("Cat Fall", 1, Set.of(generalTrait, skillTrait), "Your catlike aerial acrobatics allow you to cushion your falls.");
             Feat steadyBalance = new Feat("Steady Balance", 1, Set.of(generalTrait, skillTrait), "You can keep your balance easily, even in adverse conditions.");
             Feat rollingLanding = new Feat("Rolling Landing", 2, Set.of(generalTrait, skillTrait), "You land with quick rolls that help you keep your momentum.");
             Feat combatClimber = new Feat("Combat Climber", 1, Set.of(generalTrait, skillTrait), "Your techniques allow you to fight as you climb.");
+            Feat heftyHauler = new Feat("Hefty Hauler", 1, Set.of(generalTrait, skillTrait), "You can carry more than your frame implies.");
+            Feat quickJump = new Feat("Quick Jump", 1, Set.of(generalTrait, skillTrait), "You can use High Jump and Long Jump as a single action instead of 2 actions. If you do, you don’t perform the initial Stride (nor do you fail if you don’t Stride 10 feet).");
             Feat quickClimb = new Feat("Quick Climb", 7, Set.of(generalTrait, skillTrait), "When Climbing, you move 5 more feet on a success and 10 more feet on a critical success, up to your Speed.");
             Feat alchemicalCrafting = new Feat("Alchemical Crafting", 1, Set.of(generalTrait, skillTrait), "You can use the Craft activity to create alchemical items.");
+            Feat seasoned = new Feat("Seasoned", 1, Set.of(generalTrait, skillTrait), "You’ve mastered the preparation of many types of food and drink.");
             Feat specialtyCrafting = new Feat("Specialty Crafting", 1, Set.of(generalTrait, skillTrait), "Your training focused on Crafting one particular kind of item.");
             Feat impeccableCrafting = new Feat("Impeccable Crafting", 7, Set.of(generalTrait, skillTrait), "You craft flawless creations with great efficiency.");
+            Feat charmingLiar = new Feat("Charming Liar", 1, Set.of(generalTrait, skillTrait), "Your charm allows you to win over those you lie to.");
+            Feat lieToMe = new Feat("Lie to Me", 1, Set.of(generalTrait, skillTrait), "You can use Deception to weave traps to trip up anyone trying to deceive you.");
+            Feat groupImpression = new Feat("Group Impression", 1, Set.of(generalTrait, skillTrait), "When you Make an Impression, you can compare your Diplomacy check result to the Will DCs of up to 10 targets you conversed with, with no penalty. The number of targets increases to 20 if you’re an expert, 50 if you’re a master, and 100 if you’re legendary.");
+            Feat hobnobber = new Feat("Hobnobber", 1, Set.of(generalTrait, skillTrait), "You are skilled at learning information through conversation.");
             Feat groupCoercion = new Feat("Group Coercion", 1, Set.of(generalTrait, skillTrait), "You can strong-arm people effectively, even when you don’t have them isolated.");
             Feat intimidatingGlare = new Feat("Intimidating Glare", 1, Set.of(generalTrait, skillTrait), "Demoralize a creature using only a look.");
+            Feat quickCoercion = new Feat("Quick Coercion", 1, Set.of(generalTrait, skillTrait), "You can bully others with just a few choice implications.");
+            Feat battleMedicine = new Feat("Battle Medicine", 1, Set.of(generalTrait, healingTrait, manipulateTrait, skillTrait), "You can patch up wounds, even in combat.");
+            Feat godlessHealing = new Feat("Godless Healing", 2, Set.of(generalTrait, skillTrait), "You recover an additional 5 Hit Points from a successful attempt to Treat your Wounds or use Battle Medicine on you.");
+            Feat mortalHealing = new Feat("Mortal Healing", 2, Set.of(generalTrait, skillTrait), "You grant greater healing when the gods don't interfere.");
             Feat advancedFirstAid = new Feat("Advanced First Aid", 7, Set.of(generalTrait, healingTrait, manipulateTrait, skillTrait), "You use your medical training to ameliorate sickness or assuage fears");
+            Feat paragonBattleMedicine = new Feat("Paragon Battle Medicine", 7, Set.of(generalTrait, skillTrait), "You've learned the modern uses of Battle Medicine originated by Kassi Aziril.");
+            Feat naturalMedicine = new Feat("Natural Medicine", 1, Set.of(generalTrait, skillTrait), "You can apply natural cures to heal your allies.");
             Feat trainAnimal = new Feat("Train Animal", 1, Set.of(downtimeTrait, generalTrait, manipulateTrait, skillTrait), "You spend time teaching an animal to do a certain action.");
             Feat bondedAnimal = new Feat("Bonded Animal", 2, Set.of(downtimeTrait, generalTrait, skillTrait), "You forge strong connections with animals.");
+            Feat oddityIdentification = new Feat("Oddity Identification", 1, Set.of(generalTrait, skillTrait), "When you become aware of a magical effect or see a spell being cast, you can immediately determine if it twists minds (with the mental trait), fights against fortune (with the fortune or misfortune trait), or reveals secrets (with the detection, prediction, revelation, or scrying traits). At the GM’s discretion, similar effects can also fall into these categories. When you Identify Magic or Recall Knowledge to learn more about these effects, you can always use Occultism without penalty and gain a +2 circumstance bonus.");
+            Feat schooledInSecrets = new Feat("Schooled In Secrets", 1, Set.of(generalTrait, skillTrait), "You notice the signs and symbols that members of mystery cults and other secret societies use to declare their affiliation to fellow members.");
+            Feat fascinatingPerformance = new Feat("Fascinating Performance", 1, Set.of(generalTrait, skillTrait), "When you Perform, compare your result to the Will DC of one observer.");
+            Feat impressivePerformance = new Feat("Impressive Performance", 1, Set.of(generalTrait, skillTrait), "Your performances inspire admiration and win you fans.");
+            Feat inflameCrowd = new Feat("Inflame Crowd", 7, Set.of(generalTrait, skillTrait), "Your performances are a call to action for the crowds who listen to you.");
             Feat studentOfTheCanon = new Feat("Student of the Canon", 1, Set.of(generalTrait, skillTrait), "You’ve researched many faiths enough to recognize notions about them that are unlikely to be true.");
+            Feat courtlyGraces = new Feat("Courtly Graces", 1, Set.of(generalTrait, skillTrait), "You were raised among the nobility or have learned proper etiquette and bearing, allowing you to present yourself as a noble and play games of influence and politics.");
             Feat multilingual = new Feat("Multilingual", 1, Set.of(generalTrait, skillTrait), "You easily pick up new languages.");
+            Feat streetwise = new Feat("Streetwise", 1, Set.of(generalTrait, skillTrait), "You know about life on the streets and feel the pulse of your local settlement.");
+            Feat leverageConnections = new Feat("Leverage Connections", 2, Set.of(generalTrait, skillTrait), "You know the right people who can get things done for you in certain circles.");
+            Feat undergroundNetwork = new Feat("Underground Network", 2, Set.of(generalTrait, skillTrait), "You're connected to groups that know what's going on in the streets, and you can get information out of them quickly.");
             Feat legendaryLinguist = new Feat("Legendary Linguist", 15, Set.of(generalTrait, skillTrait), "You’re so skilled with languages you can create a pidgin instantly.");
+            Feat experiencedSmuggler = new Feat("Experienced Smuggler", 1, Set.of(generalTrait, skillTrait), "You often smuggle things past the authorities.");
             Feat experiencedTracker = new Feat("Experienced Tracker", 1, Set.of(generalTrait, skillTrait), "Tracking is second nature to you, and when necessary you can follow a trail without pause.");
+            Feat surveyWildlife = new Feat("Survey Wildlife", 1, Set.of(generalTrait, skillTrait), "You can study details in the wilderness to determine the presence of nearby creatures.");
             Feat terrainExpert = new Feat("Terrain Expertise", 1, Set.of(generalTrait, skillTrait), "You are particularly skilled in rough terrain.");
 
             Feat adoptedAncestry = new Feat("Adopted Ancestry", 1, Set.of(generalTrait), "You’re fully immersed in another ancestry’s culture and traditions, whether born into them, earned through rite of passage, or bonded through a deep friendship or romance.");
@@ -1692,6 +1717,7 @@ public class DataSeeder {
             Feat implausiblePurchase1 = new Feat("Implausible Purchase", 16, Set.of(investigatorTrait), "It seems impossible, but you've analyzed every angle and are able to just keep pulling out exactly the item you need, even in far-flung locations.");
             Feat reconstructTheScene = new Feat("Reconstruct the Scene", 16, Set.of(concentrateTrait, investigatorTrait, rogueTrait), "You spend 1 minute surveying a small location (such as a single room) to get an impression of events that occurred there in the last day.");
 
+            Feat focusedFascination = new Feat("Focused Fascination", 1, Set.of(swashbucklerTrait), "When you use Fascinating Performance in a combat encounter, you need only a success, rather than a critical success, to fascinate your target.");
             Feat tumbleBehind2 = new Feat("Tumble Behind", 2, Set.of(swashbucklerTrait), "Your tumbling puts your foes on the back foot.");
 
             Feat adaptedCantrip = new Feat("Adapted Cantrip", 1, Set.of(humanTrait), "Through study of multiple magical traditions, you’ve altered a spell to suit your spellcasting style.");
@@ -1906,16 +1932,21 @@ public class DataSeeder {
             Feat eternalWings = new Feat("Eternal Wings", 17, Set.of(nephilimTrait), "Your wings are now a permanent part of your body.");
 
             featRepo.saveAll(List.of(
-                    assurance, automaticKnowledge,
+                    assurance, dubiousKnowledge, automaticKnowledge,
                     catFall, steadyBalance, rollingLanding,
-                    combatClimber, quickClimb,
-                    alchemicalCrafting, specialtyCrafting, impeccableCrafting,
-                    groupCoercion, intimidatingGlare,
-                    advancedFirstAid,
-                    trainAnimal, bondedAnimal,
+                    combatClimber, heftyHauler, quickJump, quickClimb,
+                    alchemicalCrafting, seasoned, specialtyCrafting, impeccableCrafting,
+                    charmingLiar, lieToMe,
+                    groupImpression, hobnobber,
+                    groupCoercion, intimidatingGlare, quickCoercion,
+                    battleMedicine, godlessHealing, mortalHealing, advancedFirstAid, paragonBattleMedicine,
+                    naturalMedicine, trainAnimal, bondedAnimal,
+                    oddityIdentification, schooledInSecrets,
+                    fascinatingPerformance, impressivePerformance, inflameCrowd,
                     studentOfTheCanon,
-                    multilingual, legendaryLinguist,
-                    experiencedTracker, terrainExpert,
+                    courtlyGraces, multilingual, streetwise, leverageConnections, undergroundNetwork, legendaryLinguist,
+                    experiencedSmuggler,
+                    experiencedTracker, surveyWildlife, terrainExpert,
                     adoptedAncestry, shieldBlock, diehard, numbToDeath,
                     doubleSlice, exactingStrike, pointBlankStance, reactiveShield, snaggingStrike, viciousSwing,
                     aggressiveBlock, assistingShot, bladeBrake, brutishShove, combatGrab, duelingParry1, lunge, reboundingToss, sleekReposition,
@@ -1926,18 +1957,12 @@ public class DataSeeder {
                     brutalFinish, dashingStrike, duelingDance, flingingShove, improvedDuelingRiposte, incredibleRicochet, lungingStance, paragonsGuard,
                     desperateFinisher, determination, guidingFinish, guidingRiposte, improvedTwinRiposte1, openingStance1, twoWeaponFlurry,
                     gracefulPoise, improvedReflexiveShield, masterOfManyStyles, multishotStance, overwhelmingBlow, twinnedDefense,
-                    impossibleVolley, savageCritical, smashFromTheAir,
-                    boundlessReprisals, ultimateFlexibility, weaponSupremacy,
-                    spellbookProdigy,
-                    energyAblation, nonlethalSpell,
-                    callWizardlyTools, linkedFocus, spellProtectionArray,
+                    impossibleVolley, savageCritical, smashFromTheAir, boundlessReprisals, ultimateFlexibility, weaponSupremacy,
+                    spellbookProdigy, energyAblation, nonlethalSpell, callWizardlyTools, linkedFocus, spellProtectionArray,
                     convincingIllusion, explosiveArrival, irresistibleMagic, splitSlot,
-                    advancedSchoolSpell, bondConservation, formRetention,
-                    scrollAdept,
-                    cleverCounterspell, forcibleEnergy, keenMagicalDetection,
-                    bondedFocus, secondaryDetonationArray, superiorBond,
-                    spellTinker,
-                    infinitePossibilities, reprepareSpell, secondThoughts,
+                    advancedSchoolSpell, bondConservation, formRetention, scrollAdept,
+                    cleverCounterspell, forcibleEnergy, keenMagicalDetection, bondedFocus, secondaryDetonationArray, superiorBond,
+                    spellTinker, infinitePossibilities, reprepareSpell, secondThoughts,
                     archwizardsMight, spellCombination, spellMastery,
                     bespellStrikes, knowledgeOfShapes,
                     scintillatingSpell, spellshapeMastery,
@@ -1950,8 +1975,7 @@ public class DataSeeder {
                     bloodyDebilitation, criticalDebilitation, fantasticLeap, fellingShot, preparation, ricochetFeint, springFromTheShadows,
                     defensiveRoll, instantOpening, leaveAnOpening, stayDown,
                     blankSlate, cloudStep, cognitiveLoophole, dispellingSlice, perfectDistraction, swiftElusion,
-                    implausibleInfiltration, implausiblePurchase2, powerfulSneak,
-                    hiddenParagon, impossibleStriker, reactiveDistraction,
+                    implausibleInfiltration, implausiblePurchase2, powerfulSneak, hiddenParagon, impossibleStriker, reactiveDistraction,
                     bardicLore, hymnOfHealing, lingeringComposition, martialPerformance, reachSpell, versatilePerformance, wellVersed,
                     cantripExpansion, directedAudience, emotionalPush, esotericPolymath, loremastersEtude, multifariousMuse, songOfStrength, upliftingOverture,
                     combatReading, courageousAdvance, inTune, melodiousSpell, rallyingAnthemFeat, ritualResearcher, tripleTimeFeat, versatileSignature,
@@ -1984,8 +2008,7 @@ public class DataSeeder {
                     dragonShape, garlandSpell, primalFocus, primalSummonsFeat, wanderingOasis,
                     bizarreTransformation, cleansingTransformation, reactiveTransformation, sowSpell, specializedCompanion1, timelessNature, verdantMetamorphosis,
                     impalingBriarsFeat, monstrosityShape, tooMuchToSwallow, upliftingWinds,
-                    invokeDisaster, perfectFormControl, primalAegis,
-                    hierophantsPower, leyLineConduit, trueShapeshifter,
+                    invokeDisaster, perfectFormControl, primalAegis, hierophantsPower, leyLineConduit, trueShapeshifter,
                     poisonResistance,
                     crossbowAce, huntedShot, initiateWarden, monsterHunter, twinTakedown,
                     animalEmpathy2, favoredTerrain, huntersAim, monsterWarden,
@@ -1999,17 +2022,11 @@ public class DataSeeder {
                     impossibleFlurry, manifoldEdge, masterfulCompanion, perfectShot, shadowHunter,
                     legendaryShot, toTheEndsOfTheEarth, tripleThreat, ultimateSkirmisher,
                     quickDraw, runningReload,
-                    cackle, cauldron, counterspell, witchsArmaments,
-                    basicLesson, familiarsLanguage,
-                    ritesOfConvocation, sympatheticStrike,
-                    ceremonialKnife, greaterLesson, wildWitchsArmaments, witchsCharge,
-                    murksight, spiritFamiliar2, stitchedFamiliar, witchsBottle,
-                    doubleDouble, majorLesson, witchsCommunion,
-                    covenSpell, hexFocus, witchsBroom,
-                    patronsPresence, reflectSpell, ritesOfTransfiguration,
-                    siphonPower,
-                    patronsClaim, splitHex,
-                    hexMaster, patronsTruth, witchsHut,
+                    cackle, cauldron, counterspell, witchsArmaments, basicLesson, familiarsLanguage,
+                    ritesOfConvocation, sympatheticStrike, ceremonialKnife, greaterLesson, wildWitchsArmaments, witchsCharge,
+                    murksight, spiritFamiliar2, stitchedFamiliar, witchsBottle, doubleDouble, majorLesson, witchsCommunion,
+                    covenSpell, hexFocus, witchsBroom, patronsPresence, reflectSpell, ritesOfTransfiguration, siphonPower,
+                    patronsClaim, splitHex, hexMaster, patronsTruth, witchsHut,
                     armorRegimentTraining, combatAssessment, observationalAnalysis, reactiveInterference,
                     bodyguard, repositioningBlock, openingStance2,
                     acuteVision, suddenCharge, acuteScent, intimidatingStrike, barrelingCharge, supernaturalSenses, swipe, nocturnalSenses, reactiveStrikeFeat, instinctiveStrike,  suddenLeap, overpoweringCharge, terrifyingHowl, whirlwindStrikes,
@@ -2019,58 +2036,40 @@ public class DataSeeder {
                     familiarFeat, knowledgeIsPower, magicSense,
                     brilliantFlash, shieldWarden, quickShieldBlock, shieldOfReckoning, shieldOfGrace,
                     eliminateRedHerrings, trapFinder, predictivePurchase1, senseTheUnseen, implausiblePurchase1, reconstructTheScene,
-                    tumbleBehind2,
+                    focusedFascination, tumbleBehind2,
                     adaptedCantrip, cooperativeNature, generalTraining, haughtyObstinancy, naturalAmbition, naturalSkill, unconventionalWeaponry,
                     adaptiveAdept, cleverImproviser, senseAllies,
                     cooperativeSoul, groupAid, hardyTraveler, incredibleImprovisation, multitalented,
-                    advancedGeneralTraining, bounceBack, stubbornPersistence,
-                    heroicPresence,
+                    advancedGeneralTraining, bounceBack, stubbornPersistence, heroicPresence,
                     dwarvenDoughtiness, dwarvenLore, dwarvenWeaponFamiliarity, mountainStrategy, rockRunner, stonemasonsEye, unburdenedIron,
-                    boulderRoll, defyTheDarkness, dwarvenReinforcement,
-                    echoesInStone, mountainsStoutness, stoneBones, stonewalker,
-                    marchTheMines, telluricPower,
-                    stonegate, stonewall,
+                    boulderRoll, defyTheDarkness, dwarvenReinforcement, echoesInStone, mountainsStoutness, stoneBones, stonewalker,
+                    marchTheMines, telluricPower, stonegate, stonewall,
                     ancestralLongevity, elvenLore, elvenWeaponFamiliarity, forlorn, nimbleElf, otherworldlyMagic, unwaveringMien,
                     agelessPatience, ancestralSuspicion, martialExperience,
-                    elfStep, expertLongevity, otherworldlyAcumen, treeClimber,
-                    avengeAlly, universalLongevity,
-                    magicRider,
+                    elfStep, expertLongevity, otherworldlyAcumen, treeClimber, avengeAlly, universalLongevity, magicRider,
                     earnedGlory, elfAtavism, inspireImitation, supernaturalCharm,
                     animalAccomplice, animalElocutionist, feyFellowship, firstWorldMagic, gnomeObsession, gnomeWeaponFamiliarity, illusionSense, razzleDazzle,
-                    energizedFont, projectPersona,
-                    cautiousCuriosity, firstWorldAdept, lifeLeap, vivaciousConduit,
-                    instinctiveObfuscation,
-                    homewardBound,
+                    energizedFont, projectPersona, cautiousCuriosity, firstWorldAdept, lifeLeap, vivaciousConduit,
+                    instinctiveObfuscation, homewardBound,
                     burnIt, cityScavenger, goblinLore, goblinScuttle, goblinSong, goblinWeaponFamiliarity, junkTinker, roughRider, verySneaky,
-                    kneecap, loudSinger, vandal,
-                    caveClimber, cling, skitteringScuttle,
-                    veryVerySneaky,
-                    recklessAbandon,
+                    kneecap, loudSinger, vandal, caveClimber, cling, skitteringScuttle, veryVerySneaky, recklessAbandon,
                     distractingShadows, folksyPatter, halflingLore, halflingLuck, halflingWeaponFamiliarity, prairieRider, sureFeet, titanSlinger, unfetteredHalfling, watchfulHalfling,
-                    culturalAdaptability, stepLively,
-                    danceUnderfoot, guidingLuck, irrepressible, unhamperedPassage,
-                    ceaselessShadows, topplingDance,
-                    shadowSelf,
+                    culturalAdaptability, stepLively, danceUnderfoot, guidingLuck, irrepressible, unhamperedPassage,
+                    ceaselessShadows, topplingDance, shadowSelf,
                     graspingReach, harmlesslyCute, leshyLore, leshySuperstition, seedpod, shadowOfTheWilds, undaunted,
                     anchoringRoots, leshyGlide, ritualReversion, speakWithKindred,
                     barkAndTendril, luckyKeepsake, solarRejuvenation, thornedSeedpod,
-                    callOfTheGreenMan, cloakOfPoison,
-                    flourishAndRuin, regrowth,
+                    callOfTheGreenMan, cloakOfPoison, flourishAndRuin, regrowth,
                     beastTrainer, holdMark, ironFists, orcFerocity, orcLore, orcSuperstition, orcWeaponFamiliarity, tusksFeat,
-                    athleticMight, bloodyBlows, defyDeath, scarThickSkin,
-                    pervasiveSuperstition, undyingFerocity,
-                    ferociousBeasts, incredibleFerocity, spellDevourer,
-                    rampagingFerocity,
+                    athleticMight, bloodyBlows, defyDeath, scarThickSkin, pervasiveSuperstition, undyingFerocity,
+                    ferociousBeasts, incredibleFerocity, spellDevourer, rampagingFerocity,
                     monstrousPeacemaker, orcSight,
                     brineMay, callowMay, changelingLore, dreamMay, hagClaws, hagsSight, slagMay,
-                    called, mistChild,
-                    accursedClaws, occultResistance,
-                    hagMagic,
+                    called, mistChild, accursedClaws, occultResistance, hagMagic,
                     angelkin, bestialManifestation, grimspawn, halo, hellspawn, lawbringer, musetouched, nephilimEyes, nephilimLore, nimbleHooves, pitborn,
                     blessedBlood, extraplanarSupplication, nephilimResistance, scionOfManyPlanes, skillfulTail,
                     celestialMagic, divineCountermeasures, divineWings, fiendishMagic,
-                    celestialMercy, slipSideways, summonNephilimKin,
-                    divineDeclaration, eternalWings));
+                    celestialMercy, slipSideways, summonNephilimKin, divineDeclaration, eternalWings));
 
             Background warriorBackground = new Background("Warrior", "You served as a soldier or mercenary.", List.of(intimidation), "Warfare Lore", intimidatingGlare);
             Background scholar = new Background("Scholar", "You studied ancient texts and forgotten lore.", List.of(arcana, nature, occultism, religion), "Academia Lore", assurance);
@@ -2080,8 +2079,37 @@ public class DataSeeder {
             Background artisan = new Background("Artisan", "As an apprentice, you practiced a particular form of building or crafting, developing specialized skill.", List.of(crafting), "Guild Lore", specialtyCrafting);
             Background artist = new Background("Artist", "Your art is your greatest passion, whatever form it takes.", List.of(crafting), "Art Lore", specialtyCrafting);
             Background bandit = new Background("Bandit", "Your past includes no small amount of rural banditry, robbing travelers on the road and scraping by.", List.of(intimidation), "Terrain Lore", groupCoercion);
+            Background barkeep = new Background("Barkeep", "You have five specialties: hefting barrels, drinking, polishing steins, drinking, and drinking.", List.of(diplomacy), "Alcohol Lore", hobnobber);
+            Background barrister = new Background("Barrister", "Piles of legal manuals, stern teachers, and experience in the courtroom have instructed you in legal matters.", List.of(diplomacy), "Legal Lore", groupImpression);
+            Background bountyHunter = new Background("Bounty Hunter", "Bringing in lawbreakers lined your pockets.", List.of(survival), "Legal Lore", experiencedTracker);
+            Background charlatan = new Background("Charlatan", "You traveled from place to place, peddling false fortunes and snake oil in one town, pretending to be royalty in exile to seduce a wealthy heir in the next.", List.of(deception), "Underworld Lore", charmingLiar);
+            Background cook = new Background("Cook", " You grew up in the kitchens of a tavern or other dining establishment and excelled there, becoming an exceptional cook.", List.of(survival), "Cooking Lore", seasoned);
+            Background criminal = new Background("Criminal", "As an unscrupulous independent or as a member of an underworld organization, you lived a life of crime.", List.of(stealth), "Underworld Lore", experiencedSmuggler);
+            Background cultist = new Background("Cultist", "You were (or still are) a member of a cult whose rites may involve sacred dances to ensure a strong harvest or dire rituals that call upon dark powers.", List.of(occultism), "Cult Lore", schooledInSecrets);
+            Background detective = new Background("Detective", "You solved crimes as a police inspector or took jobs for wealthy clients as a private investigator.", List.of(society), "Underworld Lore", streetwise);
+            Background emissary = new Background("Emissary", "As a diplomat or messenger, you traveled to lands far and wide.", List.of(society), "City Lore", multilingual);
+            Background entertainer = new Background("Entertainer", "Through an education in the arts or sheer dogged practice, you learned to entertain crowds.", List.of(performance), "Theatre Lore", fascinatingPerformance);
+            Background farmhand = new Background("Farmhand", "With a strong back and an understanding of seasonal cycles, you tilled the land and tended crops.", List.of(athletics), "Farming Lore", assurance);
+            Background fieldMedic = new Background("Field Medic", "In the chaotic rush of battle, you learned to adapt to rapidly changing conditions as you administered to battle casualties.", List.of(medicine), "Warfare Lore", battleMedicine);
+            Background fortuneTeller = new Background("Fortune Teller", "The strands of fate are clear to you, as you have learned many traditional forms by which laypeople can divine the future.", List.of(occultism), "Fortune-Telling Lore", oddityIdentification);
+            Background gambler = new Background("Gambler", "The thrill of the win drew you into games of chance.", List.of(deception), "Games Lore", lieToMe);
+            Background gladiator = new Background("Gladiator", "The bloody games of the arena taught you the art of combat. Before you attained true fame, you departed—or escaped—the arena to explore the world.", List.of(performance), "Gladiatorial Lore", impressivePerformance);
+            Background guard = new Background("Guard", "You served in the guard, out of either patriotism or the need for coin.", List.of(intimidation), "Legal Lore", quickCoercion);
+            Background herbalist = new Background("Herbalist", "As a formally trained apothecary or a rural practitioner of folk medicine, you learned the healing properties of various herbs.", List.of(nature), "Herbalism Lore", naturalMedicine);
+            Background hermit = new Background("Hermit", "In an isolated place—like a cave, remote oasis, or secluded mansion—you lived a life of solitude.", List.of(nature, occultism), "Terrain Lore", dubiousKnowledge);
+            Background hunter = new Background("Hunter", "You stalked and took down animals and other creatures of the wild.", List.of(survival), "Tanning Lore", surveyWildlife);
+            Background laborer = new Background("Laborer", "You’ve spent years performing arduous physical labor.", List.of(athletics), "Labor Lore", heftyHauler);
+            Background martialDisciple = new Background("Martial Disciple", "You dedicated yourself to intense training and rigorous study to become a great warrior.", List.of(acrobatics, athletics), "Warfare Lore", null);
+            BackgroundConditionalFeat martialDiscipleAcrobatics = new BackgroundConditionalFeat(martialDisciple, acrobatics, catFall);
+            BackgroundConditionalFeat martialDiscipleAthletics = new BackgroundConditionalFeat(martialDisciple, athletics, quickJump);
+            martialDisciple.setConditionalGrantedFeats(List.of(martialDiscipleAcrobatics, martialDiscipleAthletics));
 
-            backgroundRepo.saveAll(List.of(acolyte, warriorBackground, scholar, acrobat, animalWhisperer, artisan, artist, bandit));
+
+            backgroundRepo.saveAll(List.of(
+                    acolyte, acrobat, animalWhisperer, artisan, artist, bandit, barkeep, barrister, bountyHunter,
+                    charlatan, cook, criminal, cultist, detective, emissary, entertainer, farmhand, fieldMedic,
+                    fortuneTeller, gambler, gladiator, guard, herbalist, hermit, hunter, laborer, martialDisciple,
+                    scholar, warriorBackground));
 
             ClassFeatureChoice emotionalAcceptance = new ClassFeatureChoice(psychic, "Subconscious Mind", "Emotional Acceptance");
             ClassFeatureChoice gatheredLore = new ClassFeatureChoice(psychic, "Subconscious Mind", "Gathered Lore");
@@ -2396,6 +2424,111 @@ public class DataSeeder {
             AttributeBoostRule banditFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE,  allSix, 1);
             banditFreeBoost.setBackground(bandit);
 
+            AttributeBoostRule barkeepDrunkBoost = new AttributeBoostRule(AttributeBoostType.CHOICE, List.of(AttributeName.CONSTITUTION, AttributeName.CHARISMA), 1);
+            barkeepDrunkBoost.setBackground(barkeep);
+            AttributeBoostRule barkeepFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE,  allSix, 1);
+            barkeepFreeBoost.setBackground(barkeep);
+
+            AttributeBoostRule barristerMentalBoost = new AttributeBoostRule(AttributeBoostType.CHOICE, List.of(AttributeName.INTELLIGENCE, AttributeName.CHARISMA), 1);
+            barristerMentalBoost.setBackground(barrister);
+            AttributeBoostRule barristerFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE,  allSix, 1);
+            barristerFreeBoost.setBackground(barrister);
+
+            AttributeBoostRule bountyHunterFirstBoost = new AttributeBoostRule(AttributeBoostType.CHOICE, List.of(AttributeName.STRENGTH, AttributeName.WISDOM), 1);
+            bountyHunterFirstBoost.setBackground(bountyHunter);
+            AttributeBoostRule bountyHunterFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE,  allSix, 1);
+            bountyHunterFreeBoost.setBackground(bountyHunter);
+
+            AttributeBoostRule charlatanMentalBoost = new AttributeBoostRule(AttributeBoostType.CHOICE, List.of(AttributeName.INTELLIGENCE, AttributeName.CHARISMA), 1);
+            charlatanMentalBoost.setBackground(charlatan);
+            AttributeBoostRule charlatanFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE,  allSix, 1);
+            charlatanFreeBoost.setBackground(charlatan);
+
+            AttributeBoostRule cookTasteBoost = new AttributeBoostRule(AttributeBoostType.CHOICE, List.of(AttributeName.CONSTITUTION, AttributeName.INTELLIGENCE), 1);
+            cookTasteBoost.setBackground(cook);
+            AttributeBoostRule cookFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE,  allSix, 1);
+            cookFreeBoost.setBackground(cook);
+
+            AttributeBoostRule criminalKnackBoost = new AttributeBoostRule(AttributeBoostType.CHOICE, List.of(AttributeName.DEXTERITY, AttributeName.INTELLIGENCE), 1);
+            criminalKnackBoost.setBackground(criminal);
+            AttributeBoostRule criminalFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE,  allSix, 1);
+            criminalFreeBoost.setBackground(criminal);
+
+            AttributeBoostRule cultistMentalBoost = new AttributeBoostRule(AttributeBoostType.CHOICE, List.of(AttributeName.INTELLIGENCE, AttributeName.CHARISMA), 1);
+            cultistMentalBoost.setBackground(cultist);
+            AttributeBoostRule cultistFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE,  allSix, 1);
+            cultistFreeBoost.setBackground(cultist);
+
+            AttributeBoostRule detectiveMentalBoost = new AttributeBoostRule(AttributeBoostType.CHOICE, List.of(AttributeName.INTELLIGENCE, AttributeName.WISDOM), 1);
+            detectiveMentalBoost.setBackground(detective);
+            AttributeBoostRule detectiveFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE,  allSix, 1);
+            detectiveFreeBoost.setBackground(detective);
+
+            AttributeBoostRule emissaryMentalBoost = new AttributeBoostRule(AttributeBoostType.CHOICE, List.of(AttributeName.INTELLIGENCE, AttributeName.CHARISMA), 1);
+            emissaryMentalBoost.setBackground(emissary);
+            AttributeBoostRule emissaryFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE,  allSix, 1);
+            emissaryFreeBoost.setBackground(emissary);
+
+            AttributeBoostRule entertainerActBoost = new AttributeBoostRule(AttributeBoostType.CHOICE, List.of(AttributeName.DEXTERITY, AttributeName.CHARISMA), 1);
+            entertainerActBoost.setBackground(entertainer);
+            AttributeBoostRule entertainerFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE,  allSix, 1);
+            entertainerFreeBoost.setBackground(entertainer);
+
+            AttributeBoostRule farmhandFirstBoost = new AttributeBoostRule(AttributeBoostType.CHOICE, List.of(AttributeName.CONSTITUTION, AttributeName.WISDOM), 1);
+            farmhandFirstBoost.setBackground(farmhand);
+            AttributeBoostRule farmhandFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE,  allSix, 1);
+            farmhandFreeBoost.setBackground(farmhand);
+
+            AttributeBoostRule fieldMedicStoicBoost = new AttributeBoostRule(AttributeBoostType.CHOICE, List.of(AttributeName.CONSTITUTION, AttributeName.WISDOM), 1);
+            fieldMedicStoicBoost.setBackground(fieldMedic);
+            AttributeBoostRule fieldMedicFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE,  allSix, 1);
+            fieldMedicFreeBoost.setBackground(fieldMedic);
+
+            AttributeBoostRule fortuneTellerMentalBoost = new AttributeBoostRule(AttributeBoostType.CHOICE, List.of(AttributeName.INTELLIGENCE, AttributeName.CHARISMA), 1);
+            fortuneTellerMentalBoost.setBackground(fortuneTeller);
+            AttributeBoostRule fortuneTellerFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE,  allSix, 1);
+            fortuneTellerFreeBoost.setBackground(fortuneTeller);
+
+            AttributeBoostRule gamblerBluffBoost = new AttributeBoostRule(AttributeBoostType.CHOICE, List.of(AttributeName.DEXTERITY, AttributeName.CHARISMA), 1);
+            gamblerBluffBoost.setBackground(gambler);
+            AttributeBoostRule gamblerFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE,  allSix, 1);
+            gamblerFreeBoost.setBackground(gambler);
+
+            AttributeBoostRule gladiatorFirstBoost = new AttributeBoostRule(AttributeBoostType.CHOICE, List.of(AttributeName.STRENGTH, AttributeName.CHARISMA), 1);
+            gladiatorFirstBoost.setBackground(gladiator);
+            AttributeBoostRule gladiatorFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE,  allSix, 1);
+            gladiatorFreeBoost.setBackground(gladiator);
+
+            AttributeBoostRule guardBounceBoost = new AttributeBoostRule(AttributeBoostType.CHOICE, List.of(AttributeName.STRENGTH, AttributeName.CHARISMA), 1);
+            guardBounceBoost.setBackground(guard);
+            AttributeBoostRule guardFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE,  allSix, 1);
+            guardFreeBoost.setBackground(guard);
+
+            AttributeBoostRule herbalistGrowBoost = new AttributeBoostRule(AttributeBoostType.CHOICE, List.of(AttributeName.CONSTITUTION, AttributeName.WISDOM), 1);
+            herbalistGrowBoost.setBackground(herbalist);
+            AttributeBoostRule herbalistFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE,  allSix, 1);
+            herbalistFreeBoost.setBackground(herbalist);
+
+            AttributeBoostRule hermitTrekBoost = new AttributeBoostRule(AttributeBoostType.CHOICE, List.of(AttributeName.CONSTITUTION, AttributeName.INTELLIGENCE), 1);
+            hermitTrekBoost.setBackground(hermit);
+            AttributeBoostRule hermitFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE,  allSix, 1);
+            hermitFreeBoost.setBackground(hermit);
+
+            AttributeBoostRule hunterHuntBoost = new AttributeBoostRule(AttributeBoostType.CHOICE, List.of(AttributeName.DEXTERITY, AttributeName.WISDOM), 1);
+            hunterHuntBoost.setBackground(hunter);
+            AttributeBoostRule hunterFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE,  allSix, 1);
+            hunterFreeBoost.setBackground(hunter);
+
+            AttributeBoostRule laborerPhysBoost = new AttributeBoostRule(AttributeBoostType.CHOICE, List.of(AttributeName.STRENGTH, AttributeName.CONSTITUTION), 1);
+            laborerPhysBoost.setBackground(laborer);
+            AttributeBoostRule laborerFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE,  allSix, 1);
+            laborerFreeBoost.setBackground(laborer);
+
+            AttributeBoostRule martialDiscipleFightBoost = new AttributeBoostRule(AttributeBoostType.CHOICE, List.of(AttributeName.STRENGTH, AttributeName.DEXTERITY), 1);
+            martialDiscipleFightBoost.setBackground(martialDisciple);
+            AttributeBoostRule martialDiscipleFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE,  allSix, 1);
+            martialDiscipleFreeBoost.setBackground(martialDisciple);
+
             AttributeBoostRule fighterBoost = new AttributeBoostRule(AttributeBoostType.CHOICE, List.of(AttributeName.STRENGTH, AttributeName.DEXTERITY), 1);
             fighterBoost.setCharacterClass(fighter);
 
@@ -2467,12 +2600,20 @@ public class DataSeeder {
                     wayangDexBoost, wayangChaBoost, warriorFreeBoost,
                     scholarMentalBoost, scholarFreeBoost,
                     warriorPhysBoost, warriorFreeBoost,
-                    acolyteMentalBoost, acolyteFreeBoost,
-                    acrobatPhysBoost, acrobatFreeBoost,
-                    animalWhispererMentalBoost, animalWhispererFreeBoost,
-                    artisanFirstBoost, artisanFreeBoost,
-                    artistFirstBoost, artistFreeBoost,
-                    banditFirstBoost, banditFreeBoost,
+                    acolyteMentalBoost, acolyteFreeBoost, acrobatPhysBoost, acrobatFreeBoost,
+                    animalWhispererMentalBoost, animalWhispererFreeBoost, artisanFirstBoost, artisanFreeBoost,
+                    artistFirstBoost, artistFreeBoost, banditFirstBoost, banditFreeBoost,
+                    barkeepDrunkBoost, barkeepFreeBoost, barristerMentalBoost, barristerFreeBoost,
+                    bountyHunterFirstBoost, bountyHunterFreeBoost, charlatanMentalBoost, charlatanFreeBoost,
+                    cookTasteBoost, cookFreeBoost, criminalKnackBoost, criminalFreeBoost,
+                    cultistMentalBoost, cultistFreeBoost, detectiveMentalBoost, detectiveFreeBoost,
+                    emissaryMentalBoost, emissaryFreeBoost, entertainerActBoost, entertainerFreeBoost,
+                    farmhandFirstBoost, farmhandFreeBoost, fieldMedicStoicBoost, fieldMedicFreeBoost,
+                    fortuneTellerMentalBoost, fortuneTellerFreeBoost, gamblerBluffBoost, gamblerFreeBoost,
+                    gladiatorFirstBoost, gladiatorFreeBoost, guardBounceBoost, guardFreeBoost,
+                    herbalistGrowBoost, herbalistFreeBoost, hermitTrekBoost, hermitFreeBoost,
+                    hunterHuntBoost, hunterFreeBoost, laborerPhysBoost, laborerFreeBoost,
+                    martialDiscipleFightBoost, martialDiscipleFreeBoost,
                     fighterBoost,
                     wizardBoost,
                     emotionalAcceptanceBoost, gatheredLoreBoost,

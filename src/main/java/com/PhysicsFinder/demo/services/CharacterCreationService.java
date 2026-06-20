@@ -167,8 +167,23 @@ public class CharacterCreationService {
 
         sheet.setBackground(background);
         sheet.setChosenBackgroundSkill(chosenSkill);
+        applyBackgroundGrantedFeat(sheet, background, chosenSkill);
         rebuildProficiencies(sheet);
         return playerCharacterRepo.save(sheet);
+    }
+
+    private void applyBackgroundGrantedFeat(PlayerCharacter sheet, Background background, Skill chosenSkill) {
+        if (!background.getConditionalGrantedFeats().isEmpty()) {
+            background.getConditionalGrantedFeats().stream()
+                    .filter(c -> c.getRequiredSkill().equals(chosenSkill))
+                    .findFirst()
+                    .ifPresent(c -> addSelectedFeat(sheet, c.getFeat()));
+            return;
+        }
+
+        if (background.getGrantedSkillFeat() != null) {
+            addSelectedFeat(sheet, background.getGrantedSkillFeat());
+        }
     }
 
     public PlayerCharacter assignClass(UUID characterId, AssignClassRequest request){

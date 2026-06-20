@@ -3,6 +3,7 @@ package com.PhysicsFinder.demo.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -28,6 +29,9 @@ public class Background {
 
     @ManyToOne
     private Feat grantedSkillFeat;
+
+    @OneToMany(mappedBy = "background", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<BackgroundConditionalFeat> conditionalGrantedFeats = new ArrayList<>();
 
     public Background(String name, String description, List<Skill> trainedSkillOptions, String loreSkill, Feat grantedSkillFeat) {
         this.name = name;
