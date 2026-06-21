@@ -534,27 +534,29 @@ public class DataSeeder {
 
             armorRepo.saveAll(List.of(explorersClothing, paddedArmor, hideArmor, splintMail, chainShirt, breastplate, coralArmor, leafWeave, chainMail, fullPlate));
 
-            Deity abadar = new Deity("Abadar", List.of(crossbow), List.of(society));
-            Deity asmodeus = new Deity("Asmodeus", List.of(mace), List.of(deception));
-            Deity calistria = new Deity("Calistria", List.of(whip), List.of(deception));
-            Deity caydenCailean = new Deity("Cayden Cailean", List.of(rapier), List.of(athletics));
-            Deity desna = new Deity("Desna", List.of(starknife), List.of(acrobatics));
-            Deity erastil = new Deity("Erastil", List.of(longbow), List.of(survival));
-            Deity gorum = new Deity("Gorum", List.of(greatsword), List.of(athletics));
-            Deity gozreh = new Deity("Gozreh", List.of(trident), List.of(survival));
-            Deity greenFaith = new Deity("Green Faith", List.of(sickle, claw), List.of(nature));
-            Deity iomedae = new Deity("Iomedae", List.of(longsword), List.of(intimidation));
-            Deity irori = new Deity("Irori", List.of(fist), List.of(athletics));
-            Deity lamashtu = new Deity("Lamashtu", List.of(falchion), List.of(survival));
-            Deity nethys = new Deity("Nethys", List.of(staff), List.of(arcana));
-            Deity norgorber = new Deity("Norgorber", List.of(shortsword), List.of(stealth));
-            Deity pharasma = new Deity("Pharasma", List.of(dagger), List.of(medicine));
-            Deity rovagug = new Deity("Rovagug", List.of(greataxe), List.of(athletics));
-            Deity sarenrae = new Deity("Sarenrae", List.of(scimitar), List.of(medicine));
-            Deity shelyn = new Deity("Shelyn", List.of(glaive), List.of(crafting, performance));
-            Deity torag = new Deity("Torag", List.of(warhammer), List.of(crafting));
-            Deity urgathoa = new Deity("Urgathoa", List.of(scythe), List.of(intimidation));
-            Deity zonKuthon = new Deity("Zon-Kuthon", List.of(spikedChain), List.of(intimidation));
+            List<AttributeName> allSix = List.of(AttributeName.STRENGTH, AttributeName.DEXTERITY, AttributeName.CONSTITUTION, AttributeName.INTELLIGENCE, AttributeName.WISDOM, AttributeName.CHARISMA);
+
+            Deity abadar = new Deity("Abadar", List.of(crossbow), List.of(society), List.of(AttributeName.CONSTITUTION, AttributeName.INTELLIGENCE));
+            Deity asmodeus = new Deity("Asmodeus", List.of(mace), List.of(deception), allSix);
+            Deity calistria = new Deity("Calistria", List.of(whip), List.of(deception), List.of(AttributeName.DEXTERITY, AttributeName.CHARISMA));
+            Deity caydenCailean = new Deity("Cayden Cailean", List.of(rapier), List.of(athletics), List.of(AttributeName.CONSTITUTION, AttributeName.CHARISMA));
+            Deity desna = new Deity("Desna", List.of(starknife), List.of(acrobatics), List.of(AttributeName.DEXTERITY, AttributeName.CHARISMA));
+            Deity erastil = new Deity("Erastil", List.of(longbow), List.of(survival), List.of(AttributeName.CONSTITUTION, AttributeName.WISDOM));
+            Deity gorum = new Deity("Gorum", List.of(greatsword), List.of(athletics), List.of(AttributeName.STRENGTH, AttributeName.CONSTITUTION));
+            Deity gozreh = new Deity("Gozreh", List.of(trident), List.of(survival), List.of(AttributeName.CONSTITUTION, AttributeName.WISDOM));
+            Deity greenFaith = new Deity("Green Faith", List.of(sickle, claw), List.of(nature), List.of(AttributeName.CONSTITUTION, AttributeName.WISDOM));
+            Deity iomedae = new Deity("Iomedae", List.of(longsword), List.of(intimidation), List.of(AttributeName.STRENGTH, AttributeName.CONSTITUTION));
+            Deity irori = new Deity("Irori", List.of(fist), List.of(athletics), List.of(AttributeName.INTELLIGENCE, AttributeName.WISDOM));
+            Deity lamashtu = new Deity("Lamashtu", List.of(falchion), List.of(survival), List.of(AttributeName.STRENGTH, AttributeName.CONSTITUTION));
+            Deity nethys = new Deity("Nethys", List.of(staff), List.of(arcana), List.of(AttributeName.INTELLIGENCE, AttributeName.WISDOM));
+            Deity norgorber = new Deity("Norgorber", List.of(shortsword), List.of(stealth), List.of(AttributeName.DEXTERITY, AttributeName.INTELLIGENCE));
+            Deity pharasma = new Deity("Pharasma", List.of(dagger), List.of(medicine), List.of(AttributeName.CONSTITUTION, AttributeName.WISDOM));
+            Deity rovagug = new Deity("Rovagug", List.of(greataxe), List.of(athletics), List.of(AttributeName.STRENGTH, AttributeName.CONSTITUTION));
+            Deity sarenrae = new Deity("Sarenrae", List.of(scimitar), List.of(medicine), List.of(AttributeName.CONSTITUTION, AttributeName.WISDOM));
+            Deity shelyn = new Deity("Shelyn", List.of(glaive), List.of(crafting, performance), List.of(AttributeName.WISDOM, AttributeName.CHARISMA));
+            Deity torag = new Deity("Torag", List.of(warhammer), List.of(crafting), List.of(AttributeName.CONSTITUTION, AttributeName.WISDOM));
+            Deity urgathoa = new Deity("Urgathoa", List.of(scythe), List.of(intimidation), List.of(AttributeName.CONSTITUTION, AttributeName.WISDOM));
+            Deity zonKuthon = new Deity("Zon-Kuthon", List.of(spikedChain), List.of(intimidation), List.of(AttributeName.CONSTITUTION, AttributeName.WISDOM));
 
             deityRepo.saveAll(List.of(abadar, asmodeus, calistria, caydenCailean, desna, erastil, gorum, gozreh, greenFaith, iomedae, irori, lamashtu, nethys, norgorber, pharasma, rovagug, sarenrae, shelyn, torag, urgathoa, zonKuthon));
 
@@ -1055,42 +1057,56 @@ public class DataSeeder {
             Feat catFall = new Feat("Cat Fall", 1, Set.of(generalTrait, skillTrait), "Your catlike aerial acrobatics allow you to cushion your falls.");
             Feat steadyBalance = new Feat("Steady Balance", 1, Set.of(generalTrait, skillTrait), "You can keep your balance easily, even in adverse conditions.");
             Feat rollingLanding = new Feat("Rolling Landing", 2, Set.of(generalTrait, skillTrait), "You land with quick rolls that help you keep your momentum.");
+
             Feat combatClimber = new Feat("Combat Climber", 1, Set.of(generalTrait, skillTrait), "Your techniques allow you to fight as you climb.");
             Feat heftyHauler = new Feat("Hefty Hauler", 1, Set.of(generalTrait, skillTrait), "You can carry more than your frame implies.");
             Feat quickJump = new Feat("Quick Jump", 1, Set.of(generalTrait, skillTrait), "You can use High Jump and Long Jump as a single action instead of 2 actions. If you do, you don’t perform the initial Stride (nor do you fail if you don’t Stride 10 feet).");
             Feat quickClimb = new Feat("Quick Climb", 7, Set.of(generalTrait, skillTrait), "When Climbing, you move 5 more feet on a success and 10 more feet on a critical success, up to your Speed.");
+
             Feat alchemicalCrafting = new Feat("Alchemical Crafting", 1, Set.of(generalTrait, skillTrait), "You can use the Craft activity to create alchemical items.");
             Feat seasoned = new Feat("Seasoned", 1, Set.of(generalTrait, skillTrait), "You’ve mastered the preparation of many types of food and drink.");
             Feat specialtyCrafting = new Feat("Specialty Crafting", 1, Set.of(generalTrait, skillTrait), "Your training focused on Crafting one particular kind of item.");
             Feat impeccableCrafting = new Feat("Impeccable Crafting", 7, Set.of(generalTrait, skillTrait), "You craft flawless creations with great efficiency.");
+
             Feat charmingLiar = new Feat("Charming Liar", 1, Set.of(generalTrait, skillTrait), "Your charm allows you to win over those you lie to.");
             Feat lieToMe = new Feat("Lie to Me", 1, Set.of(generalTrait, skillTrait), "You can use Deception to weave traps to trip up anyone trying to deceive you.");
+
+            Feat bargainHunter = new Feat("Bargain Hunter", 1, Set.of(generalTrait, skillTrait), "You can Earn Income using Diplomacy, spending your days hunting for bargains and reselling at a profit. You can also spend time specifically sniffing out a great bargain on an item; this works as if you were using Earn Income with Diplomacy, except instead of gaining money, you purchase the item at a discount equal to the money you would have gained, gaining the item for free if your earned income equals or exceeds its cost. Finally, if you select Bargain Hunter during character creation at 1st level, you start play with an additional 2 gp.");
             Feat groupImpression = new Feat("Group Impression", 1, Set.of(generalTrait, skillTrait), "When you Make an Impression, you can compare your Diplomacy check result to the Will DCs of up to 10 targets you conversed with, with no penalty. The number of targets increases to 20 if you’re an expert, 50 if you’re a master, and 100 if you’re legendary.");
             Feat hobnobber = new Feat("Hobnobber", 1, Set.of(generalTrait, skillTrait), "You are skilled at learning information through conversation.");
+
             Feat groupCoercion = new Feat("Group Coercion", 1, Set.of(generalTrait, skillTrait), "You can strong-arm people effectively, even when you don’t have them isolated.");
             Feat intimidatingGlare = new Feat("Intimidating Glare", 1, Set.of(generalTrait, skillTrait), "Demoralize a creature using only a look.");
             Feat quickCoercion = new Feat("Quick Coercion", 1, Set.of(generalTrait, skillTrait), "You can bully others with just a few choice implications.");
+
             Feat battleMedicine = new Feat("Battle Medicine", 1, Set.of(generalTrait, healingTrait, manipulateTrait, skillTrait), "You can patch up wounds, even in combat.");
             Feat godlessHealing = new Feat("Godless Healing", 2, Set.of(generalTrait, skillTrait), "You recover an additional 5 Hit Points from a successful attempt to Treat your Wounds or use Battle Medicine on you.");
             Feat mortalHealing = new Feat("Mortal Healing", 2, Set.of(generalTrait, skillTrait), "You grant greater healing when the gods don't interfere.");
             Feat advancedFirstAid = new Feat("Advanced First Aid", 7, Set.of(generalTrait, healingTrait, manipulateTrait, skillTrait), "You use your medical training to ameliorate sickness or assuage fears");
             Feat paragonBattleMedicine = new Feat("Paragon Battle Medicine", 7, Set.of(generalTrait, skillTrait), "You've learned the modern uses of Battle Medicine originated by Kassi Aziril.");
+
             Feat naturalMedicine = new Feat("Natural Medicine", 1, Set.of(generalTrait, skillTrait), "You can apply natural cures to heal your allies.");
             Feat trainAnimal = new Feat("Train Animal", 1, Set.of(downtimeTrait, generalTrait, manipulateTrait, skillTrait), "You spend time teaching an animal to do a certain action.");
             Feat bondedAnimal = new Feat("Bonded Animal", 2, Set.of(downtimeTrait, generalTrait, skillTrait), "You forge strong connections with animals.");
+
             Feat oddityIdentification = new Feat("Oddity Identification", 1, Set.of(generalTrait, skillTrait), "When you become aware of a magical effect or see a spell being cast, you can immediately determine if it twists minds (with the mental trait), fights against fortune (with the fortune or misfortune trait), or reveals secrets (with the detection, prediction, revelation, or scrying traits). At the GM’s discretion, similar effects can also fall into these categories. When you Identify Magic or Recall Knowledge to learn more about these effects, you can always use Occultism without penalty and gain a +2 circumstance bonus.");
             Feat schooledInSecrets = new Feat("Schooled In Secrets", 1, Set.of(generalTrait, skillTrait), "You notice the signs and symbols that members of mystery cults and other secret societies use to declare their affiliation to fellow members.");
+
             Feat fascinatingPerformance = new Feat("Fascinating Performance", 1, Set.of(generalTrait, skillTrait), "When you Perform, compare your result to the Will DC of one observer.");
             Feat impressivePerformance = new Feat("Impressive Performance", 1, Set.of(generalTrait, skillTrait), "Your performances inspire admiration and win you fans.");
             Feat inflameCrowd = new Feat("Inflame Crowd", 7, Set.of(generalTrait, skillTrait), "Your performances are a call to action for the crowds who listen to you.");
+
             Feat studentOfTheCanon = new Feat("Student of the Canon", 1, Set.of(generalTrait, skillTrait), "You’ve researched many faiths enough to recognize notions about them that are unlikely to be true.");
+
             Feat courtlyGraces = new Feat("Courtly Graces", 1, Set.of(generalTrait, skillTrait), "You were raised among the nobility or have learned proper etiquette and bearing, allowing you to present yourself as a noble and play games of influence and politics.");
             Feat multilingual = new Feat("Multilingual", 1, Set.of(generalTrait, skillTrait), "You easily pick up new languages.");
             Feat streetwise = new Feat("Streetwise", 1, Set.of(generalTrait, skillTrait), "You know about life on the streets and feel the pulse of your local settlement.");
             Feat leverageConnections = new Feat("Leverage Connections", 2, Set.of(generalTrait, skillTrait), "You know the right people who can get things done for you in certain circles.");
             Feat undergroundNetwork = new Feat("Underground Network", 2, Set.of(generalTrait, skillTrait), "You're connected to groups that know what's going on in the streets, and you can get information out of them quickly.");
             Feat legendaryLinguist = new Feat("Legendary Linguist", 15, Set.of(generalTrait, skillTrait), "You’re so skilled with languages you can create a pidgin instantly.");
+
             Feat experiencedSmuggler = new Feat("Experienced Smuggler", 1, Set.of(generalTrait, skillTrait), "You often smuggle things past the authorities.");
+
             Feat experiencedTracker = new Feat("Experienced Tracker", 1, Set.of(generalTrait, skillTrait), "Tracking is second nature to you, and when necessary you can follow a trail without pause.");
             Feat surveyWildlife = new Feat("Survey Wildlife", 1, Set.of(generalTrait, skillTrait), "You can study details in the wilderness to determine the presence of nearby creatures.");
             Feat terrainExpert = new Feat("Terrain Expertise", 1, Set.of(generalTrait, skillTrait), "You are particularly skilled in rough terrain.");
@@ -1937,7 +1953,7 @@ public class DataSeeder {
                     combatClimber, heftyHauler, quickJump, quickClimb,
                     alchemicalCrafting, seasoned, specialtyCrafting, impeccableCrafting,
                     charmingLiar, lieToMe,
-                    groupImpression, hobnobber,
+                    bargainHunter, groupImpression, hobnobber,
                     groupCoercion, intimidatingGlare, quickCoercion,
                     battleMedicine, godlessHealing, mortalHealing, advancedFirstAid, paragonBattleMedicine,
                     naturalMedicine, trainAnimal, bondedAnimal,
@@ -2103,13 +2119,19 @@ public class DataSeeder {
             BackgroundConditionalFeat martialDiscipleAcrobatics = new BackgroundConditionalFeat(martialDisciple, acrobatics, catFall);
             BackgroundConditionalFeat martialDiscipleAthletics = new BackgroundConditionalFeat(martialDisciple, athletics, quickJump);
             martialDisciple.setConditionalGrantedFeats(List.of(martialDiscipleAcrobatics, martialDiscipleAthletics));
-
+            Background merchant = new Background("Merchant", "In a dusty shop, market stall, or merchant caravan, you bartered wares for coin and trade goods.", List.of(diplomacy), "Mercantile Lore", bargainHunter);
+            Background miner = new Background("Miner", "You earned a living wrenching precious minerals from the lightless depths of the earth.", List.of(survival), "Mining Lore", terrainExpert);
+            Background noble = new Background("Noble", "To the common folk, the life of a noble seems one of idyllic luxury, but growing up as a noble or member of the aspiring gentry, you know the reality: a noble’s lot is obligation and intrigue.", List.of(society), "Genealogy Lore", courtlyGraces);
+            Background nomad = new Background("Nomad", "Traveling far and wide, you picked up basic tactics for surviving on the road and in unknown lands, getting by with few supplies and even fewer comforts.", List.of(survival), "Terrain Lore", assurance);
+            Background prisoner = new Background("Prisoner", "You might have been imprisoned for crimes (whether you were guilty or not), or enslaved for some part of your upbringing.", List.of(stealth), "Underworld Lore", experiencedSmuggler);
+            Background raisedByBelief = new Background("Raised By Belief", "You were raised in a community devoted to a particular deity, and that deity's faith and divine attributes shaped who you are.", List.of(), null, assurance);
+            raisedByBelief.setDeityDependent(true);
 
             backgroundRepo.saveAll(List.of(
                     acolyte, acrobat, animalWhisperer, artisan, artist, bandit, barkeep, barrister, bountyHunter,
                     charlatan, cook, criminal, cultist, detective, emissary, entertainer, farmhand, fieldMedic,
                     fortuneTeller, gambler, gladiator, guard, herbalist, hermit, hunter, laborer, martialDisciple,
-                    scholar, warriorBackground));
+                    merchant, miner, noble, nomad, prisoner, raisedByBelief, scholar, warriorBackground));
 
             ClassFeatureChoice emotionalAcceptance = new ClassFeatureChoice(psychic, "Subconscious Mind", "Emotional Acceptance");
             ClassFeatureChoice gatheredLore = new ClassFeatureChoice(psychic, "Subconscious Mind", "Gathered Lore");
@@ -2305,8 +2327,6 @@ public class DataSeeder {
                     alchemicalSciences,
                     empiricism
             ));
-
-            List<AttributeName> allSix = List.of(AttributeName.STRENGTH, AttributeName.DEXTERITY, AttributeName.CONSTITUTION, AttributeName.INTELLIGENCE, AttributeName.WISDOM, AttributeName.CHARISMA);
 
             AttributeBoostRule humanBoosts = new AttributeBoostRule(AttributeBoostType.FREE, allSix, 2);
             humanBoosts.setAncestry(human);
@@ -2529,6 +2549,36 @@ public class DataSeeder {
             AttributeBoostRule martialDiscipleFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE,  allSix, 1);
             martialDiscipleFreeBoost.setBackground(martialDisciple);
 
+            AttributeBoostRule merchantMentalBoost = new AttributeBoostRule(AttributeBoostType.CHOICE, List.of(AttributeName.INTELLIGENCE, AttributeName.CHARISMA), 1);
+            merchantMentalBoost.setBackground(merchant);
+            AttributeBoostRule merchantFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE,  allSix, 1);
+            merchantFreeBoost.setBackground(merchant);
+
+            AttributeBoostRule minerGrindBoost = new AttributeBoostRule(AttributeBoostType.CHOICE, List.of(AttributeName.STRENGTH, AttributeName.WISDOM), 1);
+            minerGrindBoost.setBackground(miner);
+            AttributeBoostRule minerFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE,  allSix, 1);
+            minerFreeBoost.setBackground(miner);
+
+            AttributeBoostRule nobleMentalBoost = new AttributeBoostRule(AttributeBoostType.CHOICE, List.of(AttributeName.INTELLIGENCE, AttributeName.CHARISMA), 1);
+            nobleMentalBoost.setBackground(noble);
+            AttributeBoostRule nobleFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE,  allSix, 1);
+            nobleFreeBoost.setBackground(noble);
+
+            AttributeBoostRule nomadTrekBoost = new AttributeBoostRule(AttributeBoostType.CHOICE, List.of(AttributeName.CONSTITUTION, AttributeName.WISDOM), 1);
+            nomadTrekBoost.setBackground(nomad);
+            AttributeBoostRule nomadFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE,  allSix, 1);
+            nomadFreeBoost.setBackground(nomad);
+
+            AttributeBoostRule prisonerPhysBoost = new AttributeBoostRule(AttributeBoostType.CHOICE, List.of(AttributeName.STRENGTH, AttributeName.CONSTITUTION), 1);
+            prisonerPhysBoost.setBackground(prisoner);
+            AttributeBoostRule prisonerFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE,  allSix, 1);
+            prisonerFreeBoost.setBackground(prisoner);
+
+            AttributeBoostRule raisedByBeliefDivineBoost = new AttributeBoostRule(AttributeBoostType.DEITY_CHOICE, List.of(), 1);
+            raisedByBeliefDivineBoost.setBackground(raisedByBelief);
+            AttributeBoostRule raisedByBeliefFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE, allSix, 1);
+            raisedByBeliefFreeBoost.setBackground(raisedByBelief);
+
             AttributeBoostRule fighterBoost = new AttributeBoostRule(AttributeBoostType.CHOICE, List.of(AttributeName.STRENGTH, AttributeName.DEXTERITY), 1);
             fighterBoost.setCharacterClass(fighter);
 
@@ -2613,7 +2663,10 @@ public class DataSeeder {
                     gladiatorFirstBoost, gladiatorFreeBoost, guardBounceBoost, guardFreeBoost,
                     herbalistGrowBoost, herbalistFreeBoost, hermitTrekBoost, hermitFreeBoost,
                     hunterHuntBoost, hunterFreeBoost, laborerPhysBoost, laborerFreeBoost,
-                    martialDiscipleFightBoost, martialDiscipleFreeBoost,
+                    martialDiscipleFightBoost, martialDiscipleFreeBoost, merchantMentalBoost, merchantFreeBoost,
+                    minerGrindBoost, minerFreeBoost, nobleMentalBoost, nobleFreeBoost, nomadTrekBoost, nomadFreeBoost,
+                    prisonerPhysBoost, prisonerFreeBoost,
+                    raisedByBeliefDivineBoost, raisedByBeliefFreeBoost,
                     fighterBoost,
                     wizardBoost,
                     emotionalAcceptanceBoost, gatheredLoreBoost,

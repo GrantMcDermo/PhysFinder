@@ -23,6 +23,7 @@ public class OptionsController {
     private final CharacterClassRepo characterClassRepo;
     private final BackgroundRepo backgroundRepo;
     private final SkillRepo skillRepo;
+    private final DeityRepo deityRepo;
     private CharacterCreationService characterCreationService;
 
     @GetMapping("/ancestries")
@@ -51,6 +52,11 @@ public class OptionsController {
     @GetMapping("/skills")
     public List<Skill> getSkills() {
         return skillRepo.findAll();
+    }
+
+    @GetMapping("/deities")
+    public List<Deity> getDeities() {
+        return deityRepo.findAll();
     }
 
     @GetMapping("/feats")

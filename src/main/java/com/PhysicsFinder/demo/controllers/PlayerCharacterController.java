@@ -54,6 +54,16 @@ public class PlayerCharacterController {
         );
     }
 
+    @PatchMapping("/{characterId}/deity")
+    public ResponseEntity<PlayerCharacter> assignDeity(
+            @PathVariable UUID characterId,
+            @RequestBody AssignDeityRequest request
+    ) {
+        return ResponseEntity.ok(
+                characterCreationService.assignDeity(characterId, request)
+        );
+    }
+
     @PatchMapping("/{characterId}/class")
     public ResponseEntity<PlayerCharacter> assignClass(
             @PathVariable UUID characterId,

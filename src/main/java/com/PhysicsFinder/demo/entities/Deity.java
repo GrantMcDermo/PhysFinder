@@ -30,9 +30,14 @@ public class Deity {
     @ManyToMany
     private List<Skill> grantedSkillOptions = new ArrayList<>();
 
-    public Deity(String name, List<Weapon> favoredWeaponOptions, List<Skill> grantedSkillOptions){
+    @ElementCollection
+    @Enumerated(EnumType.STRING)
+    private List<AttributeName> divineAttributes = new ArrayList<>();
+
+    public Deity(String name, List<Weapon> favoredWeaponOptions, List<Skill> grantedSkillOptions, List<AttributeName> divineAttributes) {
         this.name = name;
         this.favoredWeaponOptions = favoredWeaponOptions;
         this.grantedSkillOptions = grantedSkillOptions;
+        this.divineAttributes = divineAttributes;
     }
 }

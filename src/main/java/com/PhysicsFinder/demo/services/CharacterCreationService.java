@@ -163,7 +163,7 @@ public class CharacterCreationService {
         Background background = backgroundRepo.findById(request.backgroundId()).orElseThrow(() -> new RuntimeException("Background not found"));
         Skill chosenSkill = skillRepo.findById(request.chosenBackgroundSkillId()).orElseThrow(() -> new RuntimeException("Skill not found"));
 
-        validateBackgroundSkillChoice(background, chosenSkill);
+        validateBackgroundSkillChoice(sheet, background, chosenSkill);
 
         sheet.setBackground(background);
         sheet.setChosenBackgroundSkill(chosenSkill);
@@ -186,6 +186,38 @@ public class CharacterCreationService {
         }
     }
 
+    public PlayerCharacter assignDeity(UUID characterId, AssignDeityRequest request){
+        PlayerCharacter sheet = playerCharacterRepo.findById(characterId).orElseThrow(() -> new RuntimeException("Character not found"));
+        Deity deity = deityRepo.findById(request.deityId()).orElseThrow(() -> new RuntimeException("Deity not found"));
+
+        Skill chosenDeitySkill = resolveDeityChoice(deity.getGrantedSkillOptions(), request.chosenDeitySkillId(), skillRepo, "skill");
+        Weapon chosenDeityWeapon = resolveDeityChoice(deity.getFavoredWeaponOptions(), request.chosenDeityWeaponId(), weaponRepo, "weapon");
+
+        sheet.setDeity(deity);
+        sheet.setChosenDeitySkill(chosenDeitySkill);
+        sheet.setChosenDeityWeapon(chosenDeityWeapon);
+        rebuildProficiencies(sheet);
+        return playerCharacterRepo.save(sheet);
+    }
+
+    private <T> T resolveDeityChoice(List<T> options, UUID chosenId, org.springframework.data.repository.CrudRepository<T, UUID> repo, String label){
+        if (options.isEmpty())
+            return null;
+
+        if (options.size() == 1)
+            return options.get(0);
+
+        if (chosenId == null)
+            throw new RuntimeException("This deity has more than one divine " + label + " option; choose one.");
+
+        T chosen = repo.findById(chosenId).orElseThrow(() -> new RuntimeException("Chosen deity " + label + " not found"));
+
+        if (!options.contains(chosen))
+            throw new RuntimeException("Chosen " + label + " is not available for this deity");
+
+        return chosen;
+    }
+
     public PlayerCharacter assignClass(UUID characterId, AssignClassRequest request){
         PlayerCharacter sheet = playerCharacterRepo.findById(characterId).orElseThrow(() -> new RuntimeException("Character not found"));
         CharacterClass characterClass = characterClassRepo.findById(request.characterClassId()).orElseThrow(() -> new RuntimeException("Class not found"));
@@ -200,30 +232,8 @@ public class CharacterCreationService {
         List<Skill> chosenFeatureSkills = skillRepo.findAllById(request.chosenFeatureSkillIds());
         List<Skill> chosenAdditionalSkills = skillRepo.findAllById(request.chosenAdditionalSkillIds());
 
-        Deity deity = null;
-
-        if (request.deityId() != null){
-            deity = deityRepo.findById(request.deityId()).orElseThrow(() -> new RuntimeException("Deity not found"));
-            sheet.setDeity(deity);
-        }
-
-        if (deity != null && request.chosenDeityWeaponId() != null) {
-            Weapon chosenDeityWeapon = weaponRepo.findById(request.chosenDeityWeaponId()).orElseThrow(() -> new RuntimeException("Chosen deity weapon not found"));
-
-            if (!deity.getFavoredWeaponOptions().contains(chosenDeityWeapon))
-                throw new RuntimeException("Chosen weapon is not available for this deity");
-
-            sheet.setChosenDeityWeapon(chosenDeityWeapon);
-        }
-
-        if (deity != null && request.chosenDeitySkillId() != null) {
-            Skill chosenDeitySkill = skillRepo.findById(request.chosenDeitySkillId()).orElseThrow(() -> new RuntimeException("Chosen deity skill not found"));
-
-            if (!deity.getGrantedSkillOptions().contains(chosenDeitySkill))
-                throw new RuntimeException("Chosen skill is not available for this deity");
-
-            sheet.setChosenDeitySkill(chosenDeitySkill);
-        }
+        if ((characterClass.getUsesDeitySkill() || characterClass.getUsesDeityFavoredWeapon()) && sheet.getDeity() == null)
+            throw new RuntimeException("Choose a deity before selecting " + characterClass.getName() + ".");
 
         validateClassSkillChoices(characterClass, chosenSkills);
         validateFeatureSkillChoices(selectedFeatureChoices, chosenFeatureSkills);
@@ -273,6 +283,7 @@ public class CharacterCreationService {
 
     private void copyInitialClassProficiencies(PlayerCharacter sheet, CharacterClass characterClass, List<Skill> chosenSkills, List<ClassFeatureChoice> selectedFeatureChoices, List<Skill> chosenFeatureSkills, List<Skill> chosenAdditionalSkills){
         sheet.getProficiencies().clear();
+        applyBackgroundProficiencies(sheet);
 
         for(InitialProficiency proficiency : characterClass.getInitialProficiencies()){
             addProficiency(sheet, proficiency.getProficiencyName(), proficiency.getProficiencyCategory(), proficiency.getRank());
@@ -422,10 +433,10 @@ public class CharacterCreationService {
         if(sheet.getCharacterClass() == null)
             throw new RuntimeException("Choose a class before applying class boosts.");
 
-        validateBoostGroup(attributeBoostRuleRepo.findByAncestryId(sheet.getAncestry().getId()), request.ancestryBoosts(), "ancestry");
+        validateBoostGroup(sheet, attributeBoostRuleRepo.findByAncestryId(sheet.getAncestry().getId()), request.ancestryBoosts(), "ancestry");
         validateFlawGroup(attributeFlawRuleRepo.findByAncestryId(sheet.getAncestry().getId()), request.ancestryFlaws(), "ancestry");
-        validateBoostGroup(attributeBoostRuleRepo.findByBackgroundId(sheet.getBackground().getId()), request.backgroundBoosts(), "background");
-        validateBoostGroup(getClassBoostRules(sheet), request.classBoosts(), "class");
+        validateBoostGroup(sheet, attributeBoostRuleRepo.findByBackgroundId(sheet.getBackground().getId()), request.backgroundBoosts(), "background");
+        validateBoostGroup(sheet, getClassBoostRules(sheet), request.classBoosts(), "class");
     }
 
     private List<AttributeBoostRule> getClassBoostRules(PlayerCharacter sheet) {
@@ -448,7 +459,7 @@ public class CharacterCreationService {
         return rules;
     }
 
-    private void validateBoostGroup(List<AttributeBoostRule> rules, List<AttributeName> chosenBoosts, String source){
+    private void validateBoostGroup(PlayerCharacter sheet, List<AttributeBoostRule> rules, List<AttributeName> chosenBoosts, String source){
         if(chosenBoosts == null)
             chosenBoosts = List.of();
 
@@ -465,7 +476,7 @@ public class CharacterCreationService {
         List<AttributeName> remainingChoices = new ArrayList<>(chosenBoosts);
 
         for(AttributeBoostRule rule : rules){
-            List<AttributeName> selectedForRule = remainingChoices.stream().filter(attribute -> isValidForRule(attribute, rule)).limit(rule.getNumberToChoose()).toList();
+            List<AttributeName> selectedForRule = remainingChoices.stream().filter(attribute -> isValidForRule(sheet, attribute, rule)).limit(rule.getNumberToChoose()).toList();
 
             if(selectedForRule.size() != rule.getNumberToChoose())
                 throw new RuntimeException("Invalid " + source + " boost choice.");
@@ -501,9 +512,16 @@ public class CharacterCreationService {
             throw new RuntimeException("Invalid extra " + source + " flaw choices.");
     }
 
-    private boolean isValidForRule(AttributeName attribute, AttributeBoostRule rule){
+    private boolean isValidForRule(PlayerCharacter sheet, AttributeName attribute, AttributeBoostRule rule){
         if(rule.getBoostType() == AttributeBoostType.FREE)
             return true;
+
+        if(rule.getBoostType() == AttributeBoostType.DEITY_CHOICE){
+            if(sheet.getDeity() == null)
+                throw new RuntimeException("Choose a deity before applying this background's attribute boosts.");
+
+            return sheet.getDeity().getDivineAttributes().contains(attribute);
+        }
 
         return rule.getAttributeOptions().contains(attribute);
     }
@@ -603,7 +621,9 @@ public class CharacterCreationService {
 
     private void applyBackgroundProficiencies(PlayerCharacter character) {
 
-        if (character.getBackground() == null) {
+        Background background = character.getBackground();
+
+        if (background == null) {
             return;
         }
 
@@ -615,6 +635,14 @@ public class CharacterCreationService {
                     ProficiencyCategory.SKILL,
                     ProficiencyRank.TRAINED
             );
+        }
+
+        String loreSkillName = background.getDeityDependent() && character.getDeity() != null
+                ? character.getDeity().getName() + " Lore"
+                : background.getLoreSkill();
+
+        if (loreSkillName != null) {
+            addProficiency(character, loreSkillName, ProficiencyCategory.SKILL, ProficiencyRank.TRAINED);
         }
     }
 
@@ -679,7 +707,17 @@ public class CharacterCreationService {
         }
     }
 
-    private void validateBackgroundSkillChoice(Background background, Skill chosenSkill) {
+    private void validateBackgroundSkillChoice(PlayerCharacter sheet, Background background, Skill chosenSkill) {
+        if (background.getDeityDependent()) {
+            if (sheet.getDeity() == null)
+                throw new RuntimeException("Choose a deity before selecting " + background.getName() + ".");
+
+            if (!sheet.getDeity().getGrantedSkillOptions().contains(chosenSkill))
+                throw new RuntimeException("Selected skill is not valid for " + sheet.getDeity().getName() + "'s divine skill options.");
+
+            return;
+        }
+
         if (!background.getTrainedSkillOptions().contains(chosenSkill))
             throw new RuntimeException("Selected skill is not valid for background " + background.getName());
     }

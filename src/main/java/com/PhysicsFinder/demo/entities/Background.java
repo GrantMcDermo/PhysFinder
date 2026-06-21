@@ -26,6 +26,7 @@ public class Background {
     @ManyToMany
     private List<Skill> trainedSkillOptions;
     private String loreSkill;
+    private Boolean deityDependent = false;
 
     @ManyToOne
     private Feat grantedSkillFeat;
