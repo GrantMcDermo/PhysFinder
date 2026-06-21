@@ -1061,6 +1061,7 @@ public class DataSeeder {
             Feat combatClimber = new Feat("Combat Climber", 1, Set.of(generalTrait, skillTrait), "Your techniques allow you to fight as you climb.");
             Feat heftyHauler = new Feat("Hefty Hauler", 1, Set.of(generalTrait, skillTrait), "You can carry more than your frame implies.");
             Feat quickJump = new Feat("Quick Jump", 1, Set.of(generalTrait, skillTrait), "You can use High Jump and Long Jump as a single action instead of 2 actions. If you do, you don’t perform the initial Stride (nor do you fail if you don’t Stride 10 feet).");
+            Feat underwaterMarauder = new Feat("Underwater Marauder", 1, Set.of(generalTrait, skillTrait), "You’ve learned to fight underwater.");
             Feat quickClimb = new Feat("Quick Climb", 7, Set.of(generalTrait, skillTrait), "When Climbing, you move 5 more feet on a success and 10 more feet on a critical success, up to your Speed.");
 
             Feat alchemicalCrafting = new Feat("Alchemical Crafting", 1, Set.of(generalTrait, skillTrait), "You can use the Craft activity to create alchemical items.");
@@ -1078,6 +1079,8 @@ public class DataSeeder {
             Feat groupCoercion = new Feat("Group Coercion", 1, Set.of(generalTrait, skillTrait), "You can strong-arm people effectively, even when you don’t have them isolated.");
             Feat intimidatingGlare = new Feat("Intimidating Glare", 1, Set.of(generalTrait, skillTrait), "Demoralize a creature using only a look.");
             Feat quickCoercion = new Feat("Quick Coercion", 1, Set.of(generalTrait, skillTrait), "You can bully others with just a few choice implications.");
+
+            Feat experiencedProfessional = new Feat("Experienced Professional", 1, Set.of(generalTrait, skillTrait), "You carefully safeguard your professional endeavors to prevent disaster.");
 
             Feat battleMedicine = new Feat("Battle Medicine", 1, Set.of(generalTrait, healingTrait, manipulateTrait, skillTrait), "You can patch up wounds, even in combat.");
             Feat godlessHealing = new Feat("Godless Healing", 2, Set.of(generalTrait, skillTrait), "You recover an additional 5 Hit Points from a successful attempt to Treat your Wounds or use Battle Medicine on you.");
@@ -1108,8 +1111,14 @@ public class DataSeeder {
             Feat experiencedSmuggler = new Feat("Experienced Smuggler", 1, Set.of(generalTrait, skillTrait), "You often smuggle things past the authorities.");
 
             Feat experiencedTracker = new Feat("Experienced Tracker", 1, Set.of(generalTrait, skillTrait), "Tracking is second nature to you, and when necessary you can follow a trail without pause.");
+            Feat forager = new Feat("Forager", 1, Set.of(generalTrait, skillTrait), "While using Survival to Subsist, if you roll any result worse than a success, you get a success. On a success, you can provide subsistence living for yourself and four additional creatures, and on a critical success, you can take care of twice as many additional creatures. You can choose to support half the number of creatures with a comfortable living.\n" +
+                    "\n" +
+                    "Increase the number of additional creatures you feed on a success to eight if you’re an expert in Survival, 16 if you’re a master, and 32 if you’re legendary.");
             Feat surveyWildlife = new Feat("Survey Wildlife", 1, Set.of(generalTrait, skillTrait), "You can study details in the wilderness to determine the presence of nearby creatures.");
             Feat terrainExpert = new Feat("Terrain Expertise", 1, Set.of(generalTrait, skillTrait), "You are particularly skilled in rough terrain.");
+
+            Feat pickpocket = new Feat("Pickpocket", 1, Set.of(generalTrait, skillTrait), "You can Steal or Palm an Object that’s closely guarded, such as in a pocket, without taking the –5 penalty. You can’t steal objects that would be extremely noticeable or time consuming to remove (like worn shoes or armor or actively wielded objects). If you’re a master in Thievery, you can attempt to Steal from a creature in combat or otherwise on guard. When doing so, Stealing requires 2 actions instead of 1, and you take a –5 penalty.");
+            Feat legendaryThief = new Feat("Legendary Thief", 15, Set.of(generalTrait, skillTrait), "Your ability to Steal defies belief.");
 
             Feat adoptedAncestry = new Feat("Adopted Ancestry", 1, Set.of(generalTrait), "You’re fully immersed in another ancestry’s culture and traditions, whether born into them, earned through rite of passage, or bonded through a deep friendship or romance.");
             Feat shieldBlock = new Feat("Shield Block", 1, Set.of(generalTrait), "You snap your shield in place to ward off a blow.");
@@ -1950,11 +1959,12 @@ public class DataSeeder {
             featRepo.saveAll(List.of(
                     assurance, dubiousKnowledge, automaticKnowledge,
                     catFall, steadyBalance, rollingLanding,
-                    combatClimber, heftyHauler, quickJump, quickClimb,
+                    combatClimber, heftyHauler, quickJump, underwaterMarauder, quickClimb,
                     alchemicalCrafting, seasoned, specialtyCrafting, impeccableCrafting,
                     charmingLiar, lieToMe,
                     bargainHunter, groupImpression, hobnobber,
                     groupCoercion, intimidatingGlare, quickCoercion,
+                    experiencedProfessional,
                     battleMedicine, godlessHealing, mortalHealing, advancedFirstAid, paragonBattleMedicine,
                     naturalMedicine, trainAnimal, bondedAnimal,
                     oddityIdentification, schooledInSecrets,
@@ -1962,7 +1972,8 @@ public class DataSeeder {
                     studentOfTheCanon,
                     courtlyGraces, multilingual, streetwise, leverageConnections, undergroundNetwork, legendaryLinguist,
                     experiencedSmuggler,
-                    experiencedTracker, surveyWildlife, terrainExpert,
+                    experiencedTracker, forager, surveyWildlife, terrainExpert,
+                    pickpocket, legendaryThief,
                     adoptedAncestry, shieldBlock, diehard, numbToDeath,
                     doubleSlice, exactingStrike, pointBlankStance, reactiveShield, snaggingStrike, viciousSwing,
                     aggressiveBlock, assistingShot, bladeBrake, brutishShove, combatGrab, duelingParry1, lunge, reboundingToss, sleekReposition,
@@ -2126,12 +2137,18 @@ public class DataSeeder {
             Background prisoner = new Background("Prisoner", "You might have been imprisoned for crimes (whether you were guilty or not), or enslaved for some part of your upbringing.", List.of(stealth), "Underworld Lore", experiencedSmuggler);
             Background raisedByBelief = new Background("Raised By Belief", "You were raised in a community devoted to a particular deity, and that deity's faith and divine attributes shaped who you are.", List.of(), null, assurance);
             raisedByBelief.setDeityDependent(true);
+            Background sailor = new Background("Sailor", "You heard the call of the sea from a young age.", List.of(athletics), "Sailing Lore", underwaterMarauder);
+            Background scout = new Background("Scout", "You called the wilderness home as you found trails and guided travelers.", List.of(survival), "Terrain Lore", forager);
+            Background streetUrchin = new Background("Street Urchin", "You eked out a living by picking pockets on the streets of a major city, never knowing where you’d find your next meal.", List.of(thievery), "City Lore", pickpocket);
+            Background teacher = new Background("Teacher", "You are incredibly knowledgeable, skilled, and perhaps even trained to teach children and adults about the world and its wonders.", List.of(performance, society), "Academia Lore", experiencedProfessional);
+            Background tinker = new Background("Tinker", "Creating all sorts of minor inventions scratches your itch for problem-solving.", List.of(crafting), "Engineering Lore", specialtyCrafting);
 
             backgroundRepo.saveAll(List.of(
                     acolyte, acrobat, animalWhisperer, artisan, artist, bandit, barkeep, barrister, bountyHunter,
                     charlatan, cook, criminal, cultist, detective, emissary, entertainer, farmhand, fieldMedic,
                     fortuneTeller, gambler, gladiator, guard, herbalist, hermit, hunter, laborer, martialDisciple,
-                    merchant, miner, noble, nomad, prisoner, raisedByBelief, scholar, warriorBackground));
+                    merchant, miner, noble, nomad, prisoner, raisedByBelief, sailor, scholar, scout, streetUrchin,
+                    teacher, tinker, warriorBackground));
 
             ClassFeatureChoice emotionalAcceptance = new ClassFeatureChoice(psychic, "Subconscious Mind", "Emotional Acceptance");
             ClassFeatureChoice gatheredLore = new ClassFeatureChoice(psychic, "Subconscious Mind", "Gathered Lore");
@@ -2404,11 +2421,6 @@ public class DataSeeder {
             AttributeBoostRule wayangFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE, allSix, 1);
             wayangFreeBoost.setAncestry(wayang);
 
-            AttributeBoostRule scholarMentalBoost = new AttributeBoostRule(AttributeBoostType.CHOICE, List.of(AttributeName.INTELLIGENCE, AttributeName.WISDOM), 1);
-            scholarMentalBoost.setBackground(scholar);
-            AttributeBoostRule scholarFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE, allSix, 1);
-            scholarFreeBoost.setBackground(scholar);
-
             AttributeBoostRule warriorPhysBoost = new AttributeBoostRule(AttributeBoostType.CHOICE, List.of(AttributeName.STRENGTH, AttributeName.CONSTITUTION), 1);
             warriorPhysBoost.setBackground(warriorBackground);
             AttributeBoostRule warriorFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE,  allSix, 1);
@@ -2579,6 +2591,36 @@ public class DataSeeder {
             AttributeBoostRule raisedByBeliefFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE, allSix, 1);
             raisedByBeliefFreeBoost.setBackground(raisedByBelief);
 
+            AttributeBoostRule sailorPhysBoost = new AttributeBoostRule(AttributeBoostType.CHOICE, List.of(AttributeName.STRENGTH, AttributeName.DEXTERITY), 1);
+            sailorPhysBoost.setBackground(sailor);
+            AttributeBoostRule sailorFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE, allSix, 1);
+            sailorFreeBoost.setBackground(sailor);
+
+            AttributeBoostRule scholarMentalBoost = new AttributeBoostRule(AttributeBoostType.CHOICE, List.of(AttributeName.INTELLIGENCE, AttributeName.WISDOM), 1);
+            scholarMentalBoost.setBackground(scholar);
+            AttributeBoostRule scholarFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE, allSix, 1);
+            scholarFreeBoost.setBackground(scholar);
+
+            AttributeBoostRule scoutFindBoost = new AttributeBoostRule(AttributeBoostType.CHOICE, List.of(AttributeName.DEXTERITY, AttributeName.WISDOM), 1);
+            scoutFindBoost.setBackground(scout);
+            AttributeBoostRule scoutFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE, allSix, 1);
+            scoutFreeBoost.setBackground(scout);
+
+            AttributeBoostRule streetUrchinPhysBoost = new AttributeBoostRule(AttributeBoostType.CHOICE, List.of(AttributeName.DEXTERITY, AttributeName.CONSTITUTION), 1);
+            streetUrchinPhysBoost.setBackground(streetUrchin);
+            AttributeBoostRule streetUrchinFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE, allSix, 1);
+            streetUrchinFreeBoost.setBackground(streetUrchin);
+
+            AttributeBoostRule teacherMentalBoost = new AttributeBoostRule(AttributeBoostType.CHOICE, List.of(AttributeName.INTELLIGENCE, AttributeName.WISDOM), 1);
+            teacherMentalBoost.setBackground(teacher);
+            AttributeBoostRule teacherFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE, allSix, 1);
+            teacherFreeBoost.setBackground(teacher);
+
+            AttributeBoostRule tinkerMakeBoost = new AttributeBoostRule(AttributeBoostType.CHOICE, List.of(AttributeName.DEXTERITY, AttributeName.INTELLIGENCE), 1);
+            tinkerMakeBoost.setBackground(tinker);
+            AttributeBoostRule tinkerFreeBoost = new AttributeBoostRule(AttributeBoostType.FREE, allSix, 1);
+            tinkerFreeBoost.setBackground(tinker);
+
             AttributeBoostRule fighterBoost = new AttributeBoostRule(AttributeBoostType.CHOICE, List.of(AttributeName.STRENGTH, AttributeName.DEXTERITY), 1);
             fighterBoost.setCharacterClass(fighter);
 
@@ -2648,7 +2690,6 @@ public class DataSeeder {
                     samsaranConBoost, samsaranWisBoost, samsaranFreeBoost,
                     kholoStrBoost, kholoIntBoost, kholoFreeBoost,
                     wayangDexBoost, wayangChaBoost, warriorFreeBoost,
-                    scholarMentalBoost, scholarFreeBoost,
                     warriorPhysBoost, warriorFreeBoost,
                     acolyteMentalBoost, acolyteFreeBoost, acrobatPhysBoost, acrobatFreeBoost,
                     animalWhispererMentalBoost, animalWhispererFreeBoost, artisanFirstBoost, artisanFreeBoost,
@@ -2665,8 +2706,10 @@ public class DataSeeder {
                     hunterHuntBoost, hunterFreeBoost, laborerPhysBoost, laborerFreeBoost,
                     martialDiscipleFightBoost, martialDiscipleFreeBoost, merchantMentalBoost, merchantFreeBoost,
                     minerGrindBoost, minerFreeBoost, nobleMentalBoost, nobleFreeBoost, nomadTrekBoost, nomadFreeBoost,
-                    prisonerPhysBoost, prisonerFreeBoost,
-                    raisedByBeliefDivineBoost, raisedByBeliefFreeBoost,
+                    prisonerPhysBoost, prisonerFreeBoost, raisedByBeliefDivineBoost, raisedByBeliefFreeBoost,
+                    sailorPhysBoost, sailorFreeBoost, scholarMentalBoost, scholarFreeBoost,
+                    scoutFindBoost, scoutFreeBoost, streetUrchinPhysBoost, streetUrchinFreeBoost,
+                    teacherMentalBoost, teacherFreeBoost, tinkerMakeBoost, tinkerFreeBoost,
                     fighterBoost,
                     wizardBoost,
                     emotionalAcceptanceBoost, gatheredLoreBoost,
