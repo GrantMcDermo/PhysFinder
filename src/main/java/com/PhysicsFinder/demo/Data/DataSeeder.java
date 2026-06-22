@@ -191,8 +191,9 @@ public class DataSeeder {
             Trait alchemistTrait = new Trait("Alchemist", TraitCategory.CLASS);
             Trait misfortuneTrait = new Trait("Misfortunel", TraitCategory.MAGIC);
             Trait wanderingTrait = new Trait("Wandering", TraitCategory.MAGIC);
+            Trait tripkeeTrait = new Trait("Tripkee", TraitCategory.ANCESTRY);
 
-            traitRepo.saveAll(List.of(dwarfTrait, elfTrait, gnomeTrait, goblinFeat, halflingTrait, humanTrait, kholoTrait, koboldTrait, leshyTrait, orcTrait, samsaranTrait, wayangTrait,
+            traitRepo.saveAll(List.of(dwarfTrait, elfTrait, gnomeTrait, goblinFeat, halflingTrait, humanTrait, kholoTrait, koboldTrait, leshyTrait, orcTrait, samsaranTrait, tripkeeTrait, wayangTrait,
                     aiuvarinTrait, changelingTrait, dromaarTrait, nephilimTrait,
                     bardTrait, clericTrait, druidTrait, fighterTrait, rangerTrait, rogueTrait, witchTrait, wizardTrait,
                     alchemistTrait, animistTrait, barbarianTrait, championTrait, commanderTrait, exemplarTrait, guardianTrait, gunslingerTrait, investigatorTrait, magusTrait, monkTrait, oracleTrait, psychicTrait, sorcererTrait, summonerTrait, swashbucklerTrait, thaumaturgeTrait,
@@ -1052,41 +1053,96 @@ public class DataSeeder {
 
             Feat assurance = new Feat("Assurance", 1, Set.of(fortuneTrait, generalTrait, skillTrait), "Even in the worst circumstances, you can perform basic tasks.");
             Feat dubiousKnowledge = new Feat("Dubious Knowledge", 1, Set.of(generalTrait, skillTrait), "You’re a treasure trove of information, but not all of it comes from reputable sources.");
+            Feat skillTraining = new Feat("Skill Training", 1, Set.of(generalTrait, skillTrait), "You become trained in the skill of your choice.");
             Feat automaticKnowledge = new Feat("Automatic Knowledge", 2, Set.of(generalTrait, skillTrait), "You know basic facts off the top of your head.");
 
             Feat catFall = new Feat("Cat Fall", 1, Set.of(generalTrait, skillTrait), "Your catlike aerial acrobatics allow you to cushion your falls.");
+            Feat quickSqueeze = new Feat("Quick Squeeze", 1, Set.of(generalTrait, skillTrait), "You Squeeze 5 feet per round (10 feet on a critical success). If you’re legendary in Acrobatics, you Squeeze at full Speed.");
             Feat steadyBalance = new Feat("Steady Balance", 1, Set.of(generalTrait, skillTrait), "You can keep your balance easily, even in adverse conditions.");
+            Feat nimbleCrawl = new Feat("Nimble Crawl", 2, Set.of(generalTrait, skillTrait), "You can Crawl incredibly swiftly—up to half your Speed, rather than 5 feet. If you’re a master in Acrobatics, you can Crawl at full Speed, and if you’re legendary, you aren’t offguard while prone.");
             Feat rollingLanding = new Feat("Rolling Landing", 2, Set.of(generalTrait, skillTrait), "You land with quick rolls that help you keep your momentum.");
+            Feat kipUp = new Feat("Kip Up", 7, Set.of(generalTrait, skillTrait), "You stand up. This movement doesn’t trigger reactions.");
+
+            Feat arcaneSense = new Feat("Arcane Sense", 1, Set.of(generalTrait, skillTrait), "Your study of magic allows you to instinctively sense its presence.");
+            Feat quickIdentification = new Feat("Quick Identification", 1, Set.of(generalTrait, skillTrait), "You can Identify Magic swiftly.");
+            Feat recognizeSpell = new Feat("Recognize Spell", 1, Set.of(generalTrait, secretTrait, skillTrait), "If you are trained in the appropriate skill for the spell’s tradition and it’s a common spell of 2nd rank or lower, you automatically identify it (you still roll to attempt to get a critical success, but can’t get a worse result than success). The highest rank of spell you automatically identify increases to 4 if you’re an expert, 6 if you’re a master, and 10 if you’re legendary. The GM rolls a secret Arcana, Nature, Occultism, or Religion check, whichever corresponds to the tradition of the spell being cast. If you’re not trained in the skill, you can’t get a result better than failure.\n" +
+                    "\n" +
+                    "Critical Success You correctly recognize the spell and gain a +1 circumstance bonus to your saving throw or your AC against it.\n" +
+                    "Success You correctly recognize the spell.\n" +
+                    "Failure You fail to recognize the spell.\n" +
+                    "Critical Failure You misidentify the spell as another spell entirely, of the GM’s choice.");
+            Feat trickMagicItem = new Feat("Trick Magic Item", 1, Set.of(generalTrait, manipulateTrait, skillTrait), "You examine a magic item you normally couldn’t use in an effort to fool it and activate it temporarily.");
+            Feat magicalShorthand = new Feat("Magical Shorthand", 2, Set.of(generalTrait, skillTrait), "Learning spells comes easily to you.");
+            Feat quickRecognition = new Feat("Quick Recognition", 7, Set.of(generalTrait, skillTrait), "You Recognize Spells swiftly.");
+            Feat unifiedTheory = new Feat("Unified Theory", 15, Set.of(generalTrait, skillTrait), "You understand the common underpinnings of the four traditions of magic and magical essences, allowing you to understand them all through an arcane lens.");
 
             Feat combatClimber = new Feat("Combat Climber", 1, Set.of(generalTrait, skillTrait), "Your techniques allow you to fight as you climb.");
             Feat heftyHauler = new Feat("Hefty Hauler", 1, Set.of(generalTrait, skillTrait), "You can carry more than your frame implies.");
             Feat quickJump = new Feat("Quick Jump", 1, Set.of(generalTrait, skillTrait), "You can use High Jump and Long Jump as a single action instead of 2 actions. If you do, you don’t perform the initial Stride (nor do you fail if you don’t Stride 10 feet).");
+            Feat titanWrestler = new Feat("Titan Wrestler", 1, Set.of(generalTrait, skillTrait), "You can attempt to Disarm, Grapple, Reposition, Shove, or Trip creatures up to two sizes larger than you, or up to three sizes larger than you if you’re legendary in Athletics.");
             Feat underwaterMarauder = new Feat("Underwater Marauder", 1, Set.of(generalTrait, skillTrait), "You’ve learned to fight underwater.");
+            Feat powerfulLeap = new Feat("Powerful Leap", 2, Set.of(generalTrait, skillTrait), "You can jump 5 feet up with a vertical Leap without making a High Jump. You also increase the horizontal distance when you Leap, including as part of a High Jump or Long Jump, by 5 feet.");
+            Feat rapidMantel = new Feat("Rapid Mantel", 2, Set.of(generalTrait, skillTrait), "You easily pull yourself onto ledges.");
             Feat quickClimb = new Feat("Quick Climb", 7, Set.of(generalTrait, skillTrait), "When Climbing, you move 5 more feet on a success and 10 more feet on a critical success, up to your Speed.");
+            Feat quickSwim = new Feat("Quick Swim", 7, Set.of(generalTrait, skillTrait), "You Swim 5 feet farther on a success and 10 feet farther on a critical success, to a maximum of your Speed. If you’re legendary in Athletics, you gain a swim Speed equal to your Speed.");
+            Feat wallJump = new Feat("Wall Jump", 7, Set.of(generalTrait, skillTrait), "You can use your momentum from a jump to propel yourself off a wall.");
+            Feat cloudJump = new Feat("Cloud Jump", 15, Set.of(generalTrait, skillTrait), "Your unparalleled athletic skill allows you to jump impossible distances.");
 
             Feat alchemicalCrafting = new Feat("Alchemical Crafting", 1, Set.of(generalTrait, skillTrait), "You can use the Craft activity to create alchemical items.");
+            Feat quickRepair = new Feat("Quick Repair", 1, Set.of(generalTrait, skillTrait), "For you, the Repair activity loses the exploration trait and takes 1 minute instead of 10 minutes. If you’re a master in Crafting, it takes 3 actions. If you’re legendary, it takes 1 action.");
             Feat seasoned = new Feat("Seasoned", 1, Set.of(generalTrait, skillTrait), "You’ve mastered the preparation of many types of food and drink.");
             Feat specialtyCrafting = new Feat("Specialty Crafting", 1, Set.of(generalTrait, skillTrait), "Your training focused on Crafting one particular kind of item.");
+            Feat communalCrafting = new Feat("Communal Crafting", 2, Set.of(generalTrait, skillTrait), "You can have other PCs help you Craft an item, under your direction. A helper PC rolls a check with a skill in which they’re trained. The skill must be Crafting or another skill relevant to the item, as determined by the GM. For example, a PC might use Religion to help you Craft an item with the divine trait or Warfare Lore to help you Craft a weapon. Your roll still determines whether you successfully create the item. Any helper’s roll contributes toward reducing the cost of raw materials using the numbers from the Earn Income table on page 229; this uses the ally PC’s proficiency rank in the skill and their level – 1 for their level.\n" +
+                    "\n" +
+                    "Helping PCs must accompany you throughout the Craft activity (preventing them from pursuing other downtime activities) or the benefit is lost. The GM might determine that only a certain number of PCs can help depending on the circumstances.\n" +
+                    "\n" +
+                    "Communal Crafting also allows you to take the role of a helper when someone else is crafting, provided they accept your help.");
+            Feat inventor = new Feat("Inventor", 2, Set.of(downtimeTrait, generalTrait, skillTrait), "You are a genius at Crafting, easily able to determine how things are made and create new inventions.");
+            Feat magicalCrafting = new Feat("Magical Crafting", 2, Set.of(generalTrait, skillTrait), "You can Craft magic items, though some have other requirements, as listed in GM Core. When you select this feat, you gain formulas for four common magic items of 2nd level or lower.");
+            Feat adventurousOutfitter = new Feat("Adventurous Outfitter", 7, Set.of(generalTrait, skillTrait), "You tinker, create, and repair gear as you adventure.");
             Feat impeccableCrafting = new Feat("Impeccable Crafting", 7, Set.of(generalTrait, skillTrait), "You craft flawless creations with great efficiency.");
+            Feat signatureCrafting = new Feat("Signature Crafting ", 7, Set.of(generalTrait, skillTrait), "Magic items you create bear a stamp specific to your handiwork.");
+            Feat craftAnything = new Feat("Craft Anything", 15, Set.of(generalTrait, skillTrait), "You can find ways to craft just about anything, despite restrictions.");
 
             Feat charmingLiar = new Feat("Charming Liar", 1, Set.of(generalTrait, skillTrait), "Your charm allows you to win over those you lie to.");
+            Feat lengthyDiversion = new Feat("Lengthy Diversion", 1, Set.of(generalTrait, skillTrait), "When you critically succeed to Create a Diversion, you continue to remain hidden after the end of your turn. This effect lasts for an amount of time that depends on the diversion and situation, as determined by the GM (minimum 1 additional round).");
             Feat lieToMe = new Feat("Lie to Me", 1, Set.of(generalTrait, skillTrait), "You can use Deception to weave traps to trip up anyone trying to deceive you.");
+            Feat confabulator = new Feat("Confabulator", 2, Set.of(generalTrait, skillTrait), "Even when caught in falsehoods, you pile lie upon lie.");
+            Feat quickDisguise = new Feat("Quick Disguise", 2, Set.of(generalTrait, skillTrait), "You can set up a disguise in one-tenth the usual time (generally 1 minute).");
+            Feat slipperySecrets = new Feat("Slippery Secrets", 7, Set.of(generalTrait, skillTrait), "You elude and evade attempts to uncover your true nature or intentions.");
 
             Feat bargainHunter = new Feat("Bargain Hunter", 1, Set.of(generalTrait, skillTrait), "You can Earn Income using Diplomacy, spending your days hunting for bargains and reselling at a profit. You can also spend time specifically sniffing out a great bargain on an item; this works as if you were using Earn Income with Diplomacy, except instead of gaining money, you purchase the item at a discount equal to the money you would have gained, gaining the item for free if your earned income equals or exceeds its cost. Finally, if you select Bargain Hunter during character creation at 1st level, you start play with an additional 2 gp.");
             Feat groupImpression = new Feat("Group Impression", 1, Set.of(generalTrait, skillTrait), "When you Make an Impression, you can compare your Diplomacy check result to the Will DCs of up to 10 targets you conversed with, with no penalty. The number of targets increases to 20 if you’re an expert, 50 if you’re a master, and 100 if you’re legendary.");
             Feat hobnobber = new Feat("Hobnobber", 1, Set.of(generalTrait, skillTrait), "You are skilled at learning information through conversation.");
+            Feat noCauseForAlarm = new Feat("No Cause for Alarm", 1, Set.of(auditoryTrait, concentrateTrait, emotionTrait, generalTrait, linguisticTrait, mentalTrait, skillTrait), "You attempt to reduce panic.");
+            Feat gladHand = new Feat("Glad-Hand", 2, Set.of(generalTrait, skillTrait), "First impressions are your strong suit.");
+            Feat shamelessRequest = new Feat("Shameless Request", 7, Set.of(generalTrait, skillTrait), "You can downplay the consequences or outrageousness of your requests using sheer brazenness and charm.");
+            Feat legendaryNegotiation = new Feat("Legendary Negotiation", 15, Set.of(generalTrait, skillTrait), "You can negotiate incredibly quickly in adverse situations.");
 
             Feat groupCoercion = new Feat("Group Coercion", 1, Set.of(generalTrait, skillTrait), "You can strong-arm people effectively, even when you don’t have them isolated.");
             Feat intimidatingGlare = new Feat("Intimidating Glare", 1, Set.of(generalTrait, skillTrait), "Demoralize a creature using only a look.");
             Feat quickCoercion = new Feat("Quick Coercion", 1, Set.of(generalTrait, skillTrait), "You can bully others with just a few choice implications.");
+            Feat intimidatingProwess = new Feat("Intimidating Prowess", 2, Set.of(generalTrait, skillTrait), "In situations where you can physically menace the target when you Coerce or Demoralize, you gain a +1 circumstance bonus to your Intimidation check and you ignore the penalty for not sharing a language. If your Strength modifier is +5 or higher and you are a master in Intimidation, this bonus increases to +2.");
+            Feat lastingCoercion = new Feat("Lasting Coercion", 2, Set.of(generalTrait, skillTrait), "When you successfully Coerce someone, the maximum time they comply increases to a week, still determined by the GM. If you’re legendary, the maximum increases to a month.");
+            Feat battleCry = new Feat("Battle Cry", 7, Set.of(generalTrait, skillTrait), "When you roll initiative, you can yell a mighty battle cry and Demoralize an observed foe as a free action. If you’re legendary in Intimidation, you can use a reaction to Demoralize your foe when you critically succeed at an attack roll.");
+            Feat terrifiedRetreat = new Feat("Terrified Retreat", 7, Set.of(generalTrait, skillTrait), "When you critically succeed at the Demoralize action, if the target's level is lower than yours, the target is fleeing for 1 round.");
+            Feat scareToDeath = new Feat("Scare to Death", 15, Set.of(emotionTrait, fearTrait, generalTrait, incapactitationTrait, skillTrait), "You can frighten foes so much, they might die.");
 
+            Feat additionalLore = new Feat("Additional Lore", 1, Set.of(generalTrait, skillTrait), "Your knowledge has expanded to encompass a new field.");
             Feat experiencedProfessional = new Feat("Experienced Professional", 1, Set.of(generalTrait, skillTrait), "You carefully safeguard your professional endeavors to prevent disaster.");
+            Feat unmistakableLore = new Feat("Unmistakable Lore", 2, Set.of(generalTrait, skillTrait), "You never get information about your areas of expertise wrong.");
+            Feat legendaryProfessional = new Feat("Legendary Professional", 15, Set.of(generalTrait, skillTrait), "Your fame has spread throughout the lands (for instance, if you have Warfare Lore, you might be a legendary general or tactician).");
 
             Feat battleMedicine = new Feat("Battle Medicine", 1, Set.of(generalTrait, healingTrait, manipulateTrait, skillTrait), "You can patch up wounds, even in combat.");
+            Feat continualRecovery = new Feat("Continual Recovery", 2, Set.of(generalTrait, skillTrait), "You zealously monitor a patient’s progress to administer treatment faster.");
             Feat godlessHealing = new Feat("Godless Healing", 2, Set.of(generalTrait, skillTrait), "You recover an additional 5 Hit Points from a successful attempt to Treat your Wounds or use Battle Medicine on you.");
             Feat mortalHealing = new Feat("Mortal Healing", 2, Set.of(generalTrait, skillTrait), "You grant greater healing when the gods don't interfere.");
+            Feat robustRecovery = new Feat("Robust Recovery", 2, Set.of(generalTrait, skillTrait), "You learned folk medicine to help recover from diseases and poison, and using it diligently has made you especially resilient.");
+            Feat unusualTreatment = new Feat("Unusual Treatment", 2, Set.of(generalTrait, skillTrait), "Your medical training extends to less obvious conditions.");
+            Feat wardMedic = new Feat("Ward Medic", 2, Set.of(generalTrait, skillTrait), "You’ve studied in large medical wards, treating several patients at once and tending to all their needs.");
             Feat advancedFirstAid = new Feat("Advanced First Aid", 7, Set.of(generalTrait, healingTrait, manipulateTrait, skillTrait), "You use your medical training to ameliorate sickness or assuage fears");
             Feat paragonBattleMedicine = new Feat("Paragon Battle Medicine", 7, Set.of(generalTrait, skillTrait), "You've learned the modern uses of Battle Medicine originated by Kassi Aziril.");
+            Feat legendaryMedic = new Feat("Legendary Medic", 15, Set.of(generalTrait, skillTrait), "You’ve discovered medical breakthroughs or techniques that achieve miraculous results.");
 
             Feat naturalMedicine = new Feat("Natural Medicine", 1, Set.of(generalTrait, skillTrait), "You can apply natural cures to heal your allies.");
             Feat trainAnimal = new Feat("Train Animal", 1, Set.of(downtimeTrait, generalTrait, manipulateTrait, skillTrait), "You spend time teaching an animal to do a certain action.");
@@ -1094,21 +1150,34 @@ public class DataSeeder {
 
             Feat oddityIdentification = new Feat("Oddity Identification", 1, Set.of(generalTrait, skillTrait), "When you become aware of a magical effect or see a spell being cast, you can immediately determine if it twists minds (with the mental trait), fights against fortune (with the fortune or misfortune trait), or reveals secrets (with the detection, prediction, revelation, or scrying traits). At the GM’s discretion, similar effects can also fall into these categories. When you Identify Magic or Recall Knowledge to learn more about these effects, you can always use Occultism without penalty and gain a +2 circumstance bonus.");
             Feat schooledInSecrets = new Feat("Schooled In Secrets", 1, Set.of(generalTrait, skillTrait), "You notice the signs and symbols that members of mystery cults and other secret societies use to declare their affiliation to fellow members.");
+            Feat bizarreMagic = new Feat("Bizarre Magic", 7, Set.of(generalTrait, skillTrait), "You can draw upon strange variations in your spellcasting, whether or not you can cast occult spells.");
+            Feat breakCurse = new Feat("Break Curse", 7, Set.of(concentrateTrait, explorationTrait, generalTrait, healingTrait, skillTrait), "You spend 8 hours praying or performing occult rites over the target, weakening a curse's power over them. Attempt to counteract the curse, using Occultism or Religion for your counteract check and half your level rounded up for the counteract rank. Break Curse only takes 10 minutes of prayer and rites if you are legendary in Occultism or Religion.");
 
             Feat fascinatingPerformance = new Feat("Fascinating Performance", 1, Set.of(generalTrait, skillTrait), "When you Perform, compare your result to the Will DC of one observer.");
             Feat impressivePerformance = new Feat("Impressive Performance", 1, Set.of(generalTrait, skillTrait), "Your performances inspire admiration and win you fans.");
+            Feat virtuosicPerformer = new Feat("Virtuosic Performer", 1, Set.of(generalTrait, skillTrait), "You have exceptional talent with one type of performance.");
             Feat inflameCrowd = new Feat("Inflame Crowd", 7, Set.of(generalTrait, skillTrait), "Your performances are a call to action for the crowds who listen to you.");
+            Feat talentEnvy = new Feat("Talent Envy", 7, Set.of(generalTrait, skillTrait), "You give off a bedazzling glow with every performance, sparking feelings of severe envy and inadequacy in those who compare their talent to yours.");
+            Feat legendaryPerformer = new Feat("Legendary Performer", 15, Set.of(generalTrait, skillTrait), "Your fame has spread throughout the lands.");
 
             Feat studentOfTheCanon = new Feat("Student of the Canon", 1, Set.of(generalTrait, skillTrait), "You’ve researched many faiths enough to recognize notions about them that are unlikely to be true.");
+            Feat divineGuidance = new Feat("Divine Guidance", 15, Set.of(generalTrait, skillTrait), "You’re so immersed in divine scripture that you find meaning and guidance for any situation in your texts.");
 
             Feat courtlyGraces = new Feat("Courtly Graces", 1, Set.of(generalTrait, skillTrait), "You were raised among the nobility or have learned proper etiquette and bearing, allowing you to present yourself as a noble and play games of influence and politics.");
             Feat multilingual = new Feat("Multilingual", 1, Set.of(generalTrait, skillTrait), "You easily pick up new languages.");
+            Feat readLips = new Feat("Read Lips", 1, Set.of(generalTrait, skillTrait), "You can read lips of others nearby who you can clearly see.");
+            Feat signLanguage = new Feat("Sign Language", 1, Set.of(generalTrait, skillTrait), "You learn the sign languages associated with the languages you know, allowing you to sign and understand signs.");
             Feat streetwise = new Feat("Streetwise", 1, Set.of(generalTrait, skillTrait), "You know about life on the streets and feel the pulse of your local settlement.");
             Feat leverageConnections = new Feat("Leverage Connections", 2, Set.of(generalTrait, skillTrait), "You know the right people who can get things done for you in certain circles.");
             Feat undergroundNetwork = new Feat("Underground Network", 2, Set.of(generalTrait, skillTrait), "You're connected to groups that know what's going on in the streets, and you can get information out of them quickly.");
+            Feat legendaryCodebreaker = new Feat("Legendary Codebreaker", 15, Set.of(generalTrait, skillTrait), "Your skill with languages and codes is so great that you can decipher information with little more than a quick read through a text.");
             Feat legendaryLinguist = new Feat("Legendary Linguist", 15, Set.of(generalTrait, skillTrait), "You’re so skilled with languages you can create a pidgin instantly.");
 
             Feat experiencedSmuggler = new Feat("Experienced Smuggler", 1, Set.of(generalTrait, skillTrait), "You often smuggle things past the authorities.");
+            Feat quietAllies = new Feat("Quiet Allies", 2, Set.of(generalTrait, skillTrait), "You’re skilled at moving with a group.");
+            Feat foilSenses = new Feat("Foil Senses", 7, Set.of(generalTrait, skillTrait), "You are adept at foiling creatures’ special senses and cautious enough to safeguard against them at all times.");
+            Feat swiftSneak = new Feat("Swift Sneak", 7, Set.of(generalTrait, skillTrait), "You can move your full Speed when you Sneak. You can use Swift Sneak while Burrowing, Climbing, Flying, or Swimming instead of Striding if you have the corresponding movement type.");
+            Feat legendarySneak = new Feat("Legendary Sneak", 15, Set.of(generalTrait, skillTrait), "You’re always sneaking unless you choose to be seen, even when there’s nowhere to hide.");
 
             Feat experiencedTracker = new Feat("Experienced Tracker", 1, Set.of(generalTrait, skillTrait), "Tracking is second nature to you, and when necessary you can follow a trail without pause.");
             Feat forager = new Feat("Forager", 1, Set.of(generalTrait, skillTrait), "While using Survival to Subsist, if you roll any result worse than a success, you get a success. On a success, you can provide subsistence living for yourself and four additional creatures, and on a critical success, you can take care of twice as many additional creatures. You can choose to support half the number of creatures with a comfortable living.\n" +
@@ -1116,14 +1185,63 @@ public class DataSeeder {
                     "Increase the number of additional creatures you feed on a success to eight if you’re an expert in Survival, 16 if you’re a master, and 32 if you’re legendary.");
             Feat surveyWildlife = new Feat("Survey Wildlife", 1, Set.of(generalTrait, skillTrait), "You can study details in the wilderness to determine the presence of nearby creatures.");
             Feat terrainExpert = new Feat("Terrain Expertise", 1, Set.of(generalTrait, skillTrait), "You are particularly skilled in rough terrain.");
+            Feat terrainStalker = new Feat("Terrain Stalker", 1, Set.of(generalTrait, skillTrait), "Select one type of difficult terrain from the following list: rubble, snow, or underbrush. While undetected by all non-allies in that type of terrain, you can Sneak without attempting a Stealth check as long as you move no more than 5 feet and do not pass within 10 feet of an enemy during your movement.\n" +
+                    "\n" +
+                    "During exploration, this also allows you to automatically approach within 15 feet of other creatures while Avoiding their Notice, as long as they aren’t actively Searching or on guard.");
+            Feat monsterCrafting = new Feat("Monster Crafting", 7, Set.of(generalTrait, skillTrait), "You can use the parts of monsters to aid in crafting.");
+            Feat planarSurvival = new Feat("Planar Survival", 7, Set.of(generalTrait, skillTrait), "You can Subsist using Survival on different planes, even those without resources or natural phenomena you normally need. For instance, you can forage for food without penalty even if the plane lacks food that could normally sustain you. A success on your check to Subsist also prevents damage done by the plane to you and anyone else you support with Subsist. This applies only to damage dealt by the general conditions of the plane, not smaller hazards.");
+            Feat vanishIntoTheLand = new Feat("Vanish into the Land", 7, Set.of(generalTrait, skillTrait), "You’re adept at using the land’s natural features to find places to hide.");
+            Feat legendarySurvivalist = new Feat("Legendary Survivalist", 15, Set.of(generalTrait, skillTrait), "You can survive indefinitely without food or water and can endure severe, extreme, and incredible cold and heat without taking damage from doing so.");
 
             Feat pickpocket = new Feat("Pickpocket", 1, Set.of(generalTrait, skillTrait), "You can Steal or Palm an Object that’s closely guarded, such as in a pocket, without taking the –5 penalty. You can’t steal objects that would be extremely noticeable or time consuming to remove (like worn shoes or armor or actively wielded objects). If you’re a master in Thievery, you can attempt to Steal from a creature in combat or otherwise on guard. When doing so, Stealing requires 2 actions instead of 1, and you take a –5 penalty.");
+            Feat subtleTheft = new Feat("Subtle Theft", 1, Set.of(generalTrait, skillTrait), "When you successfully Steal something, observers (creatures other than the creature you stole from) take a –2 circumstance penalty to their Perception DCs to detect your theft. Additionally, if you first Create a Diversion using Deception, taking a single Palm an Object or Steal action doesn’t end your undetected condition.");
+            Feat waryDisarmament = new Feat("Wary Disarmament", 2, Set.of(generalTrait, skillTrait), "If you trigger a device or set off a trap while disarming it, you gain a +2 circumstance bonus to your AC or saving throw against the device or trap. This applies only to attacks or effects triggered by your failed attempt, not to any later ones, such as additional attacks from a complex trap.");
+            Feat quickUnlock = new Feat("Quick Unlock", 7, Set.of(generalTrait, skillTrait), "You can Pick a Lock using 1 action instead of 2.");
             Feat legendaryThief = new Feat("Legendary Thief", 15, Set.of(generalTrait, skillTrait), "Your ability to Steal defies belief.");
 
             Feat adoptedAncestry = new Feat("Adopted Ancestry", 1, Set.of(generalTrait), "You’re fully immersed in another ancestry’s culture and traditions, whether born into them, earned through rite of passage, or bonded through a deep friendship or romance.");
-            Feat shieldBlock = new Feat("Shield Block", 1, Set.of(generalTrait), "You snap your shield in place to ward off a blow.");
+            Feat armorProficiency = new Feat("Armor Proficiency", 1, Set.of(generalTrait), "You become trained in light armor. If you already were trained in light armor, you gain training in medium armor. If you were trained in both, you become trained in heavy armor. If you are at least 13th level, you become an expert in this armor type.");
+            Feat breathControl = new Feat("Breath Control", 1, Set.of(generalTrait), "You can breathe even in hazardous or sparse air.");
+            Feat cannyAcumen = new Feat("Canny Acumen", 1, Set.of(generalTrait), "Your avoidance or observation is beyond the ken of most in your profession.");
             Feat diehard = new Feat("Diehard", 1, Set.of(generalTrait), "It takes more to kill you than most.");
+            Feat fastRecovery = new Feat("Fast Recovery", 1, Set.of(generalTrait), "Your body quickly bounces back from afflictions.");
+            Feat featherStep = new Feat("Feather Step", 1, Set.of(generalTrait), "You step carefully and quickly.");
+            Feat fleet = new Feat("Fleet", 1, Set.of(generalTrait), "You move more quickly on foot.");
+            Feat incredibleInitiative = new Feat("Incredible Initiative", 1, Set.of(generalTrait), "You react more quickly than others can.");
+            Feat pet = new Feat("Pet", 1, Set.of(generalTrait),  "You have a pet-a Tiny animal of a type you choose, such as a cat, bird, or rodent. It has the minion trait, meaning it gains 2 actions during your turn if you use the Command an Animal action to command it; this replaces the usual effects of Command an Animal, and you don't need to attempt a Nature check. A pet can't take attack actions except to Escape or Force Open.\n" +
+                    "\n" +
+                    "Level Your pet's level is equal to yours.\n" +
+                    "\n" +
+                    "Modifiers and AC Your pet's save modifiers and AC are equal to yours before applying circumstance or status bonuses or penalties. It uses 3 + your level as its modifier for Perception, Acrobatics, and Stealth, and just your level as its modifier for other skill checks. It doesn't have or use its own attribute modifiers and can never benefit from item bonuses.\n" +
+                    "\n" +
+                    "Hit Points Your pet has 5 Hit Points per level.\n" +
+                    "\n" +
+                    "Senses Your pet has low-light vision and can gain additional senses from pet abilities.\n" +
+                    "\n" +
+                    "Speed Your pet has a Speed of 25 feet. You can choose to instead have an aquatic pet, which breathes in water instead of air and has the aquatic trait, no land Speed, and a swim Speed of 25 feet.\n" +
+                    "\n" +
+                    "Pet Abilities When you gain your pet, choose two of the following abilities. If your pet is an animal that naturally has one of these abilities (for instance, an owl has a fly Speed), you must select that ability. Your pet can't be an animal that naturally has more pet abilities than the maximum. In some cases, the GM might add some familiar abilities described on pages 212–213 to the pet abilities you can choose.\n" +
+                    "Amphibious It gains the amphibious trait, allowing it to breathe in both air and water, and has both a land Speed and a swim Speed, each equal to its highest land Speed or swim Speed.\n" +
+                    "Burrower It gains a burrow Speed of 5 feet, allowing it to dig Tiny holes.\n" +
+                    "Climber It gains a climb Speed of 25 feet.\n" +
+                    "Darkvision It gains darkvision.\n" +
+                    "Echolocation Your pet can use hearing as a precise sense within 20 feet.\n" +
+                    "Fast Movement Increase one of the pet's Speeds from 25 feet to 40 feet.\n" +
+                    "Flier It gains a fly Speed of 25 feet.\n" +
+                    "Manual Dexterity It can use up to two of its limbs as if they were hands to perform manipulate actions.\n" +
+                    "Scent Your pet can use scent as an imprecise sense within 30 feet\n" +
+                    "Tough Your pet's max HP increase by 2 per level.");
+            Feat ride = new Feat("Ride", 1, Set.of(generalTrait), "When you Command an Animal you’re mounted on to take a move action (such as Stride), you automatically succeed instead of needing to attempt a check. Any animal you’re mounted on acts on your turn, like a minion. If you Mount an animal in the middle of an encounter, it skips its next turn and then acts on your next turn.");
+            Feat shieldBlock = new Feat("Shield Block", 1, Set.of(generalTrait), "You snap your shield in place to ward off a blow.");
+            Feat toughness = new Feat("Toughness", 1, Set.of(generalTrait), "Your body can withstand more punishment than most before succumbing.");
+            Feat weaponProficiency = new Feat("Weapon Proficiency", 1, Set.of(generalTrait), "You become trained in all martial weapons. If you were already trained in all martial weapons, you become trained in one advanced weapon of your choice. If you are at least 11th level, you also become an expert in these weapons.");
+            Feat ancestralParagon = new Feat("Ancestral Paragon", 3, Set.of(generalTrait), "Whether through instinct, study, or magic, you feel a deeper connection to your ancestry.");
+            Feat prescientPlanner = new Feat("Prescient Planner", 3, Set.of(generalTrait), "You regularly create convoluted plans and contingencies, using your resources to enact them.");
+            Feat untrainedImprovisation = new Feat("Untrained Improvisation", 3, Set.of(generalTrait), "You’ve learned how to handle situations when you’re out of your depth.");
+            Feat expeditiousSearch = new Feat("Expeditious Search", 7, Set.of(generalTrait), "You have a system that lets you search at great speed, finding details and secrets twice as quickly as others can.");
             Feat numbToDeath = new Feat("Numb To Death", 7, Set.of(generalTrait), "Your past has left you numb to death's call.");
+            Feat prescientConsumable = new Feat("Prescient Consumable", 7, Set.of(generalTrait), "You can predict which consumables you might need in advance.");
+            Feat incredibleInvestiture = new Feat("Incredible Investiture", 11, Set.of(generalTrait), "You have an incredible ability to invest more magic items.");
 
             Feat doubleSlice = new Feat("Double Slice", 1, Set.of(fighterTrait), "You lash out at your foe with both weapons.");
             doubleSlice.setAvailableToClasses(List.of(fighter));
@@ -1906,6 +2024,8 @@ public class DataSeeder {
             Feat spellDevourer = new Feat("Spell Devourer", 13, Set.of(orcTrait), "You don’t just resist magic; you devour it.");
             Feat rampagingFerocity = new Feat("Rampaging Ferocity", 17, Set.of(orcTrait), "You lash out viciously even as you fend off death.");
 
+            Feat ricochetingLeap = new Feat("Ricocheting Leap", 9, Set.of(tripkeeTrait), "You quickly use your momentum to topple and spring off of foes.");
+
             Feat earnedGlory = new Feat("Earned Glory", 1, Set.of(aiuvarinTrait), "Elves often struggle with underestimating aiuvarins, and you are experienced at telling stories of your accomplishments to gain their respect.");
             earnedGlory.setHeritage(aiuvarin);
             Feat elfAtavism = new Feat("Elf Atavism", 1, Set.of(aiuvarinTrait), "Your elven blood runs particularly strong, granting you features far more elven than those of a typical aiuvarin.");
@@ -1957,24 +2077,26 @@ public class DataSeeder {
             Feat eternalWings = new Feat("Eternal Wings", 17, Set.of(nephilimTrait), "Your wings are now a permanent part of your body.");
 
             featRepo.saveAll(List.of(
-                    assurance, dubiousKnowledge, automaticKnowledge,
-                    catFall, steadyBalance, rollingLanding,
-                    combatClimber, heftyHauler, quickJump, underwaterMarauder, quickClimb,
-                    alchemicalCrafting, seasoned, specialtyCrafting, impeccableCrafting,
-                    charmingLiar, lieToMe,
-                    bargainHunter, groupImpression, hobnobber,
-                    groupCoercion, intimidatingGlare, quickCoercion,
-                    experiencedProfessional,
-                    battleMedicine, godlessHealing, mortalHealing, advancedFirstAid, paragonBattleMedicine,
+                    assurance, dubiousKnowledge, skillTraining, automaticKnowledge,
+                    catFall, quickSqueeze, steadyBalance, nimbleCrawl, rollingLanding, kipUp,
+                    arcaneSense, quickIdentification, recognizeSpell, trickMagicItem, magicalShorthand, quickRecognition, unifiedTheory,
+                    combatClimber, heftyHauler, quickJump, titanWrestler, underwaterMarauder, powerfulLeap, rapidMantel, quickClimb, quickSwim, wallJump, cloudJump,
+                    alchemicalCrafting, quickRepair, seasoned, specialtyCrafting, communalCrafting, inventor, magicalCrafting, adventurousOutfitter, impeccableCrafting, signatureCrafting, craftAnything,
+                    charmingLiar, lengthyDiversion, lieToMe, confabulator, quickDisguise, slipperySecrets,
+                    bargainHunter, groupImpression, hobnobber, noCauseForAlarm, gladHand, shamelessRequest, legendaryNegotiation,
+                    groupCoercion, intimidatingGlare, quickCoercion, intimidatingProwess, lastingCoercion, battleCry, terrifiedRetreat, scareToDeath,
+                    additionalLore, experiencedProfessional, unmistakableLore, legendaryProfessional,
+                    battleMedicine, continualRecovery, godlessHealing, mortalHealing, robustRecovery, unusualTreatment, wardMedic, advancedFirstAid, paragonBattleMedicine, legendaryMedic,
                     naturalMedicine, trainAnimal, bondedAnimal,
-                    oddityIdentification, schooledInSecrets,
-                    fascinatingPerformance, impressivePerformance, inflameCrowd,
-                    studentOfTheCanon,
-                    courtlyGraces, multilingual, streetwise, leverageConnections, undergroundNetwork, legendaryLinguist,
-                    experiencedSmuggler,
-                    experiencedTracker, forager, surveyWildlife, terrainExpert,
-                    pickpocket, legendaryThief,
-                    adoptedAncestry, shieldBlock, diehard, numbToDeath,
+                    oddityIdentification, schooledInSecrets, bizarreMagic, breakCurse,
+                    fascinatingPerformance, impressivePerformance, virtuosicPerformer, inflameCrowd, talentEnvy, legendaryPerformer,
+                    studentOfTheCanon, divineGuidance,
+                    courtlyGraces, multilingual, readLips, signLanguage, streetwise, leverageConnections, undergroundNetwork, legendaryCodebreaker, legendaryLinguist,
+                    experiencedSmuggler, quietAllies, foilSenses, swiftSneak, legendarySneak,
+                    experiencedTracker, forager, surveyWildlife, terrainExpert, terrainStalker, monsterCrafting, planarSurvival, vanishIntoTheLand, legendarySurvivalist,
+                    pickpocket, subtleTheft, waryDisarmament, quickUnlock, legendaryThief,
+                    adoptedAncestry, armorProficiency, breathControl, cannyAcumen, diehard, fastRecovery, featherStep, fleet, incredibleInitiative, pet, ride, shieldBlock, toughness, weaponProficiency,
+                    ancestralParagon, prescientPlanner, untrainedImprovisation, expeditiousSearch, numbToDeath, prescientConsumable, incredibleInvestiture,
                     doubleSlice, exactingStrike, pointBlankStance, reactiveShield, snaggingStrike, viciousSwing,
                     aggressiveBlock, assistingShot, bladeBrake, brutishShove, combatGrab, duelingParry1, lunge, reboundingToss, sleekReposition,
                     doubleShot, dualHandedAssault, partingShot, powerfulShove, quickReversal, shieldedStride, slamDown, twinParry,
@@ -2090,6 +2212,7 @@ public class DataSeeder {
                     beastTrainer, holdMark, ironFists, orcFerocity, orcLore, orcSuperstition, orcWeaponFamiliarity, tusksFeat,
                     athleticMight, bloodyBlows, defyDeath, scarThickSkin, pervasiveSuperstition, undyingFerocity,
                     ferociousBeasts, incredibleFerocity, spellDevourer, rampagingFerocity,
+                    ricochetingLeap,
                     monstrousPeacemaker, orcSight,
                     brineMay, callowMay, changelingLore, dreamMay, hagClaws, hagsSight, slagMay,
                     called, mistChild, accursedClaws, occultResistance, hagMagic,
