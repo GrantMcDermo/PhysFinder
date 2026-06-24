@@ -51,6 +51,7 @@ public class Spell {
     public Spell(String name, Integer spellRank, SpellType spellType, ActionType spellActionType, Set<Trait> traits, String spellDescription) {
         this.name = name;
         this.spellRank = spellRank;
+        this.spellType = spellType;
         this.spellActionType = spellActionType;
         this.traits = traits;
         this.spellDescription = spellDescription;
