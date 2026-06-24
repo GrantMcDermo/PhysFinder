@@ -1130,6 +1130,22 @@ public class DataSeeder {
             Spell competitiveEdge = new Spell("Competitive Edge", 4, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(clericTrait, concentrateTrait, emotionTrait, focusTrait, mentalTrait), "Your competitiveness drives you to prove yourself against the opposition.");
             competitiveEdge.setSpellDuration("sustained up to 1 minute");
 
+            Spell faceInTheCrowd = new Spell("Face in the Crowd", 1, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(clericTrait, focusTrait, manipulateTrait, visualTrait), "While in a crowd of roughly similar creatures, your appearance becomes bland and nondescript.");
+            faceInTheCrowd.setSpellDuration("1 minute");
+
+            Spell pulseOfCivilization = new Spell("Pulse of Civilization", 4, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(clericTrait, concentrateTrait, focusTrait, manipulateTrait, scryingTrait), "You tap into the zeitgeist of any settlements in range.");
+            pulseOfCivilization.setSpellRange(132000);
+            pulseOfCivilization.setSpellDuration("8 hours");
+
+            Spell veilOfConfidence = new Spell("Veil of Confidence", 1, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(clericTrait, concentrateTrait, focusTrait, mentalTrait), "You surround yourself in confidence.");
+            veilOfConfidence.setSpellDuration("1 minute");
+
+            Spell delusionalPride = new Spell("Delusional Pride", 4, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(clericTrait, concentrateTrait, emotionTrait, focusTrait, manipulateTrait, mentalTrait), "You make the target overconfident, leading it to ascribe failure to external factors.");
+            delusionalPride.setSpellRange(30);
+            delusionalPride.setSpellTargets("1 creature");
+            delusionalPride.setSpellDefense("Will");
+            delusionalPride.setSpellDuration("varies");
+
             Domain airDomain = new Domain("Air", "You can control winds and the weather.", pushingGust, disperseIntoAir);
             pushingGust.setSpellDomain(airDomain);
             disperseIntoAir.setSpellDomain(airDomain);
@@ -1140,13 +1156,30 @@ public class DataSeeder {
             competitiveEdge.setSpellDomain(ambitionDomain);
             ambitionDomain.setDeities(Set.of(zonKuthon));
 
+            Domain citiesDomain = new Domain("Cities", "You have powers over urban environments and denizens.", faceInTheCrowd, pulseOfCivilization);
+            citiesDomain.setDeities(Set.of(abadar, caydenCailean));
+            faceInTheCrowd.setSpellDomain(citiesDomain);
+            pulseOfCivilization.setSpellDomain(citiesDomain);
+
+            Domain confidenceDomain = new Domain("Confidence", "You overcome your fear and project pride.", veilOfConfidence, delusionalPride);
+            confidenceDomain.setDeities(Set.of(asmodeus, gorum, iomedae));
+            veilOfConfidence.setSpellDomain(confidenceDomain);
+            delusionalPride.setSpellDomain(confidenceDomain);
+
+            abadar.setMainDomains(Set.of(citiesDomain));
+            asmodeus.setMainDomains(Set.of(confidenceDomain));
+            caydenCailean.setMainDomains(Set.of(citiesDomain));
+            gorum.setMainDomains(Set.of(confidenceDomain));
             gozreh.setMainDomains(Set.of(airDomain));
             greenFaith.setMainDomains(Set.of(airDomain));
+            iomedae.setMainDomains(Set.of(confidenceDomain));
             rovagug.setMainDomains(Set.of(airDomain));
             zonKuthon.setMainDomains(Set.of(ambitionDomain));
 
-            domainRepo.saveAll(List.of(airDomain, ambitionDomain));
-            spellRepo.saveAll(List.of(pushingGust, disperseIntoAir, igniteAmbition, competitiveEdge));
+            domainRepo.saveAll(List.of(airDomain, ambitionDomain, citiesDomain, confidenceDomain));
+            spellRepo.saveAll(List.of(
+                    pushingGust, disperseIntoAir, igniteAmbition, competitiveEdge, faceInTheCrowd, pulseOfCivilization,
+                    veilOfConfidence, delusionalPride));
             deityRepo.saveAll(List.of(abadar, asmodeus, calistria, caydenCailean, desna, erastil, gorum, gozreh, greenFaith, iomedae, irori, lamashtu, nethys, norgorber, pharasma, rovagug, sarenrae, shelyn, torag, urgathoa, zonKuthon));
 
             Language aklo = new Language("Aklo");
