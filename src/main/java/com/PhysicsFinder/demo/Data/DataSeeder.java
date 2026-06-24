@@ -29,7 +29,8 @@ public class DataSeeder {
             GameActionRepo gameActionRepo,
             LanguageRepo languageRepo,
             TraitRepo traitRepo,
-            SpellRepo spellRepo){
+            SpellRepo spellRepo,
+            DomainRepo domainRepo){
         return args -> {
             if(ancestryRepo.count() > 0)
                 return;
@@ -1112,6 +1113,40 @@ public class DataSeeder {
             zonKuthon.setSanctificationTraits(Set.of(unholyTrait));
             zonKuthon.setClericSpells(List.of(phantomPain, wallOfThorns, umbralJourney));
 
+            Spell pushingGust = new Spell("Pushing Gust", 1, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(airTrait, clericTrait, concentrateTrait, focusTrait, manipulateTrait), "Giving the air a push, you buffet the target with a powerful gust of wind; it must attempt a Fortitude save.");
+            pushingGust.setSpellRange(500);
+            pushingGust.setSpellTargets("1 creature");
+            pushingGust.setSpellDefense("Fortitude");
+
+            Spell disperseIntoAir = new Spell("Disperse into Air", 4, SpellType.FOCUS, ActionType.REACTION, Set.of(airTrait, clericTrait, focusTrait, manipulateTrait, polymorphTrait), "After taking the triggering damage, you transform into air.");
+            disperseIntoAir.setSpellTrigger("You take damage from an enemy or a hazard");
+
+            Spell igniteAmbition = new Spell("Ignite Ambition", 1, SpellType.FOCUS, ActionType.REACTION, Set.of(clericTrait, concentrateTrait, emotionTrait, focusTrait, mentalTrait, subtleTrait), "You strengthen the target's ambition, increase its resentment of its allies, and make its allegiances more susceptible to change.");
+            igniteAmbition.setSpellTrigger("You or an ally in range attempt to use a mental effect to convince a creature to do something (such as a Coerce, Request, or a suggestion spell)");
+            igniteAmbition.setSpellRange(60);
+            igniteAmbition.setSpellTargets("one creature being influenced");
+            igniteAmbition.setSpellDefense("Will");
+
+            Spell competitiveEdge = new Spell("Competitive Edge", 4, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(clericTrait, concentrateTrait, emotionTrait, focusTrait, mentalTrait), "Your competitiveness drives you to prove yourself against the opposition.");
+            competitiveEdge.setSpellDuration("sustained up to 1 minute");
+
+            Domain airDomain = new Domain("Air", "You can control winds and the weather.", pushingGust, disperseIntoAir);
+            pushingGust.setSpellDomain(airDomain);
+            disperseIntoAir.setSpellDomain(airDomain);
+            airDomain.setDeities(Set.of(gozreh, greenFaith, rovagug));
+
+            Domain ambitionDomain = new Domain("Ambition", "You strive to keep up with and outpace the competition.", igniteAmbition, competitiveEdge);
+            igniteAmbition.setSpellDomain(ambitionDomain);
+            competitiveEdge.setSpellDomain(ambitionDomain);
+            ambitionDomain.setDeities(Set.of(zonKuthon));
+
+            gozreh.setMainDomains(Set.of(airDomain));
+            greenFaith.setMainDomains(Set.of(airDomain));
+            rovagug.setMainDomains(Set.of(airDomain));
+            zonKuthon.setMainDomains(Set.of(ambitionDomain));
+
+            domainRepo.saveAll(List.of(airDomain, ambitionDomain));
+            spellRepo.saveAll(List.of(pushingGust, disperseIntoAir, igniteAmbition, competitiveEdge));
             deityRepo.saveAll(List.of(abadar, asmodeus, calistria, caydenCailean, desna, erastil, gorum, gozreh, greenFaith, iomedae, irori, lamashtu, nethys, norgorber, pharasma, rovagug, sarenrae, shelyn, torag, urgathoa, zonKuthon));
 
             Language aklo = new Language("Aklo");

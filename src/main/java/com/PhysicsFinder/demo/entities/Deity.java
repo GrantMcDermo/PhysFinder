@@ -42,6 +42,10 @@ public class Deity {
 
     private List<Spell> clericSpells =  new ArrayList<>();
 
+    @ManyToMany
+    @JoinTable(name = "deity_domain", joinColumns = @JoinColumn(name = "deity_id"), inverseJoinColumns = @JoinColumn(name = "domain_id"))
+    private Set<Domain> mainDomains = new HashSet<>();
+
     public Deity(String name, List<Weapon> favoredWeaponOptions, List<Skill> grantedSkillOptions, List<AttributeName> divineAttributes, Set<Spell> divineFonts, SanctificationType sanctificationType) {
         this.name = name;
         this.favoredWeaponOptions = favoredWeaponOptions;

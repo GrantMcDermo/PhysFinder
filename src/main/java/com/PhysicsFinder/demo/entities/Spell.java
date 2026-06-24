@@ -48,6 +48,9 @@ public class Spell {
     private String spellCastUnits;
     private Integer spellCastAmount;
 
+    @OneToOne(mappedBy = "spell", cascade = CascadeType.ALL)
+    private Domain spellDomain;
+
     public Spell(String name, Integer spellRank, SpellType spellType, ActionType spellActionType, Set<Trait> traits, String spellDescription) {
         this.name = name;
         this.spellRank = spellRank;
