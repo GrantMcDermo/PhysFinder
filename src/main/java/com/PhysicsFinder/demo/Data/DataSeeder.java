@@ -28,7 +28,8 @@ public class DataSeeder {
             DeityRepo deityRepo,
             GameActionRepo gameActionRepo,
             LanguageRepo languageRepo,
-            TraitRepo traitRepo){
+            TraitRepo traitRepo,
+            SpellRepo spellRepo){
         return args -> {
             if(ancestryRepo.count() > 0)
                 return;
@@ -80,7 +81,7 @@ public class DataSeeder {
             Trait guardianTrait = new Trait("Guardian", TraitCategory.CLASS);
             Trait barbarianTrait = new Trait("Barbarian", TraitCategory.CLASS);
             Trait flourishTrait = new Trait("Flourish", TraitCategory.ACTION);
-            Trait manipulateTrait = new Trait("Manipulate", TraitCategory.MAGIC);
+            Trait manipulateTrait = new Trait("Manipulate", TraitCategory.ACTION);
             Trait emotionTrait = new Trait("Emotion", TraitCategory.ACTION);
             Trait fearTrait = new Trait("Fear",  TraitCategory.ACTION);
             Trait mentalTrait = new Trait("Mental",  TraitCategory.ACTION);
@@ -89,7 +90,7 @@ public class DataSeeder {
             Trait championTrait = new Trait("Champion",   TraitCategory.CLASS);
             Trait investigatorTrait = new Trait("Investigator",   TraitCategory.CLASS);
             Trait rogueTrait = new Trait("Rogue",    TraitCategory.CLASS);
-            Trait concentrateTrait = new Trait("Concentrate",  TraitCategory.MAGIC);
+            Trait concentrateTrait = new Trait("Concentrate",  TraitCategory.ACTION);
             Trait wizardTrait = new Trait("Wizard", TraitCategory.CLASS);
             Trait psychicTrait = new Trait("Psychic", TraitCategory.CLASS);
             Trait thaumaturgeTrait = new Trait("Thaumaturge", TraitCategory.CLASS);
@@ -117,7 +118,7 @@ public class DataSeeder {
             Trait koboldTrait = new Trait("Kobold", TraitCategory.ANCESTRY);
             Trait samsaranTrait = new Trait("Samsaran", TraitCategory.ANCESTRY);
             Trait kholoTrait = new Trait("Kholo", TraitCategory.ANCESTRY);
-            Trait shadowTrait = new Trait("Shadow", TraitCategory.CREATURE);
+            Trait shadowTrait = new Trait("Shadow", TraitCategory.MAGIC);
             Trait wayangTrait = new Trait("Wayang", TraitCategory.ANCESTRY);
             Trait fungusTrait = new Trait("Fungus", TraitCategory.CREATURE);
             Trait feyTrait = new Trait("Fey", TraitCategory.CREATURE);
@@ -141,7 +142,7 @@ public class DataSeeder {
             Trait propulsiveTrait = new Trait("Propulsive", TraitCategory.WEAPON);
             Trait volleyTrait = new Trait("Volley", TraitCategory.WEAPON);
             Trait disarmTrait = new Trait("Disarm", TraitCategory.WEAPON);
-            Trait nonlethal = new Trait("Nonlethal", TraitCategory.WEAPON);
+            Trait nonlethalTrait = new Trait("Nonlethal", TraitCategory.ACTION);
             Trait reachTrait = new Trait("Reach", TraitCategory.WEAPON);
             Trait tripTrait = new Trait("Trip", TraitCategory.WEAPON);
             Trait forcefulTrait = new Trait("Forceful", TraitCategory.WEAPON);
@@ -154,22 +155,22 @@ public class DataSeeder {
             Trait joustingTrait = new Trait("Jousting", TraitCategory.WEAPON);
             Trait concealableTrait = new Trait("Concealable", TraitCategory.WEAPON);
             Trait attachedToShieldTrait = new Trait("Attached to Shield", TraitCategory.WEAPON);
-            Trait healingTrait = new Trait("Healing", TraitCategory.MAGIC);
+            Trait healingTrait = new Trait("Healing", TraitCategory.ACTION);
             Trait illusionTrait = new Trait("Illusion", TraitCategory.MAGIC);
             Trait explorationTrait = new Trait("Exploration", TraitCategory.ACTION);
-            Trait linguisticTrait = new Trait("Linguistic", TraitCategory.MAGIC);
+            Trait linguisticTrait = new Trait("Linguistic", TraitCategory.ACTION);
             Trait spellshapeTrait = new Trait("Spellshape", TraitCategory.MAGIC);
             Trait downtimeTrait = new Trait("Downtime", TraitCategory.ACTION);
             Trait auditoryTrait = new Trait("Auditory", TraitCategory.ACTION);
             Trait teleportationTrait = new Trait("Teleportation", TraitCategory.MAGIC);
             Trait divineTrait = new Trait("Divine", TraitCategory.MAGIC);
-            Trait poisonTrait = new Trait("Poison", TraitCategory.ITEM);
+            Trait poisonTrait = new Trait("Poison", TraitCategory.MAGIC);
             Trait secretTrait = new Trait("Secret", TraitCategory.ACTION);
             Trait vitalityTrait = new Trait("Vitality", TraitCategory.MAGIC);
-            Trait incapactitationTrait = new Trait("Incapactitation", TraitCategory.ACTION);
+            Trait incapactitationTrait = new Trait("Incapacitation", TraitCategory.ACTION);
             Trait sonicTrait = new Trait("Sonic", TraitCategory.MAGIC);
             Trait morphTrait = new Trait("Morph", TraitCategory.MAGIC);
-            Trait magicalTrait = new Trait("Magical", TraitCategory.ITEM);
+            Trait magicalTrait = new Trait("Magical", TraitCategory.ACTION);
             Trait moveTrait = new Trait("Move", TraitCategory.ACTION);
             Trait visualTrait = new Trait("Visual", TraitCategory.ACTION);
             Trait arcaneTrait = new Trait("Arcane", TraitCategory.MAGIC);
@@ -177,7 +178,7 @@ public class DataSeeder {
             Trait predictionTrait = new Trait("Prediction", TraitCategory.MAGIC);
             Trait primalTrait = new Trait("Primal", TraitCategory.MAGIC);
             Trait polymorphTrait = new Trait("Polymorph", TraitCategory.MAGIC);
-            Trait consecrationTrait = new Trait("Conescration", TraitCategory.MAGIC);
+            Trait consecrationTrait = new Trait("Consecration", TraitCategory.MAGIC);
             Trait lightTrait = new Trait("Light", TraitCategory.MAGIC);
             Trait coldTrait = new Trait("Cold", TraitCategory.MAGIC);
             Trait earthTrait = new Trait("Earth", TraitCategory.MAGIC);
@@ -189,19 +190,523 @@ public class DataSeeder {
             Trait gunslingerTrait = new Trait("Gunslinger", TraitCategory.CLASS);
             Trait rageTrait = new Trait("Rage", TraitCategory.ACTION);
             Trait alchemistTrait = new Trait("Alchemist", TraitCategory.CLASS);
-            Trait misfortuneTrait = new Trait("Misfortunel", TraitCategory.MAGIC);
+            Trait misfortuneTrait = new Trait("Misfortune", TraitCategory.MAGIC);
             Trait wanderingTrait = new Trait("Wandering", TraitCategory.MAGIC);
             Trait tripkeeTrait = new Trait("Tripkee", TraitCategory.ANCESTRY);
+            Trait acidTrait = new Trait("Acid", TraitCategory.MAGIC);
+            Trait focusTrait = new Trait("Focus", TraitCategory.MAGIC);
+            Trait airTrait = new Trait("Air", TraitCategory.MAGIC);
+            Trait cantripTrait = new Trait("Cantrip", TraitCategory.MAGIC);
+            Trait compositionTrait = new Trait("Composition", TraitCategory.MAGIC);
+            Trait waterTrait = new Trait("Water", TraitCategory.MAGIC);
+            Trait auraTrait = new Trait("Aura", TraitCategory.MAGIC);
+            Trait attackTrait = new Trait("Attack", TraitCategory.ACTION);
+            Trait fireTrait = new Trait("Fire", TraitCategory.MAGIC);
+            Trait sanctifiedTrait = new Trait("Sanctified", TraitCategory.MAGIC);
+            Trait forceTrait = new Trait("Force", TraitCategory.MAGIC);
+            Trait curseTrait = new Trait("Curse", TraitCategory.MAGIC);
+            Trait hexTrait = new Trait("Hex", TraitCategory.MAGIC);
+            Trait electricityTrait = new Trait("Electricity", TraitCategory.MAGIC);
+            Trait subtleTrait = new Trait("Subtle", TraitCategory.MAGIC);
+            Trait darknessTrait = new Trait("Darkness", TraitCategory.MAGIC);
+            Trait unholyTrait = new Trait("Unholy", TraitCategory.MAGIC);
+            Trait scryingTrait = new Trait("Scrying", TraitCategory.MAGIC);
+            Trait woodTrait = new Trait("Wood", TraitCategory.MAGIC);
+            Trait deathTrait = new Trait("Death", TraitCategory.MAGIC);
+            Trait voidTrait = new Trait("Void", TraitCategory.MAGIC);
+            Trait spiritTrait = new Trait("Spirit", TraitCategory.MAGIC);
+            Trait revelationTrait = new Trait("Revelation", TraitCategory.MAGIC);
+            Trait diseaseTrait = new Trait("Disease",  TraitCategory.MAGIC);
+            Trait holyTrait = new Trait("Holy", TraitCategory.MAGIC);
+            Trait olfactoryTrait = new Trait("Olfactory", TraitCategory.MAGIC);
+            Trait metalTrait = new Trait("Metal", TraitCategory.MAGIC);
+            Trait extradimensionalTrait = new Trait("Extradimensional", TraitCategory.MAGIC);
+            Trait summonTrait = new Trait("Summon", TraitCategory.MAGIC);
+            Trait sleepTrait = new Trait("Sleep", TraitCategory.MAGIC);
 
             traitRepo.saveAll(List.of(dwarfTrait, elfTrait, gnomeTrait, goblinFeat, halflingTrait, humanTrait, kholoTrait, koboldTrait, leshyTrait, orcTrait, samsaranTrait, tripkeeTrait, wayangTrait,
                     aiuvarinTrait, changelingTrait, dromaarTrait, nephilimTrait,
                     bardTrait, clericTrait, druidTrait, fighterTrait, rangerTrait, rogueTrait, witchTrait, wizardTrait,
-                    alchemistTrait, animistTrait, barbarianTrait, championTrait, commanderTrait, exemplarTrait, guardianTrait, gunslingerTrait, investigatorTrait, magusTrait, monkTrait, oracleTrait, psychicTrait, sorcererTrait, summonerTrait, swashbucklerTrait, thaumaturgeTrait,
-                    auditoryTrait, concentrateTrait, downtimeTrait, emotionTrait, explorationTrait, fearTrait, feyTrait, flourishTrait, fortuneTrait, fungusTrait, generalTrait, humanoidTrait, incapactitationTrait, lineageTrait, manipulateTrait, mentalTrait, moveTrait, plantTrait, pressTrait, rageTrait, secretTrait, shadowTrait, skillTrait, stanceTrait, visualTrait,
-                    arcaneTrait, coldTrait, consecrationTrait, curseboundTrait, detectionTrait, divineTrait, earthTrait, healingTrait, illusionTrait, lightTrait, linguisticTrait, misfortuneTrait, morphTrait, polymorphTrait, predictionTrait, primalTrait, sonicTrait, spellshapeTrait, teleportationTrait, vitalityTrait, wanderingTrait,
+                    alchemistTrait, barbarianTrait, championTrait, investigatorTrait, monkTrait, oracleTrait, sorcererTrait, swashbucklerTrait,
+                    animistTrait, commanderTrait, exemplarTrait, guardianTrait, gunslingerTrait, magusTrait, psychicTrait, summonerTrait, thaumaturgeTrait,
+                    feyTrait, fungusTrait, humanoidTrait, lineageTrait, plantTrait,
+                    auditoryTrait, concentrateTrait, downtimeTrait, emotionTrait, explorationTrait, fearTrait, flourishTrait, fortuneTrait, generalTrait, healingTrait, incapactitationTrait, linguisticTrait, magicalTrait, manipulateTrait, mentalTrait, moveTrait, nonlethalTrait, pressTrait, rageTrait, secretTrait, skillTrait, stanceTrait, visualTrait,
+                    acidTrait, airTrait, arcaneTrait, auraTrait, cantripTrait, coldTrait, compositionTrait, consecrationTrait, curseTrait, curseboundTrait, darknessTrait, deathTrait, detectionTrait, diseaseTrait, divineTrait, earthTrait, electricityTrait, extradimensionalTrait, fireTrait, focusTrait, forceTrait, hexTrait, holyTrait, illusionTrait, lightTrait, metalTrait, misfortuneTrait, morphTrait, olfactoryTrait, poisonTrait, polymorphTrait, predictionTrait, primalTrait, revelationTrait, sanctifiedTrait, scryingTrait, shadowTrait, sleepTrait, sonicTrait, spellshapeTrait, spiritTrait, subtleTrait, summonTrait, teleportationTrait, unholyTrait, vitalityTrait, voidTrait, wanderingTrait, waterTrait, woodTrait,
                     aquadynamicTrait, bulwarkTrait, comfortTrait, flexibleTrait, laminarTrait, noisyTrait,
-                    agileTrait, attachedToShieldTrait, backstabberTrait, backswingTrait, concealableTrait, deadlyTrait, disarmTrait, fatalTrait, finesseTrait, forcefulTrait, freeHandTrait, joustingTrait, nonlethal, parryTrait, propulsiveTrait, rangedTripTrait, reachTrait, shoveTrait, sweepTrait, thrownTrait, tripTrait, twinTrait, twoHandTrait, unarmedTrait, versatileTrait, volleyTrait,
-                    magicalTrait, poisonTrait));
+                    agileTrait, attachedToShieldTrait, attackTrait, backstabberTrait, backswingTrait, concealableTrait, deadlyTrait, disarmTrait, fatalTrait, finesseTrait, forcefulTrait, freeHandTrait, joustingTrait, parryTrait, propulsiveTrait, rangedTripTrait, reachTrait, shoveTrait, sweepTrait, thrownTrait, tripTrait, twinTrait, twoHandTrait, unarmedTrait, versatileTrait, volleyTrait));
+
+            Spell acidGrip = new Spell("Acid Grip", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(acidTrait, concentrateTrait, manipulateTrait), "An ephemeral, taloned hand grips the target, burning it with magical acid.");
+            acidGrip.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
+            acidGrip.setSpellRange(120);
+            acidGrip.setSpellDefense("Reflex");
+            acidGrip.setSpellTargets("1 creature");
+
+            Spell agileFeet = new Spell("Agile Feet", 1, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(clericTrait, focusTrait, manipulateTrait), "The blessings of your god make your feet faster and your movements more fluid.");
+            agileFeet.setSpellDuration("until the end of the current turn.");
+
+            Spell airBubble = new Spell("Air Bubble", 1, SpellType.SPELL, ActionType.REACTION, Set.of(airTrait, concentrateTrait), "A bubble of pure air appears around the target's head, allowing it to breathe normally.");
+            airBubble.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.PRIMAL));
+            airBubble.setSpellTrigger("A creature within range enters an environment where it can't breathe.");
+            airBubble.setSpellRange(60);
+            airBubble.setSpellTargets("the triggering creature");
+            airBubble.setSpellDuration("1 minute");
+
+            Spell allegro = new Spell("Allegro", 7, SpellType.CANTRIP, ActionType.SINGLE_ACTION, Set.of(bardTrait, cantripTrait, compositionTrait, concentrateTrait, emotionTrait, mentalTrait), "You perform rapidly, speeding up your ally.");
+            allegro.setSpellRange(30);
+            allegro.setSpellTargets("1 ally");
+            allegro.setSpellDuration("1 round");
+
+            Spell animalForm = new Spell("Animal Form", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, polymorphTrait), "You call upon primal energy to transform yourself into a Medium animal battle form.");
+            animalForm.setSpellTraditions(List.of(SpellTraditions.PRIMAL));
+            animalForm.setSpellDuration("1 minute");
+
+            Spell aqueousOrb = new Spell("Aqueous Orb", 3, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, waterTrait), "A sphere of water 10 feet in diameter forms in an unoccupied space in range, either on the ground or on the surface of a liquid.");
+            aqueousOrb.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
+            aqueousOrb.setSpellRange(60);
+            aqueousOrb.setSpellDefense("Reflex");
+            aqueousOrb.setSpellDuration("sustained up to 1 minute");
+
+            Spell bane = new Spell("Bane", 1, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(auraTrait, concentrateTrait, manipulateTrait, mentalTrait), "You fill the minds of your enemies with doubt.");
+            bane.setSpellTraditions(List.of(SpellTraditions.DIVINE, SpellTraditions.OCCULT));
+            bane.setSpellArea(10);
+            bane.setSpellAreaType("emanation");
+            bane.setSpellDefense("Will");
+            bane.setSpellDuration("1 minute");
+
+            Spell blazingBolt = new Spell("Blazing Bolt", 2, SpellType.SPELL, ActionType.ONE_TO_THREE_ACTIONS, Set.of(attackTrait, concentrateTrait, fireTrait, manipulateTrait), "You fire a ray of heat and flame.");
+            blazingBolt.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
+            blazingBolt.setSpellRange(60);
+            blazingBolt.setSpellTargets("1 or more creatures");
+            blazingBolt.setSpellDefense("AC");
+
+            Spell blessedBoundary = new Spell("Blessed Boundary", 6, SpellType.SPELL, ActionType.THREE_ACTIONS, Set.of(concentrateTrait, forceTrait, manipulateTrait, sanctifiedTrait), "Manifestations of divine force appear in the hundreds, swirling in a massive, protective sphere.");
+            blessedBoundary.setSpellTraditions(List.of(SpellTraditions.DIVINE));
+            blessedBoundary.setSpellRange(120);
+            blessedBoundary.setSpellArea(60);
+            blessedBoundary.setSpellAreaType("up to a 60-foot burst");
+            blessedBoundary.setSpellDefense("Reflex");
+            blessedBoundary.setSpellDuration("1 minute");
+
+            Spell bloodVendetta = new Spell("Blood Vendetta", 2, SpellType.SPELL, ActionType.REACTION, Set.of(curseTrait), "You curse the target, punishing it for having the audacity to spill your blood.");
+            bloodVendetta.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT));
+            bloodVendetta.setSpellTrigger("A creature deals piercing, slashing, or persistent bleed damage to you;");
+            bloodVendetta.setSpellRequirement("You can bleed");
+            bloodVendetta.setSpellRange(30);
+            bloodVendetta.setSpellTargets("the triggering creature");
+            bloodVendetta.setSpellDefense("Will");
+            bloodVendetta.setSpellDuration("varies");
+
+            Spell bloodWard = new Spell("Blood Ward", 1, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(focusTrait, hexTrait, manipulateTrait, witchTrait), "Your patron's aegis descends to shield a target from harm.");
+            bloodWard.setSpellRange(30);
+            bloodWard.setSpellTargets("1 creature");
+            bloodWard.setSpellDuration("sustained up to 1 minute");
+
+            Spell breatheFire = new Spell("Breathe Fire", 1, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, fireTrait, manipulateTrait), "A gout of flame sprays from your mouth.");
+            breatheFire.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
+            breatheFire.setSpellArea(15);
+            breatheFire.setSpellAreaType("cone");
+            breatheFire.setSpellDefense("basic Reflex");
+
+            Spell cataclysm = new Spell("Cataclysm", 10, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(acidTrait, airTrait, coldTrait, concentrateTrait, earthTrait, electricityTrait, fireTrait, manipulateTrait, waterTrait), "You call upon the unimaginable power of world-ending cataclysms, ripping a small piece of each cataclysm and combining them together into one horrifically powerful attack.");
+            cataclysm.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
+            cataclysm.setSpellRange(1000);
+            cataclysm.setSpellArea(60);
+            cataclysm.setSpellAreaType("burst");
+            cataclysm.setSpellDefense("basic Reflex");
+
+            Spell charm = new Spell("Charm", 1, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, emotionTrait, incapactitationTrait, manipulateTrait, mentalTrait, subtleTrait), "To the target, your words are honey and your visage seems bathed in a dreamy haze.");
+            charm.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
+            charm.setSpellRange(30);
+            charm.setSpellTargets("1 creature");
+            charm.setSpellDefense("Will");
+            charm.setSpellDuration("1 hour");
+
+            Spell chillingDarkness = new Spell("Chilling Darkness", 3, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(attackTrait, coldTrait, concentrateTrait, darknessTrait, manipulateTrait, unholyTrait), "You shoot an utterly cold ray of darkness tinged with unholy energy.");
+            chillingDarkness.setSpellTraditions(List.of(SpellTraditions.DIVINE));
+            chillingDarkness.setSpellRange(120);
+            chillingDarkness.setSpellTargets("1 creature");
+            chillingDarkness.setSpellDefense("AC");
+
+            Spell clairaudience = new Spell("Clairaudience", 3, SpellType.SPELL, ActionType.ACTIVITY, Set.of(concentrateTrait, manipulateTrait, scryingTrait), "You create an invisible floating ear at a location within range (even if it's outside your line of sight or line of effect). It can't move, but you can hear through the ear as if using your normal auditory senses.");
+            clairaudience.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            clairaudience.setSpellCastAmount(1);
+            clairaudience.setSpellCastUnits("minute");
+            clairaudience.setSpellRange(500);
+            clairaudience.setSpellDuration("10 minutes");
+
+            Spell controlWater = new Spell("Control Water", 5, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, waterTrait), "By imposing your will upon the water, you can raise or lower the level of water in the chosen area by 10 feet. Creatures that have the water trait and that are in the area when you Cast the Spell must attempt a Fortitude save, with the effects of the slow spell.");
+            controlWater.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
+            controlWater.setSpellRange(500);
+            controlWater.setSpellArea(50);
+            controlWater.setSpellAreaType("square");
+            controlWater.setSpellDefense("Fortitude");
+            controlWater.setSpellDuration("1 hour");
+
+            Spell cozyCabin = new Spell("Cozy Cabin", 3, SpellType.SPELL, ActionType.ACTIVITY, Set.of(concentrateTrait, manipulateTrait, woodTrait), "You shape a cabin 20 feet on each side and 10 feet high.");
+            cozyCabin.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            cozyCabin.setSpellCastUnits("minute");
+            cozyCabin.setSpellCastAmount(1);
+            cozyCabin.setSpellRange(30);
+            cozyCabin.setSpellDuration("12 hours");
+
+            Spell creation = new Spell("Creation", 4, SpellType.SPELL, ActionType.ACTIVITY, Set.of(concentrateTrait, manipulateTrait), "You conjure a temporary object from magical energy.");
+            creation.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
+            creation.setSpellCastUnits("minute");
+            creation.setSpellCastAmount(1);
+            creation.setSpellRange(0);
+            creation.setSpellDuration("1 hour");
+
+            Spell curseOfDeath = new Spell("Curse of Death", 5, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, curseTrait, deathTrait, focusTrait, hexTrait, manipulateTrait, voidTrait, witchTrait), "Your patron wraps a hand around your target's heart.");
+            curseOfDeath.setSpellRange(30);
+            curseOfDeath.setSpellTargets("1 creature");
+            curseOfDeath.setSpellDefense("Fortitude");
+            curseOfDeath.setSpellDuration("sustained up to 1 minute");
+
+            Spell detonateMagic = new Spell("Detonate Magic", 9, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "You cause the magic within the target to dissipate in a destructive explosion.");
+            detonateMagic.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
+            detonateMagic.setSpellRange(120);
+            detonateMagic.setSpellTargets("1 magic item or spell effect");
+            detonateMagic.setSpellDefense("basic Reflex");
+
+            Spell disintegrate = new Spell("Disintegrate", 6, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(attackTrait, concentrateTrait, manipulateTrait), "A black tracer bolt flies toward your target, and upon making contact intensifies into a powerful destructive beam.");
+            disintegrate.setSpellTraditions(List.of(SpellTraditions.ARCANE));
+            disintegrate.setSpellRange(120);
+            disintegrate.setSpellTargets("1 creature, unattended object, or force construct");
+            disintegrate.setSpellDefense("AC and basic Fortitude");
+
+            Spell divineDecree = new Spell("Divine Decree", 7, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, sanctifiedTrait, spiritTrait), "You utter a potent litany from your faith, a mandate that harms those who oppose your ideals.");
+            divineDecree.setSpellTraditions(List.of(SpellTraditions.DIVINE));
+            divineDecree.setSpellArea(40);
+            divineDecree.setSpellAreaType("emanation");
+            divineDecree.setSpellDefense("Fortitude");
+            divineDecree.setSpellDuration("varies");
+
+            Spell dizzyingColors = new Spell("Dizzying Colors", 1, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, illusionTrait, incapactitationTrait, manipulateTrait, visualTrait), "You unleash a swirling multitude of colors that overwhelms creatures based on their Will saves.");
+            dizzyingColors.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            dizzyingColors.setSpellArea(15);
+            dizzyingColors.setSpellAreaType("cone");
+            dizzyingColors.setSpellDefense("Will");
+            dizzyingColors.setSpellDuration("1 or more rounds");
+
+            Spell dreamingPotential = new Spell("Dreaming Potential", 5, SpellType.SPELL, ActionType.ACTIVITY, Set.of(concentrateTrait, manipulateTrait, mentalTrait), "You draw the target into a lucid dream where it can explore the endless possibilities of its own potential within the everchanging backdrop of its dreamscape.");
+            dreamingPotential.setSpellTraditions(List.of(SpellTraditions.OCCULT));
+            dreamingPotential.setSpellCastAmount(10);
+            dreamingPotential.setSpellCastUnits("minute");
+            dreamingPotential.setSpellRange(0);
+            dreamingPotential.setSpellTargets("1 willing sleeping creature");
+            dreamingPotential.setSpellDuration("8 hours");
+
+            Spell earthbind = new Spell("Earthbind", 3, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, earthTrait, manipulateTrait), "Using the weight of earth, you hamper a target's flight, with effects based on its Fortitude save.");
+            earthbind.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
+            earthbind.setSpellRange(120);
+            earthbind.setSpellTargets("1 flying creature");
+            earthbind.setSpellDefense("Fortitude");
+            earthbind.setSpellDuration("varies");
+
+            Spell embedMessage = new Spell("Embed Message", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, illusionTrait, manipulateTrait), "You specify a trigger and a message up to 25 words long.");
+            embedMessage.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            embedMessage.setSpellRange(0);
+            embedMessage.setSpellTargets("1 object or willing creature");
+            embedMessage.setSpellDuration("unlimited");
+
+            Spell enlarge = new Spell("Enlarge", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, polymorphTrait), "Bolstered by magical power, the target grows to size Large.");
+            enlarge.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
+            enlarge.setSpellRange(30);
+            enlarge.setSpellTargets("1 willing creature");
+            enlarge.setSpellDuration("5 minutes");
+
+            Spell enthrall = new Spell("Enthrall", 3, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(auditoryTrait, concentrateTrait, emotionTrait, manipulateTrait), "Your words fascinate your targets.");
+            enthrall.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            enthrall.setSpellRange(120);
+            enthrall.setSpellTargets("all creatures in range");
+            enthrall.setSpellDefense("Will");
+            enthrall.setSpellDuration("sustained");
+
+            Spell falseVitality = new Spell("False Vitality", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "You augment your flesh with the energies typically used to manipulate the undead.");
+            falseVitality.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            falseVitality.setSpellDuration("8 hours");
+
+            Spell fireShield = new Spell("Fire Shield", 4, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, fireTrait, manipulateTrait), "You create a hovering shield made of fire.");
+            fireShield.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
+            fireShield.setSpellDuration("1 minute");
+
+            Spell fireball = new Spell("Fireball", 3, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, fireTrait, manipulateTrait), "A roaring blast of fire detonates at a spot you designate, dealing 6d6 fire damage.");
+            fireball.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
+            fireball.setSpellRange(500);
+            fireball.setSpellArea(20);
+            fireball.setSpellAreaType("burst");
+            fireball.setSpellDefense("basic Reflex");
+
+            Spell fleetStep = new Spell("Fleet Step", 1, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "You gain a +30-foot status bonus to your Speed.");
+            fleetStep.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
+            fleetStep.setSpellDuration("1 minute");
+
+            Spell flicker = new Spell("Flicker", 4, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, teleportationTrait), "You flicker quickly between your current plane and another.");
+            flicker.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            flicker.setSpellDuration("1 minute");
+
+            Spell forceBarrage = new Spell("Force Barrage", 1, SpellType.SPELL, ActionType.ONE_TO_THREE_ACTIONS, Set.of(concentrateTrait, forceTrait, manipulateTrait), "You fire a shard of solidified magic toward a creature that you can see.");
+            forceBarrage.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            forceBarrage.setSpellRange(120);
+            forceBarrage.setSpellTargets("1 creature");
+
+            Spell ghostlyWeapon = new Spell("Ghostly Weapon", 3, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "The target weapon becomes translucent and ghostly, and it can affect material and incorporeal creatures and objects.");
+            ghostlyWeapon.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            ghostlyWeapon.setSpellRange(0);
+            ghostlyWeapon.setSpellTargets("1 weapon that is either unattended or wielded by you or a willing ally");
+            ghostlyWeapon.setSpellDuration("5 minutes");
+
+            Spell glimpseTheTruth = new Spell("Glimpse the Truth", 4, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(auraTrait, clericTrait, focusTrait, manipulateTrait, revelationTrait), "Divine insight lets you see things as they are, unveiled by attempts to magically cloak the truth.");
+            glimpseTheTruth.setSpellArea(30);
+            glimpseTheTruth.setSpellAreaType("emanation");
+            glimpseTheTruth.setSpellDuration("1 round");
+
+            Spell goblinPox = new Spell("Goblin Pox", 1, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, diseaseTrait, manipulateTrait), "Your touch afflicts the target with goblin pox, an irritating allergenic rash.");
+            goblinPox.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
+            goblinPox.setSpellRange(0);
+            goblinPox.setSpellTargets("1 creature");
+            goblinPox.setSpellDefense("Fortitude");
+
+            Spell gustOfWind = new Spell("Gust of Wind", 1, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(airTrait, concentrateTrait, manipulateTrait), "A violent wind issues forth from your palm, blowing from the point where you are when you Cast the Spell to the line's opposite end.");
+            gustOfWind.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
+            gustOfWind.setSpellArea(60);
+            gustOfWind.setSpellAreaType("line");
+            gustOfWind.setSpellDefense("Fortitude");
+            gustOfWind.setSpellDuration("until the start of your next turn");
+
+            Spell hallucination = new Spell("Hallucination", 5, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(illusionTrait, incapactitationTrait, manipulateTrait, mentalTrait, subtleTrait), "The target consistently detects one thing as another, can't detect something that's there, or detects something that's not there, though it doesn't alter their beliefs.");
+            hallucination.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            hallucination.setSpellRange(30);
+            hallucination.setSpellTargets("1 creature");
+            hallucination.setSpellDuration("1 hour");
+
+            Spell haste = new Spell("Haste", 3, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "Magic empowers the target to act faster.");
+            haste.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
+            haste.setSpellRange(30);
+            haste.setSpellTargets("1 creature");
+            haste.setSpellDuration("1 minute");
+
+            Spell holyLight = new Spell("Holy Light", 3, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(attackTrait, concentrateTrait, fireTrait, holyTrait, lightTrait, manipulateTrait), "You shine a blazing ray of light tinged with holy energy.");
+            holyLight.setSpellTraditions(List.of(SpellTraditions.DIVINE, SpellTraditions.PRIMAL));
+            holyLight.setSpellRange(120);
+            holyLight.setSpellTargets("1 creature");
+            holyLight.setSpellDefense("AC");
+
+            Spell illusoryCreature = new Spell("Illusory Creature", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(auditoryTrait, concentrateTrait, illusionTrait, manipulateTrait, olfactoryTrait, visualTrait), "You create an illusory image of a Large or smaller creature.");
+            illusoryCreature.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            illusoryCreature.setSpellRange(500);
+            illusoryCreature.setSpellDuration("sustained");
+
+            Spell illusoryDisguise = new Spell("Illusory Disguise", 1, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, illusionTrait, manipulateTrait, mentalTrait), "You create an illusion that causes the target to appear as another creature of the same body shape, and with roughly similar height (within 6 inches) and weight (within 50 pounds).");
+            illusoryDisguise.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            illusoryDisguise.setSpellRange(30);
+            illusoryDisguise.setSpellTargets("1 willing creature");
+            illusoryDisguise.setSpellDuration("1 hour");
+
+            Spell illusoryObject = new Spell("Illusory Object", 1, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, illusionTrait, manipulateTrait, mentalTrait), "You create an illusory visual image of a stationary object.");
+            illusoryObject.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            illusoryObject.setSpellRange(500);
+            illusoryObject.setSpellArea(20);
+            illusoryObject.setSpellAreaType("burst");
+            illusoryObject.setSpellDuration("10 minutes");
+
+            Spell impalingSpike = new Spell("Impaling Spike", 5, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, metalTrait), "You conjure a spike that thrusts up from the earth beneath a target creature, potentially impaling it.");
+            impalingSpike.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
+            impalingSpike.setSpellRange(30);
+            impalingSpike.setSpellTargets("1 creature");
+            impalingSpike.setSpellDefense("Reflex");
+            impalingSpike.setSpellDuration("1 minute");
+
+            Spell invisibility = new Spell("Invisibility", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(illusionTrait, manipulateTrait, subtleTrait), "Illusions bend light around the target, rendering it invisible.");
+            invisibility.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            invisibility.setSpellRange(0);
+            invisibility.setSpellTargets("1 creature");
+            invisibility.setSpellDuration("10 minutes");
+
+            Spell jump = new Spell("Jump", 1, SpellType.SPELL, ActionType.SINGLE_ACTION, Set.of(manipulateTrait, moveTrait), "Your legs surge with strength, ready to leap high and far.");
+            jump.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
+
+            Spell levitate = new Spell("Levitate", 3, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "You defy gravity and levitate the target 5 feet off the ground.");
+            levitate.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            levitate.setSpellRange(0);
+            levitate.setSpellTargets("1 unattended object or willing creature");
+            levitate.setSpellDuration("5 minutes");
+
+            Spell lightningBolt = new Spell("Lightning Bolt", 3, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, electricityTrait, manipulateTrait), "A bolt of lightning strikes outward from your hand, dealing 4d12 electricity damage with a basic Reflex save.");
+            lightningBolt.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
+            lightningBolt.setSpellArea(120);
+            lightningBolt.setSpellAreaType("line");
+            lightningBolt.setSpellDefense("basic Reflex");
+
+            Spell liminalDoorway = new Spell("Liminal Doorway", 4, SpellType.SPELL, ActionType.ACTIVITY, Set.of(concentrateTrait, extradimensionalTrait, manipulateTrait), "You draw a chalk doorway on an unbroken surface, which opens into an extradimensional space.");
+            liminalDoorway.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            liminalDoorway.setSpellCastAmount(10);
+            liminalDoorway.setSpellCastUnits("minute");
+            liminalDoorway.setSpellRange(0);
+            liminalDoorway.setSpellDuration("8 hours");
+
+            Spell maskOfTerror = new Spell("Mask of Terror", 7, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, emotionTrait, fearTrait, illusionTrait, manipulateTrait, mentalTrait, visualTrait), "The target appears to be a gruesome and terrifying creature.");
+            maskOfTerror.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
+            maskOfTerror.setSpellRange(30);
+            maskOfTerror.setSpellTargets("1 creature");
+            maskOfTerror.setSpellDuration("1 minute");
+
+            Spell mindlink = new Spell("Mindlink", 1, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, mentalTrait), "You link your mind to the target's mind and mentally impart to that target an amount of information in an instant that could otherwise be communicated in 10 minutes.");
+            mindlink.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            mindlink.setSpellRange(0);
+            mindlink.setSpellTargets("1 willing creature");
+
+            Spell mislead = new Spell("Mislead", 6, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, illusionTrait, manipulateTrait), "You turn yourself invisible and create an illusory duplicate of yourself.");
+            mislead.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            mislead.setSpellDuration("sustained up to 1 minute");
+
+            Spell mountainResilience = new Spell("Mountain Resilience", 4, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, earthTrait, manipulateTrait), "The target's skin hardens like the stone of a mountain face.");
+            mountainResilience.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
+            mountainResilience.setSpellRange(0);
+            mountainResilience.setSpellTargets("1 creature");
+            mountainResilience.setSpellDuration("20 minutes");
+
+            Spell naturesPathway = new Spell("Nature's Pathway", 5, SpellType.SPELL, ActionType.ACTIVITY, Set.of(concentrateTrait, manipulateTrait, mentalTrait, plantTrait, teleportationTrait), "You step into a living tree with a trunk big enough for you to fit inside it and instantly teleport to any tree within 5 miles that also has a sufficiently large trunk.");
+            naturesPathway.setSpellTraditions(List.of(SpellTraditions.PRIMAL));
+            naturesPathway.setSpellCastAmount(1);
+            naturesPathway.setSpellCastUnits("minute");
+
+            Spell nightmare = new Spell("Nightmare", 4, SpellType.SPELL, ActionType.ACTIVITY, Set.of(concentrateTrait, illusionTrait, manipulateTrait, mentalTrait), "You send disturbing nightmares to your target.");
+            nightmare.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            nightmare.setSpellCastAmount(10);
+            nightmare.setSpellCastUnits("minute");
+            nightmare.setSpellRange(2147483647);
+            nightmare.setSpellTargets("1 creature you know by name");
+            nightmare.setSpellDefense("Will");
+            nightmare.setSpellDuration("1 day");
+
+            Spell phantasmalMinionSpell = new Spell("Phantasmal Minion", 1, SpellType.SPELL, ActionType.THREE_ACTIONS, Set.of(concentrateTrait, manipulateTrait, summonTrait), "You summon a phantasmal minion.");
+            phantasmalMinionSpell.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            phantasmalMinionSpell.setSpellRange(60);
+            phantasmalMinionSpell.setSpellDuration("sustained");
+
+            Spell phantomPain = new Spell("Phantom Pain", 1, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, illusionTrait, manipulateTrait, mentalTrait, nonlethalTrait), "Illusory pain wracks the target, dealing 2d4 mental damage and 1d4 persistent mental damage with a Will save.");
+            phantomPain.setSpellTraditions(List.of(SpellTraditions.OCCULT));
+            phantomPain.setSpellRange(30);
+            phantomPain.setSpellTargets("1 creature");
+            phantomPain.setSpellDefense("Will");
+            phantomPain.setSpellDuration("1 minute");
+
+            Spell planarPalace = new Spell("Planar Palace", 7, SpellType.SPELL, ActionType.ACTIVITY, Set.of(concentrateTrait, extradimensionalTrait, manipulateTrait), "You grow an extradimensional demiplane consisting of a spacious dwelling with a single entrance.");
+            planarPalace.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            planarPalace.setSpellCastAmount(1);
+            planarPalace.setSpellCastUnits("minute");
+            planarPalace.setSpellRange(30);
+            planarPalace.setSpellDuration("until your next daily preparations");
+
+            Spell quandary = new Spell("Quandary", 8 ,SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, extradimensionalTrait, manipulateTrait, teleportationTrait), "You transport the target into an extraplanar puzzle room of mysterious origin, locking them there.");
+            quandary.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            quandary.setSpellRange(30);
+            quandary.setSpellTargets("1 creature");
+            quandary.setSpellDuration("sustained");
+
+            Spell sleep = new Spell("Sleep", 1, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, incapactitationTrait, manipulateTrait, mentalTrait, sleepTrait), "Each creature in the area becomes drowsy, possibly nodding off.");
+            sleep.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            sleep.setSpellRange(30);
+            sleep.setSpellArea(5);
+            sleep.setSpellAreaType("burst");
+            sleep.setSpellDefense("Will");
+
+            Spell speakWithAnimals = new Spell("Speak with Animals", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "You can ask questions of, receive answers from, and use the Diplomacy skill with animals. The spell doesn't make them more friendly than normal. Cunning animals are likely to be terse and evasive, while less intelligent ones often make inane comments.");
+            speakWithAnimals.setSpellTraditions(List.of(SpellTraditions.PRIMAL));
+            speakWithAnimals.setSpellDuration("1 hour");
+
+            Spell spiderSting = new Spell("Spider Sting", 1, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, poisonTrait), "You magically duplicate a spider's venomous sting.");
+            spiderSting.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
+            spiderSting.setSpellRange(0);
+            spiderSting.setSpellTargets("1 creature");
+            spiderSting.setSpellDefense("Fortitude");
+
+            Spell stupefy = new Spell("Stupefy", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, mentalTrait), "You dull the target's mind, depending on its Will save.");
+            stupefy.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            stupefy.setSpellRange(30);
+            stupefy.setSpellTargets("1 creature");
+            stupefy.setSpellDefense("Will");
+            stupefy.setSpellDuration("varies");
+
+            Spell suggestion = new Spell("Suggestion", 4, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, incapactitationTrait, linguisticTrait, manipulateTrait, mentalTrait, subtleTrait), "Your honeyed words are difficult for creatures to resist.");
+            suggestion.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            suggestion.setSpellRange(30);
+            suggestion.setSpellTargets("1 creature");
+            suggestion.setSpellDefense("Will");
+            suggestion.setSpellDuration("varies");
+
+            Spell summonAnimal = new Spell("Summon Animal", 1, SpellType.SPELL, ActionType.THREE_ACTIONS, Set.of(concentrateTrait, manipulateTrait, summonTrait), "You summon a creature that has the animal trait and whose level is –1 to fight for you.");
+            summonAnimal.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
+            summonAnimal.setSpellRange(30);
+            summonAnimal.setSpellDuration("sustained up to 1 minute");
+
+            Spell sureStrike = new Spell("Sure Strike", 1, SpellType.SPELL, ActionType.SINGLE_ACTION, Set.of(concentrateTrait, fortuneTrait), "The next time you make an attack roll before the end of your turn, roll it twice and use the better result. The attack ignores circumstance penalties to the attack roll and any flat check required due to the target being concealed or hidden. You are then temporarily immune to sure strike for 10 minutes.");
+            sureStrike.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            sureStrike.setSpellDuration("until the end of your turn");
+
+            Spell telekineticHaul = new Spell("Telekinetic Haul", 5, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "You move the target up to 20 feet, potentially suspending it in midair. When you Sustain the spell, you can do so again, or you can shift your telekinetic focus to a different eligible target within range, moving it instead.");
+            telekineticHaul.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            telekineticHaul.setSpellRange(120);
+            telekineticHaul.setSpellTargets("1 unattended object of up to 80 Bulk with no dimension longer than 20 feet");
+            telekineticHaul.setSpellDuration("sustained up to 1 minute");
+
+            Spell translocate = new Spell("Translocate", 4, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, teleportationTrait), "You instantly transport yourself and any items you're wearing and holding from your current space to an unoccupied space within range you can see. If this would bring another creature with you—even if you're carrying it in an extradimensional container—the spell is lost.");
+            translocate.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            translocate.setSpellRange(120);
+
+            Spell umbralJourney = new Spell("Umbral Journey", 5, SpellType.SPELL, ActionType.ACTIVITY, Set.of(concentrateTrait, manipulateTrait, shadowTrait, teleportationTrait), "You move partially into the Netherworld, using its warped nature to speed your travels.");
+            umbralJourney.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            umbralJourney.setSpellCastAmount(1);
+            umbralJourney.setSpellCastUnits("minute");
+            umbralJourney.setSpellRange(0);
+            umbralJourney.setSpellTargets("you and up to 10 willing creatures touched");
+            umbralJourney.setSpellDuration("8 hours");
+
+            Spell visionOfDeath = new Spell("Vision of Death", 4, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, deathTrait, emotionTrait, fearTrait, manipulateTrait, mentalTrait), "You force the target to see a vision of its own death.");
+            visionOfDeath.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            visionOfDeath.setSpellRange(120);
+            visionOfDeath.setSpellTargets("1 living creature");
+            visionOfDeath.setSpellDefense("Will");
+
+            Spell wallOfFire = new Spell("Wall of Fire", 4, SpellType.SPELL, ActionType.THREE_ACTIONS, Set.of(concentrateTrait, fireTrait, manipulateTrait), "You raise a blazing wall that burns creatures passing through it.");
+            wallOfFire.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
+            wallOfFire.setSpellRange(120);
+            wallOfFire.setSpellDuration("1 minute");
+
+            Spell wallOfForce = new Spell("Wall of Force", 6, SpellType.SPELL, ActionType.THREE_ACTIONS, Set.of(concentrateTrait, forceTrait, manipulateTrait), "You form an invisible wall of pure magical force up to 50 feet long and up to 20 feet high.");
+            wallOfForce.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            wallOfForce.setSpellRange(30);
+            wallOfForce.setSpellDuration("1 minute");
+
+            Spell wallOfThorns = new Spell("Wall of Thorns", 3, SpellType.SPELL, ActionType.THREE_ACTIONS, Set.of(concentrateTrait, manipulateTrait, plantTrait, woodTrait), "You grow a wall of thorny brambles from the ground.");
+            wallOfThorns.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
+            wallOfThorns.setSpellRange(60);
+            wallOfThorns.setSpellDuration("1 minute");
+
+            Spell warpMind = new Spell("Warp Mind", 7, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, emotionTrait, incapactitationTrait, manipulateTrait, mentalTrait), "You scramble a creature's mental faculties and sensory input.");
+            warpMind.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            warpMind.setSpellRange(120);
+            warpMind.setSpellTargets("1 creature");
+            warpMind.setSpellDefense("Will");
+
+            Spell weaponStorm = new Spell("Weapon Storm", 4, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "You swing a weapon you're holding, and the weapon magically multiplies into duplicates that swipe at all creatures in either a cone or an emanation.");
+            weaponStorm.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
+            weaponStorm.setSpellArea(30);
+            weaponStorm.setSpellAreaType("cone");
+            weaponStorm.setSpellDefense("Reflex");
+
+            spellRepo.saveAll(List.of(
+                    acidGrip, agileFeet, airBubble, allegro, animalForm, aqueousOrb, bane, blazingBolt, blessedBoundary,
+                    bloodVendetta, bloodWard, breatheFire, cataclysm, charm, chillingDarkness, controlWater, cozyCabin,
+                    creation, curseOfDeath, detonateMagic, disintegrate, divineDecree, dizzyingColors, dreamingPotential,
+                    earthbind, embedMessage, enlarge, enthrall, falseVitality, fireShield, fireball, fleetStep,
+                    forceBarrage, ghostlyWeapon, glimpseTheTruth, goblinPox, gustOfWind, hallucination, haste, holyLight,
+                    illusoryCreature, illusoryDisguise, impalingSpike, invisibility, jump, levitate, lightningBolt,
+                    liminalDoorway, maskOfTerror, mindlink, mislead, mountainResilience, naturesPathway, nightmare,
+                    phantasmalMinionSpell, phantomPain, planarPalace, quandary, sleep, speakWithAnimals, spiderSting,
+                    stupefy, suggestion, summonAnimal, sureStrike, telekineticHaul, translocate, umbralJourney,
+                    visionOfDeath, wallOfFire, wallOfForce, wallOfThorns, warpMind, weaponStorm));
 
             Weapon crossbow = new Weapon("Crossbow", WeaponCategory.SIMPLE, WeaponType.RANGED, WeaponGroup.CROSSBOW, 1, 8, DamageType.PIERCING);
             crossbow.setRangeFeet(120);
@@ -296,7 +801,7 @@ public class DataSeeder {
             whip.setTraits(Set.of(
                     new WeaponTraitEntry(disarmTrait, null, null, null),
                     new WeaponTraitEntry(finesseTrait, null, null, null),
-                    new WeaponTraitEntry(nonlethal, null, null, null),
+                    new WeaponTraitEntry(nonlethalTrait, null, null, null),
                     new WeaponTraitEntry(reachTrait, null, null, null),
                     new WeaponTraitEntry(tripTrait, null, null, null)
             ));
@@ -358,7 +863,7 @@ public class DataSeeder {
             fist.setTraits(Set.of(
                     new WeaponTraitEntry(agileTrait, null, null, null),
                     new WeaponTraitEntry(finesseTrait, null, null, null),
-                    new WeaponTraitEntry(nonlethal, null, null, null),
+                    new WeaponTraitEntry(nonlethalTrait, null, null, null),
                     new WeaponTraitEntry(unarmedTrait, null, null, null)
             ));
             Weapon falchion = new Weapon("Falchion", WeaponCategory.MARTIAL, WeaponType.MELEE, WeaponGroup.SWORD, 1, 10, DamageType.SLASHING);
@@ -383,7 +888,7 @@ public class DataSeeder {
             claw.setTraits(Set.of(
                     new WeaponTraitEntry(agileTrait, null, null, null),
                     new WeaponTraitEntry(finesseTrait, null, null, null),
-                    new WeaponTraitEntry(nonlethal, null, null, null),
+                    new WeaponTraitEntry(nonlethalTrait, null, null, null),
                     new WeaponTraitEntry(unarmedTrait, null, null, null)
             ));
             Weapon shortsword = new Weapon("Shortsword", WeaponCategory.MARTIAL, WeaponType.MELEE, WeaponGroup.SWORD, 1, 6, DamageType.PIERCING);
@@ -448,7 +953,7 @@ public class DataSeeder {
             bola.setHandsRequiredToAttack(1);
             bola.setRangeFeet(20);
             bola.setTraits(Set.of(
-                    new WeaponTraitEntry(nonlethal, null, null, null),
+                    new WeaponTraitEntry(nonlethalTrait, null, null, null),
                     new WeaponTraitEntry(rangedTripTrait, null, null, null),
                     new WeaponTraitEntry(thrownTrait, null, null, null)
             ));
@@ -596,6 +1101,8 @@ public class DataSeeder {
             languageRepo.saveAll(List.of(aklo, chthonian,  diabolic, necril, pyric, shadowTongue, sussuran, thalassic, wildSong,
                     samsaranLanguage, iruxi, wayangLanguage, dZiriakLanguage, minatan, nagajiLanguage, vudrani, yakshaLanguage,
                     common, draconic, dwarven, elven, empyrean, feyLanguage, gnomish, goblinLanguage, halflingLanguage, jotun, kholoLanguage, orcish, petran, sakvroth));
+
+
 
             CharacterClass fighter = new CharacterClass("Fighter", 10, List.of("Strength", "Dexterity"), 3);
             fighter.setInitialProficiencies(List.of(

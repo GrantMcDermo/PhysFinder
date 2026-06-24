@@ -6,5 +6,6 @@ public enum ActionType {
     THREE_ACTIONS,
     REACTION,
     FREE_ACTION,
-    ACTIVITY
+    ACTIVITY,
+    ONE_TO_THREE_ACTIONS,
 }
