@@ -480,11 +480,19 @@ public class DataSeeder {
             hallucination.setSpellTargets("1 creature");
             hallucination.setSpellDuration("1 hour");
 
+            Spell harm = new Spell("Harm", 1, SpellType.SPELL, ActionType.ONE_TO_THREE_ACTIONS, Set.of(manipulateTrait, voidTrait), "You channel void energy to harm the living or heal the undead.");
+            harm.setSpellTraditions(List.of(SpellTraditions.DIVINE));
+            harm.setSpellTargets("1 living creature or 1 willing undead creature");
+
             Spell haste = new Spell("Haste", 3, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "Magic empowers the target to act faster.");
             haste.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
             haste.setSpellRange(30);
             haste.setSpellTargets("1 creature");
             haste.setSpellDuration("1 minute");
+
+            Spell heal = new Spell("Heal", 1, SpellType.SPELL, ActionType.ONE_TO_THREE_ACTIONS, Set.of(healingTrait, manipulateTrait, vitalityTrait), "You channel vital energy to heal the living or damage the undead.");
+            heal.setSpellTraditions(List.of(SpellTraditions.DIVINE, SpellTraditions.PRIMAL));
+            heal.setSpellTargets("1 willing living creature or 1 undead creature");
 
             Spell holyLight = new Spell("Holy Light", 3, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(attackTrait, concentrateTrait, fireTrait, holyTrait, lightTrait, manipulateTrait), "You shine a blazing ray of light tinged with holy energy.");
             holyLight.setSpellTraditions(List.of(SpellTraditions.DIVINE, SpellTraditions.PRIMAL));
@@ -701,12 +709,12 @@ public class DataSeeder {
                     bloodVendetta, bloodWard, breatheFire, cataclysm, charm, chillingDarkness, controlWater, cozyCabin,
                     creation, curseOfDeath, detonateMagic, disintegrate, divineDecree, dizzyingColors, dreamingPotential,
                     earthbind, embedMessage, enlarge, enthrall, falseVitality, fireShield, fireball, fleetStep,
-                    forceBarrage, ghostlyWeapon, glimpseTheTruth, goblinPox, gustOfWind, hallucination, haste, holyLight,
-                    illusoryCreature, illusoryDisguise, impalingSpike, invisibility, jump, levitate, lightningBolt,
-                    liminalDoorway, maskOfTerror, mindlink, mislead, mountainResilience, naturesPathway, nightmare,
-                    phantasmalMinionSpell, phantomPain, planarPalace, quandary, sleep, speakWithAnimals, spiderSting,
-                    stupefy, suggestion, summonAnimal, sureStrike, telekineticHaul, translocate, umbralJourney,
-                    visionOfDeath, wallOfFire, wallOfForce, wallOfThorns, warpMind, weaponStorm));
+                    forceBarrage, ghostlyWeapon, glimpseTheTruth, goblinPox, gustOfWind, hallucination, harm, haste,
+                    heal, holyLight, illusoryCreature, illusoryDisguise, impalingSpike, invisibility, jump, levitate,
+                    lightningBolt, liminalDoorway, maskOfTerror, mindlink, mislead, mountainResilience, naturesPathway,
+                    nightmare, phantasmalMinionSpell, phantomPain, planarPalace, quandary, sleep, speakWithAnimals,
+                    spiderSting, stupefy, suggestion, summonAnimal, sureStrike, telekineticHaul, translocate,
+                    umbralJourney, visionOfDeath, wallOfFire, wallOfForce, wallOfThorns, warpMind, weaponStorm));
 
             Weapon crossbow = new Weapon("Crossbow", WeaponCategory.SIMPLE, WeaponType.RANGED, WeaponGroup.CROSSBOW, 1, 8, DamageType.PIERCING);
             crossbow.setRangeFeet(120);
@@ -1042,27 +1050,67 @@ public class DataSeeder {
 
             List<AttributeName> allSix = List.of(AttributeName.STRENGTH, AttributeName.DEXTERITY, AttributeName.CONSTITUTION, AttributeName.INTELLIGENCE, AttributeName.WISDOM, AttributeName.CHARISMA);
 
-            Deity abadar = new Deity("Abadar", List.of(crossbow), List.of(society), List.of(AttributeName.CONSTITUTION, AttributeName.INTELLIGENCE));
-            Deity asmodeus = new Deity("Asmodeus", List.of(mace), List.of(deception), allSix);
-            Deity calistria = new Deity("Calistria", List.of(whip), List.of(deception), List.of(AttributeName.DEXTERITY, AttributeName.CHARISMA));
-            Deity caydenCailean = new Deity("Cayden Cailean", List.of(rapier), List.of(athletics), List.of(AttributeName.CONSTITUTION, AttributeName.CHARISMA));
-            Deity desna = new Deity("Desna", List.of(starknife), List.of(acrobatics), List.of(AttributeName.DEXTERITY, AttributeName.CHARISMA));
-            Deity erastil = new Deity("Erastil", List.of(longbow), List.of(survival), List.of(AttributeName.CONSTITUTION, AttributeName.WISDOM));
-            Deity gorum = new Deity("Gorum", List.of(greatsword), List.of(athletics), List.of(AttributeName.STRENGTH, AttributeName.CONSTITUTION));
-            Deity gozreh = new Deity("Gozreh", List.of(trident), List.of(survival), List.of(AttributeName.CONSTITUTION, AttributeName.WISDOM));
-            Deity greenFaith = new Deity("Green Faith", List.of(sickle, claw), List.of(nature), List.of(AttributeName.CONSTITUTION, AttributeName.WISDOM));
-            Deity iomedae = new Deity("Iomedae", List.of(longsword), List.of(intimidation), List.of(AttributeName.STRENGTH, AttributeName.CONSTITUTION));
-            Deity irori = new Deity("Irori", List.of(fist), List.of(athletics), List.of(AttributeName.INTELLIGENCE, AttributeName.WISDOM));
-            Deity lamashtu = new Deity("Lamashtu", List.of(falchion), List.of(survival), List.of(AttributeName.STRENGTH, AttributeName.CONSTITUTION));
-            Deity nethys = new Deity("Nethys", List.of(staff), List.of(arcana), List.of(AttributeName.INTELLIGENCE, AttributeName.WISDOM));
-            Deity norgorber = new Deity("Norgorber", List.of(shortsword), List.of(stealth), List.of(AttributeName.DEXTERITY, AttributeName.INTELLIGENCE));
-            Deity pharasma = new Deity("Pharasma", List.of(dagger), List.of(medicine), List.of(AttributeName.CONSTITUTION, AttributeName.WISDOM));
-            Deity rovagug = new Deity("Rovagug", List.of(greataxe), List.of(athletics), List.of(AttributeName.STRENGTH, AttributeName.CONSTITUTION));
-            Deity sarenrae = new Deity("Sarenrae", List.of(scimitar), List.of(medicine), List.of(AttributeName.CONSTITUTION, AttributeName.WISDOM));
-            Deity shelyn = new Deity("Shelyn", List.of(glaive), List.of(crafting, performance), List.of(AttributeName.WISDOM, AttributeName.CHARISMA));
-            Deity torag = new Deity("Torag", List.of(warhammer), List.of(crafting), List.of(AttributeName.CONSTITUTION, AttributeName.WISDOM));
-            Deity urgathoa = new Deity("Urgathoa", List.of(scythe), List.of(intimidation), List.of(AttributeName.CONSTITUTION, AttributeName.WISDOM));
-            Deity zonKuthon = new Deity("Zon-Kuthon", List.of(spikedChain), List.of(intimidation), List.of(AttributeName.CONSTITUTION, AttributeName.WISDOM));
+            Deity abadar = new Deity("Abadar", List.of(crossbow), List.of(society), List.of(AttributeName.CONSTITUTION, AttributeName.INTELLIGENCE), Set.of(harm, heal), SanctificationType.CAN_CHOOSE);
+            abadar.setSanctificationTraits(Set.of(holyTrait, unholyTrait));
+            abadar.setClericSpells(List.of(illusoryObject, creation, planarPalace));
+            Deity asmodeus = new Deity("Asmodeus", List.of(mace), List.of(deception), allSix, Set.of(harm), SanctificationType.MUST_CHOOSE);
+            asmodeus.setSanctificationTraits(Set.of(unholyTrait));
+            asmodeus.setClericSpells(List.of(charm, suggestion, mislead));
+            Deity calistria = new Deity("Calistria", List.of(whip), List.of(deception), List.of(AttributeName.DEXTERITY, AttributeName.CHARISMA), Set.of(harm, heal), SanctificationType.CAN_CHOOSE);
+            calistria.setSanctificationTraits(Set.of(holyTrait, unholyTrait));
+            calistria.setClericSpells(List.of(charm, enthrall, mislead));
+            Deity caydenCailean = new Deity("Cayden Cailean", List.of(rapier), List.of(athletics), List.of(AttributeName.CONSTITUTION, AttributeName.CHARISMA), Set.of(heal), SanctificationType.CAN_CHOOSE);
+            caydenCailean.setSanctificationTraits(Set.of(holyTrait));
+            caydenCailean.setClericSpells(List.of(fleetStep, stupefy, hallucination));
+            Deity desna = new Deity("Desna", List.of(starknife), List.of(acrobatics), List.of(AttributeName.DEXTERITY, AttributeName.CHARISMA), Set.of(heal), SanctificationType.CAN_CHOOSE);
+            desna.setSanctificationTraits(Set.of(holyTrait));
+            desna.setClericSpells(List.of(sleep, translocate, dreamingPotential));
+            Deity erastil = new Deity("Erastil", List.of(longbow), List.of(survival), List.of(AttributeName.CONSTITUTION, AttributeName.WISDOM), Set.of(heal), SanctificationType.CAN_CHOOSE);
+            erastil.setSanctificationTraits(Set.of(holyTrait));
+            erastil.setClericSpells(List.of(sureStrike, wallOfThorns, naturesPathway));
+            Deity gorum = new Deity("Gorum", List.of(greatsword), List.of(athletics), List.of(AttributeName.STRENGTH, AttributeName.CONSTITUTION), Set.of(harm, heal), SanctificationType.CAN_CHOOSE);
+            gorum.setSanctificationTraits(Set.of(holyTrait, unholyTrait));
+            gorum.setClericSpells(List.of(sureStrike, enlarge, weaponStorm));
+            Deity gozreh = new Deity("Gozreh", List.of(trident), List.of(survival), List.of(AttributeName.CONSTITUTION, AttributeName.WISDOM), Set.of(heal), SanctificationType.NONE);
+            gozreh.setClericSpells(List.of(gustOfWind, lightningBolt, controlWater));
+            Deity greenFaith = new Deity("Green Faith", List.of(sickle, claw), List.of(nature), List.of(AttributeName.CONSTITUTION, AttributeName.WISDOM), Set.of(heal), SanctificationType.CAN_CHOOSE);
+            greenFaith.setSanctificationTraits(Set.of(holyTrait));
+            greenFaith.setClericSpells(List.of(summonAnimal, speakWithAnimals, wallOfThorns));
+            Deity iomedae = new Deity("Iomedae", List.of(longsword), List.of(intimidation), List.of(AttributeName.STRENGTH, AttributeName.CONSTITUTION), Set.of(heal), SanctificationType.MUST_CHOOSE);
+            iomedae.setSanctificationTraits(Set.of(holyTrait));
+            iomedae.setClericSpells(List.of(sureStrike, enlarge, fireShield));
+            Deity irori = new Deity("Irori", List.of(fist), List.of(athletics), List.of(AttributeName.INTELLIGENCE, AttributeName.WISDOM), Set.of(harm, heal), SanctificationType.CAN_CHOOSE);
+            irori.setSanctificationTraits(Set.of(holyTrait, unholyTrait));
+            irori.setClericSpells(List.of(jump, haste, mountainResilience));
+            Deity lamashtu = new Deity("Lamashtu", List.of(falchion), List.of(survival), List.of(AttributeName.STRENGTH, AttributeName.CONSTITUTION), Set.of(harm, heal), SanctificationType.CAN_CHOOSE);
+            lamashtu.setSanctificationTraits(Set.of(unholyTrait));
+            lamashtu.setClericSpells(List.of(spiderSting, animalForm, nightmare));
+            Deity nethys = new Deity("Nethys", List.of(staff), List.of(arcana), List.of(AttributeName.INTELLIGENCE, AttributeName.WISDOM), Set.of(harm, heal), SanctificationType.CAN_CHOOSE);
+            nethys.setSanctificationTraits(Set.of(holyTrait, unholyTrait));
+            nethys.setClericSpells(List.of(forceBarrage, embedMessage, levitate, flicker, telekineticHaul, wallOfForce, warpMind, quandary, detonateMagic));
+            Deity norgorber = new Deity("Norgorber", List.of(shortsword), List.of(stealth), List.of(AttributeName.DEXTERITY, AttributeName.INTELLIGENCE), Set.of(harm), SanctificationType.CAN_CHOOSE);
+            norgorber.setSanctificationTraits(Set.of(unholyTrait));
+            norgorber.setClericSpells(List.of(illusoryDisguise, invisibility, visionOfDeath));
+            Deity pharasma = new Deity("Pharasma", List.of(dagger), List.of(medicine), List.of(AttributeName.CONSTITUTION, AttributeName.WISDOM), Set.of(heal), SanctificationType.NONE);
+            pharasma.setClericSpells(List.of(mindlink, ghostlyWeapon, visionOfDeath));
+            Deity rovagug = new Deity("Rovagug", List.of(greataxe), List.of(athletics), List.of(AttributeName.STRENGTH, AttributeName.CONSTITUTION), Set.of(harm), SanctificationType.MUST_CHOOSE);
+            rovagug.setSanctificationTraits(Set.of(unholyTrait));
+            rovagug.setClericSpells(List.of(breatheFire, enlarge, disintegrate));
+            Deity sarenrae = new Deity("Sarenrae", List.of(scimitar), List.of(medicine), List.of(AttributeName.CONSTITUTION, AttributeName.WISDOM), Set.of(heal), SanctificationType.CAN_CHOOSE);
+            sarenrae.setSanctificationTraits(Set.of(holyTrait));
+            sarenrae.setClericSpells(List.of(breatheFire, fireball, wallOfFire));
+            Deity shelyn = new Deity("Shelyn", List.of(glaive), List.of(crafting, performance), List.of(AttributeName.WISDOM, AttributeName.CHARISMA), Set.of(heal), SanctificationType.CAN_CHOOSE);
+            shelyn.setSanctificationTraits(Set.of(holyTrait));
+            shelyn.setClericSpells(List.of(dizzyingColors, enthrall, creation));
+            Deity torag = new Deity("Torag", List.of(warhammer), List.of(crafting), List.of(AttributeName.CONSTITUTION, AttributeName.WISDOM), Set.of(heal), SanctificationType.CAN_CHOOSE);
+            torag.setSanctificationTraits(Set.of(holyTrait));
+            torag.setClericSpells(List.of(mindlink, earthbind, creation));
+            Deity urgathoa = new Deity("Urgathoa", List.of(scythe), List.of(intimidation), List.of(AttributeName.CONSTITUTION, AttributeName.WISDOM), Set.of(harm), SanctificationType.MUST_CHOOSE);
+            urgathoa.setSanctificationTraits(Set.of(unholyTrait));
+            urgathoa.setClericSpells(List.of(goblinPox, falseVitality, maskOfTerror));
+            Deity zonKuthon = new Deity("Zon-Kuthon", List.of(spikedChain), List.of(intimidation), List.of(AttributeName.CONSTITUTION, AttributeName.WISDOM), Set.of(harm), SanctificationType.CAN_CHOOSE);
+            zonKuthon.setSanctificationTraits(Set.of(unholyTrait));
+            zonKuthon.setClericSpells(List.of(phantomPain, wallOfThorns, umbralJourney));
 
             deityRepo.saveAll(List.of(abadar, asmodeus, calistria, caydenCailean, desna, erastil, gorum, gozreh, greenFaith, iomedae, irori, lamashtu, nethys, norgorber, pharasma, rovagug, sarenrae, shelyn, torag, urgathoa, zonKuthon));
 

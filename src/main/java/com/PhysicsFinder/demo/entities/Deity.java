@@ -6,9 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Entity
 @Getter
@@ -34,10 +32,22 @@ public class Deity {
     @Enumerated(EnumType.STRING)
     private List<AttributeName> divineAttributes = new ArrayList<>();
 
-    public Deity(String name, List<Weapon> favoredWeaponOptions, List<Skill> grantedSkillOptions, List<AttributeName> divineAttributes) {
+    private Set<Spell> divineFonts = new HashSet<>();
+
+    @Enumerated(EnumType.STRING)
+    private SanctificationType sanctificationType;
+
+    @ManyToMany
+    private Set<Trait> sanctificationTraits = new HashSet<>();
+
+    private List<Spell> clericSpells =  new ArrayList<>();
+
+    public Deity(String name, List<Weapon> favoredWeaponOptions, List<Skill> grantedSkillOptions, List<AttributeName> divineAttributes, Set<Spell> divineFonts, SanctificationType sanctificationType) {
         this.name = name;
         this.favoredWeaponOptions = favoredWeaponOptions;
         this.grantedSkillOptions = grantedSkillOptions;
         this.divineAttributes = divineAttributes;
+        this.divineFonts = divineFonts;
+        this.sanctificationType = sanctificationType;
     }
 }
