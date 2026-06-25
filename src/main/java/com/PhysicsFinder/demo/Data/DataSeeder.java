@@ -706,16 +706,10 @@ public class DataSeeder {
             weaponStorm.setSpellDefense("Reflex");
 
             spellRepo.saveAll(List.of(
-                    acidGrip, agileFeet, airBubble, allegro, animalForm, aqueousOrb, bane, blazingBolt, blessedBoundary,
-                    bloodVendetta, bloodWard, breatheFire, cataclysm, charm, chillingDarkness, controlWater, cozyCabin,
-                    creation, curseOfDeath, detonateMagic, disintegrate, divineDecree, dizzyingColors, dreamingPotential,
-                    earthbind, embedMessage, enlarge, enthrall, falseVitality, fireShield, fireball, fleetStep,
-                    forceBarrage, ghostlyWeapon, glimpseTheTruth, goblinPox, gustOfWind, hallucination, harm, haste,
-                    heal, holyLight, illusoryCreature, illusoryDisguise, impalingSpike, invisibility, jump, levitate,
-                    lightningBolt, liminalDoorway, maskOfTerror, mindlink, mislead, mountainResilience, naturesPathway,
-                    nightmare, phantasmalMinionSpell, phantomPain, planarPalace, quandary, sleep, speakWithAnimals,
-                    spiderSting, stupefy, suggestion, summonAnimal, sureStrike, telekineticHaul, translocate,
-                    umbralJourney, visionOfDeath, wallOfFire, wallOfForce, wallOfThorns, warpMind, weaponStorm));
+                    acidGrip, agileFeet, airBubble, allegro, aqueousOrb, bane, blazingBolt, blessedBoundary,
+                    bloodVendetta, bloodWard, cataclysm, chillingDarkness, cozyCabin, curseOfDeath, divineDecree,
+                    glimpseTheTruth, harm, heal, holyLight, illusoryCreature, impalingSpike, liminalDoorway,
+                    phantasmalMinionSpell));
 
             Weapon crossbow = new Weapon("Crossbow", WeaponCategory.SIMPLE, WeaponType.RANGED, WeaponGroup.CROSSBOW, 1, 8, DamageType.PIERCING);
             crossbow.setRangeFeet(120);
@@ -1054,64 +1048,119 @@ public class DataSeeder {
             Deity abadar = new Deity("Abadar", List.of(crossbow), List.of(society), List.of(AttributeName.CONSTITUTION, AttributeName.INTELLIGENCE), Set.of(harm, heal), SanctificationType.CAN_CHOOSE);
             abadar.setSanctificationTraits(Set.of(holyTrait, unholyTrait));
             abadar.setClericSpells(List.of(illusoryObject, creation, planarPalace));
+            illusoryObject.setDeities(List.of(abadar));
+            planarPalace.setDeities(List.of(abadar));
             Deity asmodeus = new Deity("Asmodeus", List.of(mace), List.of(deception), allSix, Set.of(harm), SanctificationType.MUST_CHOOSE);
             asmodeus.setSanctificationTraits(Set.of(unholyTrait));
             asmodeus.setClericSpells(List.of(charm, suggestion, mislead));
+            suggestion.setDeities(List.of(asmodeus));
             Deity calistria = new Deity("Calistria", List.of(whip), List.of(deception), List.of(AttributeName.DEXTERITY, AttributeName.CHARISMA), Set.of(harm, heal), SanctificationType.CAN_CHOOSE);
             calistria.setSanctificationTraits(Set.of(holyTrait, unholyTrait));
             calistria.setClericSpells(List.of(charm, enthrall, mislead));
+            charm.setDeities(List.of(asmodeus, calistria));
+            mislead.setDeities(List.of(asmodeus, calistria));
             Deity caydenCailean = new Deity("Cayden Cailean", List.of(rapier), List.of(athletics), List.of(AttributeName.CONSTITUTION, AttributeName.CHARISMA), Set.of(heal), SanctificationType.CAN_CHOOSE);
             caydenCailean.setSanctificationTraits(Set.of(holyTrait));
             caydenCailean.setClericSpells(List.of(fleetStep, stupefy, hallucination));
+            fleetStep.setDeities(List.of(caydenCailean));
+            stupefy.setDeities(List.of(caydenCailean));
+            hallucination.setDeities(List.of(caydenCailean));
             Deity desna = new Deity("Desna", List.of(starknife), List.of(acrobatics), List.of(AttributeName.DEXTERITY, AttributeName.CHARISMA), Set.of(heal), SanctificationType.CAN_CHOOSE);
             desna.setSanctificationTraits(Set.of(holyTrait));
             desna.setClericSpells(List.of(sleep, translocate, dreamingPotential));
+            sleep.setDeities(List.of(desna));
+            translocate.setDeities(List.of(desna));
+            dreamingPotential.setDeities(List.of(desna));
             Deity erastil = new Deity("Erastil", List.of(longbow), List.of(survival), List.of(AttributeName.CONSTITUTION, AttributeName.WISDOM), Set.of(heal), SanctificationType.CAN_CHOOSE);
             erastil.setSanctificationTraits(Set.of(holyTrait));
             erastil.setClericSpells(List.of(sureStrike, wallOfThorns, naturesPathway));
+            naturesPathway.setDeities(List.of(erastil));
             Deity gorum = new Deity("Gorum", List.of(greatsword), List.of(athletics), List.of(AttributeName.STRENGTH, AttributeName.CONSTITUTION), Set.of(harm, heal), SanctificationType.CAN_CHOOSE);
             gorum.setSanctificationTraits(Set.of(holyTrait, unholyTrait));
             gorum.setClericSpells(List.of(sureStrike, enlarge, weaponStorm));
+            weaponStorm.setDeities(List.of(gorum));
             Deity gozreh = new Deity("Gozreh", List.of(trident), List.of(survival), List.of(AttributeName.CONSTITUTION, AttributeName.WISDOM), Set.of(heal), SanctificationType.NONE);
             gozreh.setClericSpells(List.of(gustOfWind, lightningBolt, controlWater));
+            gustOfWind.setDeities(List.of(gozreh));
+            lightningBolt.setDeities(List.of(gozreh));
+            controlWater.setDeities(List.of(gozreh));
             Deity greenFaith = new Deity("Green Faith", List.of(sickle, claw), List.of(nature), List.of(AttributeName.CONSTITUTION, AttributeName.WISDOM), Set.of(heal), SanctificationType.CAN_CHOOSE);
             greenFaith.setSanctificationTraits(Set.of(holyTrait));
             greenFaith.setClericSpells(List.of(summonAnimal, speakWithAnimals, wallOfThorns));
+            summonAnimal.setDeities(List.of(greenFaith));
+            speakWithAnimals.setDeities(List.of(greenFaith));
             Deity iomedae = new Deity("Iomedae", List.of(longsword), List.of(intimidation), List.of(AttributeName.STRENGTH, AttributeName.CONSTITUTION), Set.of(heal), SanctificationType.MUST_CHOOSE);
             iomedae.setSanctificationTraits(Set.of(holyTrait));
             iomedae.setClericSpells(List.of(sureStrike, enlarge, fireShield));
+            sureStrike.setDeities(List.of(erastil, gorum, iomedae));
+            fireShield.setDeities(List.of(iomedae));
             Deity irori = new Deity("Irori", List.of(fist), List.of(athletics), List.of(AttributeName.INTELLIGENCE, AttributeName.WISDOM), Set.of(harm, heal), SanctificationType.CAN_CHOOSE);
             irori.setSanctificationTraits(Set.of(holyTrait, unholyTrait));
             irori.setClericSpells(List.of(jump, haste, mountainResilience));
+            jump.setDeities(List.of(irori));
+            haste.setDeities(List.of(irori));
+            mountainResilience.setDeities(List.of(irori));
             Deity lamashtu = new Deity("Lamashtu", List.of(falchion), List.of(survival), List.of(AttributeName.STRENGTH, AttributeName.CONSTITUTION), Set.of(harm, heal), SanctificationType.CAN_CHOOSE);
             lamashtu.setSanctificationTraits(Set.of(unholyTrait));
             lamashtu.setClericSpells(List.of(spiderSting, animalForm, nightmare));
+            spiderSting.setDeities(List.of(lamashtu));
+            animalForm.setDeities(List.of(lamashtu));
+            nightmare.setDeities(List.of(lamashtu));
             Deity nethys = new Deity("Nethys", List.of(staff), List.of(arcana), List.of(AttributeName.INTELLIGENCE, AttributeName.WISDOM), Set.of(harm, heal), SanctificationType.CAN_CHOOSE);
             nethys.setSanctificationTraits(Set.of(holyTrait, unholyTrait));
             nethys.setClericSpells(List.of(forceBarrage, embedMessage, levitate, flicker, telekineticHaul, wallOfForce, warpMind, quandary, detonateMagic));
+            forceBarrage.setDeities(List.of(nethys));
+            embedMessage.setDeities(List.of(nethys));
+            levitate.setDeities(List.of(nethys));
+            flicker.setDeities(List.of(nethys));
+            telekineticHaul.setDeities(List.of(nethys));
+            wallOfForce.setDeities(List.of(nethys));
+            warpMind.setDeities(List.of(nethys));
+            quandary.setDeities(List.of(nethys));
+            detonateMagic.setDeities(List.of(nethys));
             Deity norgorber = new Deity("Norgorber", List.of(shortsword), List.of(stealth), List.of(AttributeName.DEXTERITY, AttributeName.INTELLIGENCE), Set.of(harm), SanctificationType.CAN_CHOOSE);
             norgorber.setSanctificationTraits(Set.of(unholyTrait));
             norgorber.setClericSpells(List.of(illusoryDisguise, invisibility, visionOfDeath));
+            illusoryDisguise.setDeities(List.of(norgorber));
+            invisibility.setDeities(List.of(norgorber));
             Deity pharasma = new Deity("Pharasma", List.of(dagger), List.of(medicine), List.of(AttributeName.CONSTITUTION, AttributeName.WISDOM), Set.of(heal), SanctificationType.NONE);
             pharasma.setClericSpells(List.of(mindlink, ghostlyWeapon, visionOfDeath));
+            ghostlyWeapon.setDeities(List.of(pharasma));
+            visionOfDeath.setDeities(List.of(norgorber, pharasma));
             Deity rovagug = new Deity("Rovagug", List.of(greataxe), List.of(athletics), List.of(AttributeName.STRENGTH, AttributeName.CONSTITUTION), Set.of(harm), SanctificationType.MUST_CHOOSE);
             rovagug.setSanctificationTraits(Set.of(unholyTrait));
             rovagug.setClericSpells(List.of(breatheFire, enlarge, disintegrate));
+            enlarge.setDeities(List.of(gorum, iomedae, rovagug));
+            disintegrate.setDeities(List.of(rovagug));
             Deity sarenrae = new Deity("Sarenrae", List.of(scimitar), List.of(medicine), List.of(AttributeName.CONSTITUTION, AttributeName.WISDOM), Set.of(heal), SanctificationType.CAN_CHOOSE);
             sarenrae.setSanctificationTraits(Set.of(holyTrait));
             sarenrae.setClericSpells(List.of(breatheFire, fireball, wallOfFire));
+            breatheFire.setDeities(List.of(rovagug, sarenrae));
+            fireball.setDeities(List.of(sarenrae));
+            wallOfFire.setDeities(List.of(sarenrae));
             Deity shelyn = new Deity("Shelyn", List.of(glaive), List.of(crafting, performance), List.of(AttributeName.WISDOM, AttributeName.CHARISMA), Set.of(heal), SanctificationType.CAN_CHOOSE);
             shelyn.setSanctificationTraits(Set.of(holyTrait));
             shelyn.setClericSpells(List.of(dizzyingColors, enthrall, creation));
+            dizzyingColors.setDeities(List.of(shelyn));
+            enthrall.setDeities(List.of(calistria, shelyn));
             Deity torag = new Deity("Torag", List.of(warhammer), List.of(crafting), List.of(AttributeName.CONSTITUTION, AttributeName.WISDOM), Set.of(heal), SanctificationType.CAN_CHOOSE);
             torag.setSanctificationTraits(Set.of(holyTrait));
             torag.setClericSpells(List.of(mindlink, earthbind, creation));
+            mindlink.setDeities(List.of(pharasma, torag));
+            earthbind.setDeities(List.of(torag));
+            creation.setDeities(List.of(abadar, shelyn, torag));
             Deity urgathoa = new Deity("Urgathoa", List.of(scythe), List.of(intimidation), List.of(AttributeName.CONSTITUTION, AttributeName.WISDOM), Set.of(harm), SanctificationType.MUST_CHOOSE);
             urgathoa.setSanctificationTraits(Set.of(unholyTrait));
             urgathoa.setClericSpells(List.of(goblinPox, falseVitality, maskOfTerror));
+            goblinPox.setDeities(List.of(urgathoa));
+            falseVitality.setDeities(List.of(urgathoa));
+            maskOfTerror.setDeities(List.of(urgathoa));
             Deity zonKuthon = new Deity("Zon-Kuthon", List.of(spikedChain), List.of(intimidation), List.of(AttributeName.CONSTITUTION, AttributeName.WISDOM), Set.of(harm), SanctificationType.CAN_CHOOSE);
             zonKuthon.setSanctificationTraits(Set.of(unholyTrait));
             zonKuthon.setClericSpells(List.of(phantomPain, wallOfThorns, umbralJourney));
+            phantomPain.setDeities(List.of(zonKuthon));
+            wallOfThorns.setDeities(List.of(erastil, greenFaith, zonKuthon));
+            umbralJourney.setDeities(List.of(zonKuthon));
 
             Spell pushingGust = new Spell("Pushing Gust", 1, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(airTrait, clericTrait, concentrateTrait, focusTrait, manipulateTrait), "Giving the air a push, you buffet the target with a powerful gust of wind; it must attempt a Fortitude save.");
             pushingGust.setSpellRange(500);
@@ -1146,6 +1195,165 @@ public class DataSeeder {
             delusionalPride.setSpellDefense("Will");
             delusionalPride.setSpellDuration("varies");
 
+            Spell creativeSplash = new Spell("Creative Splash", 1, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(clericTrait, concentrateTrait, focusTrait, illusionTrait, manipulateTrait, visualTrait), "A deluge of paint or colorful illusions descend on the area, reflecting your personal creative specialty.");
+            creativeSplash.setSpellRange(30);
+            creativeSplash.setSpellArea(5);
+            creativeSplash.setSpellAreaType("burst");
+            creativeSplash.setSpellDefense("Will");
+            creativeSplash.setSpellDuration("varies");
+
+            Spell artisticFlourish = new Spell("Artistic Flourish", 4, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(clericTrait, concentrateTrait, focusTrait, manipulateTrait), "You transform the target into a form that more closes matches your creative vision.");
+            artisticFlourish.setSpellRange(15);
+            artisticFlourish.setSpellTargets("1 item or work of art that fits entirely within the range");
+            artisticFlourish.setSpellDuration("10 minutes");
+
+            Spell cloakOfShadow = new Spell("Cloak of Shadow", 1, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(auraTrait, clericTrait, darknessTrait, focusTrait, manipulateTrait, shadowTrait), "You drape the target in a mantle of swirling shadows that make it harder to see.");
+            cloakOfShadow.setSpellRange(0);
+            cloakOfShadow.setSpellTargets("1 willing creature");
+            cloakOfShadow.setSpellDuration("1 minute");
+
+            Spell darkenedSight = new Spell("Darkened Sight", 4, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(clericTrait, concentrateTrait, darknessTrait, focusTrait, manipulateTrait), "You infuse a creature's vision with darkness.");
+            darkenedSight.setSpellRange(60);
+            darkenedSight.setSpellTargets("1 creature");
+            darkenedSight.setSpellDuration("1 minute");
+
+            Spell deathsCall = new Spell("Death's Call", 1, SpellType.FOCUS, ActionType.REACTION, Set.of(clericTrait, concentrateTrait, focusTrait), "Seeing another pass from this world invigorates you.");
+            deathsCall.setSpellTrigger("A living creature within 20 feet of you dies, or an undead creature within 20 feet of you is destroyed");
+            deathsCall.setSpellDuration("1 minute");
+
+            Spell eradicateUndeath = new Spell("Eradicate Undeath", 4, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(clericTrait, concentrateTrait, focusTrait, manipulateTrait, vitalityTrait), "A massive deluge of life energy causes the undead to fall apart.");
+            eradicateUndeath.setSpellArea(30);
+            eradicateUndeath.setSpellAreaType("cone");
+            eradicateUndeath.setSpellDefense("basic Fortitude");
+
+            Spell cryOfDestruction = new Spell("Cry of Destruction", 1, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(clericTrait, concentrateTrait, focusTrait, manipulateTrait, sonicTrait), "Your voice booms, smashing what's in front of you.");
+            cryOfDestruction.setSpellArea(15);
+            cryOfDestruction.setSpellAreaType("cone");
+            cryOfDestruction.setSpellDefense("basic Fortitude");
+
+            Spell destructiveAura = new Spell("Destructive Aure", 4, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(auraTrait, clericTrait, concentrateTrait, focusTrait, manipulateTrait), "Swirling sands of divine devastation surround you, weakening the defenses of all they touch.");
+            destructiveAura.setSpellArea(15);
+            destructiveAura.setSpellAreaType("emanation");
+            destructiveAura.setSpellDuration("1 minute");
+
+            Spell sweetDream = new Spell("Sweet Dream", 1, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(auditoryTrait, clericTrait, concentrateTrait, focusTrait, linguisticTrait, manipulateTrait, mentalTrait, sleepTrait), "With soothing words, you lull the target into an enchanting dream.");
+            sweetDream.setSpellRange(30);
+            sweetDream.setSpellTargets("1 willing creature");
+            sweetDream.setSpellDuration("1 hour");
+
+            Spell dreamersCall = new Spell("Dreamer's Call", 4, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(clericTrait, concentrateTrait, focusTrait, illusionTrait, incapactitationTrait, manipulateTrait, mentalTrait), "You create a vivid, illusory daydream drawn from the images of the target's dreams.");
+            dreamersCall.setSpellRange(30);
+            dreamersCall.setSpellTargets("1 creature");
+            dreamersCall.setSpellDefense("Will");
+            dreamersCall.setSpellDuration("until the end of the target's next turn");
+
+            Spell hurtlingStone = new Spell("Hurtling Stone", 1, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(attackTrait, clericTrait, earthTrait, focusTrait, manipulateTrait), "You evoke a magical stone and throw it, with divine guide to your aim.");
+            hurtlingStone.setSpellRange(60);
+            hurtlingStone.setSpellTargets("1 creature");
+            hurtlingStone.setSpellDefense("AC");
+
+            Spell localizedQuake = new Spell("Localized Quake", 4, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(clericTrait, concentrateTrait, earthTrait, focusTrait, manipulateTrait), "You shake the earth, toppling nearby creatures.");
+            localizedQuake.setSpellArea(15);
+            localizedQuake.setSpellAreaType("emanation or cone");
+            localizedQuake.setSpellDefense("basic Reflex");
+
+            Spell soothingWords = new Spell("Soothing Words", 1, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(clericTrait, concentrateTrait, emotionTrait, focusTrait, mentalTrait), "You attempt to calm the target by uttering soothing words in a calm and even tone.");
+            soothingWords.setSpellRange(30);
+            soothingWords.setSpellTargets("1 ally");
+            soothingWords.setSpellDuration("1 minute");
+
+            Spell unity = new Spell("Unity", 4, SpellType.FOCUS, ActionType.REACTION, Set.of(clericTrait, concentrateTrait, focusTrait, fortuneTrait), "You put up a united defense.");
+            unity.setSpellTrigger("You and 1 or more allies within range are targeted by a spell or ability that allows a saving throw");
+            unity.setSpellRange(30);
+            unity.setSpellTargets("each ally targeted by the triggering spell");
+
+            Spell readFate = new Spell("Read Fate", 1, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(clericTrait, concentrateTrait, focusTrait, manipulateTrait, predictionTrait), "You attempt to learn more about the target's fate in the short term, usually within the next day for most prosaic creatures, or the next hour or less for someone likely to have multiple rapid experiences, such as someone actively adventuring.");
+            readFate.setSpellRange(30);
+            readFate.setSpellTargets("1 creature other than you");
+
+            Spell temptFate = new Spell("Tempt Fate", 4, SpellType.FOCUS, ActionType.REACTION, Set.of(clericTrait, focusTrait, fortuneTrait, manipulateTrait), "You twist the forces of fate to make a moment dire or uneventful, with no in-between.");
+            temptFate.setSpellTrigger("You or an ally within range attempts a saving throw");
+            temptFate.setSpellRange(120);
+            temptFate.setSpellTargets("the triggering creature");
+
+            Spell fireRay = new Spell("Fire Ray", 1, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(attackTrait, clericTrait, concentrateTrait, fireTrait, focusTrait, manipulateTrait), "A blazing band of fire arcs through the air, lighting your opponent and the ground they stand upon on fire.");
+            fireRay.setSpellRange(60);
+            fireRay.setSpellTargets("1 creature");
+            fireRay.setSpellDefense("AC");
+            fireRay.setSpellDuration("until the end of the target's next turn");
+
+            Spell flameBarrier = new Spell("Flame Barrier", 4, SpellType.FOCUS, ActionType.REACTION, Set.of(clericTrait, concentrateTrait, focusTrait), "You swiftly deflect incoming flames.");
+            flameBarrier.setSpellTrigger("An effect would deal fire damage to you or an ally within range");
+            flameBarrier.setSpellRange(60);
+            flameBarrier.setSpellTargets("one creature that would take fire damage from the triggering effect");
+
+            Spell unimpededStride = new Spell("Unimpeded Stride", 1, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(clericTrait, focusTrait, manipulateTrait), "Divine grace ensure that nothing can keep you prisoner or hold you back.");
+
+            Spell wordOfFreedom = new Spell("Word of Freedom", 4, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(clericTrait, concentrateTrait, focusTrait, mentalTrait), "You utter a liberating word of power that frees a creature.");
+            wordOfFreedom.setSpellRange(30);
+            wordOfFreedom.setSpellTargets("1 creature");
+            wordOfFreedom.setSpellDuration("1 round");
+
+            Spell healersBlessing = new Spell("Healer's Blessing", 1, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(clericTrait, concentrateTrait, focusTrait), "Your words bless a creature with an enhanced connection to vital energy.");
+            healersBlessing.setSpellRange(30);
+            healersBlessing.setSpellTargets("1 willing living creature");
+            healersBlessing.setSpellDuration("1 minute");
+
+            Spell rebukeDeath = new Spell("Rebuke Death", 4, SpellType.FOCUS, ActionType.ONE_TO_THREE_ACTIONS, Set.of(clericTrait, concentrateTrait, focusTrait, healingTrait, manipulateTrait, vitalityTrait), "You snatch creatures from the jaws of death, restoring them without the strain of a typical close call.");
+            rebukeDeath.setSpellArea(20);
+            rebukeDeath.setSpellAreaType("emanation");
+            rebukeDeath.setSpellTargets("1 living creature per action spent to Cast this spell");
+
+            Spell overstuff = new Spell("Overstuff", 1, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(clericTrait, concentrateTrait, focusTrait, manipulateTrait), "Huge amounts of food and drink fill the target.");
+            overstuff.setSpellRange(30);
+            overstuff.setSpellTargets("1 living creature");
+            overstuff.setSpellDefense("Fortitude");
+
+            Spell takeItsCourse = new Spell("Take its Course", 4, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(clericTrait, concentrateTrait, focusTrait, fortuneTrait), "When someone has overindulged, you can hasten them past the worst of their affliction or intensify their misery.");
+            takeItsCourse.setSpellRange(0);
+            takeItsCourse.setSpellTargets("1 creature");
+            takeItsCourse.setSpellDefense("Will");
+
+            Spell scholarlyRecollection = new Spell("Scholarly Recollection", 1, SpellType.FOCUS, ActionType.REACTION, Set.of(clericTrait, focusTrait, fortuneTrait), "Speaking a short prayer as you gather your thoughts, you're blessed to find yourself pointed in the right direction.");
+            scholarlyRecollection.setSpellTrigger("You attempt a Perception check to Seek, or you attempt a skill check to Recall Knowledge with a skill you’re trained in");
+
+            Spell knowTheEnemy = new Spell("Know the Enemy", 4, SpellType.FOCUS, ActionType.REACTION, Set.of(clericTrait, focusTrait, fortuneTrait, manipulateTrait), "You quickly remind yourself of useful information.");
+            knowTheEnemy.setSpellTrigger("You roll initiative and can see a creature, you succeed at an attack roll against a creature, or a creature fails a saving throw against one of your spells");
+
+            Spell bitOfLuck = new Spell("Bit of Luck", 1, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(clericTrait, concentrateTrait, focusTrait, fortuneTrait, manipulateTrait), "You tilt the scales of luck slightly to protect a creature from disaster.");
+            bitOfLuck.setSpellRange(30);
+            bitOfLuck.setSpellTargets("1 willing creature");
+            bitOfLuck.setSpellDuration("1 minute");
+
+            Spell luckyBreak = new Spell("Lucky Break", 4, SpellType.FOCUS, ActionType.REACTION, Set.of(clericTrait, concentrateTrait, focusTrait, fortuneTrait), "Reroll the saving throw and use the better result. You then become temporarily immune for 10 minutes.");
+            luckyBreak.setSpellTrigger("You fail, but don’t critically fail, a saving throw");
+
+            Spell magicsVessel = new Spell("Magic's Vessel", 1, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(clericTrait, focusTrait, manipulateTrait), "A creature becomes a divine receptacle for pure magical energy.");
+            magicsVessel.setSpellRange(0);
+            magicsVessel.setSpellTargets("1 creature");
+            magicsVessel.setSpellDuration("sustained up to 1 minute");
+
+            Spell mysticBeacon = new Spell("Mystic Beacon", 4, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(clericTrait, focusTrait, manipulateTrait), "The next damaging or healing spell the target casts before the start of your next turn deals damage or restores Hit Points as if the spell were heightened 1 rank higher than its actual rank. This applies only to initial healing or damage when the spell is cast, not any ongoing effects. The spell otherwise functions at its actual rank. Once the target casts the spell, mystic beacon ends.");
+            mysticBeacon.setSpellRange(30);
+            mysticBeacon.setSpellTargets("1 willing creature");
+            mysticBeacon.setSpellDuration("until the start of your next turn");
+
+            Spell athleticRush = new Spell("Athletic Rush", 1, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(clericTrait, focusTrait, manipulateTrait), "Your body fills with physical power and skill.");
+            athleticRush.setSpellDuration("1 round");
+
+            Spell enduringMight = new Spell("Enduring Might", 4, SpellType.FOCUS, ActionType.REACTION, Set.of(clericTrait, focusTrait, manipulateTrait), "Your own might mingles with divine power to protect you from harm.");
+            enduringMight.setSpellTrigger("An attack or effect would deal damage to you");
+
+            Spell moonbeam = new Spell("Moonbeam", 1, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(attackTrait, clericTrait, concentrateTrait, fireTrait, focusTrait, lightTrait, manipulateTrait), "You shine a ray of moonlight.");
+            moonbeam.setSpellRange(120);
+            moonbeam.setSpellTargets("1 creature");
+            moonbeam.setSpellDefense("AC");
+
+            Spell touchOfTheMoon = new Spell("Touch of the Moon", 4, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(clericTrait, focusTrait, lightTrait, manipulateTrait), "When you touch the target, a symbol of the moon appears on its forehead, glowing with soft moonlight.");
+            touchOfTheMoon.setSpellRange(0);
+            touchOfTheMoon.setSpellTargets("1 creature");
+            touchOfTheMoon.setSpellDuration("1 minute");
+
             Domain airDomain = new Domain("Air", "You can control winds and the weather.", pushingGust, disperseIntoAir);
             pushingGust.setSpellDomain(airDomain);
             disperseIntoAir.setSpellDomain(airDomain);
@@ -1166,21 +1374,135 @@ public class DataSeeder {
             veilOfConfidence.setSpellDomain(confidenceDomain);
             delusionalPride.setSpellDomain(confidenceDomain);
 
-            abadar.setMainDomains(Set.of(citiesDomain));
-            asmodeus.setMainDomains(Set.of(confidenceDomain));
-            caydenCailean.setMainDomains(Set.of(citiesDomain));
-            gorum.setMainDomains(Set.of(confidenceDomain));
-            gozreh.setMainDomains(Set.of(airDomain));
-            greenFaith.setMainDomains(Set.of(airDomain));
-            iomedae.setMainDomains(Set.of(confidenceDomain));
-            rovagug.setMainDomains(Set.of(airDomain));
-            zonKuthon.setMainDomains(Set.of(ambitionDomain));
+            Domain creationDomain = new Domain("Creation", "You have divine abilities related to crafting and art.", creativeSplash, artisticFlourish);
+            creationDomain.setDeities(Set.of(shelyn, torag));
+            creativeSplash.setSpellDomain(creationDomain);
+            artisticFlourish.setSpellDomain(creationDomain);
 
-            domainRepo.saveAll(List.of(airDomain, ambitionDomain, citiesDomain, confidenceDomain));
+            Domain darknessDomain = new Domain("Darkness", "You operate in the darkness and take away the light.", cloakOfShadow, darkenedSight);
+            darknessDomain.setDeities(Set.of(zonKuthon));
+            cloakOfShadow.setSpellDomain(darknessDomain);
+            darkenedSight.setSpellDomain(darknessDomain);
+
+            Domain deathDomain = new Domain("Death", "You have the power to end lives and destroy undead.", deathsCall, eradicateUndeath);
+            deathDomain.setDeities(Set.of(norgorber, pharasma));
+            deathsCall.setSpellDomain(deathDomain);
+            eradicateUndeath.setSpellDomain(deathDomain);
+
+            Domain destructionDomain = new Domain("Destruction", "You are a conduit for divine devastation.", cryOfDestruction, destructiveAura);
+            destructionDomain.setDeities(Set.of(gorum, nethys, rovagug, zonKuthon));
+            cryOfDestruction.setSpellDomain(destructionDomain);
+            destructiveAura.setSpellDomain(destructionDomain);
+
+            Domain dreamsDomain = new Domain("Dreams", "You have the power to enter and manipulate dreams.", sweetDream, dreamersCall);
+            dreamsDomain.setDeities(Set.of(desna));
+            sweetDream.setSpellDomain(dreamsDomain);
+            dreamersCall.setSpellDomain(dreamsDomain);
+
+            Domain earthDomain = new Domain("Earth", "You control soil and stone.", hurtlingStone, localizedQuake);
+            earthDomain.setDeities(Set.of(abadar, erastil, greenFaith, rovagug, torag));
+            hurtlingStone.setSpellDomain(earthDomain);
+            localizedQuake.setSpellDomain(earthDomain);
+
+            Domain familyDomain = new Domain("Family", "You aid and protect your family and community more effectively.", soothingWords, unity);
+            familyDomain.setDeities(Set.of(erastil, lamashtu, shelyn, torag));
+            soothingWords.setSpellDomain(familyDomain);
+            unity.setSpellDomain(familyDomain);
+
+            Domain fateDomain = new Domain("Fate", "You see and understand hidden inevitabilities.", readFate, temptFate);
+            fateDomain.setDeities(Set.of(pharasma));
+            readFate.setSpellDomain(fateDomain);
+            temptFate.setSpellDomain(fateDomain);
+
+            Domain fireDomain = new Domain("Fire", "You control flame.", fireRay, flameBarrier);
+            fireDomain.setDeities(Set.of(asmodeus, greenFaith, sarenrae));
+            fireRay.setSpellDomain(fireDomain);
+            flameBarrier.setSpellDomain(fireDomain);
+
+            Domain freedomDomain = new Domain("Freedom", "You liberate yourself and others from shackles and constraints.", unimpededStride, wordOfFreedom);
+            freedomDomain.setDeities(Set.of(caydenCailean));
+            unimpededStride.setSpellDomain(freedomDomain);
+            wordOfFreedom.setSpellDomain(freedomDomain);
+
+            Domain healingDomain = new Domain("Healing", "Your healing magic is particularly potent.", healersBlessing, rebukeDeath);
+            healingDomain.setDeities(Set.of(pharasma, sarenrae));
+            healersBlessing.setSpellDomain(healingDomain);
+            rebukeDeath.setSpellDomain(healingDomain);
+
+            Domain indulgenceDomain = new Domain("Indulgence", "You feast mightily and can shake off the effects of overindulging.", overstuff, takeItsCourse);
+            indulgenceDomain.setDeities(Set.of(caydenCailean, urgathoa));
+            overstuff.setSpellDomain(indulgenceDomain);
+            takeItsCourse.setSpellDomain(indulgenceDomain);
+
+            Domain knowledgeDomain = new Domain("Knowledge", "You receive divine insights.", scholarlyRecollection, knowTheEnemy);
+            knowledgeDomain.setDeities(Set.of(irori, nethys, pharasma));
+            scholarlyRecollection.setSpellDomain(knowledgeDomain);
+            knowTheEnemy.setSpellDomain(knowledgeDomain);
+
+            Domain luckDomain = new Domain("Luck", "You’re unnaturally lucky and keep out of harm’s way.", bitOfLuck, luckyBreak);
+            luckDomain.setDeities(Set.of(desna));
+            bitOfLuck.setSpellDomain(luckDomain);
+            luckyBreak.setSpellDomain(luckDomain);
+
+            Domain magicDomain = new Domain("Magic", "You perform the unexpected and inexplicable.", magicsVessel, mysticBeacon);
+            magicDomain.setDeities(Set.of(nethys, urgathoa));
+            magicsVessel.setSpellDomain(magicDomain);
+            mysticBeacon.setSpellDomain(magicDomain);
+
+            Domain mightDomain = new Domain("Might", "Your physical power is bolstered by divine strength.", athleticRush, enduringMight);
+            mightDomain.setDeities(Set.of(caydenCailean, gorum, iomedae, irori, lamashtu, urgathoa));
+            athleticRush.setSpellDomain(mightDomain);
+            enduringMight.setSpellDomain(mightDomain);
+
+            Domain moonDomain = new Domain("Moon", "You command powers associated with the moon.", moonbeam, touchOfTheMoon);
+            moonDomain.setDeities(Set.of(desna, greenFaith));
+            moonbeam.setSpellDomain(moonDomain);
+            touchOfTheMoon.setSpellDomain(moonDomain);
+
+            abadar.setMainDomains(Set.of(citiesDomain, earthDomain));
+            asmodeus.setMainDomains(Set.of(confidenceDomain, fireDomain));
+            caydenCailean.setMainDomains(Set.of(citiesDomain, freedomDomain, indulgenceDomain, mightDomain));
+            desna.setMainDomains(Set.of(dreamsDomain, luckDomain, moonDomain));
+            erastil.setMainDomains(Set.of(earthDomain, familyDomain));
+            gorum.setMainDomains(Set.of(confidenceDomain, destructionDomain, mightDomain));
+            gozreh.setMainDomains(Set.of(airDomain));
+            greenFaith.setMainDomains(Set.of(airDomain, earthDomain, fireDomain, moonDomain));
+            iomedae.setMainDomains(Set.of(confidenceDomain, mightDomain));
+            irori.setMainDomains(Set.of(knowledgeDomain, mightDomain));
+            lamashtu.setMainDomains(Set.of(familyDomain, mightDomain));
+            nethys.setMainDomains(Set.of(destructionDomain, knowledgeDomain, magicDomain));
+            norgorber.setMainDomains(Set.of(deathDomain));
+            pharasma.setMainDomains(Set.of(deathDomain, fateDomain, healingDomain, knowledgeDomain));
+            rovagug.setMainDomains(Set.of(airDomain, destructionDomain, earthDomain));
+            sarenrae.setMainDomains(Set.of(fireDomain, healingDomain));
+            shelyn.setMainDomains(Set.of(creationDomain, familyDomain));
+            torag.setMainDomains(Set.of(creationDomain, earthDomain, familyDomain));
+            urgathoa.setMainDomains(Set.of(indulgenceDomain, magicDomain, mightDomain));
+            zonKuthon.setMainDomains(Set.of(ambitionDomain, darknessDomain, destructionDomain));
+
+            domainRepo.saveAll(List.of(
+                    airDomain, ambitionDomain, citiesDomain, confidenceDomain, creationDomain, darknessDomain,
+                    deathDomain, destructionDomain, dreamsDomain, earthDomain, familyDomain, fateDomain, fireDomain,
+                    freedomDomain, healingDomain, indulgenceDomain, knowledgeDomain, luckDomain, magicDomain,
+                    mightDomain, moonDomain));
             spellRepo.saveAll(List.of(
                     pushingGust, disperseIntoAir, igniteAmbition, competitiveEdge, faceInTheCrowd, pulseOfCivilization,
-                    veilOfConfidence, delusionalPride));
+                    veilOfConfidence, delusionalPride, creativeSplash, artisticFlourish, cloakOfShadow, darkenedSight,
+                    deathsCall, eradicateUndeath, cryOfDestruction, destructiveAura, sweetDream, dreamersCall,
+                    hurtlingStone, localizedQuake, soothingWords, unity, readFate, temptFate, fireRay, flameBarrier,
+                    unimpededStride, wordOfFreedom, healersBlessing, rebukeDeath, overstuff, takeItsCourse,
+                    scholarlyRecollection, knowTheEnemy, bitOfLuck, luckyBreak, magicsVessel, mysticBeacon,
+                    athleticRush, enduringMight, moonbeam, touchOfTheMoon));
             deityRepo.saveAll(List.of(abadar, asmodeus, calistria, caydenCailean, desna, erastil, gorum, gozreh, greenFaith, iomedae, irori, lamashtu, nethys, norgorber, pharasma, rovagug, sarenrae, shelyn, torag, urgathoa, zonKuthon));
+            spellRepo.saveAll(List.of(
+                    animalForm, breatheFire, charm, controlWater, creation, detonateMagic, disintegrate,
+                    dizzyingColors, dreamingPotential, earthbind, embedMessage, enlarge, enthrall, falseVitality,
+                    fireball, fireShield, fleetStep, flicker, forceBarrage, ghostlyWeapon, goblinPox, gustOfWind,
+                    hallucination, haste, illusoryDisguise, illusoryObject, invisibility, jump, levitate, lightningBolt,
+                    maskOfTerror, mindlink, mislead, mountainResilience, naturesPathway, nightmare, phantomPain,
+                    planarPalace, quandary, sleep, speakWithAnimals, spiderSting, stupefy, suggestion, summonAnimal,
+                    sureStrike, telekineticHaul, translocate, umbralJourney, visionOfDeath, wallOfFire, wallOfForce,
+                    wallOfThorns, warpMind, weaponStorm));
 
             Language aklo = new Language("Aklo");
             Language chthonian = new Language("Chthonian");

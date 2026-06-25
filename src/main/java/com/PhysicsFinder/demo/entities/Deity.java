@@ -40,6 +40,8 @@ public class Deity {
     @ManyToMany
     private Set<Trait> sanctificationTraits = new HashSet<>();
 
+    @ManyToMany
+    @JoinTable(name = "deity_cleric_spells", joinColumns = @JoinColumn(name = "deity_id"), inverseJoinColumns = @JoinColumn(name = "spell_id"))
     private List<Spell> clericSpells =  new ArrayList<>();
 
     @ManyToMany

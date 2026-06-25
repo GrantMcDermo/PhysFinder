@@ -51,6 +51,9 @@ public class Spell {
     @OneToOne(mappedBy = "spell", cascade = CascadeType.ALL)
     private Domain spellDomain;
 
+    @ManyToMany(mappedBy = "clericSpells")
+    private List<Deity> deities = new ArrayList<>();
+
     public Spell(String name, Integer spellRank, SpellType spellType, ActionType spellActionType, Set<Trait> traits, String spellDescription) {
         this.name = name;
         this.spellRank = spellRank;
