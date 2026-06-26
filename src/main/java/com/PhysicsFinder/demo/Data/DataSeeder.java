@@ -706,10 +706,9 @@ public class DataSeeder {
             weaponStorm.setSpellDefense("Reflex");
 
             spellRepo.saveAll(List.of(
-                    acidGrip, agileFeet, airBubble, allegro, aqueousOrb, bane, blazingBolt, blessedBoundary,
-                    bloodVendetta, bloodWard, cataclysm, chillingDarkness, cozyCabin, curseOfDeath, divineDecree,
-                    glimpseTheTruth, harm, heal, holyLight, illusoryCreature, impalingSpike, liminalDoorway,
-                    phantasmalMinionSpell));
+                    acidGrip, airBubble, allegro, aqueousOrb, bane, blazingBolt, blessedBoundary, bloodVendetta,
+                    bloodWard, cataclysm, chillingDarkness, cozyCabin, curseOfDeath, divineDecree, harm, heal,
+                    holyLight, illusoryCreature, impalingSpike, liminalDoorway, phantasmalMinionSpell));
 
             Weapon crossbow = new Weapon("Crossbow", WeaponCategory.SIMPLE, WeaponType.RANGED, WeaponGroup.CROSSBOW, 1, 8, DamageType.PIERCING);
             crossbow.setRangeFeet(120);
@@ -1354,6 +1353,152 @@ public class DataSeeder {
             touchOfTheMoon.setSpellTargets("1 creature");
             touchOfTheMoon.setSpellDuration("1 minute");
 
+            Spell vibrantThorns = new Spell("Vibrant Thorns", 1, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(clericTrait, focusTrait, manipulateTrait, morphTrait, plantTrait, woodTrait), "Your body sprouts brambly thorns that thrive on life magic.");
+            vibrantThorns.setSpellDuration("1 minute");
+
+            Spell naturesBounty = new Spell("Nature's Bounty", 4, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(clericTrait, focusTrait, manipulateTrait, plantTrait, vitalityTrait), "A palm-sized raw fruit or vegetable of your choice appears in your open hand.");
+            naturesBounty.setSpellRequirement("You have a free hand");
+
+            Spell wakingNightmare = new Spell("Waking Nightmare", 1, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(clericTrait, concentrateTrait, emotionTrait, fearTrait, focusTrait, manipulateTrait, mentalTrait), "You fill the creature's mind with a terrifying vision.");
+            wakingNightmare.setSpellRange(30);
+            wakingNightmare.setSpellTargets("1 creature");
+            wakingNightmare.setSpellDefense("Will");
+            wakingNightmare.setSpellDuration("varies");
+
+            Spell sharedNightmare = new Spell("Shared Nightmare", 4, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(clericTrait, concentrateTrait, emotionTrait, focusTrait, incapactitationTrait, manipulateTrait, mentalTrait), "Merging minds with the target, you swap distressing visions.");
+            sharedNightmare.setSpellRange(30);
+            sharedNightmare.setSpellTargets("1 creature");
+            sharedNightmare.setSpellDefense("Will");
+            sharedNightmare.setSpellDuration("varies");
+
+            Spell savorTheSting = new Spell("Savor the Sting", 1, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(clericTrait, focusTrait, manipulateTrait, mentalTrait, nonlethalTrait), "You inflict pain upon the target and revel in their anguish.");
+            savorTheSting.setSpellRange(0);
+            savorTheSting.setSpellTargets("1 creature");
+            savorTheSting.setSpellDefense("Will");
+
+            Spell retributivePain = new Spell("Retributive Pain", 4, SpellType.FOCUS, ActionType.REACTION, Set.of(clericTrait, focusTrait, manipulateTrait, mentalTrait, nonlethalTrait), "You vengefully reflect your pain upon your tormentor.");
+            retributivePain.setSpellTrigger("A creature in range damages you");
+            retributivePain.setSpellRange(30);
+            retributivePain.setSpellTargets("the triggering creature");
+            retributivePain.setSpellDefense("basic Fortitude");
+
+            Spell charmingTouch = new Spell("Charming Touch", 1, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(clericTrait, emotionTrait, focusTrait, incapactitationTrait, manipulateTrait, mentalTrait, subtleTrait), "You infuse your target with attraction, causing it to act friendlier toward you.");
+            charmingTouch.setSpellRange(0);
+            charmingTouch.setSpellTargets("1 creature that could find you attractive");
+            charmingTouch.setSpellDefense("Will");
+            charmingTouch.setSpellDuration("10 minutes");
+
+            Spell captivatingAdoration = new Spell("Captivating Adoration", 4, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(auraTrait, clericTrait, concentrateTrait, emotionTrait, focusTrait, manipulateTrait, mentalTrait, visualTrait), "You become intensely entrancing, and creatures are distracted by you as long as they remain within the area.");
+            captivatingAdoration.setSpellArea(15);
+            captivatingAdoration.setSpellAreaType("emanation");
+            captivatingAdoration.setSpellDefense("Will");
+            captivatingAdoration.setSpellDuration("1 minute");
+
+            Spell perfectedMind = new Spell("Perfected Mind", 1, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(clericTrait, concentrateTrait, focusTrait), "You meditate upon perfection to remove all distractions from your mind.");
+
+            Spell perfectedBody = new Spell("Perfected Body", 4, SpellType.FOCUS, ActionType.REACTION, Set.of(clericTrait, concentrateTrait, focusTrait), "Your body's perfection keeps you just a little bit healthier than most.");
+            perfectedBody.setSpellTrigger("You fail or critically fail a saving throw against an effect that has the morph, poison, or polymorph trait, or that would make you clumsy, doomed, enfeebled, petrified, or sickened");
+
+            Spell protectorsSacrifice = new Spell("Protector's Sacrifice", 1, SpellType.FOCUS, ActionType.REACTION, Set.of(clericTrait, focusTrait, manipulateTrait), "You protect your ally by suffering in their stead.");
+            protectorsSacrifice.setSpellTrigger("An ally within 30 feet takes damage");
+            protectorsSacrifice.setSpellRange(30);
+
+            Spell protectorsSphere = new Spell("Protector's Sphere", 4, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(auraTrait, clericTrait, concentrateTrait, focusTrait, manipulateTrait), "A protective aura emanates out from you, safeguarding you and your allies.");
+            protectorsSphere.setSpellArea(15);
+            protectorsSphere.setSpellAreaType("emanation");
+            protectorsSphere.setSpellDuration("sustained up to 1 minute");
+
+            Spell whisperingQuiet= new Spell("Whispering Quiet", 1, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(clericTrait, focusTrait, manipulateTrait, sonicTrait), "You suppress sound in an area, preventing anyone from giving away valuable secrets.");
+            whisperingQuiet.setSpellRange(60);
+            whisperingQuiet.setSpellArea(15);
+            whisperingQuiet.setSpellAreaType("burst");
+            whisperingQuiet.setSpellDuration("1 minute");
+
+            Spell safeguardSecret = new Spell("Safeguard Secret", 4, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(clericTrait, concentrateTrait, focusTrait, manipulateTrait, mentalTrait), "You ensure a secret remains safe from prying spies.");
+            safeguardSecret.setSpellRange(30);
+            safeguardSecret.setSpellTargets("you and any number of willing allies");
+            safeguardSecret.setSpellDuration("1 hour");
+
+            Spell dazzlingFlash = new Spell("Dazzling Flash", 1, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(clericTrait, concentrateTrait, focusTrait, lightTrait, manipulateTrait, visualTrait), "You raise your religious symbol and create a blinding flash of light.");
+            dazzlingFlash.setSpellArea(15);
+            dazzlingFlash.setSpellAreaType("cone");
+            dazzlingFlash.setSpellDefense("Fortitude");
+
+            Spell vitalLuminance = new Spell("Vital Luminance", 4, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(auraTrait, clericTrait, focusTrait, lightTrait, manipulateTrait, vitalityTrait), "Drawing life force into yourself, you become a beacon of vitality.");
+            vitalLuminance.setSpellDuration("1 minute");
+
+            Spell travelersTransit = new Spell("Traveler's Transit", 4, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(clericTrait, concentrateTrait, focusTrait, manipulateTrait), "You add power to your muscles, allowing you to swim or climb walls with ease.");
+            travelersTransit.setSpellDuration("5 minutes");
+
+            Spell suddenShift = new Spell("Sudden Shift", 1, SpellType.FOCUS, ActionType.REACTION, Set.of(clericTrait, focusTrait, manipulateTrait), "You swiftly move from a dangerous spot and veil yourself.");
+            suddenShift.setSpellTrigger("An enemy misses you with a melee attack");
+            suddenShift.setSpellDuration("until the end of your next turn");
+
+            Spell trickstersTwin = new Spell("Trickster's Twin", 4, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(clericTrait, concentrateTrait, focusTrait, illusionTrait, manipulateTrait, visualTrait), "You rarely settle for being in just one place.");
+            trickstersTwin.setSpellRange(30);
+            trickstersTwin.setSpellTargets("1 creature");
+            trickstersTwin.setSpellDefense("Will");
+            trickstersTwin.setSpellDuration("1 minute");
+
+            Spell wordOfTruth = new Spell("Word of Truth", 1, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(clericTrait, concentrateTrait, focusTrait), "You speak a statement that you believe to be true and that is free of any attempt to deceive through twisting words, omission, and so on.");
+            wordOfTruth.setSpellDuration("sustained up to 1 minute");
+
+            Spell touchOfObedience = new Spell("Touch of Obedience", 1, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(clericTrait, focusTrait, manipulateTrait, mentalTrait), "Your imperious touch erodes the target's willpower, making it easier to control.");
+            touchOfObedience.setSpellRange(0);
+            touchOfObedience.setSpellTargets("1 living creature");
+            touchOfObedience.setSpellDefense("Will");
+            touchOfObedience.setSpellDuration("varies");
+
+            Spell commandingLash = new Spell("Commanding Lash", 4, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(clericTrait, concentrateTrait, focusTrait, linguisticTrait, manipulateTrait, mentalTrait), "With the threat of more pain, you compel a creature you've recently harmed.");
+            commandingLash.setSpellRequirement("Your most recent action dealt damage to a target");
+            commandingLash.setSpellRange(100);
+            commandingLash.setSpellTargets("a creature you dealt damage to on your most recent action");
+            commandingLash.setSpellDefense("Will");
+            commandingLash.setSpellDuration("until the end of the target's next turn");
+
+            Spell touchOfUndeath = new Spell("Touch of Undeath", 1, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(clericTrait, focusTrait, manipulateTrait, voidTrait), "You attack the target's life force with undeath, dealing 1d6 void damage. The target must attempt a Fortitude save.");
+            touchOfUndeath.setSpellRange(0);
+            touchOfUndeath.setSpellTargets("1 living creature");
+            touchOfUndeath.setSpellDefense("Fortitude");
+            touchOfUndeath.setSpellDuration("varies");
+
+            Spell malignantSustenance = new Spell("Malignant Sustenance", 4, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(clericTrait, concentrateTrait, focusTrait, manipulateTrait, voidTrait), "You embed a seed of void energy in an undead creature, restoring its unnatural vigor over time.");
+            malignantSustenance.setSpellRange(0);
+            malignantSustenance.setSpellTargets("1 willing undead creature");
+            malignantSustenance.setSpellDuration("1 minute");
+
+            Spell tidalSurge = new Spell("Tidal Surge", 1, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(clericTrait, focusTrait, manipulateTrait, waterTrait), "You call forth a tremendous wave to move the target either in a body of water or on the ground.");
+            tidalSurge.setSpellRange(60);
+            tidalSurge.setSpellTargets("1 creature");
+
+            Spell downpour = new Spell("Downpour", 4, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(clericTrait, concentrateTrait, focusTrait, manipulateTrait, waterTrait), "You call forth a torrential downpour, which extinguishes non-magical flames.");
+            downpour.setSpellRange(120);
+            downpour.setSpellArea(30);
+            downpour.setSpellAreaType("burst");
+            downpour.setSpellDuration("1 minute");
+
+            Spell appearanceOfWealth = new Spell("Appearance of Wealth", 1, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(clericTrait, concentrateTrait, focusTrait, illusionTrait, manipulateTrait), "You create a brief vision of immense wealth filling the spell's area.");
+            appearanceOfWealth.setSpellRange(30);
+            appearanceOfWealth.setSpellArea(5);
+            appearanceOfWealth.setSpellAreaType("burst");
+            appearanceOfWealth.setSpellDefense("Will");
+            appearanceOfWealth.setSpellDuration("sustained up to 1 minute");
+
+            Spell preciousMetals = new Spell("Precious Metals", 4, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(clericTrait, focusTrait, manipulateTrait, metalTrait), "Your deity blesses base metals to transform them into precious materials.");
+            preciousMetals.setSpellRange(0);
+            preciousMetals.setSpellTargets("1 metal shield or weapon, 1 suit of metal armor, or up to 1 Bulk of metal material (such as coins or metal-tipped ammunition)");
+            preciousMetals.setSpellDuration("1 minute");
+
+            Spell weaponSurge = new Spell("Weapon Surge", 1, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(clericTrait, focusTrait, manipulateTrait, sanctifiedTrait), "Holding your weapon aloft, you fill it with divine energy.");
+            weaponSurge.setSpellRange(0);
+            weaponSurge.setSpellTargets("1 weapon you're wielding");
+            weaponSurge.setSpellDuration("until the start of your next turn");
+
+            Spell zealForBattle = new Spell("Zeal for Battle", 4, SpellType.FOCUS, ActionType.REACTION, Set.of(clericTrait, concentrateTrait, emotionTrait, focusTrait, fortuneTrait, mentalTrait), "You stoke the righteous anger within yourself and an ally.");
+            zealForBattle.setSpellTrigger("You and at least 1 ally are about to roll initiative");
+            zealForBattle.setSpellRange(10);
+            zealForBattle.setSpellTargets("you and the triggering ally");
+
             Domain airDomain = new Domain("Air", "You can control winds and the weather.", pushingGust, disperseIntoAir);
             pushingGust.setSpellDomain(airDomain);
             disperseIntoAir.setSpellDomain(airDomain);
@@ -1459,40 +1604,128 @@ public class DataSeeder {
             moonbeam.setSpellDomain(moonDomain);
             touchOfTheMoon.setSpellDomain(moonDomain);
 
-            abadar.setMainDomains(Set.of(citiesDomain, earthDomain));
-            asmodeus.setMainDomains(Set.of(confidenceDomain, fireDomain));
+            Domain natureDomain = new Domain("Nature", "You hold power over animals and plants.", vibrantThorns, naturesBounty);
+            natureDomain.setDeities(Set.of(erastil, gozreh, greenFaith));
+            vibrantThorns.setSpellDomain(natureDomain);
+            naturesBounty.setSpellDomain(natureDomain);
+
+            Domain nightmaresDomain = new Domain("Nightmares", "You fill minds with horror and dread.", wakingNightmare, sharedNightmare);
+            nightmaresDomain.setDeities(Set.of(lamashtu));
+            wakingNightmare.setSpellDomain(nightmaresDomain);
+            sharedNightmare.setSpellDomain(nightmaresDomain);
+
+            Domain painDomain = new Domain("Pain", "You punish those who displease you with the sharp sting of pain.", savorTheSting, retributivePain);
+            painDomain.setDeities(Set.of(calistria, zonKuthon));
+            savorTheSting.setSpellDomain(painDomain);
+            retributivePain.setSpellDomain(painDomain);
+
+            Domain passionDomain = new Domain("Passion", "You evoke passion, whether as love or lust.", charmingTouch, captivatingAdoration);
+            passionDomain.setDeities(Set.of(calistria, shelyn));
+            charmingTouch.setSpellDomain(passionDomain);
+            captivatingAdoration.setSpellDomain(passionDomain);
+
+            Domain perfectionDomain = new Domain("Perfection", "You strive to perfect your mind, body, and spirit.", perfectedMind, perfectedBody);
+            perfectionDomain.setDeities(Set.of(irori));
+            perfectedMind.setSpellDomain(perfectionDomain);
+            perfectedBody.setSpellDomain(perfectionDomain);
+
+            Domain protectionDomain = new Domain("Protection", "You ward yourself and others.", protectorsSacrifice, protectorsSphere);
+            protectionDomain.setDeities(Set.of(nethys, shelyn, torag));
+            protectorsSacrifice.setSpellDomain(protectionDomain);
+            protectorsSphere.setSpellDomain(protectionDomain);
+
+            Domain secrecyDomain = new Domain("Secrecy", "You protect secrets and keep them hidden.", whisperingQuiet, safeguardSecret);
+            secrecyDomain.setDeities(Set.of(calistria, norgorber));
+            whisperingQuiet.setSpellDomain(secrecyDomain);
+            safeguardSecret.setSpellDomain(secrecyDomain);
+
+            Domain sunDomain = new Domain("Sun", "You harness the power of the sun and other light sources, and punish undead.", dazzlingFlash, vitalLuminance);
+            sunDomain.setDeities(Set.of(greenFaith, sarenrae));
+            dazzlingFlash.setSpellDomain(sunDomain);
+            vitalLuminance.setSpellDomain(sunDomain);
+
+            Domain travelDomain = new Domain("Travel", "You have power over movement and journeys.", agileFeet, travelersTransit);
+            travelDomain.setDeities(Set.of(abadar, desna, gozreh));
+            agileFeet.setSpellDomain(travelDomain);
+            travelersTransit.setSpellDomain(travelDomain);
+
+            Domain trickeryDomain = new Domain("Trickery", "You deceive others and cause mischief.", suddenShift, trickstersTwin);
+            trickeryDomain.setDeities(Set.of(asmodeus, calistria, lamashtu, norgorber));
+            suddenShift.setSpellDomain(trickeryDomain);
+            trickstersTwin.setSpellDomain(trickeryDomain);
+
+            Domain truthDomain = new Domain("Truth", "You pierce lies and discover the truth.", wordOfTruth, glimpseTheTruth);
+            truthDomain.setDeities(Set.of(iomedae, irori, sarenrae));
+            wordOfTruth.setSpellDomain(truthDomain);
+            glimpseTheTruth.setSpellDomain(truthDomain);
+
+            Domain tyrannyDomain = new Domain("Tyranny", "You wield power to rule and enslave others.", touchOfObedience, commandingLash);
+            tyrannyDomain.setDeities(Set.of(asmodeus));
+            touchOfObedience.setSpellDomain(tyrannyDomain);
+            commandingLash.setSpellDomain(tyrannyDomain);
+
+            Domain undeathDomain = new Domain("Undeath", "Your magic carries close ties to the undead.", touchOfUndeath, malignantSustenance);
+            undeathDomain.setDeities(Set.of(urgathoa));
+            touchOfUndeath.setSpellDomain(undeathDomain);
+            malignantSustenance.setSpellDomain(undeathDomain);
+
+            Domain waterDomain = new Domain("Water", "You control water and bodies of water.", tidalSurge, downpour);
+            waterDomain.setDeities(Set.of(gozreh, greenFaith));
+            tidalSurge.setSpellDomain(waterDomain);
+            downpour.setSpellDomain(waterDomain);
+
+            Domain wealthDomain = new Domain("Wealth", "You hold power over wealth, trade, and treasure.", appearanceOfWealth, preciousMetals);
+            wealthDomain.setDeities(Set.of(abadar, erastil, norgorber));
+            appearanceOfWealth.setSpellDomain(wealthDomain);
+            preciousMetals.setSpellDomain(wealthDomain);
+
+            Domain zealDomain = new Domain("Zeal", "Your inner fire increases your combat prowess.", weaponSurge, zealForBattle);
+            zealDomain.setDeities(Set.of(gorum, iomedae, rovagug));
+            weaponSurge.setSpellDomain(zealDomain);
+            zealForBattle.setSpellDomain(zealDomain);
+
+            abadar.setMainDomains(Set.of(citiesDomain, earthDomain, travelDomain, wealthDomain));
+            asmodeus.setMainDomains(Set.of(confidenceDomain, fireDomain, trickeryDomain, tyrannyDomain));
+            calistria.setMainDomains(Set.of(painDomain, passionDomain, secrecyDomain, trickeryDomain));
             caydenCailean.setMainDomains(Set.of(citiesDomain, freedomDomain, indulgenceDomain, mightDomain));
-            desna.setMainDomains(Set.of(dreamsDomain, luckDomain, moonDomain));
-            erastil.setMainDomains(Set.of(earthDomain, familyDomain));
-            gorum.setMainDomains(Set.of(confidenceDomain, destructionDomain, mightDomain));
-            gozreh.setMainDomains(Set.of(airDomain));
-            greenFaith.setMainDomains(Set.of(airDomain, earthDomain, fireDomain, moonDomain));
-            iomedae.setMainDomains(Set.of(confidenceDomain, mightDomain));
-            irori.setMainDomains(Set.of(knowledgeDomain, mightDomain));
-            lamashtu.setMainDomains(Set.of(familyDomain, mightDomain));
-            nethys.setMainDomains(Set.of(destructionDomain, knowledgeDomain, magicDomain));
-            norgorber.setMainDomains(Set.of(deathDomain));
+            desna.setMainDomains(Set.of(dreamsDomain, luckDomain, moonDomain, travelDomain));
+            erastil.setMainDomains(Set.of(earthDomain, familyDomain, natureDomain, wealthDomain));
+            gorum.setMainDomains(Set.of(confidenceDomain, destructionDomain, mightDomain, zealDomain));
+            gozreh.setMainDomains(Set.of(airDomain, natureDomain, travelDomain, waterDomain));
+            greenFaith.setMainDomains(Set.of(airDomain, earthDomain, fireDomain, moonDomain, natureDomain, sunDomain, waterDomain));
+            iomedae.setMainDomains(Set.of(confidenceDomain, mightDomain, truthDomain, zealDomain));
+            irori.setMainDomains(Set.of(knowledgeDomain, mightDomain, perfectionDomain, truthDomain));
+            lamashtu.setMainDomains(Set.of(familyDomain, mightDomain, nightmaresDomain, trickeryDomain));
+            nethys.setMainDomains(Set.of(destructionDomain, knowledgeDomain, magicDomain, protectionDomain));
+            norgorber.setMainDomains(Set.of(deathDomain, secrecyDomain, trickeryDomain, wealthDomain));
             pharasma.setMainDomains(Set.of(deathDomain, fateDomain, healingDomain, knowledgeDomain));
-            rovagug.setMainDomains(Set.of(airDomain, destructionDomain, earthDomain));
-            sarenrae.setMainDomains(Set.of(fireDomain, healingDomain));
-            shelyn.setMainDomains(Set.of(creationDomain, familyDomain));
-            torag.setMainDomains(Set.of(creationDomain, earthDomain, familyDomain));
-            urgathoa.setMainDomains(Set.of(indulgenceDomain, magicDomain, mightDomain));
-            zonKuthon.setMainDomains(Set.of(ambitionDomain, darknessDomain, destructionDomain));
+            rovagug.setMainDomains(Set.of(airDomain, destructionDomain, earthDomain, zealDomain));
+            sarenrae.setMainDomains(Set.of(fireDomain, healingDomain, sunDomain, truthDomain));
+            shelyn.setMainDomains(Set.of(creationDomain, familyDomain, passionDomain, protectionDomain));
+            torag.setMainDomains(Set.of(creationDomain, earthDomain, familyDomain, protectionDomain));
+            urgathoa.setMainDomains(Set.of(indulgenceDomain, magicDomain, mightDomain, undeathDomain));
+            zonKuthon.setMainDomains(Set.of(ambitionDomain, darknessDomain, destructionDomain, painDomain));
 
             domainRepo.saveAll(List.of(
                     airDomain, ambitionDomain, citiesDomain, confidenceDomain, creationDomain, darknessDomain,
                     deathDomain, destructionDomain, dreamsDomain, earthDomain, familyDomain, fateDomain, fireDomain,
                     freedomDomain, healingDomain, indulgenceDomain, knowledgeDomain, luckDomain, magicDomain,
-                    mightDomain, moonDomain));
+                    mightDomain, moonDomain, natureDomain, nightmaresDomain, painDomain, passionDomain, perfectionDomain,
+                    protectionDomain, secrecyDomain, sunDomain, travelDomain, trickeryDomain, tyrannyDomain,
+                    undeathDomain, waterDomain, wealthDomain, zealDomain));
             spellRepo.saveAll(List.of(
                     pushingGust, disperseIntoAir, igniteAmbition, competitiveEdge, faceInTheCrowd, pulseOfCivilization,
                     veilOfConfidence, delusionalPride, creativeSplash, artisticFlourish, cloakOfShadow, darkenedSight,
                     deathsCall, eradicateUndeath, cryOfDestruction, destructiveAura, sweetDream, dreamersCall,
                     hurtlingStone, localizedQuake, soothingWords, unity, readFate, temptFate, fireRay, flameBarrier,
                     unimpededStride, wordOfFreedom, healersBlessing, rebukeDeath, overstuff, takeItsCourse,
-                    scholarlyRecollection, knowTheEnemy, bitOfLuck, luckyBreak, magicsVessel, mysticBeacon,
-                    athleticRush, enduringMight, moonbeam, touchOfTheMoon));
+                    scholarlyRecollection, knowTheEnemy, bitOfLuck, luckyBreak, magicsVessel, mysticBeacon, athleticRush,
+                    enduringMight, moonbeam, touchOfTheMoon, vibrantThorns, naturesBounty, wakingNightmare,
+                    sharedNightmare, savorTheSting, retributivePain, charmingTouch, captivatingAdoration, perfectedMind,
+                    perfectedBody, protectorsSacrifice, protectorsSphere, whisperingQuiet, safeguardSecret,
+                    dazzlingFlash, vitalLuminance, agileFeet, travelersTransit, suddenShift, trickstersTwin, wordOfTruth,
+                    glimpseTheTruth, touchOfObedience, commandingLash, touchOfUndeath, malignantSustenance, tidalSurge,
+                    downpour, appearanceOfWealth, preciousMetals, weaponSurge, zealForBattle));
             deityRepo.saveAll(List.of(abadar, asmodeus, calistria, caydenCailean, desna, erastil, gorum, gozreh, greenFaith, iomedae, irori, lamashtu, nethys, norgorber, pharasma, rovagug, sarenrae, shelyn, torag, urgathoa, zonKuthon));
             spellRepo.saveAll(List.of(
                     animalForm, breatheFire, charm, controlWater, creation, detonateMagic, disintegrate,
