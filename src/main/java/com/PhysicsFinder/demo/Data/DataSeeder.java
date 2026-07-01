@@ -354,6 +354,9 @@ public class DataSeeder {
             command.setSpellDefense("Will");
             command.setSpellDuration("until the end of the target's next turn");
 
+            Spell communityRestoration = new Spell("Community Restoration", 4, SpellType.FOCUS, ActionType.REACTION, Set.of(concentrateTrait, focusTrait, healingTrait, wizardTrait), "When you use your magic to support your allies, shared strength bolsters you all.");
+            communityRestoration.setSpellTrigger("You Cast a Spell from a wizard spell slot, and the spell affects one or more willing allies without damaging them");
+
             Spell contingency = new Spell("Contingency", 7, SpellType.SPELL, ActionType.ACTIVITY, Set.of(concentrateTrait, manipulateTrait), "You prepare a spell that will trigger later.");
             contingency.setSpellTraditions(List.of(SpellTraditions.ARCANE));
             contingency.setSpellCastAmount(10);
@@ -454,6 +457,19 @@ public class DataSeeder {
             earthbind.setSpellDefense("Fortitude");
             earthbind.setSpellDuration("varies");
 
+            Spell earthquake = new Spell("Earthquake", 8, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, earthTrait, manipulateTrait), "You shake the ground, topple creatures into fissures, and collapse structures.");
+            earthquake.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
+            earthquake.setSpellRange(500);
+            earthquake.setSpellArea(60);
+            earthquake.setSpellAreaType("burst");
+            earthquake.setSpellDuration("1 round");
+
+            Spell earthworks = new Spell("Earthworks", 1, SpellType.FOCUS, ActionType.ONE_TO_THREE_ACTIONS, Set.of(concentrateTrait, earthTrait, focusTrait, manipulateTrait, wizardTrait), "With a ripple of earth, you raise small barriers from the ground.");
+            earthworks.setSpellRange(60);
+            earthworks.setSpellArea(5);
+            earthworks.setSpellAreaType("burst or more");
+            earthworks.setSpellDuration("1 minute");
+
             Spell embedMessage = new Spell("Embed Message", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, illusionTrait, manipulateTrait), "You specify a trigger and a message up to 25 words long.");
             embedMessage.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
             embedMessage.setSpellRange(0);
@@ -523,6 +539,12 @@ public class DataSeeder {
             forceBolt.setSpellRange(30);
             forceBolt.setSpellTargets("1 creature");
 
+            Spell foresight = new Spell("Foresight", 9, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, mentalTrait, predictionTrait), "You gain a sixth sense that warns you of danger that might befall the target of the spell.");
+            foresight.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT));
+            foresight.setSpellRange(0);
+            foresight.setSpellTargets("1 creature");
+            foresight.setSpellDuration("1 hour");
+
             Spell ghostlyWeapon = new Spell("Ghostly Weapon", 3, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "The target weapon becomes translucent and ghostly, and it can affect material and incorporeal creatures and objects.");
             ghostlyWeapon.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
             ghostlyWeapon.setSpellRange(0);
@@ -577,6 +599,12 @@ public class DataSeeder {
             howlingBlizzard.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
             howlingBlizzard.setSpellAreaType("varies");
             howlingBlizzard.setSpellDefense("basic Reflex");
+
+            Spell hydraulicPush = new Spell("Hydraulic Push", 1, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(attackTrait, concentrateTrait, manipulateTrait, waterTrait), "You call forth a powerful blast of pressurized water that bludgeons the target and knocks it back.");
+            hydraulicPush.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
+            hydraulicPush.setSpellRange(60);
+            hydraulicPush.setSpellTargets("1 creature or unattended object");
+            hydraulicPush.setSpellDefense("AC");
 
             Spell illusoryCreature = new Spell("Illusory Creature", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(auditoryTrait, concentrateTrait, illusionTrait, manipulateTrait, olfactoryTrait, visualTrait), "You create an illusory image of a Large or smaller creature.");
             illusoryCreature.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
@@ -694,6 +722,12 @@ public class DataSeeder {
             phantomPain.setSpellDefense("Will");
             phantomPain.setSpellDuration("1 minute");
 
+            Spell pinpoint = new Spell("Pinpoint", 8, SpellType.SPELL, ActionType.ACTIVITY, Set.of(concentrateTrait, detectionTrait, manipulateTrait), "You learn the name of the target's exact location (including the building, community, and country) and plane of existence. You can target a creature only if you've seen it in person, have one of its significant belongings, or have a piece of its body, such as a lock of hair. To target an object, you must have touched it or have a fragment of it. Pinpoint automatically overcomes protections against detection effects of lower rank than this spell, even if they would normally have a chance to block it.");
+            pinpoint.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT));
+            pinpoint.setSpellCastAmount(10);
+            pinpoint.setSpellCastUnits("minute");
+            pinpoint.setSpellTargets("1 creature or object");
+
             Spell planarPalace = new Spell("Planar Palace", 7, SpellType.SPELL, ActionType.ACTIVITY, Set.of(concentrateTrait, extradimensionalTrait, manipulateTrait), "You grow an extradimensional demiplane consisting of a spacious dwelling with a single entrance.");
             planarPalace.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
             planarPalace.setSpellCastAmount(1);
@@ -708,16 +742,35 @@ public class DataSeeder {
             planarSeal.setSpellAreaType("burst");
             planarSeal.setSpellDuration("until your next daily preparations");
 
+            Spell prestidigitation = new Spell("Prestidigitation", 1, SpellType.CANTRIP, ActionType.TWO_ACTIONS, Set.of(cantripTrait, concentrateTrait, manipulateTrait), "The simplest magic does your bidding.");
+            prestidigitation.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
+            prestidigitation.setSpellRange(10);
+            prestidigitation.setSpellTargets("1 object (cook, lift, or tidy only)");
+            prestidigitation.setSpellDuration("sustained");
+
             Spell protectiveWards = new Spell("Protective Wards", 1, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(auraTrait, focusTrait, manipulateTrait, wizardTrait), "You expand a ring of glyphs that shields your allies.");
             protectiveWards.setSpellArea(5);
             protectiveWards.setSpellAreaType("emanation centered on you");
             protectiveWards.setSpellDuration("sustained up to 1 minute");
+
+            Spell pummelingRubble = new Spell("Pummeling Rubble", 1, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, earthTrait, manipulateTrait), "A spray of heavy rocks flies through the air in front of you.");
+            pummelingRubble.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
+            pummelingRubble.setSpellArea(15);
+            pummelingRubble.setSpellAreaType("cone");
+            pummelingRubble.setSpellDefense("Reflex");
 
             Spell quandary = new Spell("Quandary", 8 ,SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, extradimensionalTrait, manipulateTrait, teleportationTrait), "You transport the target into an extraplanar puzzle room of mysterious origin, locking them there.");
             quandary.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
             quandary.setSpellRange(30);
             quandary.setSpellTargets("1 creature");
             quandary.setSpellDuration("sustained");
+
+            Spell readAura = new Spell("Read Aura", 1, SpellType.CANTRIP, ActionType.ACTIVITY, Set.of(cantripTrait, concentrateTrait, detectionTrait, manipulateTrait), "You focus on the target object, opening your mind to perceive magical auras.");
+            readAura.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
+            readAura.setSpellCastAmount(1);
+            readAura.setSpellCastUnits("minute");
+            readAura.setSpellRange(30);
+            readAura.setSpellTargets("1 object");
 
             Spell repulsion = new Spell("Repulsion", 6, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(auraTrait, concentrateTrait, manipulateTrait, mentalTrait), "You manifest an aura that prevents creatures from approaching you.");
             repulsion.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT));
@@ -731,6 +784,20 @@ public class DataSeeder {
             resistEnergy.setSpellRange(0);
             resistEnergy.setSpellTargets("1 creature");
             resistEnergy.setSpellDuration("10 minutes");
+
+            Spell retrocognition = new Spell("Retrocognition", 7, SpellType.SPELL, ActionType.ACTIVITY, Set.of(concentrateTrait, manipulateTrait), "Opening your mind to mental echoes, you gain impressions from past events that occurred in your current location.");
+            retrocognition.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            retrocognition.setSpellCastAmount(1);
+            retrocognition.setSpellCastUnits("minute");
+            retrocognition.setSpellDuration("sustained");
+
+            Spell revealingLight = new Spell("Revealing Light", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, lightTrait, manipulateTrait), "A wave of magical light washes over the area.");
+            revealingLight.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
+            revealingLight.setSpellRange(120);
+            revealingLight.setSpellArea(10);
+            revealingLight.setSpellAreaType("burst");
+            revealingLight.setSpellDefense("Reflex");
+            revealingLight.setSpellDuration("varies");
 
             Spell runeOfObservation = new Spell("Rune of Observation", 4, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(concentrateTrait, focusTrait, wizardTrait), "You inscribe an invisible eye-shaped rune in the air, creating a sensor as clairvoyance.");
             runeOfObservation.setSpellDuration("1 hour");
@@ -746,6 +813,13 @@ public class DataSeeder {
             runicWeapon.setSpellRange(0);
             runicWeapon.setSpellTargets("1 weapon that is unattended or wielded by a willing creature");
             runicWeapon.setSpellDuration("1 minute");
+
+            Spell safePassage = new Spell("Safe Passage", 3, SpellType.SPELL, ActionType.THREE_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "You make passage through the area safe for a brief amount of time.");
+            safePassage.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.PRIMAL));
+            safePassage.setSpellRange(0);
+            safePassage.setSpellArea(10);
+            safePassage.setSpellAreaType("10-foot-wide, 10-foot-tall 60-foot-long section of terrain");
+            safePassage.setSpellDuration("sustained up to 1 minute");
 
             Spell sending = new Spell("Sending", 5, SpellType.SPELL, ActionType.THREE_ACTIONS, Set.of(concentrateTrait, manipulateTrait, mentalTrait), "You send the creature a mental message of 25 words or fewer, and it can respond immediately with its own message of 25 words or fewer.");
             sending.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT));
@@ -803,6 +877,11 @@ public class DataSeeder {
             summonAnimal.setSpellRange(30);
             summonAnimal.setSpellDuration("sustained up to 1 minute");
 
+            Spell summonConstruct = new Spell("Summon Construct", 1, SpellType.SPELL, ActionType.THREE_ACTIONS, Set.of(concentrateTrait, manipulateTrait, summonTrait), "You summon a creature that has the construct trait and whose level is –1 to fight for you.");
+            summonConstruct.setSpellTraditions(List.of(SpellTraditions.ARCANE));
+            summonConstruct.setSpellRange(30);
+            summonConstruct.setSpellDuration("sustained up to 1 minute");
+
             Spell sureStrike = new Spell("Sure Strike", 1, SpellType.SPELL, ActionType.SINGLE_ACTION, Set.of(concentrateTrait, fortuneTrait), "The next time you make an attack roll before the end of your turn, roll it twice and use the better result. The attack ignores circumstance penalties to the attack roll and any flat check required due to the target being concealed or hidden. You are then temporarily immune to sure strike for 10 minutes.");
             sureStrike.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
             sureStrike.setSpellDuration("until the end of your turn");
@@ -849,6 +928,12 @@ public class DataSeeder {
             umbralJourney.setSpellTargets("you and up to 10 willing creatures touched");
             umbralJourney.setSpellDuration("8 hours");
 
+            Spell unfetteredMovement = new Spell("Unfettered Movement", 4, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "You repel hindrances that would affect a creature.");
+            unfetteredMovement.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.PRIMAL));
+            unfetteredMovement.setSpellRange(0);
+            unfetteredMovement.setSpellTargets("1 creature touched");
+            unfetteredMovement.setSpellDuration("10 minutes");
+
             Spell unrelentingObservation = new Spell("Unrelenting Observation", 8, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, scryingTrait), "This spell grants perfect sight based on scrying, allowing several willing targets to track the exact movements or position of one creature or object. Choose one target creature or object in the area to be tracked. It becomes the sensor for the spell. Up to five willing creatures of your choice in the area can see a ghostly image of this creature or object when it's out of their sight. They can perceive the creature or object perfectly, allowing them to ignore the concealed or invisible condition, though physical barriers still provide cover.\n" +
                     "\n" +
                     "The tracking creatures can see the tracked creature or object through all barriers other than lead or running water, which block their vision. Distance doesn't matter, though the creature or object might move so far away it becomes too small to perceive. The tracking creatures don't see any of the environment around the target, though they do see any gear a creature is wearing or holding, and they can tell if it removes objects from its person.\n" +
@@ -885,6 +970,10 @@ public class DataSeeder {
             wallOfForce.setSpellRange(30);
             wallOfForce.setSpellDuration("1 minute");
 
+            Spell wallOfStone = new Spell("Wall of Stone", 5, SpellType.SPELL, ActionType.THREE_ACTIONS, Set.of(concentrateTrait, earthTrait, manipulateTrait), "You shape a wall of solid stone.");
+            wallOfStone.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
+            wallOfStone.setSpellRange(120);
+
             Spell wallOfThorns = new Spell("Wall of Thorns", 3, SpellType.SPELL, ActionType.THREE_ACTIONS, Set.of(concentrateTrait, manipulateTrait, plantTrait, woodTrait), "You grow a wall of thorny brambles from the ground.");
             wallOfThorns.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
             wallOfThorns.setSpellRange(60);
@@ -896,6 +985,12 @@ public class DataSeeder {
             warpMind.setSpellTargets("1 creature");
             warpMind.setSpellDefense("Will");
 
+            Spell waterWalk = new Spell("Water Walk", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, waterTrait), "The target can walk on the surface of water and other liquids without falling through. It can go underwater if it wishes, but in that case it must Swim normally. This spell doesn't grant the ability to breathe underwater.");
+            waterWalk.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.PRIMAL));
+            waterWalk.setSpellRange(0);
+            waterWalk.setSpellTargets("1 creature");
+            waterWalk.setSpellDuration("10 minutes");
+
             Spell weaponStorm = new Spell("Weapon Storm", 4, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "You swing a weapon you're holding, and the weapon magically multiplies into duplicates that swipe at all creatures in either a cone or an emanation.");
             weaponStorm.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
             weaponStorm.setSpellArea(30);
@@ -904,13 +999,15 @@ public class DataSeeder {
 
             spellRepo.saveAll(List.of(
                     acidGrip, airBubble, allegro, aqueousOrb, arcticRift, bane, blazingBolt, blessedBoundary,
-                    bloodVendetta, bloodWard, cataclysm, chainLightning, chillingDarkness, command, contingency,
-                    cozyCabin, curseOfDeath, desiccate, disguiseMagic, dispelMagic, dispellingGlobe, divineDecree,
-                    energyAbsorption, energyAegis, fallingStars, forceBolt, harm, heal, holyLight, howlingBlizzard,
-                    illusoryCreature, impalingSpike, liminalDoorway, message, mist, mysticArmor, phantasmalMinionSpell,
-                    planarSeal, protectiveWards, repulsion, resistEnergy, runeOfObservation, runicBody, runicWeapon,
-                    sending, shieldSpell, sigil, spellwrack, telekineticProjectile, translate, truespeech, trueTarget,
-                    unrelentingObservation, veilOfPrivacy));
+                    bloodVendetta, bloodWard, cataclysm, chainLightning, chillingDarkness, command, communityRestoration,
+                    contingency, cozyCabin, curseOfDeath, desiccate, disguiseMagic, dispelMagic, dispellingGlobe,
+                    divineDecree, earthquake, earthworks, energyAbsorption, energyAegis, fallingStars, forceBolt,
+                    foresight, harm, heal, holyLight, howlingBlizzard, hydraulicPush, illusoryCreature, impalingSpike,
+                    liminalDoorway, message, mist, mysticArmor, phantasmalMinionSpell, pinpoint, planarSeal,
+                    prestidigitation, protectiveWards, pummelingRubble, readAura, repulsion, resistEnergy,
+                    retrocognition, revealingLight, runeOfObservation, runicBody, runicWeapon, safePassage, sending,
+                    shieldSpell, sigil, spellwrack, summonConstruct, telekineticProjectile, translate, truespeech,
+                    trueTarget, unfetteredMovement, unrelentingObservation, veilOfPrivacy, wallOfStone, waterWalk));
 
             Weapon crossbow = new Weapon("Crossbow", WeaponCategory.SIMPLE, WeaponType.RANGED, WeaponGroup.CROSSBOW, 1, 8, DamageType.PIERCING);
             crossbow.setRangeFeet(120);
@@ -3879,19 +3976,53 @@ public class DataSeeder {
                     battleMagicAdvancedSchoolSpell));
 
             ClassFeatureChoice schoolOfCivicWizardry = new ClassFeatureChoice(wizard, "Arcane Schools", "School of Civic Wizardry");
+            FeatureGrantedSpells civicWizardryCantrip1 = new FeatureGrantedSpells(schoolOfCivicWizardry, prestidigitation);
+            civicWizardryCantrip1.setCharacterLevelGranted(1);
+            FeatureGrantedSpells civicWizardryCantrip2 = new FeatureGrantedSpells(schoolOfCivicWizardry, readAura);
+            civicWizardryCantrip2.setCharacterLevelGranted(1);
+            FeatureGrantedSpells civicWizardrySpell01 = new FeatureGrantedSpells(schoolOfCivicWizardry, hydraulicPush);
+            civicWizardrySpell01.setCharacterLevelGranted(1);
+            FeatureGrantedSpells civicWizardrySpell02 = new FeatureGrantedSpells(schoolOfCivicWizardry, pummelingRubble);
+            civicWizardrySpell02.setCharacterLevelGranted(1);
+            FeatureGrantedSpells civicWizardrySpell03 = new FeatureGrantedSpells(schoolOfCivicWizardry, summonConstruct);
+            civicWizardrySpell03.setCharacterLevelGranted(1);
+            FeatureGrantedSpells civicWizardrySpell04 = new FeatureGrantedSpells(schoolOfCivicWizardry, revealingLight);
+            civicWizardrySpell04.setCharacterLevelGranted(3);
+            FeatureGrantedSpells civicWizardrySpell05 = new FeatureGrantedSpells(schoolOfCivicWizardry, waterWalk);
+            civicWizardrySpell05.setCharacterLevelGranted(3);
             FeatureGrantedSpells civicWizardrySpell06 = new FeatureGrantedSpells(schoolOfCivicWizardry, cozyCabin);
             civicWizardrySpell06.setCharacterLevelGranted(5);
+            FeatureGrantedSpells civicWizardrySpell07 = new FeatureGrantedSpells(schoolOfCivicWizardry, safePassage);
+            civicWizardrySpell07.setCharacterLevelGranted(5);
             FeatureGrantedSpells civicWizardrySpell08 = new FeatureGrantedSpells(schoolOfCivicWizardry, creation);
             civicWizardrySpell08.setCharacterLevelGranted(7);
+            FeatureGrantedSpells civicWizardrySpell09 = new FeatureGrantedSpells(schoolOfCivicWizardry, unfetteredMovement);
+            civicWizardrySpell09.setCharacterLevelGranted(7);
             FeatureGrantedSpells civicWizardrySpell10 = new FeatureGrantedSpells(schoolOfCivicWizardry, controlWater);
             civicWizardrySpell10.setCharacterLevelGranted(9);
+            FeatureGrantedSpells civicWizardrySpell11 = new FeatureGrantedSpells(schoolOfCivicWizardry, wallOfStone);
+            civicWizardrySpell11.setCharacterLevelGranted(9);
             FeatureGrantedSpells civicWizardrySpell12 = new FeatureGrantedSpells(schoolOfCivicWizardry, disintegrate);
             civicWizardrySpell12.setCharacterLevelGranted(11);
             FeatureGrantedSpells civicWizardrySpell13 = new FeatureGrantedSpells(schoolOfCivicWizardry, wallOfForce);
             civicWizardrySpell13.setCharacterLevelGranted(11);
             FeatureGrantedSpells civicWizardrySpell14 = new FeatureGrantedSpells(schoolOfCivicWizardry, planarPalace);
             civicWizardrySpell14.setCharacterLevelGranted(13);
-            schoolOfCivicWizardry.setGrantedSpells(List.of(civicWizardrySpell06, civicWizardrySpell08, civicWizardrySpell10, civicWizardrySpell12, civicWizardrySpell13, civicWizardrySpell14));
+            FeatureGrantedSpells civicWizardrySpell15 = new FeatureGrantedSpells(schoolOfCivicWizardry, retrocognition);
+            civicWizardrySpell15.setCharacterLevelGranted(13);
+            FeatureGrantedSpells civicWizardrySpell16 = new FeatureGrantedSpells(schoolOfCivicWizardry, earthquake);
+            civicWizardrySpell16.setCharacterLevelGranted(15);
+            FeatureGrantedSpells civicWizardrySpell17 = new FeatureGrantedSpells(schoolOfCivicWizardry, pinpoint);
+            civicWizardrySpell17.setCharacterLevelGranted(15);
+            FeatureGrantedSpells civicWizardrySpell18 = new FeatureGrantedSpells(schoolOfCivicWizardry, foresight);
+            civicWizardrySpell18.setCharacterLevelGranted(17);
+            FeatureGrantedSpells civicWizardryInitialSchoolSpell = new FeatureGrantedSpells(schoolOfCivicWizardry, earthworks);
+            civicWizardryInitialSchoolSpell.setCharacterLevelGranted(1);
+            FeatureGrantedSpells civicWizardryAdvancedSchoolSpell = new FeatureGrantedSpells(schoolOfCivicWizardry, communityRestoration);
+            schoolOfCivicWizardry.setGrantedSpells(List.of(
+                    civicWizardryCantrip1, civicWizardryCantrip2, civicWizardrySpell01, civicWizardrySpell02, civicWizardrySpell03, civicWizardrySpell04, civicWizardrySpell05, civicWizardrySpell06, civicWizardrySpell07, civicWizardrySpell08,
+                    civicWizardrySpell09, civicWizardrySpell10, civicWizardrySpell11, civicWizardrySpell12, civicWizardrySpell13, civicWizardrySpell14, civicWizardrySpell15, civicWizardrySpell16, civicWizardrySpell17, civicWizardrySpell18,
+                    civicWizardryInitialSchoolSpell, civicWizardryAdvancedSchoolSpell));
 
             ClassFeatureChoice schoolOfMentalism = new ClassFeatureChoice(wizard, "Arcane Schools", "School of Mentalism");
             FeatureGrantedSpells mentalismSpell01 = new FeatureGrantedSpells(schoolOfMentalism, dizzyingColors);
