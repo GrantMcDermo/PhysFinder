@@ -334,6 +334,12 @@ public class DataSeeder {
             charm.setSpellDefense("Will");
             charm.setSpellDuration("1 hour");
 
+            Spell charmingPush = new Spell("Charming Push", 1, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(concentrateTrait, focusTrait, incapactitationTrait, mentalTrait, wizardTrait), "You push at the target's mind to deflect their ire.");
+            charmingPush.setSpellRange(30);
+            charmingPush.setSpellTargets("1 creature");
+            charmingPush.setSpellDefense("Will");
+            charmingPush.setSpellDuration("until the start of your next turn");
+
             Spell chillingDarkness = new Spell("Chilling Darkness", 3, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(attackTrait, coldTrait, concentrateTrait, darknessTrait, manipulateTrait, unholyTrait), "You shoot an utterly cold ray of darkness tinged with unholy energy.");
             chillingDarkness.setSpellTraditions(List.of(SpellTraditions.DIVINE));
             chillingDarkness.setSpellRange(120);
@@ -391,6 +397,13 @@ public class DataSeeder {
             curseOfDeath.setSpellDefense("Fortitude");
             curseOfDeath.setSpellDuration("sustained up to 1 minute");
 
+            Spell daze = new Spell("Daze", 1, SpellType.CANTRIP, ActionType.TWO_ACTIONS, Set.of(cantripTrait, concentrateTrait, manipulateTrait, mentalTrait, nonlethalTrait), "You push into the target's mind and daze it with a mental jolt.");
+            daze.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT));
+            daze.setSpellRange(60);
+            daze.setSpellTargets("1 creature");
+            daze.setSpellDefense("Will");
+            daze.setSpellDuration("1 round");
+
             Spell desiccate = new Spell("Desiccate", 8, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, voidTrait), "You pull the moisture from the targets' bodies, dealing 10d10 void damage. Creatures made of water (such as water elementals) and plant creatures use the outcome for one degree of success worse than the result of their saving throw. Creatures whose bodies contain no significant moisture (such as earth elementals) are immune to desiccate.");
             desiccate.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
             desiccate.setSpellRange(500);
@@ -402,6 +415,12 @@ public class DataSeeder {
             detonateMagic.setSpellRange(120);
             detonateMagic.setSpellTargets("1 magic item or spell effect");
             detonateMagic.setSpellDefense("basic Reflex");
+
+            Spell disappearance = new Spell("Disappearance", 8, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(illusionTrait, manipulateTrait, subtleTrait), "You shroud a creature from others' senses.");
+            disappearance.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            disappearance.setSpellRange(0);
+            disappearance.setSpellTargets("1 target");
+            disappearance.setSpellDuration("10 minutes");
 
             Spell disguiseMagic = new Spell("Disguise Magic", 1, SpellType.SPELL, ActionType.ACTIVITY, Set.of(concentrateTrait, illusionTrait, manipulateTrait), "You alter how an item's or spell's magical aura appears to effects like detect magic.You alter how an item's or spell's magical aura appears to effects like detect magic.");
             disguiseMagic.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
@@ -449,6 +468,13 @@ public class DataSeeder {
             dreamingPotential.setSpellRange(0);
             dreamingPotential.setSpellTargets("1 willing sleeping creature");
             dreamingPotential.setSpellDuration("8 hours");
+
+            Spell dreamMessage = new Spell("Dream Message", 3, SpellType.SPELL, ActionType.ACTIVITY, Set.of(concentrateTrait, manipulateTrait, mentalTrait), "You send a message to your target's dream.");
+            dreamMessage.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT));
+            dreamMessage.setSpellCastAmount(10);
+            dreamMessage.setSpellCastUnits("minute");
+            dreamMessage.setSpellTargets("1 creature you know by name and have met in person");
+            dreamMessage.setSpellDuration("until your next daily preparations");
 
             Spell earthbind = new Spell("Earthbind", 3, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, earthTrait, manipulateTrait), "Using the weight of earth, you hamper a target's flight, with effects based on its Fortitude save.");
             earthbind.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
@@ -510,6 +536,11 @@ public class DataSeeder {
             Spell falseVitality = new Spell("False Vitality", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "You augment your flesh with the energies typically used to manipulate the undead.");
             falseVitality.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
             falseVitality.setSpellDuration("8 hours");
+
+            Spell figment = new Spell("Figment", 1, SpellType.CANTRIP, ActionType.TWO_ACTIONS, Set.of(cantripTrait, concentrateTrait, illusionTrait, manipulateTrait, subtleTrait), "You create a simple illusory sound or vision.");
+            figment.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            figment.setSpellRange(30);
+            figment.setSpellDuration("sustained");
 
             Spell fireShield = new Spell("Fire Shield", 4, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, fireTrait, manipulateTrait), "You create a hovering shield made of fire.");
             fireShield.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
@@ -624,6 +655,19 @@ public class DataSeeder {
             illusoryObject.setSpellAreaType("burst");
             illusoryObject.setSpellDuration("10 minutes");
 
+            Spell illusoryScene = new Spell("Illusory Scene", 5, SpellType.SPELL, ActionType.ACTIVITY, Set.of(auditoryTrait, concentrateTrait, illusionTrait, manipulateTrait, olfactoryTrait, visualTrait), "You craft an imaginary scene that includes up to 10 discrete creatures or objects of various sizes, all of which must be within the spell's area. These elements generate appropriate sounds and smells, and they feel right to the touch. Elements of an illusory scene are incapable of speech. Unlike with the illusory creature spell, creatures in your scene lack combat abilities and statistics. Your scene doesn't include changes to the environment around it, though you can place your scene within the illusory environment of a mirage spell.\n" +
+                    "\n" +
+                    "When you create the scene, you can choose to have it be static or follow a program. Though a static scene is stationary, it includes basic natural movement. For example, wind blowing on an illusory piece of paper would rustle it. A program can be up to 1 minute long and repeats when finished. For instance, you could create a scene of two orcs fighting each other, and the fight would go the same way for each repetition. If you create a loop, the two fighters end up in the same place at the start of the scene and at the end of it, but you can smooth the program so it's hard to tell when the loop ends and begins. Anyone observing the scene for more than a few minutes almost always notices it looping. You're unable to alter the program after you create the illusion.\n" +
+                    "\n" +
+                    "Any creature that touches any part of the image or uses the Seek action to examine it can attempt to disbelieve your illusion. If they interact with a portion of the illusion, they disbelieve only that portion. They disbelieve the entire scene only on a critical success.");
+            illusoryScene.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            illusoryScene.setSpellCastAmount(10);
+            illusoryScene.setSpellCastUnits("minute");
+            illusoryScene.setSpellRange(500);
+            illusoryScene.setSpellRange(30);
+            illusoryScene.setSpellAreaType("burst");
+            illusoryScene.setSpellDuration("1 hour");
+
             Spell impalingSpike = new Spell("Impaling Spike", 5, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, metalTrait), "You conjure a spike that thrusts up from the earth beneath a target creature, potentially impaling it.");
             impalingSpike.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
             impalingSpike.setSpellRange(30);
@@ -636,6 +680,9 @@ public class DataSeeder {
             invisibility.setSpellRange(0);
             invisibility.setSpellTargets("1 creature");
             invisibility.setSpellDuration("10 minutes");
+
+            Spell invisibilityCloak = new Spell("Invisibility Cloak", 4, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(focusTrait, illusionTrait, manipulateTrait, wizardTrait), "You become invisible, with the same restrictions as the 2nd-rank invisibility spell.");
+            invisibilityCloak.setSpellDuration("1 minute");
 
             Spell jump = new Spell("Jump", 1, SpellType.SPELL, ActionType.SINGLE_ACTION, Set.of(manipulateTrait, moveTrait), "Your legs surge with strength, ready to leap high and far.");
             jump.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
@@ -675,6 +722,13 @@ public class DataSeeder {
             mindlink.setSpellRange(0);
             mindlink.setSpellTargets("1 willing creature");
 
+            Spell mindReading = new Spell("Mind Reading", 3, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, detectionTrait, manipulateTrait, mentalTrait), "With a cursory mental touch, you attempt to read the target's mind.");
+            mindReading.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            mindReading.setSpellRange(30);
+            mindReading.setSpellTargets("1 creature");
+            mindReading.setSpellDefense("Will");
+            mindReading.setSpellDuration("1 round or sustained up to 1 minute");
+
             Spell mislead = new Spell("Mislead", 6, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, illusionTrait, manipulateTrait), "You turn yourself invisible and create an illusory duplicate of yourself.");
             mislead.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
             mislead.setSpellDuration("sustained up to 1 minute");
@@ -701,6 +755,13 @@ public class DataSeeder {
             naturesPathway.setSpellCastAmount(1);
             naturesPathway.setSpellCastUnits("minute");
 
+            Spell neverMind = new Spell("Never Mind", 6, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, curseTrait, incapactitationTrait, manipulateTrait, mentalTrait), "You drastically reduce the target's mental faculties.");
+            neverMind.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            neverMind.setSpellRange(30);
+            neverMind.setSpellTargets("1 creature");
+            neverMind.setSpellDefense("Will");
+            neverMind.setSpellDuration("varies");
+
             Spell nightmare = new Spell("Nightmare", 4, SpellType.SPELL, ActionType.ACTIVITY, Set.of(concentrateTrait, illusionTrait, manipulateTrait, mentalTrait), "You send disturbing nightmares to your target.");
             nightmare.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
             nightmare.setSpellCastAmount(10);
@@ -709,6 +770,19 @@ public class DataSeeder {
             nightmare.setSpellTargets("1 creature you know by name");
             nightmare.setSpellDefense("Will");
             nightmare.setSpellDuration("1 day");
+
+            Spell phantasmagoria = new Spell("Phantasmagoria", 9, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, deathTrait, illusionTrait, manipulateTrait, mentalTrait), "You fill the targets' minds with endless images, like countless dreams and lives colliding with each other.");
+            phantasmagoria.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            phantasmagoria.setSpellRange(120);
+            phantasmagoria.setSpellTargets("any number of creatures");
+            phantasmagoria.setSpellDefense("Will");
+
+            Spell phantasmalCalamity = new Spell("Phantasmal Calamity", 6, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, illusionTrait, manipulateTrait, mentalTrait), "A vision of apocalyptic destruction fills the mind of each creature in the area.");
+            phantasmalCalamity.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            phantasmalCalamity.setSpellRange(500);
+            phantasmalCalamity.setSpellArea(30);
+            phantasmalCalamity.setSpellAreaType("burst");
+            phantasmalCalamity.setSpellDefense("Will");
 
             Spell phantasmalMinionSpell = new Spell("Phantasmal Minion", 1, SpellType.SPELL, ActionType.THREE_ACTIONS, Set.of(concentrateTrait, manipulateTrait, summonTrait), "You summon a phantasmal minion.");
             phantasmalMinionSpell.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
@@ -747,6 +821,11 @@ public class DataSeeder {
             prestidigitation.setSpellRange(10);
             prestidigitation.setSpellTargets("1 object (cook, lift, or tidy only)");
             prestidigitation.setSpellDuration("sustained");
+
+            Spell projectImage = new Spell("Project Image", 7, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, illusionTrait, manipulateTrait, mentalTrait), "You project an illusory image of yourself.");
+            projectImage.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            projectImage.setSpellRange(30);
+            projectImage.setSpellDuration("sustained up to 1 minute");
 
             Spell protectiveWards = new Spell("Protective Wards", 1, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(auraTrait, focusTrait, manipulateTrait, wizardTrait), "You expand a ring of glyphs that shields your allies.");
             protectiveWards.setSpellArea(5);
@@ -928,6 +1007,13 @@ public class DataSeeder {
             umbralJourney.setSpellTargets("you and up to 10 willing creatures touched");
             umbralJourney.setSpellDuration("8 hours");
 
+            Spell uncontrollableDance = new Spell("Uncontrollable Dance", 8, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, incapactitationTrait, manipulateTrait, mentalTrait), "The target is overcome with an all-consuming urge to dance.");
+            uncontrollableDance.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            uncontrollableDance.setSpellRange(0);
+            uncontrollableDance.setSpellTargets("1 creature");
+            uncontrollableDance.setSpellDefense("Will");
+            uncontrollableDance.setSpellDuration("varies");
+
             Spell unfetteredMovement = new Spell("Unfettered Movement", 4, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "You repel hindrances that would affect a creature.");
             unfetteredMovement.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.PRIMAL));
             unfetteredMovement.setSpellRange(0);
@@ -999,15 +1085,17 @@ public class DataSeeder {
 
             spellRepo.saveAll(List.of(
                     acidGrip, airBubble, allegro, aqueousOrb, arcticRift, bane, blazingBolt, blessedBoundary,
-                    bloodVendetta, bloodWard, cataclysm, chainLightning, chillingDarkness, command, communityRestoration,
-                    contingency, cozyCabin, curseOfDeath, desiccate, disguiseMagic, dispelMagic, dispellingGlobe,
-                    divineDecree, earthquake, earthworks, energyAbsorption, energyAegis, fallingStars, forceBolt,
-                    foresight, harm, heal, holyLight, howlingBlizzard, hydraulicPush, illusoryCreature, impalingSpike,
-                    liminalDoorway, message, mist, mysticArmor, phantasmalMinionSpell, pinpoint, planarSeal,
-                    prestidigitation, protectiveWards, pummelingRubble, readAura, repulsion, resistEnergy,
-                    retrocognition, revealingLight, runeOfObservation, runicBody, runicWeapon, safePassage, sending,
-                    shieldSpell, sigil, spellwrack, summonConstruct, telekineticProjectile, translate, truespeech,
-                    trueTarget, unfetteredMovement, unrelentingObservation, veilOfPrivacy, wallOfStone, waterWalk));
+                    bloodVendetta, bloodWard, cataclysm, chainLightning, charmingPush, chillingDarkness, command,
+                    communityRestoration, contingency, cozyCabin, curseOfDeath, daze, desiccate, disappearance,
+                    disguiseMagic, dispelMagic, dispellingGlobe, divineDecree, dreamMessage, earthquake, earthworks,
+                    energyAbsorption, energyAegis, fallingStars, figment, forceBolt, foresight, harm, heal, holyLight,
+                    howlingBlizzard, hydraulicPush, illusoryCreature, illusoryScene, impalingSpike, invisibilityCloak,
+                    liminalDoorway, message, mindReading, mist, mysticArmor, neverMind, phantasmagoria,
+                    phantasmalCalamity, phantasmalMinionSpell, pinpoint, planarSeal, prestidigitation, projectImage,
+                    protectiveWards, pummelingRubble, readAura, repulsion, resistEnergy, retrocognition, revealingLight,
+                    runeOfObservation, runicBody, runicWeapon, safePassage, sending, shieldSpell, sigil, spellwrack,
+                    summonConstruct, telekineticProjectile, translate, truespeech, trueTarget, uncontrollableDance,
+                    unfetteredMovement, unrelentingObservation, veilOfPrivacy, wallOfStone, waterWalk));
 
             Weapon crossbow = new Weapon("Crossbow", WeaponCategory.SIMPLE, WeaponType.RANGED, WeaponGroup.CROSSBOW, 1, 8, DamageType.PIERCING);
             crossbow.setRangeFeet(120);
@@ -4025,6 +4113,10 @@ public class DataSeeder {
                     civicWizardryInitialSchoolSpell, civicWizardryAdvancedSchoolSpell));
 
             ClassFeatureChoice schoolOfMentalism = new ClassFeatureChoice(wizard, "Arcane Schools", "School of Mentalism");
+            FeatureGrantedSpells mentalismCantrip1 = new FeatureGrantedSpells(schoolOfMentalism, daze);
+            mentalismCantrip1.setCharacterLevelGranted(1);
+            FeatureGrantedSpells mentalismCantrip2 = new FeatureGrantedSpells(schoolOfMentalism, figment);
+            mentalismCantrip2.setCharacterLevelGranted(1);
             FeatureGrantedSpells mentalismSpell01 = new FeatureGrantedSpells(schoolOfMentalism, dizzyingColors);
             mentalismSpell01.setCharacterLevelGranted(1);
             FeatureGrantedSpells mentalismSpell02 = new FeatureGrantedSpells(schoolOfMentalism, sleep);
@@ -4035,15 +4127,38 @@ public class DataSeeder {
             mentalismSpell04.setCharacterLevelGranted(3);
             FeatureGrantedSpells mentalismSpell05 = new FeatureGrantedSpells(schoolOfMentalism, stupefy);
             mentalismSpell05.setCharacterLevelGranted(3);
+            FeatureGrantedSpells mentalismSpell06 = new FeatureGrantedSpells(schoolOfMentalism, dreamMessage);
+            mentalismSpell06.setCharacterLevelGranted(5);
+            FeatureGrantedSpells mentalismSpell07 = new FeatureGrantedSpells(schoolOfMentalism, mindReading);
+            mentalismSpell07.setCharacterLevelGranted(5);
             FeatureGrantedSpells mentalismSpell08 = new FeatureGrantedSpells(schoolOfMentalism, nightmare);
             mentalismSpell08.setCharacterLevelGranted(7);
             FeatureGrantedSpells mentalismSpell09 = new FeatureGrantedSpells(schoolOfMentalism, visionOfDeath);
             mentalismSpell09.setCharacterLevelGranted(7);
             FeatureGrantedSpells mentalismSpell10 = new FeatureGrantedSpells(schoolOfMentalism, hallucination);
             mentalismSpell10.setCharacterLevelGranted(9);
+            FeatureGrantedSpells mentalismSpell11 = new FeatureGrantedSpells(schoolOfMentalism, illusoryScene);
+            mentalismSpell11.setCharacterLevelGranted(9);
+            FeatureGrantedSpells mentalismSpell12 = new FeatureGrantedSpells(schoolOfMentalism, neverMind);
+            mentalismSpell12.setCharacterLevelGranted(11);
+            FeatureGrantedSpells mentalismSpell13 = new FeatureGrantedSpells(schoolOfMentalism, phantasmalCalamity);
+            mentalismSpell13.setCharacterLevelGranted(11);
+            FeatureGrantedSpells mentalismSpell14 = new FeatureGrantedSpells(schoolOfMentalism, projectImage);
+            mentalismSpell14.setCharacterLevelGranted(13);
             FeatureGrantedSpells mentalismSpell15 = new FeatureGrantedSpells(schoolOfMentalism, warpMind);
             mentalismSpell15.setCharacterLevelGranted(13);
-            schoolOfMentalism.setGrantedSpells(List.of(mentalismSpell01, mentalismSpell02, mentalismSpell03, mentalismSpell04, mentalismSpell05, mentalismSpell08, mentalismSpell09, mentalismSpell10, mentalismSpell15));
+            FeatureGrantedSpells mentalismSpell16 = new FeatureGrantedSpells(schoolOfMentalism, disappearance);
+            mentalismSpell16.setCharacterLevelGranted(15);
+            FeatureGrantedSpells mentalismSpell17 = new FeatureGrantedSpells(schoolOfMentalism, uncontrollableDance);
+            mentalismSpell17.setCharacterLevelGranted(15);
+            FeatureGrantedSpells mentalismSpell18 = new FeatureGrantedSpells(schoolOfMentalism, phantasmagoria);
+            mentalismSpell18.setCharacterLevelGranted(17);
+            FeatureGrantedSpells mentalismInitialSchoolSpell = new FeatureGrantedSpells(schoolOfMentalism, charmingPush);
+            mentalismInitialSchoolSpell.setCharacterLevelGranted(1);
+            FeatureGrantedSpells mentalismAdvancedSchoolSpell = new FeatureGrantedSpells(schoolOfMentalism, invisibilityCloak);
+            schoolOfMentalism.setGrantedSpells(List.of(
+                    mentalismCantrip1, mentalismCantrip2, mentalismSpell01, mentalismSpell02, mentalismSpell03, mentalismSpell04, mentalismSpell05, mentalismSpell06, mentalismSpell07, mentalismSpell08, mentalismSpell09, mentalismSpell10, mentalismSpell11,
+                    mentalismSpell12, mentalismSpell13, mentalismSpell14, mentalismSpell15, mentalismSpell16, mentalismSpell17, mentalismSpell18, mentalismInitialSchoolSpell, mentalismAdvancedSchoolSpell));
 
             ClassFeatureChoice schoolOfProteanForm = new ClassFeatureChoice(wizard, "Arcane Schools", "School of Protean Form");
             FeatureGrantedSpells proteanFormSpell01 = new FeatureGrantedSpells(schoolOfProteanForm, jump);
