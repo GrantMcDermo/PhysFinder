@@ -280,6 +280,18 @@ public class DataSeeder {
             bane.setSpellDefense("Will");
             bane.setSpellDuration("1 minute");
 
+            Spell banishment = new Spell("Banishment", 5, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, incapactitationTrait, manipulateTrait), "You send the target back to its home plane.");
+            banishment.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
+            banishment.setSpellRange(30);
+            banishment.setSpellTargets("1 creature that isn't on its home plane");
+            banishment.setSpellDefense("Will");
+
+            Spell bindUndead = new Spell("Bind Undead", 3, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "With a word of power, you seize control of the target.");
+            bindUndead.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT));
+            bindUndead.setSpellRange(30);
+            bindUndead.setSpellTargets("1 mindless undead creature with a level no greater than bind undead’s spell rank");
+            bindUndead.setSpellDuration("1 day");
+
             Spell blazingBolt = new Spell("Blazing Bolt", 2, SpellType.SPELL, ActionType.ONE_TO_THREE_ACTIONS, Set.of(attackTrait, concentrateTrait, fireTrait, manipulateTrait), "You fire a ray of heat and flame.");
             blazingBolt.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
             blazingBolt.setSpellRange(60);
@@ -404,6 +416,13 @@ public class DataSeeder {
             cursedMetamorphosis.setSpellDefense("Fortitude");
             cursedMetamorphosis.setSpellDuration("varies");
 
+            Spell darkness = new Spell("Darkness", 2, SpellType.SPELL, ActionType.THREE_ACTIONS, Set.of(concentrateTrait, darknessTrait, manipulateTrait), "You create a shroud of darkness that prevents light from penetrating or emanating within the area.");
+            darkness.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
+            darkness.setSpellRange(120);
+            darkness.setSpellArea(20);
+            darkness.setSpellAreaType("burst");
+            darkness.setSpellDuration("1 minute");
+
             Spell daze = new Spell("Daze", 1, SpellType.CANTRIP, ActionType.TWO_ACTIONS, Set.of(cantripTrait, concentrateTrait, manipulateTrait, mentalTrait, nonlethalTrait), "You push into the target's mind and daze it with a mental jolt.");
             daze.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT));
             daze.setSpellRange(60);
@@ -510,6 +529,15 @@ public class DataSeeder {
             earthworks.setSpellAreaType("burst or more");
             earthworks.setSpellDuration("1 minute");
 
+            Spell eclipseBurst = new Spell("Eclipse Burst", 7, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(coldTrait, concentrateTrait, darknessTrait, manipulateTrait, voidTrait), "A globe of freezing darkness explodes in the area, dealing 8d10 cold damage to creatures in the area, plus an additional 8d4 void damage to living creatures. Each creature in the area must attempt a Reflex save.\n" +
+                    "\n" +
+                    "If the globe overlaps with an area of magical light or affects a creature affected by magical light, eclipse burst attempts to counteract the light effect.");
+            eclipseBurst.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.PRIMAL));
+            eclipseBurst.setSpellRange(500);
+            eclipseBurst.setSpellArea(60);
+            eclipseBurst.setSpellAreaType("burst");
+            eclipseBurst.setSpellDefense("Reflex");
+
             Spell elementalForm = new Spell("Elemental Form", 5, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, polymorphTrait), "You call upon the power of the planes to transform into a Medium elemental battle form.");
             elementalForm.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
             elementalForm.setSpellDuration("1 minute");
@@ -606,6 +634,10 @@ public class DataSeeder {
             foresight.setSpellTargets("1 creature");
             foresight.setSpellDuration("1 hour");
 
+            Spell fortifySummoning = new Spell("Fortify Summoning", 1, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(concentrateTrait, focusTrait, wizardTrait), "As you call a creature to your side, your magic transforms its body, heightening its ferocity and fortifying its resilience.");
+            fortifySummoning.setSpellRange(30);
+            fortifySummoning.setSpellTargets("1 creature you summoned");
+
             Spell ghostlyWeapon = new Spell("Ghostly Weapon", 3, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "The target weapon becomes translucent and ghostly, and it can affect material and incorporeal creatures and objects.");
             ghostlyWeapon.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
             ghostlyWeapon.setSpellRange(0);
@@ -628,6 +660,12 @@ public class DataSeeder {
             gougingClaw.setSpellRange(0);
             gougingClaw.setSpellTargets("1 creature");
             gougingClaw.setSpellDefense("AC");
+
+            Spell grimTendrils = new Spell("Grim Tendrils", 1, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, voidTrait), "Tendrils of darkness curl out from your fingertips and race through the air.");
+            grimTendrils.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            grimTendrils.setSpellArea(30);
+            grimTendrils.setSpellAreaType("line");
+            grimTendrils.setSpellDefense("Fortitude");
 
             Spell gustOfWind = new Spell("Gust of Wind", 1, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(airTrait, concentrateTrait, manipulateTrait), "A violent wind issues forth from your palm, blowing from the point where you are when you Cast the Spell to the line's opposite end.");
             gustOfWind.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
@@ -715,6 +753,14 @@ public class DataSeeder {
             impalingSpike.setSpellDefense("Reflex");
             impalingSpike.setSpellDuration("1 minute");
 
+            Spell interplanarTeleport = new Spell("Interplanar Teleport", 7, SpellType.SPELL, ActionType.ACTIVITY, Set.of(concentrateTrait, manipulateTrait, teleportationTrait), "You and your allies traverse the barriers between planes of existence.");
+            interplanarTeleport.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
+            interplanarTeleport.setSpellCastAmount(10);
+            interplanarTeleport.setSpellCastUnits("minute");
+            interplanarTeleport.setSpellRequirement("You have a planar key for the destination plane, used as a locus");
+            interplanarTeleport.setSpellRange(5);
+            interplanarTeleport.setSpellTargets("up to 8 willing creatures");
+
             Spell invisibility = new Spell("Invisibility", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(illusionTrait, manipulateTrait, subtleTrait), "Illusions bend light around the target, rendering it invisible.");
             invisibility.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
             invisibility.setSpellRange(0);
@@ -723,6 +769,14 @@ public class DataSeeder {
 
             Spell invisibilityCloak = new Spell("Invisibility Cloak", 4, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(focusTrait, illusionTrait, manipulateTrait, wizardTrait), "You become invisible, with the same restrictions as the 2nd-rank invisibility spell.");
             invisibilityCloak.setSpellDuration("1 minute");
+
+            Spell invokeSpirits = new Spell("Invoke Spirits", 5, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, emotionTrait, fearTrait, manipulateTrait, mentalTrait, voidTrait), "Ragged apparitions of the dead rise to stalk the living.");
+            invokeSpirits.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT));
+            invokeSpirits.setSpellRange(120);
+            invokeSpirits.setSpellArea(10);
+            invokeSpirits.setSpellAreaType("burst");
+            invokeSpirits.setSpellDefense("Will");
+            invokeSpirits.setSpellDuration("sustained up to 1 minute");
 
             Spell jump = new Spell("Jump", 1, SpellType.SPELL, ActionType.SINGLE_ACTION, Set.of(manipulateTrait, moveTrait), "Your legs surge with strength, ready to leap high and far.");
             jump.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
@@ -751,6 +805,12 @@ public class DataSeeder {
             maskOfTerror.setSpellRange(30);
             maskOfTerror.setSpellTargets("1 creature");
             maskOfTerror.setSpellDuration("1 minute");
+
+            Spell massacre = new Spell("Massacre", 9, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, deathTrait, manipulateTrait, voidTrait), "You unleash a wave of death to snuff out the life force of those in its path.");
+            massacre.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.PRIMAL));
+            massacre.setSpellArea(60);
+            massacre.setSpellAreaType("line");
+            massacre.setSpellDefense("Fortitude");
 
             Spell message = new Spell("Message", 1, SpellType.CANTRIP, ActionType.SINGLE_ACTION, Set.of(auditoryTrait, cantripTrait, concentrateTrait, illusionTrait, linguisticTrait, mentalTrait, subtleTrait), "You mouth words quietly, but instead of coming out of your mouth, they're transferred directly to the ears of the target.");
             message.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT));
@@ -971,6 +1031,10 @@ public class DataSeeder {
             scrambleBody.setSpellTargets("1 living creature");
             scrambleBody.setSpellDefense("Fortitude");
 
+            Spell seeTheUnseen = new Spell("See the Unseen", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, revelationTrait), "Your gaze pierces through illusions and finds invisible creatures and spirits.");
+            seeTheUnseen.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT));
+            seeTheUnseen.setSpellDuration("10 minutes");
+
             Spell sending = new Spell("Sending", 5, SpellType.SPELL, ActionType.THREE_ACTIONS, Set.of(concentrateTrait, manipulateTrait, mentalTrait), "You send the creature a mental message of 25 words or fewer, and it can respond immediately with its own message of 25 words or fewer.");
             sending.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT));
             sending.setSpellTargets("1 creature you know well");
@@ -1011,6 +1075,11 @@ public class DataSeeder {
             spiderSting.setSpellTargets("1 creature");
             spiderSting.setSpellDefense("Fortitude");
 
+            Spell spiralOfHorrors = new Spell("Spiral of Horrors", 4, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(auraTrait, concentrateTrait, emotionTrait, fearTrait, focusTrait, manipulateTrait, mentalTrait, wizardTrait), "Shades and spirits howl and whirl around you in a display that strikes fear into the hearts of all who witness it.");
+            spiralOfHorrors.setSpellArea(5);
+            spiralOfHorrors.setSpellAreaType("emanation");
+            spiralOfHorrors.setSpellDuration("sustained up to 1 minute");
+
             Spell stupefy = new Spell("Stupefy", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, mentalTrait), "You dull the target's mind, depending on its Will save.");
             stupefy.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
             stupefy.setSpellRange(30);
@@ -1035,6 +1104,11 @@ public class DataSeeder {
             summonConstruct.setSpellRange(30);
             summonConstruct.setSpellDuration("sustained up to 1 minute");
 
+            Spell summonUndead = new Spell("Summon Undead", 1, SpellType.SPELL, ActionType.THREE_ACTIONS, Set.of(concentrateTrait, manipulateTrait, summonTrait), "You summon a creature that has the undead trait and whose level is –1 to fight for you.");
+            summonUndead.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT));
+            summonUndead.setSpellRange(30);
+            summonUndead.setSpellDuration("sustained up to 1 minute");
+
             Spell sureStrike = new Spell("Sure Strike", 1, SpellType.SPELL, ActionType.SINGLE_ACTION, Set.of(concentrateTrait, fortuneTrait), "The next time you make an attack roll before the end of your turn, roll it twice and use the better result. The attack ignores circumstance penalties to the attack roll and any flat check required due to the target being concealed or hidden. You are then temporarily immune to sure strike for 10 minutes.");
             sureStrike.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
             sureStrike.setSpellDuration("until the end of your turn");
@@ -1044,6 +1118,12 @@ public class DataSeeder {
             tangleVine.setSpellRange(30);
             tangleVine.setSpellTargets("1 creature");
             tangleVine.setSpellDefense("AC");
+
+            Spell telekineticHand = new Spell("Telekinetic Hand", 1, SpellType.CANTRIP, ActionType.TWO_ACTIONS, Set.of(cantripTrait, concentrateTrait, manipulateTrait), "You create a floating, magical hand, either invisible or ghostlike, that grasps the target object and levitates it slowly up to 20 feet in any direction. When you Sustain the spell, you can move the object an additional 20 feet. If the object is in the air when the spell ends, the object falls.");
+            telekineticHand.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            telekineticHand.setSpellRange(30);
+            telekineticHand.setSpellTargets("1 unattended object of Light bulk or less");
+            telekineticHand.setSpellDuration("sustained");
 
             Spell telekineticHaul = new Spell("Telekinetic Haul", 5, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "You move the target up to 20 feet, potentially suspending it in midair. When you Sustain the spell, you can do so again, or you can shift your telekinetic focus to a different eligible target within range, moving it instead.");
             telekineticHaul.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
@@ -1056,6 +1136,13 @@ public class DataSeeder {
             telekineticProjectile.setSpellRange(30);
             telekineticProjectile.setSpellTargets("1 creature");
             telekineticProjectile.setSpellDefense("AC");
+
+            Spell teleport = new Spell("Teleport", 6, SpellType.SPELL, ActionType.ACTIVITY, Set.of(concentrateTrait, manipulateTrait, teleportationTrait), "You and the targets are instantly transported to any location within range, as long as you can identify the location precisely both by its position relative to your starting position and by its appearance (or other identifying features). Incorrect knowledge of the location's appearance usually causes the spell to fail, but it could instead lead to teleporting to an unwanted location or some other unusual mishap determined by the GM. Teleport is not precise over great distances. The targets appear at a distance from the intended destination equal to roughly 1 percent of the total distance traveled, in a direction determined by the GM. For short journeys, this lack of precision is irrelevant, but for long distances this could be up to 1 mile.");
+            teleport.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            teleport.setSpellCastAmount(10);
+            teleport.setSpellCastUnits("minute");
+            teleport.setSpellRange(528000);
+            teleport.setSpellTargets("you and up to 4 targets touched, either willing creatures or objects roughly the size of a creature");
 
             Spell toxicCloud = new Spell("Toxic Cloud", 5, SpellType.SPELL, ActionType.THREE_ACTIONS, Set.of(concentrateTrait, deathTrait, manipulateTrait, poisonTrait), "You conjure a poisonous fog.");
             toxicCloud.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
@@ -1120,6 +1207,13 @@ public class DataSeeder {
             unrelentingObservation.setSpellTargets("1 creature of object tracked and up to 5 other willing creatures");
             unrelentingObservation.setSpellDuration("varies");
 
+            Spell vampiricExsanguination = new Spell("Vampiric Exsanguination", 6, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, deathTrait, manipulateTrait, voidTrait), "You draw in the blood and life force of other creatures through your outstretched arms.");
+            vampiricExsanguination.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT));
+            vampiricExsanguination.setSpellArea(30);
+            vampiricExsanguination.setSpellAreaType("cone");
+            vampiricExsanguination.setSpellDefense("basic Fortitude");
+
+
             Spell vampiricFeast = new Spell("Vampiric Feast", 3, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, deathTrait, manipulateTrait, voidTrait), "Your touch leeches the lifeblood out of a target to empower yourself.");
             vampiricFeast.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT));
             vampiricFeast.setSpellRange(0);
@@ -1145,6 +1239,12 @@ public class DataSeeder {
             visionOfDeath.setSpellRange(120);
             visionOfDeath.setSpellTargets("1 living creature");
             visionOfDeath.setSpellDefense("Will");
+
+            Spell voidWarp = new Spell("Void Warp", 1, SpellType.CANTRIP, ActionType.TWO_ACTIONS, Set.of(cantripTrait, concentrateTrait, manipulateTrait, voidTrait), "You call upon the Void to harm life force.");
+            voidWarp.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT));
+            voidWarp.setSpellRange(30);
+            voidWarp.setSpellTargets("1 living creature");
+            voidWarp.setSpellDefense("basic Fortitude");
 
             Spell wallOfFire = new Spell("Wall of Fire", 4, SpellType.SPELL, ActionType.THREE_ACTIONS, Set.of(concentrateTrait, fireTrait, manipulateTrait), "You raise a blazing wall that burns creatures passing through it.");
             wallOfFire.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
@@ -1184,21 +1284,23 @@ public class DataSeeder {
             weaponStorm.setSpellDefense("Reflex");
 
             spellRepo.saveAll(List.of(
-                    acidGrip, airBubble, allegro, aqueousOrb, arcticRift, bane, blazingBolt, blessedBoundary,
-                    bloodVendetta, bloodWard, cataclysm, chainLightning, charmingPush, chillingDarkness, command,
-                    communityRestoration, contingency, cozyCabin, curseOfDeath, cursedMetamorphosis, daze, desiccate,
-                    disappearance, disguiseMagic, dispelMagic, dispellingGlobe, divineDecree, dreamMessage, duplicateFoe,
-                    earthquake, earthworks, elementalForm, energyAbsorption, energyAegis, fallingStars, feetToFins,
-                    fieryBody, figment, forceBolt, foresight, gougingClaw, harm, heal, holyLight, howlingBlizzard,
-                    humanoidForm, hydraulicPush, illusoryCreature, illusoryScene, impalingSpike, invisibilityCloak,
-                    liminalDoorway, message, metamorphosis, mindReading, mist, monstrosityForm, mysticArmor, neverMind,
-                    pestForm, petrify, phantasmagoria, phantasmalCalamity, phantasmalMinionSpell, pinpoint, planarSeal,
-                    prestidigitation, projectImage, protectiveWards, pummelingRubble, readAura, repulsion, resistEnergy,
-                    retrocognition, revealingLight, runeOfObservation, runicBody, runicWeapon, safePassage, scrambleBody,
-                    sending, shieldSpell, shiftingForm, sigil, spellwrack, summonConstruct, tangleVine,
-                    telekineticProjectile, toxicCloud, translate, truespeech, trueTarget, uncontrollableDance,
-                    unfetteredMovement, unrelentingObservation, vampiricFeast, vaporForm, veilOfPrivacy, wallOfStone,
-                    waterWalk));
+                    acidGrip, airBubble, allegro, aqueousOrb, arcticRift, bane, banishment, bindUndead, blazingBolt,
+                    blessedBoundary, bloodVendetta, bloodWard, cataclysm, chainLightning, charmingPush, chillingDarkness,
+                    command, communityRestoration, contingency, cozyCabin, curseOfDeath, cursedMetamorphosis, darkness,
+                    daze, desiccate, disappearance, disguiseMagic, dispelMagic, dispellingGlobe, divineDecree,
+                    dreamMessage, duplicateFoe, earthquake, earthworks, eclipseBurst, elementalForm, energyAbsorption,
+                    energyAegis, fallingStars, feetToFins, fieryBody, figment, forceBolt, foresight, fortifySummoning,
+                    gougingClaw, grimTendrils, harm, heal, holyLight, howlingBlizzard, humanoidForm, hydraulicPush,
+                    illusoryCreature, illusoryScene, impalingSpike, interplanarTeleport, invisibilityCloak,
+                    invokeSpirits, liminalDoorway, massacre, message, metamorphosis, mindReading, mist, monstrosityForm,
+                    mysticArmor, neverMind, pestForm, petrify, phantasmagoria, phantasmalCalamity, phantasmalMinionSpell,
+                    pinpoint, planarSeal, prestidigitation, projectImage, protectiveWards, pummelingRubble, readAura,
+                    repulsion, resistEnergy, retrocognition, revealingLight, runeOfObservation, runicBody, runicWeapon,
+                    safePassage, scrambleBody, seeTheUnseen, sending, shieldSpell, shiftingForm, sigil, spellwrack,
+                    spiralOfHorrors, summonConstruct, summonUndead, tangleVine, telekineticHand, telekineticProjectile,
+                    teleport, toxicCloud, translate, truespeech, trueTarget, uncontrollableDance, unfetteredMovement,
+                    unrelentingObservation, vampiricExsanguination, vampiricFeast, vaporForm, veilOfPrivacy, voidWarp,
+                    wallOfStone, waterWalk));
 
             Weapon crossbow = new Weapon("Crossbow", WeaponCategory.SIMPLE, WeaponType.RANGED, WeaponGroup.CROSSBOW, 1, 8, DamageType.PIERCING);
             crossbow.setRangeFeet(120);
@@ -4313,19 +4415,51 @@ public class DataSeeder {
                     proteanFormAdvancedSchoolSpell));
 
             ClassFeatureChoice schoolOfTheBoundary = new ClassFeatureChoice(wizard, "Arcane Schools", "School of the Boundary");
+            FeatureGrantedSpells boundaryCantrip1 = new FeatureGrantedSpells(schoolOfTheBoundary, telekineticHand);
+            boundaryCantrip1.setCharacterLevelGranted(1);
+            FeatureGrantedSpells boundaryCantrip2 = new FeatureGrantedSpells(schoolOfTheBoundary, voidWarp);
+            boundaryCantrip2.setCharacterLevelGranted(1);
+            FeatureGrantedSpells boundarySpell01 = new FeatureGrantedSpells(schoolOfTheBoundary, grimTendrils);
+            boundarySpell01.setCharacterLevelGranted(1);
             FeatureGrantedSpells boundarySpell02 = new FeatureGrantedSpells(schoolOfTheBoundary, phantasmalMinionSpell);
             boundarySpell02.setCharacterLevelGranted(1);
+            FeatureGrantedSpells boundarySpell03 = new FeatureGrantedSpells(schoolOfTheBoundary, summonUndead);
+            boundarySpell03.setCharacterLevelGranted(1);
+            FeatureGrantedSpells boundarySpell04 = new FeatureGrantedSpells(schoolOfTheBoundary, darkness);
+            boundarySpell04.setCharacterLevelGranted(3);
+            FeatureGrantedSpells boundarySpell05 = new FeatureGrantedSpells(schoolOfTheBoundary, seeTheUnseen);
+            boundarySpell05.setCharacterLevelGranted(3);
+            FeatureGrantedSpells boundarySpell06 = new FeatureGrantedSpells(schoolOfTheBoundary, bindUndead);
+            boundarySpell06.setCharacterLevelGranted(5);
             FeatureGrantedSpells boundarySpell07 = new FeatureGrantedSpells(schoolOfTheBoundary, ghostlyWeapon);
             boundarySpell07.setCharacterLevelGranted(5);
             FeatureGrantedSpells boundarySpell08 = new FeatureGrantedSpells(schoolOfTheBoundary, flicker);
             boundarySpell08.setCharacterLevelGranted(7);
             FeatureGrantedSpells boundarySpell09 = new FeatureGrantedSpells(schoolOfTheBoundary, translocate);
             boundarySpell09.setCharacterLevelGranted(7);
+            FeatureGrantedSpells boundarySpell10 = new FeatureGrantedSpells(schoolOfTheBoundary, banishment);
+            boundarySpell10.setCharacterLevelGranted(9);
+            FeatureGrantedSpells boundarySpell11 = new FeatureGrantedSpells(schoolOfTheBoundary, invokeSpirits);
+            boundarySpell11.setCharacterLevelGranted(9);
+            FeatureGrantedSpells boundarySpell12 = new FeatureGrantedSpells(schoolOfTheBoundary, teleport);
+            boundarySpell12.setCharacterLevelGranted(11);
+            FeatureGrantedSpells boundarySpell13 = new FeatureGrantedSpells(schoolOfTheBoundary, vampiricExsanguination);
+            boundarySpell13.setCharacterLevelGranted(11);
+            FeatureGrantedSpells boundarySpell14 = new FeatureGrantedSpells(schoolOfTheBoundary, eclipseBurst);
+            boundarySpell14.setCharacterLevelGranted(13);
+            FeatureGrantedSpells boundarySpell15 = new FeatureGrantedSpells(schoolOfTheBoundary, interplanarTeleport);
+            boundarySpell15.setCharacterLevelGranted(13);
             FeatureGrantedSpells boundarySpell16 = new FeatureGrantedSpells(schoolOfTheBoundary, quandary);
             boundarySpell16.setCharacterLevelGranted(15);
             FeatureGrantedSpells boundarySpell17 = new FeatureGrantedSpells(schoolOfTheBoundary, unrelentingObservation);
             boundarySpell17.setCharacterLevelGranted(15);
-            schoolOfTheBoundary.setGrantedSpells(List.of(boundarySpell02, boundarySpell07, boundarySpell08, boundarySpell09, boundarySpell16, boundarySpell17));
+            FeatureGrantedSpells boundarySpell18 = new FeatureGrantedSpells(schoolOfTheBoundary, massacre);
+            boundarySpell18.setCharacterLevelGranted(17);
+            FeatureGrantedSpells boundaryInitialSchoolSpell = new FeatureGrantedSpells(schoolOfTheBoundary, fortifySummoning);
+            boundaryInitialSchoolSpell.setCharacterLevelGranted(1);
+            FeatureGrantedSpells boundaryAdvancedSchoolSpell = new FeatureGrantedSpells(schoolOfTheBoundary, spiralOfHorrors);
+            schoolOfTheBoundary.setGrantedSpells(List.of(boundaryCantrip1, boundaryCantrip2, boundarySpell01, boundarySpell02, boundarySpell03, boundarySpell04, boundarySpell05, boundarySpell06, boundarySpell07, boundarySpell08, boundarySpell09,
+                    boundarySpell10, boundarySpell11, boundarySpell12, boundarySpell13, boundarySpell14, boundarySpell15, boundarySpell16, boundarySpell17, boundarySpell18, boundaryInitialSchoolSpell, boundaryAdvancedSchoolSpell));
 
             ClassFeatureChoice schoolOfUnifiedMagicalTheory = new ClassFeatureChoice(wizard, "Arcane Schools", "School of Unified Magical Theory");
 
