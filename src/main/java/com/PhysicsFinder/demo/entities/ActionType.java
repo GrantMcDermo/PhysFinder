@@ -9,4 +9,5 @@ public enum ActionType {
     ACTIVITY,
     ONE_TO_THREE_ACTIONS,
     TWO_TO_THREE_ACTIONS,
+    ONE_TO_TWO_ACTIONS
 }

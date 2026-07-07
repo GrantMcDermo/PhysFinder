@@ -365,6 +365,12 @@ public class DataSeeder {
             clairaudience.setSpellRange(500);
             clairaudience.setSpellDuration("10 minutes");
 
+            Spell clingingIce = new Spell("Clinging Ice", 1, SpellType.CANTRIP, ActionType.SINGLE_ACTION, Set.of(cantripTrait, coldTrait, hexTrait, manipulateTrait, witchTrait), "Freezing sleet and heavy snowfall collect on the target's feet and legs, dealing 1d4 cold damage and other effects depending on its Reflex save.");
+            clingingIce.setSpellRange(30);
+            clingingIce.setSpellTargets("1 creature");
+            clingingIce.setSpellDefense("Reflex");
+            clingingIce.setSpellDuration("sustained up to 1 minute");
+
             Spell command = new Spell("Command", 1, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(auditoryTrait, concentrateTrait, linguisticTrait, manipulateTrait, mentalTrait), "You shout a command that's hard to ignore.");
             command.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT));
             command.setSpellRange(30);
@@ -388,6 +394,9 @@ public class DataSeeder {
             controlWater.setSpellAreaType("square");
             controlWater.setSpellDefense("Fortitude");
             controlWater.setSpellDuration("1 hour");
+
+            Spell cornucopia = new Spell("Cornucopia", 1, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, druidTrait, focusTrait, healingTrait, manipulateTrait, plantTrait, vitalityTrait), "Vines twine into a wicker horn in your hands, and out spills a single fruit, nut, or similar small bit of produce.");
+            cornucopia.setSpellDuration("10 minutes");
 
             Spell cozyCabin = new Spell("Cozy Cabin", 3, SpellType.SPELL, ActionType.ACTIVITY, Set.of(concentrateTrait, manipulateTrait, woodTrait), "You shape a cabin 20 feet on each side and 10 feet high.");
             cozyCabin.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
@@ -430,6 +439,9 @@ public class DataSeeder {
             daze.setSpellDefense("Will");
             daze.setSpellDuration("1 round");
 
+            Spell deceiversCloak = new Spell("Deceiver's Cloak", 3, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, focusTrait, hexTrait, illusionTrait, manipulateTrait, witchTrait), "Your patron drapes a cloak of illusion about you, making you appear as another creature of the same body shape with roughly similar height and weight as yourself.");
+            deceiversCloak.setSpellDuration("1 hour");
+
             Spell desiccate = new Spell("Desiccate", 8, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, voidTrait), "You pull the moisture from the targets' bodies, dealing 10d10 void damage. Creatures made of water (such as water elementals) and plant creatures use the outcome for one degree of success worse than the result of their saving throw. Creatures whose bodies contain no significant moisture (such as earth elementals) are immune to desiccate.");
             desiccate.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
             desiccate.setSpellRange(500);
@@ -447,6 +459,11 @@ public class DataSeeder {
             disappearance.setSpellRange(0);
             disappearance.setSpellTargets("1 target");
             disappearance.setSpellDuration("10 minutes");
+
+            Spell discernSecrets = new Spell("Discern Secrets", 1, SpellType.CANTRIP, ActionType.SINGLE_ACTION, Set.of(cantripTrait, hexTrait, manipulateTrait, witchTrait), "Your patron deigns to whisper a few secrets.");
+            discernSecrets.setSpellRange(30);
+            discernSecrets.setSpellTargets("1 target");
+            discernSecrets.setSpellDuration("sustained up to 1 minute");
 
             Spell disguiseMagic = new Spell("Disguise Magic", 1, SpellType.SPELL, ActionType.ACTIVITY, Set.of(concentrateTrait, illusionTrait, manipulateTrait), "You alter how an item's or spell's magical aura appears to effects like detect magic.You alter how an item's or spell's magical aura appears to effects like detect magic.");
             disguiseMagic.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
@@ -538,6 +555,11 @@ public class DataSeeder {
             eclipseBurst.setSpellAreaType("burst");
             eclipseBurst.setSpellDefense("Reflex");
 
+            Spell elementalBetrayal = new Spell("Elemental Betrayal", 1, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(concentrateTrait, focusTrait, hexTrait, witchTrait), "Your patron uses its superior command of the elements, empowering them to undermine your foe.");
+            elementalBetrayal.setSpellRange(30);
+            elementalBetrayal.setSpellTargets("1 creature");
+            elementalBetrayal.setSpellDuration("sustained up to 1 minute");
+
             Spell elementalForm = new Spell("Elemental Form", 5, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, polymorphTrait), "You call upon the power of the planes to transform into a Medium elemental battle form.");
             elementalForm.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
             elementalForm.setSpellDuration("1 minute");
@@ -559,6 +581,13 @@ public class DataSeeder {
             energyAegis.setSpellTargets("1 creature");
             energyAegis.setSpellDuration("until your next daily preparations");
 
+            Spell enfeeble = new Spell("Enfeeble", 1, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "You sap the target's strength, depending on its Fortitude save.");
+            enfeeble.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT));
+            enfeeble.setSpellRange(30);
+            enfeeble.setSpellTargets("1 creature");
+            enfeeble.setSpellDefense("Fortitude");
+            enfeeble.setSpellDuration("varies");
+
             Spell enlarge = new Spell("Enlarge", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, polymorphTrait), "Bolstered by magical power, the target grows to size Large.");
             enlarge.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
             enlarge.setSpellRange(30);
@@ -572,6 +601,12 @@ public class DataSeeder {
             enthrall.setSpellDefense("Will");
             enthrall.setSpellDuration("sustained");
 
+            Spell evilEye = new Spell("Evil Eye", 1, SpellType.CANTRIP, ActionType.SINGLE_ACTION, Set.of(cantripTrait, curseTrait, hexTrait, manipulateTrait, witchTrait), "Your patron's resentment manifests in a baleful, envious gaze.");
+            evilEye.setSpellRange(30);
+            evilEye.setSpellTargets("1 creature");
+            evilEye.setSpellDefense("Will");
+            evilEye.setSpellDuration("sustained up to 1 minute");
+
             Spell fallingStars = new Spell("Falling Stars", 9, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "You reach into the skies and call down an array of falling stars that explode upon colliding with the ground.");
             fallingStars.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
             fallingStars.setSpellRange(500);
@@ -583,11 +618,25 @@ public class DataSeeder {
             falseVitality.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
             falseVitality.setSpellDuration("8 hours");
 
+            Spell fear = new Spell("Fear", 1, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, emotionTrait, fearTrait, manipulateTrait, mentalTrait), "You plant fear in the target; it must attempt a Will save.");
+            fear.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
+            fear.setSpellRange(30);
+            fear.setSpellTargets("1 creature");
+            fear.setSpellDefense("Will");
+            fear.setSpellDuration("varies");
+
             Spell feetToFins = new Spell("Feet to Fins", 3, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, morphTrait), "The target's feet transform into fins, improving mobility in the water but reducing it on land.");
             feetToFins.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
             feetToFins.setSpellRange(0);
             feetToFins.setSpellTargets("1 willing creature");
             feetToFins.setSpellDuration("10 minutes");
+
+            Spell fieldOfLife = new Spell("Field of Life", 6, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, healingTrait, manipulateTrait, vitalityTrait), "A field of life energy fills the area, exuding warmth and rejuvenating those within.");
+            fieldOfLife.setSpellTraditions(List.of(SpellTraditions.DIVINE, SpellTraditions.PRIMAL));
+            fieldOfLife.setSpellRange(30);
+            fieldOfLife.setSpellArea(20);
+            fieldOfLife.setSpellAreaType("burst");
+            fieldOfLife.setSpellDuration("sustained up to 1 minute");
 
             Spell fieryBody = new Spell("Fiery Body", 7, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, fireTrait, manipulateTrait, polymorphTrait), "You become living flame, giving you fire immunity, resistance 10 to precision damage, and weakness 5 to cold and to water. Any creature that touches you or damages you with an unarmed attack or non-reach melee weapon takes 3d6 fire damage.\n" +
                     "\n" +
@@ -680,6 +729,11 @@ public class DataSeeder {
             hallucination.setSpellTargets("1 creature");
             hallucination.setSpellDuration("1 hour");
 
+            Spell handsOfTheApprentice = new Spell("Hands of the Apprentice", 1, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(attackTrait, focusTrait, manipulateTrait, wizardTrait), "You take advantage of one of the most fundamental lessons of magic to levitate and propel your weapon.");
+            handsOfTheApprentice.setSpellRange(500);
+            handsOfTheApprentice.setSpellTargets("1 creature");
+            handsOfTheApprentice.setSpellDefense("AC");
+
             Spell harm = new Spell("Harm", 1, SpellType.SPELL, ActionType.ONE_TO_THREE_ACTIONS, Set.of(manipulateTrait, voidTrait), "You channel void energy to harm the living or heal the undead.");
             harm.setSpellTraditions(List.of(SpellTraditions.DIVINE));
             harm.setSpellTargets("1 living creature or 1 willing undead creature");
@@ -693,6 +747,9 @@ public class DataSeeder {
             Spell heal = new Spell("Heal", 1, SpellType.SPELL, ActionType.ONE_TO_THREE_ACTIONS, Set.of(healingTrait, manipulateTrait, vitalityTrait), "You channel vital energy to heal the living or damage the undead.");
             heal.setSpellTraditions(List.of(SpellTraditions.DIVINE, SpellTraditions.PRIMAL));
             heal.setSpellTargets("1 willing living creature or 1 undead creature");
+
+            Spell healAnimal = new Spell("Heal Animal", 1, SpellType.FOCUS, ActionType.ONE_TO_TWO_ACTIONS, Set.of(druidTrait, focusTrait, healingTrait, manipulateTrait, vitalityTrait), "You heal an animal's wounds, restoring 1d8 Hit Points to the target. The number of actions spent Casting this Spell determines its effect.");
+            healAnimal.setSpellTargets("1 willing living animal");
 
             Spell holyLight = new Spell("Holy Light", 3, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(attackTrait, concentrateTrait, fireTrait, holyTrait, lightTrait, manipulateTrait), "You shine a blazing ray of light tinged with holy energy.");
             holyLight.setSpellTraditions(List.of(SpellTraditions.DIVINE, SpellTraditions.PRIMAL));
@@ -753,6 +810,9 @@ public class DataSeeder {
             impalingSpike.setSpellDefense("Reflex");
             impalingSpike.setSpellDuration("1 minute");
 
+            Spell interdisciplinaryIncantation = new Spell("Interdisciplinary Incantation", 4, SpellType.FOCUS, ActionType.REACTION, Set.of(concentrateTrait, focusTrait, wizardTrait), "You gather the embers of another caster's spell, using your understanding of unified magic to pick apart their formulas and incantations well enough to imitate the spell yourself, if only for a short time.");
+            interdisciplinaryIncantation.setSpellTargets("A creature within 30 feet casts an arcane spell");
+
             Spell interplanarTeleport = new Spell("Interplanar Teleport", 7, SpellType.SPELL, ActionType.ACTIVITY, Set.of(concentrateTrait, manipulateTrait, teleportationTrait), "You and your allies traverse the barriers between planes of existence.");
             interplanarTeleport.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
             interplanarTeleport.setSpellCastAmount(10);
@@ -787,6 +847,11 @@ public class DataSeeder {
             levitate.setSpellTargets("1 unattended object or willing creature");
             levitate.setSpellDuration("5 minutes");
 
+            Spell lifeBoost = new Spell("Life Boost", 1, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(focusTrait, healingTrait, hexTrait, manipulateTrait, vitalityTrait, witchTrait), "Life force from your patron floods into the target, ensuring they can continue doing your patron's will for just a little longer.");
+            lifeBoost.setSpellRange(30);
+            lifeBoost.setSpellTargets("1 creature");
+            lifeBoost.setSpellDuration("4 rounds");
+
             Spell lightningBolt = new Spell("Lightning Bolt", 3, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, electricityTrait, manipulateTrait), "A bolt of lightning strikes outward from your hand, dealing 4d12 electricity damage with a basic Reflex save.");
             lightningBolt.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
             lightningBolt.setSpellArea(120);
@@ -799,6 +864,19 @@ public class DataSeeder {
             liminalDoorway.setSpellCastUnits("minute");
             liminalDoorway.setSpellRange(0);
             liminalDoorway.setSpellDuration("8 hours");
+
+            Spell madMonkeys = new Spell("Mad Monkeys", 3, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "Magical monkey spirits fill the area as they pile and climb on top of one another.");
+            madMonkeys.setSpellTraditions(List.of(SpellTraditions.PRIMAL));
+            madMonkeys.setSpellRange(30);
+            madMonkeys.setSpellArea(5);
+            madMonkeys.setSpellAreaType("burst");
+            madMonkeys.setSpellDuration("sustained up to 1 minute");
+
+            Spell maliciousShadow = new Spell("Malicious Shadow", 3, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, focusTrait, hexTrait, manipulateTrait, shadowTrait, witchTrait), "Your patron warps the target's shadow into a deadly form, such as strangling hands, a dangerous weapon, harrying runes, or the like.");
+            maliciousShadow.setSpellRange(30);
+            maliciousShadow.setSpellTargets("1 creature");
+            maliciousShadow.setSpellDefense("AC");
+            maliciousShadow.setSpellDuration("sustained up to 1 minute");
 
             Spell maskOfTerror = new Spell("Mask of Terror", 7, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, emotionTrait, fearTrait, illusionTrait, manipulateTrait, mentalTrait, visualTrait), "The target appears to be a gruesome and terrifying creature.");
             maskOfTerror.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
@@ -863,6 +941,12 @@ public class DataSeeder {
             naturesPathway.setSpellCastAmount(1);
             naturesPathway.setSpellCastUnits("minute");
 
+            Spell needleOfVengeance = new Spell("Needle of Vengeance", 1, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(focusTrait, hexTrait, manipulateTrait, mentalTrait, witchTrait), "A long, jagged needle jabs into the target foe's psyche whenever it tries to attack a creature your patron holds in special regard.");
+            needleOfVengeance.setSpellRange(30);
+            needleOfVengeance.setSpellTargets("1 enemy");
+            needleOfVengeance.setSpellDefense("basic Will");
+            needleOfVengeance.setSpellDuration("sustained up to 1 minute");
+
             Spell neverMind = new Spell("Never Mind", 6, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, curseTrait, incapactitationTrait, manipulateTrait, mentalTrait), "You drastically reduce the target's mental faculties.");
             neverMind.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
             neverMind.setSpellRange(30);
@@ -878,6 +962,17 @@ public class DataSeeder {
             nightmare.setSpellTargets("1 creature you know by name");
             nightmare.setSpellDefense("Will");
             nightmare.setSpellDuration("1 day");
+
+            Spell nudgeFate = new Spell("Nudge Fate", 1, SpellType.CANTRIP, ActionType.SINGLE_ACTION, Set.of(cantripTrait, concentrateTrait, hexTrait, witchTrait), "The barest spin of your patron's spool is enough to alter fate.");
+            nudgeFate.setSpellRange(30);
+            nudgeFate.setSpellTargets("1 creature");
+            nudgeFate.setSpellDuration("1 minute");
+
+            Spell personalBlizzard = new Spell("Personal Blizzard", 3, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(coldTrait, focusTrait, hexTrait, witchTrait), "Your patron's breath becomes a blizzard of obscuring, scouring ice that follows your target.");
+            personalBlizzard.setSpellRange(30);
+            personalBlizzard.setSpellTargets("1 creature");
+            personalBlizzard.setSpellDefense("Fortitude");
+            personalBlizzard.setSpellDuration("sustained up to 1 minute");
 
             Spell pestForm = new Spell("Pest Form", 1, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, polymorphTrait), "You transform into the battle form of a Tiny animal, such as a cat, insect, lizard, or rat. You can decide the specific type of animal (such as a rat or praying mantis), but this has no effect on your Size or statistics. While in this form, you gain the animal trait, and you can't make Strikes. You can Dismiss the spell.\n" +
                     "\n" +
@@ -970,6 +1065,14 @@ public class DataSeeder {
             quandary.setSpellTargets("1 creature");
             quandary.setSpellDuration("sustained");
 
+            Spell raiseDead = new Spell("Raise Dead", 6, SpellType.SPELL, ActionType.ACTIVITY, Set.of(concentrateTrait, healingTrait, manipulateTrait), "You attempt to call forth the dead creature's soul, requiring the creature's body to be present and relatively intact.");
+            raiseDead.setSpellTraditions(List.of(SpellTraditions.DIVINE));
+            raiseDead.setSpellCastAmount(10);
+            raiseDead.setSpellCastUnits("minute");
+            raiseDead.setSpellCost("gemstones worth a total value of the target’s level (minimum 1) × 200 gp");
+            raiseDead.setSpellRange(10);
+            raiseDead.setSpellTargets("1 dead creature of 13th level or lower");
+
             Spell readAura = new Spell("Read Aura", 1, SpellType.CANTRIP, ActionType.ACTIVITY, Set.of(cantripTrait, concentrateTrait, detectionTrait, manipulateTrait), "You focus on the target object, opening your mind to perceive magical auras.");
             readAura.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
             readAura.setSpellCastAmount(1);
@@ -989,6 +1092,10 @@ public class DataSeeder {
             resistEnergy.setSpellRange(0);
             resistEnergy.setSpellTargets("1 creature");
             resistEnergy.setSpellDuration("10 minutes");
+
+            Spell restorativeMovement = new Spell("Restorative Movement", 5, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, focusTrait, hexTrait, manipulateTrait, witchTrait), "Your patron weaves the threads of time around the target, giving them some of the benefits of a day's passage.");
+            restorativeMovement.setSpellRange(30);
+            restorativeMovement.setSpellTargets("1 creature");
 
             Spell retrocognition = new Spell("Retrocognition", 7, SpellType.SPELL, ActionType.ACTIVITY, Set.of(concentrateTrait, manipulateTrait), "Opening your mind to mental echoes, you gain impressions from past events that occurred in your current location.");
             retrocognition.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
@@ -1046,6 +1153,12 @@ public class DataSeeder {
             Spell shiftingForm = new Spell("Shifting Form", 4, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(concentrateTrait, focusTrait, morphTrait, wizardTrait), "You change your body to better suit the moment.");
             shiftingForm.setSpellDuration("1 minute");
 
+            Spell shroudOfNight = new Spell("Shroud of Night", 1, SpellType.CANTRIP, ActionType.SINGLE_ACTION, Set.of(cantripTrait, darknessTrait, hexTrait, manipulateTrait, witchTrait), "Your patron blankets the target's eyes in darkness.");
+            shroudOfNight.setSpellRange(30);
+            shroudOfNight.setSpellTargets("1 creature");
+            shroudOfNight.setSpellDefense("Will");
+            shroudOfNight.setSpellDuration("sustained up to 1 minute");
+
             Spell sigil = new Spell("Sigil", 1, SpellType.CANTRIP, ActionType.TWO_ACTIONS, Set.of(cantripTrait, concentrateTrait, manipulateTrait), "You harmlessly place your unique magical sigil, which is about 1 square inch in size, on the targeted creature or object.");
             sigil.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
             sigil.setSpellRange(0);
@@ -1058,6 +1171,12 @@ public class DataSeeder {
             sleep.setSpellArea(5);
             sleep.setSpellAreaType("burst");
             sleep.setSpellDefense("Will");
+
+            Spell soothe = new Spell("Soothe", 1, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, emotionTrait, healingTrait, manipulateTrait, mentalTrait), "You grace the target's mind, boosting its mental defenses and healing its wounds.");
+            soothe.setSpellTraditions(List.of(SpellTraditions.OCCULT));
+            soothe.setSpellRange(30);
+            soothe.setSpellTargets("1 willing creature");
+            soothe.setSpellDuration("1 minute");
 
             Spell speakWithAnimals = new Spell("Speak with Animals", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "You can ask questions of, receive answers from, and use the Diplomacy skill with animals. The spell doesn't make them more friendly than normal. Cunning animals are likely to be terse and evasive, while less intelligent ones often make inane comments.");
             speakWithAnimals.setSpellTraditions(List.of(SpellTraditions.PRIMAL));
@@ -1079,6 +1198,17 @@ public class DataSeeder {
             spiralOfHorrors.setSpellArea(5);
             spiralOfHorrors.setSpellAreaType("emanation");
             spiralOfHorrors.setSpellDuration("sustained up to 1 minute");
+
+            Spell spiritLink = new Spell("Spirit Link", 1, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, healingTrait, manipulateTrait, spiritTrait), "You form a spiritual link with another creature, taking in its pain.");
+            spiritLink.setSpellTraditions(List.of(SpellTraditions.DIVINE, SpellTraditions.OCCULT));
+            spiritLink.setSpellRange(30);
+            spiritLink.setSpellTargets("1 willing creature");
+            spiritLink.setSpellDuration("10 minutes");
+
+            Spell stokeTheHeart = new Spell("Stoke the Heart", 1, SpellType.CANTRIP, ActionType.SINGLE_ACTION, Set.of(cantripTrait, concentrateTrait, emotionTrait, hexTrait, witchTrait), "Your patron fills a creature with fervor, empowering their blows.");
+            stokeTheHeart.setSpellRange(30);
+            stokeTheHeart.setSpellTargets("1 creature");
+            stokeTheHeart.setSpellDuration("sustained up to 1 minute");
 
             Spell stupefy = new Spell("Stupefy", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, mentalTrait), "You dull the target's mind, depending on its Will save.");
             stupefy.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
@@ -1103,6 +1233,11 @@ public class DataSeeder {
             summonConstruct.setSpellTraditions(List.of(SpellTraditions.ARCANE));
             summonConstruct.setSpellRange(30);
             summonConstruct.setSpellDuration("sustained up to 1 minute");
+
+            Spell summonPlantOrFungus = new Spell("Summon Plant or Fungus", 1, SpellType.SPELL, ActionType.THREE_ACTIONS, Set.of(concentrateTrait, manipulateTrait, summonTrait), "You summon a creature that has the plant or fungus trait and whose level is –1 to fight for you.");
+            summonPlantOrFungus.setSpellTraditions(List.of(SpellTraditions.PRIMAL));
+            summonPlantOrFungus.setSpellRange(30);
+            summonPlantOrFungus.setSpellDuration("sustained up to 1 minute");
 
             Spell summonUndead = new Spell("Summon Undead", 1, SpellType.SPELL, ActionType.THREE_ACTIONS, Set.of(concentrateTrait, manipulateTrait, summonTrait), "You summon a creature that has the undead trait and whose level is –1 to fight for you.");
             summonUndead.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT));
@@ -1143,6 +1278,11 @@ public class DataSeeder {
             teleport.setSpellCastUnits("minute");
             teleport.setSpellRange(528000);
             teleport.setSpellTargets("you and up to 4 targets touched, either willing creatures or objects roughly the size of a creature");
+
+            Spell tempestSurge = new Spell("Tempest Surge", 1, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(airTrait, concentrateTrait, druidTrait, electricityTrait, focusTrait, manipulateTrait), "You surround a foe in a swirling storm of violent winds, roiling clouds, and crackling lightning.");
+            tempestSurge.setSpellRange(30);
+            tempestSurge.setSpellTargets("1 creature");
+            tempestSurge.setSpellDefense("basic Reflex");
 
             Spell toxicCloud = new Spell("Toxic Cloud", 5, SpellType.SPELL, ActionType.THREE_ACTIONS, Set.of(concentrateTrait, deathTrait, manipulateTrait, poisonTrait), "You conjure a poisonous fog.");
             toxicCloud.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
@@ -1207,6 +1347,9 @@ public class DataSeeder {
             unrelentingObservation.setSpellTargets("1 creature of object tracked and up to 5 other willing creatures");
             unrelentingObservation.setSpellDuration("varies");
 
+            Spell untamedShift = new Spell("Untamed Shift", 1, SpellType.FOCUS, ActionType.ONE_TO_TWO_ACTIONS, Set.of(concentrateTrait, druidTrait, focusTrait, manipulateTrait, morphTrait), "You transform just a part of your body.");
+            untamedShift.setSpellDuration("1 minute");
+
             Spell vampiricExsanguination = new Spell("Vampiric Exsanguination", 6, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, deathTrait, manipulateTrait, voidTrait), "You draw in the blood and life force of other creatures through your outstretched arms.");
             vampiricExsanguination.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT));
             vampiricExsanguination.setSpellArea(30);
@@ -1225,6 +1368,12 @@ public class DataSeeder {
             vaporForm.setSpellRange(0);
             vaporForm.setSpellTargets("1 willing creature");
             vaporForm.setSpellDuration("5 minutes");
+
+            Spell veilOfDreams = new Spell("Veil of Dreams", 1, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(focusTrait, hexTrait, manipulateTrait, mentalTrait, witchTrait), "Your patron draws the target into a drowsy state, causing daydreams and sluggishness.");
+            veilOfDreams.setSpellArea(30);
+            veilOfDreams.setSpellTargets("1 creature");
+            veilOfDreams.setSpellDefense("Will");
+            veilOfDreams.setSpellDuration("sustained up to 1 minute");
 
             Spell veilOfPrivacy = new Spell("Veil of Privacy", 3, SpellType.SPELL, ActionType.ACTIVITY, Set.of(concentrateTrait, manipulateTrait), "You erect protective wards that make the target difficult to detect via magic.");
             veilOfPrivacy.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
@@ -1265,6 +1414,11 @@ public class DataSeeder {
             wallOfThorns.setSpellRange(60);
             wallOfThorns.setSpellDuration("1 minute");
 
+            Spell wallOfWind = new Spell("Wall of Wind", 3, SpellType.SPELL, ActionType.THREE_ACTIONS, Set.of(airTrait, concentrateTrait, manipulateTrait), "You create a barrier of gusting winds that hinders anything moving through it.");
+            wallOfWind.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
+            wallOfWind.setSpellRange(120);
+            wallOfWind.setSpellDuration("1 minute");
+
             Spell warpMind = new Spell("Warp Mind", 7, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, emotionTrait, incapactitationTrait, manipulateTrait, mentalTrait), "You scramble a creature's mental faculties and sensory input.");
             warpMind.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
             warpMind.setSpellRange(120);
@@ -1283,24 +1437,35 @@ public class DataSeeder {
             weaponStorm.setSpellAreaType("cone");
             weaponStorm.setSpellDefense("Reflex");
 
+            Spell wildingWord = new Spell("Wilding Word", 1, SpellType.CANTRIP, ActionType.SINGLE_ACTION, Set.of(cantripTrait, hexTrait, mentalTrait, witchTrait), "Your patron's majesty—or their displeasure—comes in a growl from your throat, making other creatures reluctant to harm you.");
+            wildingWord.setSpellRange(30);
+            wildingWord.setSpellTargets("1 creature");
+            wildingWord.setSpellDefense("Will");
+            wildingWord.setSpellDuration("sustained up to 1 minute");
+
             spellRepo.saveAll(List.of(
                     acidGrip, airBubble, allegro, aqueousOrb, arcticRift, bane, banishment, bindUndead, blazingBolt,
                     blessedBoundary, bloodVendetta, bloodWard, cataclysm, chainLightning, charmingPush, chillingDarkness,
-                    command, communityRestoration, contingency, cozyCabin, curseOfDeath, cursedMetamorphosis, darkness,
-                    daze, desiccate, disappearance, disguiseMagic, dispelMagic, dispellingGlobe, divineDecree,
-                    dreamMessage, duplicateFoe, earthquake, earthworks, eclipseBurst, elementalForm, energyAbsorption,
-                    energyAegis, fallingStars, feetToFins, fieryBody, figment, forceBolt, foresight, fortifySummoning,
-                    gougingClaw, grimTendrils, harm, heal, holyLight, howlingBlizzard, humanoidForm, hydraulicPush,
-                    illusoryCreature, illusoryScene, impalingSpike, interplanarTeleport, invisibilityCloak,
-                    invokeSpirits, liminalDoorway, massacre, message, metamorphosis, mindReading, mist, monstrosityForm,
-                    mysticArmor, neverMind, pestForm, petrify, phantasmagoria, phantasmalCalamity, phantasmalMinionSpell,
-                    pinpoint, planarSeal, prestidigitation, projectImage, protectiveWards, pummelingRubble, readAura,
-                    repulsion, resistEnergy, retrocognition, revealingLight, runeOfObservation, runicBody, runicWeapon,
-                    safePassage, scrambleBody, seeTheUnseen, sending, shieldSpell, shiftingForm, sigil, spellwrack,
-                    spiralOfHorrors, summonConstruct, summonUndead, tangleVine, telekineticHand, telekineticProjectile,
-                    teleport, toxicCloud, translate, truespeech, trueTarget, uncontrollableDance, unfetteredMovement,
-                    unrelentingObservation, vampiricExsanguination, vampiricFeast, vaporForm, veilOfPrivacy, voidWarp,
-                    wallOfStone, waterWalk));
+                    clingingIce, command, communityRestoration, contingency, cornucopia, cozyCabin, curseOfDeath,
+                    cursedMetamorphosis, darkness, daze, deceiversCloak, desiccate, disappearance, discernSecrets,
+                    disguiseMagic, dispelMagic, dispellingGlobe, divineDecree, dreamMessage, duplicateFoe, earthquake,
+                    earthworks, eclipseBurst, elementalBetrayal, elementalForm, energyAbsorption, energyAegis, enfeeble,
+                    evilEye, fallingStars, fear, feetToFins, fieldOfLife, fieryBody, figment, forceBolt, foresight,
+                    fortifySummoning, gougingClaw, grimTendrils, handsOfTheApprentice, harm, heal, healAnimal, holyLight,
+                    howlingBlizzard, humanoidForm, hydraulicPush, illusoryCreature, illusoryScene, impalingSpike,
+                    interdisciplinaryIncantation, interplanarTeleport, invisibilityCloak, invokeSpirits, lifeBoost,
+                    liminalDoorway, madMonkeys, maliciousShadow, massacre, message, metamorphosis, mindReading, mist,
+                    monstrosityForm, mysticArmor, needleOfVengeance, neverMind, nudgeFate, personalBlizzard, pestForm,
+                    petrify, phantasmagoria, phantasmalCalamity, phantasmalMinionSpell, pinpoint, planarSeal,
+                    prestidigitation, projectImage, protectiveWards, pummelingRubble, raiseDead, readAura, repulsion,
+                    resistEnergy, restorativeMovement, retrocognition, revealingLight, runeOfObservation, runicBody,
+                    runicWeapon, safePassage, scrambleBody, seeTheUnseen, sending, shieldSpell, shiftingForm,
+                    shroudOfNight, sigil, soothe, spellwrack, spiralOfHorrors, spiritLink, stokeTheHeart,
+                    summonConstruct, summonPlantOrFungus, summonUndead, tangleVine, telekineticHand,
+                    telekineticProjectile, teleport, tempestSurge, toxicCloud, translate, truespeech, trueTarget,
+                    uncontrollableDance, unfetteredMovement, unrelentingObservation, untamedShift,
+                    vampiricExsanguination, vampiricFeast, vaporForm, veilOfDreams, veilOfPrivacy, voidWarp, wallOfStone,
+                    wallOfWind, waterWalk, wildingWord));
 
             Weapon crossbow = new Weapon("Crossbow", WeaponCategory.SIMPLE, WeaponType.RANGED, WeaponGroup.CROSSBOW, 1, 8, DamageType.PIERCING);
             crossbow.setRangeFeet(120);
@@ -4105,68 +4270,125 @@ public class DataSeeder {
             animalOrder.setGrantedProficiencies(List.of(animalAthletics));
             FeatureGrantedFeat animalOrderFeat = new FeatureGrantedFeat(animalOrder, animalCompanion);
             animalOrder.setGrantedFeats(List.of(animalOrderFeat));
+            FeatureGrantedSpells animalOrderSpell = new FeatureGrantedSpells(animalOrder, healAnimal);
+            animalOrderSpell.setCharacterLevelGranted(1);
+            animalOrder.setGrantedSpells(List.of(animalOrderSpell));
 
             ClassFeatureChoice leafOrder = new ClassFeatureChoice(druid, "Druidic Order", "Leaf");
             FeatureGrantedProficiency leafDiplomacy = new FeatureGrantedProficiency(leafOrder, "Diplomacy", ProficiencyCategory.SKILL, ProficiencyRank.TRAINED);
             leafOrder.setGrantedProficiencies(List.of(leafDiplomacy));
             FeatureGrantedFeat leafOrderFeat = new FeatureGrantedFeat(leafOrder, leshyFamiliar);
             leafOrder.setGrantedFeats(List.of(leafOrderFeat));
+            FeatureGrantedSpells leafOrderSpell = new FeatureGrantedSpells(leafOrder, cornucopia);
+            leafOrderSpell.setCharacterLevelGranted(1);
+            leafOrder.setGrantedSpells(List.of(leafOrderSpell));
 
             ClassFeatureChoice stormOrder = new ClassFeatureChoice(druid, "Druidic Order", "Storm");
             FeatureGrantedProficiency stormAcrobatics = new FeatureGrantedProficiency(stormOrder, "Acrobatics", ProficiencyCategory.SKILL, ProficiencyRank.TRAINED);
             stormOrder.setGrantedProficiencies(List.of(stormAcrobatics));
             FeatureGrantedFeat stormOrderFeat = new FeatureGrantedFeat(stormOrder, stormBorn);
             stormOrder.setGrantedFeats(List.of(stormOrderFeat));
+            FeatureGrantedSpells stormOrderSpell = new FeatureGrantedSpells(stormOrder, tempestSurge);
+            stormOrderSpell.setCharacterLevelGranted(1);
+            stormOrder.setGrantedSpells(List.of(stormOrderSpell));
 
             ClassFeatureChoice untamedOrder = new ClassFeatureChoice(druid, "Druidic Order", "Untamed");
             FeatureGrantedProficiency untamedIntimidation = new FeatureGrantedProficiency(untamedOrder, "Intimidation", ProficiencyCategory.SKILL, ProficiencyRank.TRAINED);
             untamedOrder.setGrantedProficiencies(List.of(untamedIntimidation));
             FeatureGrantedFeat untamedOrderFeat = new FeatureGrantedFeat(untamedOrder, untamedFormFeat);
             untamedOrder.setGrantedFeats(List.of(untamedOrderFeat));
+            FeatureGrantedSpells untamedOrderSpell = new FeatureGrantedSpells(untamedOrder, untamedShift);
+            untamedOrderSpell.setCharacterLevelGranted(1);
+            untamedOrder.setGrantedSpells(List.of(untamedOrderSpell));
 
             ClassFeatureChoice faithsFlamekeeper = new ClassFeatureChoice(witch, "Patron Theme", "Faith's Flamekeeper");
             FeatureGrantedProficiency faithReligion = new FeatureGrantedProficiency(faithsFlamekeeper, "Religion", ProficiencyCategory.SKILL, ProficiencyRank.TRAINED);
             faithsFlamekeeper.setGrantedProficiencies(List.of(faithReligion));
+            FeatureGrantedSpells faithHex = new FeatureGrantedSpells(faithsFlamekeeper, stokeTheHeart);
+            faithHex.setCharacterLevelGranted(1);
+            faithsFlamekeeper.setGrantedSpells(List.of(faithHex));
 
             ClassFeatureChoice silenceInSnow = new ClassFeatureChoice(witch, "Patron Theme", "Silence in Snow");
             FeatureGrantedProficiency snowNature = new FeatureGrantedProficiency(silenceInSnow, "Nature", ProficiencyCategory.SKILL, ProficiencyRank.TRAINED);
             silenceInSnow.setGrantedProficiencies(List.of(snowNature));
+            FeatureGrantedSpells silenceHex = new FeatureGrantedSpells(silenceInSnow, clingingIce);
+            silenceHex.setCharacterLevelGranted(1);
+            silenceInSnow.setGrantedSpells(List.of(silenceHex));
+
+            ClassFeatureChoice spinnerOfThreads = new ClassFeatureChoice(witch, "Patron Theme", "Spinner of Threads");
+            FeatureGrantedProficiency spinnerOccultism = new FeatureGrantedProficiency(spinnerOfThreads, "Occultism", ProficiencyCategory.SKILL, ProficiencyRank.TRAINED);
+            spinnerOfThreads.setGrantedProficiencies(List.of(spinnerOccultism));
+            FeatureGrantedSpells spinnerHex = new FeatureGrantedSpells(spinnerOfThreads, nudgeFate);
+            spinnerHex.setCharacterLevelGranted(1);
+            spinnerOfThreads.setGrantedSpells(List.of(spinnerHex));
 
             ClassFeatureChoice starlessShadow = new ClassFeatureChoice(witch, "Patron Theme", "Starless Shadow");
             FeatureGrantedProficiency starlessOccultism = new FeatureGrantedProficiency(starlessShadow, "Occultism", ProficiencyCategory.SKILL, ProficiencyRank.TRAINED);
             starlessShadow.setGrantedProficiencies(List.of(starlessOccultism));
+            FeatureGrantedSpells starlessHex = new FeatureGrantedSpells(starlessShadow, shroudOfNight);
+            starlessHex.setCharacterLevelGranted(1);
+            starlessShadow.setGrantedSpells(List.of(starlessHex));
 
             ClassFeatureChoice theInscribedOne = new ClassFeatureChoice(witch, "Patron Theme", "The Inscribed One");
             FeatureGrantedProficiency inscribedArcana = new FeatureGrantedProficiency(theInscribedOne, "Arcana", ProficiencyCategory.SKILL, ProficiencyRank.TRAINED);
             theInscribedOne.setGrantedProficiencies(List.of(inscribedArcana));
+            FeatureGrantedSpells inscribedHex = new FeatureGrantedSpells(theInscribedOne, discernSecrets);
+            inscribedHex.setCharacterLevelGranted(1);
+            theInscribedOne.setGrantedSpells(List.of(inscribedHex));
 
             ClassFeatureChoice theResentment = new ClassFeatureChoice(witch, "Patron Theme", "The Resentment");
             FeatureGrantedProficiency resentmentOccultism = new FeatureGrantedProficiency(theResentment, "Occultism", ProficiencyCategory.SKILL, ProficiencyRank.TRAINED);
             theResentment.setGrantedProficiencies(List.of(resentmentOccultism));
+            FeatureGrantedSpells resentmentHex = new FeatureGrantedSpells(theResentment, evilEye);
+            resentmentHex.setCharacterLevelGranted(1);
+            theResentment.setGrantedSpells(List.of(resentmentHex));
 
             ClassFeatureChoice wildingSteward = new ClassFeatureChoice(witch, "Patron Theme", "Wilding Steward");
             FeatureGrantedProficiency wildingNature = new FeatureGrantedProficiency(wildingSteward, "Nature", ProficiencyCategory.SKILL, ProficiencyRank.TRAINED);
             wildingSteward.setGrantedProficiencies(List.of(wildingNature));
+            FeatureGrantedSpells wildingHex = new FeatureGrantedSpells(wildingSteward, wildingWord);
+            wildingHex.setCharacterLevelGranted(1);
+            wildingSteward.setGrantedSpells(List.of(wildingHex));
 
             ClassFeatureChoice lessonOfDreams = new ClassFeatureChoice(witch, "Basic Lesson", "Lesson of Dreams");
+            FeatureGrantedSpells dreamHex = new FeatureGrantedSpells(lessonOfDreams, veilOfDreams);
+            lessonOfDreams.setGrantedSpells(List.of(dreamHex));
+
             ClassFeatureChoice lessonOfLife = new ClassFeatureChoice(witch, "Basic Lesson", "Lesson of Life");
+            FeatureGrantedSpells lifeHex = new FeatureGrantedSpells(lessonOfLife, lifeBoost);
+            lessonOfLife.setGrantedSpells(List.of(lifeHex));
 
             ClassFeatureChoice lessonOfProtection = new ClassFeatureChoice(witch, "Basic Lesson", "Lesson of Protection");
             FeatureGrantedSpells protectionHex = new FeatureGrantedSpells(lessonOfProtection, bloodWard);
             lessonOfProtection.setGrantedSpells(List.of(protectionHex));
 
             ClassFeatureChoice lessonOfTheElements = new ClassFeatureChoice(witch, "Basic Lesson", "Lesson of the Elements");
+            FeatureGrantedSpells elementsHex = new FeatureGrantedSpells(lessonOfTheElements, elementalBetrayal);
+            lessonOfTheElements.setGrantedSpells(List.of(elementsHex));
+
             ClassFeatureChoice lessonOfVengeance = new ClassFeatureChoice(witch, "Basic Lesson", "Lesson of Vengeance");
+            FeatureGrantedSpells vengeanceHex = new FeatureGrantedSpells(lessonOfVengeance, needleOfVengeance);
+            lessonOfVengeance.setGrantedSpells(List.of(vengeanceHex));
 
             ClassFeatureChoice lessonOfMischief = new ClassFeatureChoice(witch, "Greater Lesson", "Lesson of Mischief");
+            FeatureGrantedSpells mischiefHex = new FeatureGrantedSpells(lessonOfMischief, deceiversCloak);
+            lessonOfMischief.setGrantedSpells(List.of(mischiefHex));
+
             ClassFeatureChoice lessonOfShadow = new ClassFeatureChoice(witch, "Greater Lesson", "Lesson of Shadow");
+            FeatureGrantedSpells shadowHex = new FeatureGrantedSpells(lessonOfShadow, maliciousShadow);
+            lessonOfShadow.setGrantedSpells(List.of(shadowHex));
+
             ClassFeatureChoice lessonOfSnow = new ClassFeatureChoice(witch, "Greater Lesson", "Lesson of Snow");
+            FeatureGrantedSpells snowHex = new FeatureGrantedSpells(lessonOfSnow, personalBlizzard);
+            lessonOfSnow.setGrantedSpells(List.of(snowHex));
 
             ClassFeatureChoice lessonOfDeath = new ClassFeatureChoice(witch, "Major Lesson", "Lesson of Death");
             FeatureGrantedSpells deathHex = new FeatureGrantedSpells(lessonOfDeath, curseOfDeath);
             lessonOfDeath.setGrantedSpells(List.of(deathHex));
 
             ClassFeatureChoice lessonOfRenewal = new ClassFeatureChoice(witch, "Major Lesson", "Lesson of Renewal");
+            FeatureGrantedSpells renewalHex = new FeatureGrantedSpells(lessonOfRenewal, restorativeMovement);
+            lessonOfRenewal.setGrantedSpells(List.of(renewalHex));
 
             ClassFeatureChoice schoolOfArsGrammatica = new ClassFeatureChoice(wizard, "Arcane Schools", "School of Ars Grammatica");
             FeatureGrantedSpells arsGrammaticaCantrip01 = new FeatureGrantedSpells(schoolOfArsGrammatica, message);
@@ -4462,6 +4684,10 @@ public class DataSeeder {
                     boundarySpell10, boundarySpell11, boundarySpell12, boundarySpell13, boundarySpell14, boundarySpell15, boundarySpell16, boundarySpell17, boundarySpell18, boundaryInitialSchoolSpell, boundaryAdvancedSchoolSpell));
 
             ClassFeatureChoice schoolOfUnifiedMagicalTheory = new ClassFeatureChoice(wizard, "Arcane Schools", "School of Unified Magical Theory");
+            FeatureGrantedSpells unifiedMagicalTheoryInitialSchoolSpell = new FeatureGrantedSpells(schoolOfUnifiedMagicalTheory, handsOfTheApprentice);
+            unifiedMagicalTheoryInitialSchoolSpell.setCharacterLevelGranted(1);
+            FeatureGrantedSpells unifiedMagicalTheoryAdvancedSchoolSpell = new FeatureGrantedSpells(schoolOfUnifiedMagicalTheory, interdisciplinaryIncantation);
+            schoolOfUnifiedMagicalTheory.setGrantedSpells(List.of(unifiedMagicalTheoryInitialSchoolSpell, unifiedMagicalTheoryAdvancedSchoolSpell));
 
             ClassFeatureChoice experimentalSpellshaping = new ClassFeatureChoice(wizard, "Arcane Thesis", "Experimental Spellshaping");
             ClassFeatureChoice improvedFamiliarAttunement = new ClassFeatureChoice(wizard, "Arcane Thesis", "Improved Familiar Attunement");
@@ -4481,6 +4707,9 @@ public class DataSeeder {
             ClassFeatureChoice maestro = new ClassFeatureChoice(bard, "Muse", "Maestro");
             FeatureGrantedFeat maestroFeat = new FeatureGrantedFeat(maestro, lingeringComposition);
             maestro.setGrantedFeats(List.of(maestroFeat));
+            FeatureGrantedSpells maestroSpell = new FeatureGrantedSpells(maestro, soothe);
+            maestroSpell.setCharacterLevelGranted(1);
+            maestro.setGrantedSpells(List.of(maestroSpell));
 
             ClassFeatureChoice polymath = new ClassFeatureChoice(bard, "Muse", "Polymath");
             FeatureGrantedFeat polymathFeat = new FeatureGrantedFeat(polymath, versatilePerformance);
@@ -4492,6 +4721,9 @@ public class DataSeeder {
             ClassFeatureChoice warriorMuse = new ClassFeatureChoice(bard, "Muse", "Warrior");
             FeatureGrantedFeat warriorFeat = new FeatureGrantedFeat(warriorMuse, martialPerformance);
             warriorMuse.setGrantedFeats(List.of(warriorFeat));
+            FeatureGrantedSpells warriorSpell = new FeatureGrantedSpells(warriorMuse, fear);
+            warriorSpell.setCharacterLevelGranted(1);
+            warriorMuse.setGrantedSpells(List.of(warriorSpell));
 
             ClassFeatureChoice flurryEdge = new ClassFeatureChoice(ranger, "Hunter's Edge", "Flurry");
             ClassFeatureChoice outwitEdge = new ClassFeatureChoice(ranger, "Hunter's Edge", "Outwit");

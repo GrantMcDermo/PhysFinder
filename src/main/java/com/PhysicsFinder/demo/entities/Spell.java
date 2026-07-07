@@ -47,6 +47,7 @@ public class Spell {
     private String spellRequirement;
     private String spellCastUnits;
     private Integer spellCastAmount;
+    private String spellCost;
 
     @OneToOne(mappedBy = "spell", cascade = CascadeType.ALL)
     private Domain spellDomain;
