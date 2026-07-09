@@ -832,6 +832,11 @@ public class DataSeeder {
             illusoryScene.setSpellAreaType("burst");
             illusoryScene.setSpellDuration("1 hour");
 
+            Spell impalingBriars = new Spell("Impaling Briars", 8, SpellType.FOCUS, ActionType.THREE_ACTIONS, Set.of(concentrateTrait, druidTrait, focusTrait, manipulateTrait, plantTrait, woodTrait), "The ground within the area transforms into a mass of dangerous briars that assault and impede your foes.");
+            impalingBriars.setSpellArea(100);
+            impalingBriars.setSpellAreaType("ground within a 100-foot emanation");
+            impalingBriars.setSpellDuration("sustained up to 1 minute");
+
             Spell impalingSpike = new Spell("Impaling Spike", 5, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, metalTrait), "You conjure a spike that thrusts up from the earth beneath a target creature, potentially impaling it.");
             impalingSpike.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
             impalingSpike.setSpellRange(30);
@@ -1090,6 +1095,8 @@ public class DataSeeder {
             prestidigitation.setSpellTargets("1 object (cook, lift, or tidy only)");
             prestidigitation.setSpellDuration("sustained");
 
+            Spell primalSummons = new Spell("Primal Summons", 6, SpellType.FOCUS, ActionType.FREE_ACTION, Set.of(concentrateTrait, druidTrait, focusTrait), "You enhance a summoned creature with the power of the elements.");
+
             Spell projectImage = new Spell("Project Image", 7, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, illusionTrait, manipulateTrait, mentalTrait), "You project an illusory image of yourself.");
             projectImage.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
             projectImage.setSpellRange(30);
@@ -1276,6 +1283,15 @@ public class DataSeeder {
             stokeTheHeart.setSpellTargets("1 creature");
             stokeTheHeart.setSpellDuration("sustained up to 1 minute");
 
+            Spell stormLord = new Spell("Storm Lord", 9, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(airTrait, concentrateTrait, druidTrait, electricityTrait, focusTrait, manipulateTrait), "The sky above you darkens in a matter of moments, swirling with ominous clouds punctuated by flashes of lighting.");
+            stormLord.setSpellRequirement("You are outdoors and aboveground");
+            stormLord.setSpellArea(100);
+            stormLord.setSpellAreaType("100-foot emanation, which includes you");
+            stormLord.setSpellDuration("sustained up to 1 minute");
+
+            Spell stormwindFlight = new Spell("Stormwind Flight", 4, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(airTrait, concentrateTrait, druidTrait, focusTrait, manipulateTrait), "Powerful winds carry you through the air, giving you a fly Speed equal to your Speed. When this spell's duration would end, if you're still flying, you float to the ground, as gentle landing.");
+            stormwindFlight.setSpellDuration("1 minute");
+
             Spell stupefy = new Spell("Stupefy", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, mentalTrait), "You dull the target's mind, depending on its Will save.");
             stupefy.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
             stupefy.setSpellRange(30);
@@ -1422,6 +1438,9 @@ public class DataSeeder {
             unrelentingObservation.setSpellTargets("1 creature of object tracked and up to 5 other willing creatures");
             unrelentingObservation.setSpellDuration("varies");
 
+            Spell untamedForm = new Spell("Untamed Form", 1, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, druidTrait, focusTrait, manipulateTrait, polymorphTrait), "You reach within for a different part of yourself, and you set it free, transforming your body into another form.");
+            untamedForm.setSpellDuration("varies");
+
             Spell untamedShift = new Spell("Untamed Shift", 1, SpellType.FOCUS, ActionType.ONE_TO_TWO_ACTIONS, Set.of(concentrateTrait, druidTrait, focusTrait, manipulateTrait, morphTrait), "You transform just a part of your body.");
             untamedShift.setSpellDuration("1 minute");
 
@@ -1534,21 +1553,22 @@ public class DataSeeder {
                     feetToFins, fieldOfLife, fieryBody, figment, forceBolt, foresight, fortifySummoning,
                     fortissimoComposition, gougingClaw, grimTendrils, handsOfTheApprentice, harm, heal, healAnimal,
                     holyLight, houseOfImaginaryWalls, howlingBlizzard, humanoidForm, hydraulicPush, hymnOfHealing,
-                    illusoryCreature, illusoryScene, impalingSpike, interdisciplinaryIncantation, interplanarTeleport,
-                    invisibilityCloak, invokeSpirits, lifeBoost, liminalDoorway, lingeringComposition, loremastersEtude,
-                    madMonkeys, maliciousShadow, massacre, message, metamorphosis, mindReading, mist, monstrosityForm,
-                    mysticArmor, needleOfVengeance, neverMind, nudgeFate, odeToOuroboros, personalBlizzard, pestForm,
-                    petrify, phantasmagoria, phantasmalCalamity, phantasmalMinionSpell, piedPiping, pinpoint, planarSeal,
-                    prestidigitation, projectImage, protectiveWards, pummelingRubble, raiseDead, rallyingAnthem,
-                    readAura, repulsion, resistEnergy, restorativeMovement, retrocognition, revealingLight,
-                    runeOfObservation, runicBody, runicWeapon, safePassage, scrambleBody, seeTheUnseen, sending,
-                    shieldSpell, shiftingForm, shroudOfNight, sigil, songOfMarching, songOfStrength, soothe,
-                    soothingBallad, spellwrack, spiralOfHorrors, spiritLink, stokeTheHeart, summonConstruct,
+                    illusoryCreature, illusoryScene, impalingBriars, impalingSpike, interdisciplinaryIncantation,
+                    interplanarTeleport, invisibilityCloak, invokeSpirits, lifeBoost, liminalDoorway,
+                    lingeringComposition, loremastersEtude, madMonkeys, maliciousShadow, massacre, message,
+                    metamorphosis, mindReading, mist, monstrosityForm, mysticArmor, needleOfVengeance, neverMind,
+                    nudgeFate, odeToOuroboros, personalBlizzard, pestForm, petrify, phantasmagoria, phantasmalCalamity,
+                    phantasmalMinionSpell, piedPiping, pinpoint, planarSeal, prestidigitation, primalSummons,
+                    projectImage, protectiveWards, pummelingRubble, raiseDead, rallyingAnthem, readAura, repulsion,
+                    resistEnergy, restorativeMovement, retrocognition, revealingLight, runeOfObservation, runicBody,
+                    runicWeapon, safePassage, scrambleBody, seeTheUnseen, sending, shieldSpell, shiftingForm,
+                    shroudOfNight, sigil, songOfMarching, songOfStrength, soothe, soothingBallad, spellwrack,
+                    spiralOfHorrors, spiritLink, stokeTheHeart, stormLord, stormwindFlight, summonConstruct,
                     summonPlantOrFungus, summonUndead, symphonyOfTheUnfetteredHeart, tangleVine, telekineticHand,
                     telekineticProjectile, teleport, tempestSurge, toxicCloud, translate, tripleTime, truespeech,
-                    trueTarget, uncontrollableDance, unfetteredMovement, unrelentingObservation, untamedShift,
-                    upliftingOverture, vampiricExsanguination, vampiricFeast, vaporForm, veilOfDreams, veilOfPrivacy,
-                    voidWarp, wallOfStone, wallOfWind, waterWalk, wildingWord));
+                    trueTarget, uncontrollableDance, unfetteredMovement, unrelentingObservation, untamedForm,
+                    untamedShift, upliftingOverture, vampiricExsanguination, vampiricFeast, vaporForm, veilOfDreams,
+                    veilOfPrivacy, voidWarp, wallOfStone, wallOfWind, waterWalk, wildingWord));
 
             Weapon crossbow = new Weapon("Crossbow", WeaponCategory.SIMPLE, WeaponType.RANGED, WeaponGroup.CROSSBOW, 1, 8, DamageType.PIERCING);
             crossbow.setRangeFeet(120);
