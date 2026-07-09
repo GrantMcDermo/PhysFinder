@@ -398,6 +398,16 @@ public class DataSeeder {
             Spell cornucopia = new Spell("Cornucopia", 1, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, druidTrait, focusTrait, healingTrait, manipulateTrait, plantTrait, vitalityTrait), "Vines twine into a wicker horn in your hands, and out spills a single fruit, nut, or similar small bit of produce.");
             cornucopia.setSpellDuration("10 minutes");
 
+            Spell counterPerformance = new Spell("Counter Performance", 1, SpellType.FOCUS, ActionType.REACTION, Set.of(bardTrait, compositionTrait, concentrateTrait, focusTrait, fortuneTrait, mentalTrait), "Your performance protects you and your allies.");
+            counterPerformance.setSpellTrigger("You or an ally within 60 feet rolls a saving throw against an auditory or visual effect");
+            counterPerformance.setSpellArea(60);
+            counterPerformance.setSpellAreaType("emanation");
+
+            Spell courageousAnthem = new Spell("Courageous Anthem", 1, SpellType.CANTRIP, ActionType.SINGLE_ACTION, Set.of(bardTrait, cantripTrait, compositionTrait, concentrateTrait, emotionTrait, mentalTrait), "You inspire yourself and your allies with words or tunes of encouragement.");
+            courageousAnthem.setSpellArea(60);
+            courageousAnthem.setSpellAreaType("emanation");
+            courageousAnthem.setSpellDuration("1 round");
+
             Spell cozyCabin = new Spell("Cozy Cabin", 3, SpellType.SPELL, ActionType.ACTIVITY, Set.of(concentrateTrait, manipulateTrait, woodTrait), "You shape a cabin 20 feet on each side and 10 feet high.");
             cozyCabin.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
             cozyCabin.setSpellCastUnits("minute");
@@ -453,6 +463,11 @@ public class DataSeeder {
             detonateMagic.setSpellRange(120);
             detonateMagic.setSpellTargets("1 magic item or spell effect");
             detonateMagic.setSpellDefense("basic Reflex");
+
+            Spell dirgeOfDoom = new Spell("Dirge of Doom", 3, SpellType.CANTRIP, ActionType.SINGLE_ACTION, Set.of(bardTrait, cantripTrait, compositionTrait, concentrateTrait, emotionTrait, fearTrait, mentalTrait), "Enemies within the area are frightened 1. They can't reduce their frightened value below 1 while they remain in the area.");
+            dirgeOfDoom.setSpellArea(30);
+            dirgeOfDoom.setSpellAreaType("emanation");
+            dirgeOfDoom.setSpellDuration("1 round");
 
             Spell disappearance = new Spell("Disappearance", 8, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(illusionTrait, manipulateTrait, subtleTrait), "You shroud a creature from others' senses.");
             disappearance.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
@@ -618,6 +633,10 @@ public class DataSeeder {
             falseVitality.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
             falseVitality.setSpellDuration("8 hours");
 
+            Spell fatalAria = new Spell("Fatal Aria", 10, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(bardTrait, compositionTrait, concentrateTrait, deathTrait, emotionTrait, focusTrait, mentalTrait), "You perform music so perfect that the target may die of joy or sorrow.");
+            fatalAria.setSpellRange(30);
+            fatalAria.setSpellTargets("1 creature");
+
             Spell fear = new Spell("Fear", 1, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, emotionTrait, fearTrait, manipulateTrait, mentalTrait), "You plant fear in the target; it must attempt a Will save.");
             fear.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
             fear.setSpellRange(30);
@@ -686,6 +705,8 @@ public class DataSeeder {
             Spell fortifySummoning = new Spell("Fortify Summoning", 1, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(concentrateTrait, focusTrait, wizardTrait), "As you call a creature to your side, your magic transforms its body, heightening its ferocity and fortifying its resilience.");
             fortifySummoning.setSpellRange(30);
             fortifySummoning.setSpellTargets("1 creature you summoned");
+
+            Spell fortissimoComposition = new Spell("Fortissimo Composition", 4, SpellType.FOCUS, ActionType.FREE_ACTION, Set.of(bardTrait, concentrateTrait, focusTrait, spellshapeTrait), "You call upon your muse to greatly increase the benefits you provide with your courageous anthem, rallying anthem, or song of strength composition.");
 
             Spell ghostlyWeapon = new Spell("Ghostly Weapon", 3, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "The target weapon becomes translucent and ghostly, and it can affect material and incorporeal creatures and objects.");
             ghostlyWeapon.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
@@ -757,6 +778,9 @@ public class DataSeeder {
             holyLight.setSpellTargets("1 creature");
             holyLight.setSpellDefense("AC");
 
+            Spell houseOfImaginaryWalls = new Spell("House of Imaginary Walls", 5, SpellType.CANTRIP, ActionType.SINGLE_ACTION, Set.of(bardTrait, cantripTrait, compositionTrait, illusionTrait, manipulateTrait, visualTrait), "You mime an invisible 10-foot-by-10-foot wall adjacent to you and within your reach. The wall is solid to those creatures that don't disbelieve it, even incorporeal creatures. You and your allies can voluntarily believe the wall exists to continue to treat it as solid, for instance to climb onto it. A creature that disbelieves the illusion is temporarily immune to your house of imaginary walls for 1 minute. The wall doesn't block creatures that didn't see your visual performance, nor does it block objects. The wall has AC 10, Hardness equal to double the spell's rank, and HP equal to quadruple the spell's rank.");
+            houseOfImaginaryWalls.setSpellDuration("1 round");
+
             Spell howlingBlizzard = new Spell("Howling Blizzard", 5, SpellType.SPELL, ActionType.TWO_TO_THREE_ACTIONS, Set.of(airTrait, coldTrait, concentrateTrait, manipulateTrait), "Freezing winds extend from your hands, pushing away from you with great force.");
             howlingBlizzard.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
             howlingBlizzard.setSpellAreaType("varies");
@@ -771,6 +795,11 @@ public class DataSeeder {
             hydraulicPush.setSpellRange(60);
             hydraulicPush.setSpellTargets("1 creature or unattended object");
             hydraulicPush.setSpellDefense("AC");
+
+            Spell hymnOfHealing = new Spell("Hymn of Healing", 1, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(bardTrait, compositionTrait, concentrateTrait, focusTrait, healingTrait, vitalityTrait), "Your glorious singing mends wounds and provides a temporary respite from harm.");
+            hymnOfHealing.setSpellRange(30);
+            hymnOfHealing.setSpellTargets("you or 1 ally");
+            hymnOfHealing.setSpellDuration("sustained up to 4 rounds");
 
             Spell illusoryCreature = new Spell("Illusory Creature", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(auditoryTrait, concentrateTrait, illusionTrait, manipulateTrait, olfactoryTrait, visualTrait), "You create an illusory image of a Large or smaller creature.");
             illusoryCreature.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
@@ -864,6 +893,13 @@ public class DataSeeder {
             liminalDoorway.setSpellCastUnits("minute");
             liminalDoorway.setSpellRange(0);
             liminalDoorway.setSpellDuration("8 hours");
+
+            Spell lingeringComposition = new Spell("Lingering Composition", 1, SpellType.FOCUS, ActionType.FREE_ACTION, Set.of(bardTrait, concentrateTrait, focusTrait, spellshapeTrait), "You add a flourish to your composition to extend its benefits.");
+
+            Spell loremastersEtude = new Spell("Loremaster's Etude", 1, SpellType.FOCUS, ActionType.FREE_ACTION, Set.of(bardTrait, compositionTrait, focusTrait, fortuneTrait, manipulateTrait), "You call upon your muse's deep mysteries, granting the target a greater ability to think and recall information.");
+            loremastersEtude.setSpellTrigger("You or an ally within range attempts a skill check to Recall Knowledge");
+            loremastersEtude.setSpellRange(30);
+            loremastersEtude.setSpellTargets("you or the triggering ally");
 
             Spell madMonkeys = new Spell("Mad Monkeys", 3, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "Magical monkey spirits fill the area as they pile and climb on top of one another.");
             madMonkeys.setSpellTraditions(List.of(SpellTraditions.PRIMAL));
@@ -968,6 +1004,11 @@ public class DataSeeder {
             nudgeFate.setSpellTargets("1 creature");
             nudgeFate.setSpellDuration("1 minute");
 
+            Spell odeToOuroboros = new Spell("Ode to Ouroboros", 5, SpellType.FOCUS, ActionType.REACTION, Set.of(bardTrait, compositionTrait, concentrateTrait, focusTrait), "Your ode staves off death.");
+            odeToOuroboros.setSpellTrigger("A creature’s dying condition would reach the value at which they would die");
+            odeToOuroboros.setSpellRange(60);
+            odeToOuroboros.setSpellTargets("the triggering creature");
+
             Spell personalBlizzard = new Spell("Personal Blizzard", 3, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(coldTrait, focusTrait, hexTrait, witchTrait), "Your patron's breath becomes a blizzard of obscuring, scouring ice that follows your target.");
             personalBlizzard.setSpellRange(30);
             personalBlizzard.setSpellTargets("1 creature");
@@ -1016,6 +1057,12 @@ public class DataSeeder {
             phantomPain.setSpellTargets("1 creature");
             phantomPain.setSpellDefense("Will");
             phantomPain.setSpellDuration("1 minute");
+
+            Spell piedPiping = new Spell("Pied Piping", 10, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(bardTrait, compositionTrait, concentrateTrait, focusTrait, incapactitationTrait, mentalTrait, sonicTrait), "Your performance enraptures listeners, compelling them to follow you.");
+            piedPiping.setSpellArea(5);
+            piedPiping.setSpellAreaType("emanation");
+            piedPiping.setSpellDefense("Will");
+            piedPiping.setSpellDuration("1 minute");
 
             Spell pinpoint = new Spell("Pinpoint", 8, SpellType.SPELL, ActionType.ACTIVITY, Set.of(concentrateTrait, detectionTrait, manipulateTrait), "You learn the name of the target's exact location (including the building, community, and country) and plane of existence. You can target a creature only if you've seen it in person, have one of its significant belongings, or have a piece of its body, such as a lock of hair. To target an object, you must have touched it or have a fragment of it. Pinpoint automatically overcomes protections against detection effects of lower rank than this spell, even if they would normally have a chance to block it.");
             pinpoint.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT));
@@ -1072,6 +1119,11 @@ public class DataSeeder {
             raiseDead.setSpellCost("gemstones worth a total value of the target’s level (minimum 1) × 200 gp");
             raiseDead.setSpellRange(10);
             raiseDead.setSpellTargets("1 dead creature of 13th level or lower");
+
+            Spell rallyingAnthem = new Spell("Rallying Anthem", 2, SpellType.CANTRIP, ActionType.SINGLE_ACTION, Set.of(bardTrait, cantripTrait, compositionTrait, concentrateTrait, emotionTrait, mentalTrait), "Your song moves allies to protect themselves more effectively.");
+            rallyingAnthem.setSpellArea(60);
+            rallyingAnthem.setSpellAreaType("emanation");
+            rallyingAnthem.setSpellDuration("1 round");
 
             Spell readAura = new Spell("Read Aura", 1, SpellType.CANTRIP, ActionType.ACTIVITY, Set.of(cantripTrait, concentrateTrait, detectionTrait, manipulateTrait), "You focus on the target object, opening your mind to perceive magical auras.");
             readAura.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
@@ -1172,11 +1224,25 @@ public class DataSeeder {
             sleep.setSpellAreaType("burst");
             sleep.setSpellDefense("Will");
 
+            Spell songOfMarching = new Spell("Song of Marching", 3, SpellType.CANTRIP, ActionType.SINGLE_ACTION, Set.of(bardTrait, cantripTrait, compositionTrait, concentrateTrait, mentalTrait), "You maintain a brisk performance that keeps allies on the move.");
+            songOfMarching.setSpellArea(60);
+            songOfMarching.setSpellAreaType("emanation");
+            songOfMarching.setSpellDuration("sustained up to 1 hour");
+
+            Spell songOfStrength = new Spell("Song of Strength", 1, SpellType.CANTRIP, ActionType.SINGLE_ACTION, Set.of(bardTrait, cantripTrait, compositionTrait, concentrateTrait, emotionTrait, mentalTrait), "You bolster your allies' physical strength with a hearty exhortation.");
+            songOfStrength.setSpellArea(60);
+            songOfStrength.setSpellAreaType("emanation");
+            songOfStrength.setSpellDuration("1 round");
+
             Spell soothe = new Spell("Soothe", 1, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, emotionTrait, healingTrait, manipulateTrait, mentalTrait), "You grace the target's mind, boosting its mental defenses and healing its wounds.");
             soothe.setSpellTraditions(List.of(SpellTraditions.OCCULT));
             soothe.setSpellRange(30);
             soothe.setSpellTargets("1 willing creature");
             soothe.setSpellDuration("1 minute");
+
+            Spell soothingBallad = new Spell("Soothing Ballad", 7, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(bardTrait, compositionTrait, concentrateTrait, emotionTrait, focusTrait, healingTrait, manipulateTrait, mentalTrait), "You draw upon your muse to soothe your allies.");
+            soothingBallad.setSpellRange(30);
+            soothingBallad.setSpellTargets("you and up to 9 allies");
 
             Spell speakWithAnimals = new Spell("Speak with Animals", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "You can ask questions of, receive answers from, and use the Diplomacy skill with animals. The spell doesn't make them more friendly than normal. Cunning animals are likely to be terse and evasive, while less intelligent ones often make inane comments.");
             speakWithAnimals.setSpellTraditions(List.of(SpellTraditions.PRIMAL));
@@ -1248,6 +1314,10 @@ public class DataSeeder {
             sureStrike.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
             sureStrike.setSpellDuration("until the end of your turn");
 
+            Spell symphonyOfTheUnfetteredHeart = new Spell("Symphony of the Unfettered Heart", 5, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(bardTrait, compositionTrait, concentrateTrait, focusTrait), "Your symphony lifts listeners from their worldly concerns.");
+            symphonyOfTheUnfetteredHeart.setSpellRange(30);
+            symphonyOfTheUnfetteredHeart.setSpellTargets("you or 1 ally");
+
             Spell tangleVine = new Spell("Tangle Vine", 1, SpellType.CANTRIP, ActionType.TWO_ACTIONS, Set.of(attackTrait, cantripTrait, concentrateTrait, manipulateTrait, plantTrait, woodTrait), "A vine appears from thin air, flicking from your hand and lashing itself to the target.");
             tangleVine.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
             tangleVine.setSpellRange(30);
@@ -1302,6 +1372,11 @@ public class DataSeeder {
             translocate.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
             translocate.setSpellRange(120);
 
+            Spell tripleTime = new Spell("Triple Time", 2, SpellType.CANTRIP, ActionType.SINGLE_ACTION, Set.of(bardTrait, cantripTrait, compositionTrait, emotionTrait, manipulateTrait, mentalTrait), "Your music sets a fast pace.");
+            tripleTime.setSpellArea(60);
+            tripleTime.setSpellAreaType("emanation");
+            tripleTime.setSpellDuration("1 round");
+
             Spell truespeech = new Spell("Truespeech", 5, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "The target can understand all words regardless of language and also speak the languages of other creatures. When in a mixed group of creatures, each time the target speaks, it can choose a creature and speak in a language that creature understands, even if the target doesn't know what language that is.");
             truespeech.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT));
             truespeech.setSpellRange(0);
@@ -1349,6 +1424,11 @@ public class DataSeeder {
 
             Spell untamedShift = new Spell("Untamed Shift", 1, SpellType.FOCUS, ActionType.ONE_TO_TWO_ACTIONS, Set.of(concentrateTrait, druidTrait, focusTrait, manipulateTrait, morphTrait), "You transform just a part of your body.");
             untamedShift.setSpellDuration("1 minute");
+
+            Spell upliftingOverture = new Spell("Uplifting Overture", 1, SpellType.CANTRIP, ActionType.SINGLE_ACTION, Set.of(bardTrait, cantripTrait, compositionTrait, concentrateTrait, emotionTrait, mentalTrait), "Your performance makes allies feel they can succeed at anything.");
+            upliftingOverture.setSpellRange(60);
+            upliftingOverture.setSpellTargets("1 ally");
+            upliftingOverture.setSpellDuration("1 round");
 
             Spell vampiricExsanguination = new Spell("Vampiric Exsanguination", 6, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, deathTrait, manipulateTrait, voidTrait), "You draw in the blood and life force of other creatures through your outstretched arms.");
             vampiricExsanguination.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT));
@@ -1446,26 +1526,29 @@ public class DataSeeder {
             spellRepo.saveAll(List.of(
                     acidGrip, airBubble, allegro, aqueousOrb, arcticRift, bane, banishment, bindUndead, blazingBolt,
                     blessedBoundary, bloodVendetta, bloodWard, cataclysm, chainLightning, charmingPush, chillingDarkness,
-                    clingingIce, command, communityRestoration, contingency, cornucopia, cozyCabin, curseOfDeath,
-                    cursedMetamorphosis, darkness, daze, deceiversCloak, desiccate, disappearance, discernSecrets,
-                    disguiseMagic, dispelMagic, dispellingGlobe, divineDecree, dreamMessage, duplicateFoe, earthquake,
-                    earthworks, eclipseBurst, elementalBetrayal, elementalForm, energyAbsorption, energyAegis, enfeeble,
-                    evilEye, fallingStars, fear, feetToFins, fieldOfLife, fieryBody, figment, forceBolt, foresight,
-                    fortifySummoning, gougingClaw, grimTendrils, handsOfTheApprentice, harm, heal, healAnimal, holyLight,
-                    howlingBlizzard, humanoidForm, hydraulicPush, illusoryCreature, illusoryScene, impalingSpike,
-                    interdisciplinaryIncantation, interplanarTeleport, invisibilityCloak, invokeSpirits, lifeBoost,
-                    liminalDoorway, madMonkeys, maliciousShadow, massacre, message, metamorphosis, mindReading, mist,
-                    monstrosityForm, mysticArmor, needleOfVengeance, neverMind, nudgeFate, personalBlizzard, pestForm,
-                    petrify, phantasmagoria, phantasmalCalamity, phantasmalMinionSpell, pinpoint, planarSeal,
-                    prestidigitation, projectImage, protectiveWards, pummelingRubble, raiseDead, readAura, repulsion,
-                    resistEnergy, restorativeMovement, retrocognition, revealingLight, runeOfObservation, runicBody,
-                    runicWeapon, safePassage, scrambleBody, seeTheUnseen, sending, shieldSpell, shiftingForm,
-                    shroudOfNight, sigil, soothe, spellwrack, spiralOfHorrors, spiritLink, stokeTheHeart,
-                    summonConstruct, summonPlantOrFungus, summonUndead, tangleVine, telekineticHand,
-                    telekineticProjectile, teleport, tempestSurge, toxicCloud, translate, truespeech, trueTarget,
-                    uncontrollableDance, unfetteredMovement, unrelentingObservation, untamedShift,
-                    vampiricExsanguination, vampiricFeast, vaporForm, veilOfDreams, veilOfPrivacy, voidWarp, wallOfStone,
-                    wallOfWind, waterWalk, wildingWord));
+                    clingingIce, command, communityRestoration, contingency, cornucopia, counterPerformance,
+                    courageousAnthem, cozyCabin, curseOfDeath, cursedMetamorphosis, darkness, daze, deceiversCloak,
+                    desiccate, dirgeOfDoom, disappearance, discernSecrets, disguiseMagic, dispelMagic, dispellingGlobe,
+                    divineDecree, dreamMessage, duplicateFoe, earthquake, earthworks, eclipseBurst, elementalBetrayal,
+                    elementalForm, energyAbsorption, energyAegis, enfeeble, evilEye, fallingStars, fatalAria, fear,
+                    feetToFins, fieldOfLife, fieryBody, figment, forceBolt, foresight, fortifySummoning,
+                    fortissimoComposition, gougingClaw, grimTendrils, handsOfTheApprentice, harm, heal, healAnimal,
+                    holyLight, houseOfImaginaryWalls, howlingBlizzard, humanoidForm, hydraulicPush, hymnOfHealing,
+                    illusoryCreature, illusoryScene, impalingSpike, interdisciplinaryIncantation, interplanarTeleport,
+                    invisibilityCloak, invokeSpirits, lifeBoost, liminalDoorway, lingeringComposition, loremastersEtude,
+                    madMonkeys, maliciousShadow, massacre, message, metamorphosis, mindReading, mist, monstrosityForm,
+                    mysticArmor, needleOfVengeance, neverMind, nudgeFate, odeToOuroboros, personalBlizzard, pestForm,
+                    petrify, phantasmagoria, phantasmalCalamity, phantasmalMinionSpell, piedPiping, pinpoint, planarSeal,
+                    prestidigitation, projectImage, protectiveWards, pummelingRubble, raiseDead, rallyingAnthem,
+                    readAura, repulsion, resistEnergy, restorativeMovement, retrocognition, revealingLight,
+                    runeOfObservation, runicBody, runicWeapon, safePassage, scrambleBody, seeTheUnseen, sending,
+                    shieldSpell, shiftingForm, shroudOfNight, sigil, songOfMarching, songOfStrength, soothe,
+                    soothingBallad, spellwrack, spiralOfHorrors, spiritLink, stokeTheHeart, summonConstruct,
+                    summonPlantOrFungus, summonUndead, symphonyOfTheUnfetteredHeart, tangleVine, telekineticHand,
+                    telekineticProjectile, teleport, tempestSurge, toxicCloud, translate, tripleTime, truespeech,
+                    trueTarget, uncontrollableDance, unfetteredMovement, unrelentingObservation, untamedShift,
+                    upliftingOverture, vampiricExsanguination, vampiricFeast, vaporForm, veilOfDreams, veilOfPrivacy,
+                    voidWarp, wallOfStone, wallOfWind, waterWalk, wildingWord));
 
             Weapon crossbow = new Weapon("Crossbow", WeaponCategory.SIMPLE, WeaponType.RANGED, WeaponGroup.CROSSBOW, 1, 8, DamageType.PIERCING);
             crossbow.setRangeFeet(120);
@@ -3425,8 +3508,8 @@ public class DataSeeder {
 
             Feat bardicLore = new Feat("Bardic Lore", 1, Set.of(bardTrait), "Your studies make you informed on every subject.");
             bardicLore.setAvailableToClasses(List.of(bard));
-            Feat hymnOfHealing = new Feat("Hymn of Healing", 1, Set.of(bardTrait), "You learn the hymn of healing composition spell, which imbues your music with rich melodies that help your allies recover from harm.");
-            Feat lingeringComposition = new Feat("Lingering Composition",1, Set.of(bardTrait), "By adding a flourish, you make your compositions last longer.");
+            Feat hymnOfHealingFeat = new Feat("Hymn of Healing", 1, Set.of(bardTrait), "You learn the hymn of healing composition spell, which imbues your music with rich melodies that help your allies recover from harm.");
+            Feat lingeringCompositionFeat = new Feat("Lingering Composition",1, Set.of(bardTrait), "By adding a flourish, you make your compositions last longer.");
             Feat martialPerformance = new Feat("Martial Performance", 1, Set.of(bardTrait), "Your muse has taught you how to handle a wider variety of weapons than most bards, empowering you to effortlessly blend your performance into combat tools.");
             Feat reachSpell = new Feat("Reach Spell", 1, Set.of(bardTrait, clericTrait, concentrateTrait, druidTrait, oracleTrait, sorcererTrait, spellshapeTrait, witchTrait, wizardTrait), "You can extend your spells’ range.");
             Feat versatilePerformance = new Feat("Versatile Performance", 1, Set.of(bardTrait), "You can rely on the grandeur of your performances rather than ordinary social skills.");
@@ -3435,10 +3518,10 @@ public class DataSeeder {
             Feat directedAudience = new Feat("Directed Audience", 2, Set.of(bardTrait), "You can shape the area of your composition spells.");
             Feat emotionalPush = new Feat("Emotional Push", 2, Set.of(bardTrait, concentrateTrait), "You prepare to take advantage of your enemy’s sudden change in emotions.");
             Feat esotericPolymath = new Feat("Esoteric Polymath", 2, Set.of(bardTrait), "You keep a book of occult spells, similar to a wizard’s spellbook, and can use its spells to supplement your spell repertoire.");
-            Feat loremastersEtude = new Feat("Loremaster's Etude", 2, Set.of(bardTrait, fortuneTrait), "You magically unlock memories, making them easier to recall.");
+            Feat loremastersEtudeFeat = new Feat("Loremaster's Etude", 2, Set.of(bardTrait, fortuneTrait), "You magically unlock memories, making them easier to recall.");
             Feat multifariousMuse = new Feat("Multifarious Muse", 2, Set.of(bardTrait), "Your muse doesn’t fall into a single label.");
-            Feat songOfStrength = new Feat("Song of Strength", 2, Set.of(bardTrait), "Your performances inspire strength in your allies to aid them at physical tasks.");
-            Feat upliftingOverture = new Feat("Uplifting Overture", 2, Set.of(bardTrait), "You learn the uplifting overture composition cantrip, which aids your allies’ skills with the inspiring nature of your performance.");
+            Feat songOfStrengthFeat = new Feat("Song of Strength", 2, Set.of(bardTrait), "Your performances inspire strength in your allies to aid them at physical tasks.");
+            Feat upliftingOvertureFeat = new Feat("Uplifting Overture", 2, Set.of(bardTrait), "You learn the uplifting overture composition cantrip, which aids your allies’ skills with the inspiring nature of your performance.");
             Feat combatReading = new Feat("Combat Reading", 4, Set.of(bardTrait, secretTrait), "You use a performer’s cold reading techniques, aura reading, and other tricks to discover your foe’s strengths and weaknesses.");
             Feat courageousAdvance = new Feat("Courageous Advance", 4, Set.of(auditoryTrait, bardTrait, concentrateTrait, spellshapeTrait), "With a rousing call, you exhort an ally to advance.");
             Feat inTune = new Feat("In Tune", 4, Set.of(bardTrait, concentrateTrait, spellshapeTrait), "You attune your great skill in performing to another, granting them a small measure of your skill as though anyone could do it.");
@@ -4060,8 +4143,8 @@ public class DataSeeder {
                     defensiveRoll, instantOpening, leaveAnOpening, stayDown,
                     blankSlate, cloudStep, cognitiveLoophole, dispellingSlice, perfectDistraction, swiftElusion,
                     implausibleInfiltration, implausiblePurchase2, powerfulSneak, hiddenParagon, impossibleStriker, reactiveDistraction,
-                    bardicLore, hymnOfHealing, lingeringComposition, martialPerformance, reachSpell, versatilePerformance, wellVersed,
-                    cantripExpansion, directedAudience, emotionalPush, esotericPolymath, loremastersEtude, multifariousMuse, songOfStrength, upliftingOverture,
+                    bardicLore, hymnOfHealingFeat, lingeringCompositionFeat, martialPerformance, reachSpell, versatilePerformance, wellVersed,
+                    cantripExpansion, directedAudience, emotionalPush, esotericPolymath, loremastersEtudeFeat, multifariousMuse, songOfStrengthFeat, upliftingOvertureFeat,
                     combatReading, courageousAdvance, inTune, melodiousSpell, rallyingAnthemFeat, ritualResearcher, tripleTimeFeat, versatileSignature,
                     assuredLKnowledge, defensiveCoordination, dirgeOfDoomFeat, educateAllies, harmonize, songOfMarchingFeat, steadySpellcasting,
                     accompany, callAndResponse, eclecticSkill, fortissimoCompositionFeat, knowItAll, reflexiveCourage, soulsight,
@@ -4705,7 +4788,7 @@ public class DataSeeder {
             enigma.setGrantedSpells(List.of(enigmaSpell));
 
             ClassFeatureChoice maestro = new ClassFeatureChoice(bard, "Muse", "Maestro");
-            FeatureGrantedFeat maestroFeat = new FeatureGrantedFeat(maestro, lingeringComposition);
+            FeatureGrantedFeat maestroFeat = new FeatureGrantedFeat(maestro, lingeringCompositionFeat);
             maestro.setGrantedFeats(List.of(maestroFeat));
             FeatureGrantedSpells maestroSpell = new FeatureGrantedSpells(maestro, soothe);
             maestroSpell.setCharacterLevelGranted(1);
