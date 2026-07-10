@@ -11,5 +11,17 @@ public enum TraitCategory {
     CREATURE,
     ARMOR,
     WEAPON,
-    ITEM
+    EQUIPMENT,
+    ENERGY,
+    ELEMENTAL,
+    MONSTER,
+    TRADITION,
+    FEAT,
+    MECHANICS,
+    SENSE,
+    CLASS_SPECIFIC,
+    AFFLICTION,
+    SCHOOL,
+    POISON,
+    PLANAR
 }

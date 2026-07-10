@@ -74,24 +74,24 @@ public class DataSeeder {
 
             Trait generalTrait = new Trait("General", TraitCategory.GENERAL);
             Trait skillTrait = new Trait("Skill",  TraitCategory.SKILL);
-            Trait fortuneTrait = new Trait("Fortune", TraitCategory.GENERAL);
+            Trait fortuneTrait = new Trait("Fortune", TraitCategory.MECHANICS);
             Trait commanderTrait = new Trait("Commander", TraitCategory.CLASS);
             Trait fighterTrait = new Trait("Fighter", TraitCategory.CLASS);
-            Trait pressTrait = new Trait("Press", TraitCategory.ACTION);
-            Trait stanceTrait = new Trait("Stance", TraitCategory.ACTION);
+            Trait pressTrait = new Trait("Press", TraitCategory.MECHANICS);
+            Trait stanceTrait = new Trait("Stance", TraitCategory.CLASS_SPECIFIC);
             Trait guardianTrait = new Trait("Guardian", TraitCategory.CLASS);
             Trait barbarianTrait = new Trait("Barbarian", TraitCategory.CLASS);
-            Trait flourishTrait = new Trait("Flourish", TraitCategory.ACTION);
-            Trait manipulateTrait = new Trait("Manipulate", TraitCategory.ACTION);
-            Trait emotionTrait = new Trait("Emotion", TraitCategory.ACTION);
-            Trait fearTrait = new Trait("Fear",  TraitCategory.ACTION);
-            Trait mentalTrait = new Trait("Mental",  TraitCategory.ACTION);
+            Trait flourishTrait = new Trait("Flourish", TraitCategory.MECHANICS);
+            Trait manipulateTrait = new Trait("Manipulate", TraitCategory.MECHANICS);
+            Trait emotionTrait = new Trait("Emotion", TraitCategory.MECHANICS);
+            Trait fearTrait = new Trait("Fear",  TraitCategory.MECHANICS);
+            Trait mentalTrait = new Trait("Mental",  TraitCategory.MECHANICS);
             Trait exemplarTrait = new Trait("Exemplar", TraitCategory.CLASS);
             Trait rangerTrait = new Trait("Ranger",   TraitCategory.CLASS);
             Trait championTrait = new Trait("Champion",   TraitCategory.CLASS);
             Trait investigatorTrait = new Trait("Investigator",   TraitCategory.CLASS);
             Trait rogueTrait = new Trait("Rogue",    TraitCategory.CLASS);
-            Trait concentrateTrait = new Trait("Concentrate",  TraitCategory.ACTION);
+            Trait concentrateTrait = new Trait("Concentrate",  TraitCategory.MECHANICS);
             Trait wizardTrait = new Trait("Wizard", TraitCategory.CLASS);
             Trait psychicTrait = new Trait("Psychic", TraitCategory.CLASS);
             Trait thaumaturgeTrait = new Trait("Thaumaturge", TraitCategory.CLASS);
@@ -112,14 +112,14 @@ public class DataSeeder {
             Trait aiuvarinTrait = new Trait("Aiuvarin",  TraitCategory.ANCESTRY);
             Trait dromaarTrait = new Trait("Dromaar", TraitCategory.ANCESTRY);
             Trait changelingTrait = new Trait("Changeling",  TraitCategory.ANCESTRY);
-            Trait lineageTrait = new Trait("Lineage", TraitCategory.HERITAGE);
+            Trait lineageTrait = new Trait("Lineage", TraitCategory.FEAT);
             Trait humanoidTrait = new Trait("Humanoid", TraitCategory.CREATURE);
             Trait plantTrait = new Trait("Plant", TraitCategory.CREATURE);
             Trait nephilimTrait = new Trait("Nephilim", TraitCategory.ANCESTRY);
             Trait koboldTrait = new Trait("Kobold", TraitCategory.ANCESTRY);
             Trait samsaranTrait = new Trait("Samsaran", TraitCategory.ANCESTRY);
             Trait kholoTrait = new Trait("Kholo", TraitCategory.ANCESTRY);
-            Trait shadowTrait = new Trait("Shadow", TraitCategory.MAGIC);
+            Trait shadowTrait = new Trait("Shadow", TraitCategory.PLANAR);
             Trait wayangTrait = new Trait("Wayang", TraitCategory.ANCESTRY);
             Trait fungusTrait = new Trait("Fungus", TraitCategory.CREATURE);
             Trait feyTrait = new Trait("Fey", TraitCategory.CREATURE);
@@ -143,7 +143,7 @@ public class DataSeeder {
             Trait propulsiveTrait = new Trait("Propulsive", TraitCategory.WEAPON);
             Trait volleyTrait = new Trait("Volley", TraitCategory.WEAPON);
             Trait disarmTrait = new Trait("Disarm", TraitCategory.WEAPON);
-            Trait nonlethalTrait = new Trait("Nonlethal", TraitCategory.ACTION);
+            Trait nonlethalTrait = new Trait("Nonlethal", TraitCategory.WEAPON);
             Trait reachTrait = new Trait("Reach", TraitCategory.WEAPON);
             Trait tripTrait = new Trait("Trip", TraitCategory.WEAPON);
             Trait forcefulTrait = new Trait("Forceful", TraitCategory.WEAPON);
@@ -156,85 +156,138 @@ public class DataSeeder {
             Trait joustingTrait = new Trait("Jousting", TraitCategory.WEAPON);
             Trait concealableTrait = new Trait("Concealable", TraitCategory.WEAPON);
             Trait attachedToShieldTrait = new Trait("Attached to Shield", TraitCategory.WEAPON);
-            Trait healingTrait = new Trait("Healing", TraitCategory.ACTION);
-            Trait illusionTrait = new Trait("Illusion", TraitCategory.MAGIC);
-            Trait explorationTrait = new Trait("Exploration", TraitCategory.ACTION);
-            Trait linguisticTrait = new Trait("Linguistic", TraitCategory.ACTION);
-            Trait spellshapeTrait = new Trait("Spellshape", TraitCategory.MAGIC);
-            Trait downtimeTrait = new Trait("Downtime", TraitCategory.ACTION);
-            Trait auditoryTrait = new Trait("Auditory", TraitCategory.ACTION);
-            Trait teleportationTrait = new Trait("Teleportation", TraitCategory.MAGIC);
-            Trait divineTrait = new Trait("Divine", TraitCategory.MAGIC);
-            Trait poisonTrait = new Trait("Poison", TraitCategory.MAGIC);
-            Trait secretTrait = new Trait("Secret", TraitCategory.ACTION);
-            Trait vitalityTrait = new Trait("Vitality", TraitCategory.MAGIC);
-            Trait incapactitationTrait = new Trait("Incapacitation", TraitCategory.ACTION);
-            Trait sonicTrait = new Trait("Sonic", TraitCategory.MAGIC);
-            Trait morphTrait = new Trait("Morph", TraitCategory.MAGIC);
-            Trait magicalTrait = new Trait("Magical", TraitCategory.ACTION);
-            Trait moveTrait = new Trait("Move", TraitCategory.ACTION);
-            Trait visualTrait = new Trait("Visual", TraitCategory.ACTION);
-            Trait arcaneTrait = new Trait("Arcane", TraitCategory.MAGIC);
-            Trait detectionTrait = new Trait("Detection", TraitCategory.MAGIC);
-            Trait predictionTrait = new Trait("Prediction", TraitCategory.MAGIC);
-            Trait primalTrait = new Trait("Primal", TraitCategory.MAGIC);
-            Trait polymorphTrait = new Trait("Polymorph", TraitCategory.MAGIC);
-            Trait consecrationTrait = new Trait("Consecration", TraitCategory.MAGIC);
-            Trait lightTrait = new Trait("Light", TraitCategory.MAGIC);
-            Trait coldTrait = new Trait("Cold", TraitCategory.MAGIC);
-            Trait earthTrait = new Trait("Earth", TraitCategory.MAGIC);
+            Trait healingTrait = new Trait("Healing", TraitCategory.MECHANICS);
+            Trait illusionTrait = new Trait("Illusion", TraitCategory.SCHOOL);
+            Trait explorationTrait = new Trait("Exploration", TraitCategory.MECHANICS);
+            Trait linguisticTrait = new Trait("Linguistic", TraitCategory.MECHANICS);
+            Trait spellshapeTrait = new Trait("Spellshape", TraitCategory.MECHANICS);
+            Trait downtimeTrait = new Trait("Downtime", TraitCategory.MECHANICS);
+            Trait auditoryTrait = new Trait("Auditory", TraitCategory.SENSE);
+            Trait teleportationTrait = new Trait("Teleportation", TraitCategory.MECHANICS);
+            Trait divineTrait = new Trait("Divine", TraitCategory.TRADITION);
+            Trait poisonTrait = new Trait("Poison", TraitCategory.POISON);
+            Trait secretTrait = new Trait("Secret", TraitCategory.MECHANICS);
+            Trait vitalityTrait = new Trait("Vitality", TraitCategory.ENERGY);
+            Trait incapactitationTrait = new Trait("Incapacitation", TraitCategory.MECHANICS);
+            Trait sonicTrait = new Trait("Sonic", TraitCategory.ENERGY);
+            Trait morphTrait = new Trait("Morph", TraitCategory.MECHANICS);
+            Trait magicalTrait = new Trait("Magical", TraitCategory.MECHANICS);
+            Trait moveTrait = new Trait("Move", TraitCategory.MECHANICS);
+            Trait visualTrait = new Trait("Visual", TraitCategory.SENSE);
+            Trait arcaneTrait = new Trait("Arcane", TraitCategory.TRADITION);
+            Trait detectionTrait = new Trait("Detection", TraitCategory.MECHANICS);
+            Trait predictionTrait = new Trait("Prediction", TraitCategory.MECHANICS);
+            Trait primalTrait = new Trait("Primal", TraitCategory.TRADITION);
+            Trait polymorphTrait = new Trait("Polymorph", TraitCategory.MECHANICS);
+            Trait consecrationTrait = new Trait("Consecration", TraitCategory.MECHANICS);
+            Trait lightTrait = new Trait("Light", TraitCategory.MECHANICS);
+            Trait coldTrait = new Trait("Cold", TraitCategory.ENERGY);
+            Trait earthTrait = new Trait("Earth", TraitCategory.ELEMENTAL);
             Trait sorcererTrait = new Trait("Sorcerer", TraitCategory.CLASS);
             Trait oracleTrait = new Trait("Oracle", TraitCategory.CLASS);
             Trait summonerTrait = new Trait("Summoner", TraitCategory.CLASS);
             Trait animistTrait = new Trait("Animist", TraitCategory.CLASS);
-            Trait curseboundTrait = new Trait("Cursebound", TraitCategory.MAGIC);
+            Trait curseboundTrait = new Trait("Cursebound", TraitCategory.CLASS_SPECIFIC);
             Trait gunslingerTrait = new Trait("Gunslinger", TraitCategory.CLASS);
-            Trait rageTrait = new Trait("Rage", TraitCategory.ACTION);
+            Trait rageTrait = new Trait("Rage", TraitCategory.CLASS_SPECIFIC);
             Trait alchemistTrait = new Trait("Alchemist", TraitCategory.CLASS);
-            Trait misfortuneTrait = new Trait("Misfortune", TraitCategory.MAGIC);
-            Trait wanderingTrait = new Trait("Wandering", TraitCategory.MAGIC);
+            Trait misfortuneTrait = new Trait("Misfortune", TraitCategory.MECHANICS);
+            Trait wanderingTrait = new Trait("Wandering", TraitCategory.CLASS_SPECIFIC);
             Trait tripkeeTrait = new Trait("Tripkee", TraitCategory.ANCESTRY);
-            Trait acidTrait = new Trait("Acid", TraitCategory.MAGIC);
-            Trait focusTrait = new Trait("Focus", TraitCategory.MAGIC);
-            Trait airTrait = new Trait("Air", TraitCategory.MAGIC);
-            Trait cantripTrait = new Trait("Cantrip", TraitCategory.MAGIC);
-            Trait compositionTrait = new Trait("Composition", TraitCategory.MAGIC);
-            Trait waterTrait = new Trait("Water", TraitCategory.MAGIC);
-            Trait auraTrait = new Trait("Aura", TraitCategory.MAGIC);
-            Trait attackTrait = new Trait("Attack", TraitCategory.ACTION);
-            Trait fireTrait = new Trait("Fire", TraitCategory.MAGIC);
-            Trait sanctifiedTrait = new Trait("Sanctified", TraitCategory.MAGIC);
-            Trait forceTrait = new Trait("Force", TraitCategory.MAGIC);
-            Trait curseTrait = new Trait("Curse", TraitCategory.MAGIC);
-            Trait hexTrait = new Trait("Hex", TraitCategory.MAGIC);
-            Trait electricityTrait = new Trait("Electricity", TraitCategory.MAGIC);
-            Trait subtleTrait = new Trait("Subtle", TraitCategory.MAGIC);
-            Trait darknessTrait = new Trait("Darkness", TraitCategory.MAGIC);
-            Trait unholyTrait = new Trait("Unholy", TraitCategory.MAGIC);
-            Trait scryingTrait = new Trait("Scrying", TraitCategory.MAGIC);
-            Trait woodTrait = new Trait("Wood", TraitCategory.MAGIC);
-            Trait deathTrait = new Trait("Death", TraitCategory.MAGIC);
-            Trait voidTrait = new Trait("Void", TraitCategory.MAGIC);
-            Trait spiritTrait = new Trait("Spirit", TraitCategory.MAGIC);
-            Trait revelationTrait = new Trait("Revelation", TraitCategory.MAGIC);
-            Trait diseaseTrait = new Trait("Disease",  TraitCategory.MAGIC);
-            Trait holyTrait = new Trait("Holy", TraitCategory.MAGIC);
-            Trait olfactoryTrait = new Trait("Olfactory", TraitCategory.MAGIC);
-            Trait metalTrait = new Trait("Metal", TraitCategory.MAGIC);
-            Trait extradimensionalTrait = new Trait("Extradimensional", TraitCategory.MAGIC);
-            Trait summonTrait = new Trait("Summon", TraitCategory.MAGIC);
-            Trait sleepTrait = new Trait("Sleep", TraitCategory.MAGIC);
+            Trait acidTrait = new Trait("Acid", TraitCategory.ENERGY);
+            Trait focusTrait = new Trait("Focus", TraitCategory.MECHANICS);
+            Trait airTrait = new Trait("Air", TraitCategory.ELEMENTAL);
+            Trait cantripTrait = new Trait("Cantrip", TraitCategory.MECHANICS);
+            Trait compositionTrait = new Trait("Composition", TraitCategory.CLASS_SPECIFIC);
+            Trait waterTrait = new Trait("Water", TraitCategory.ELEMENTAL);
+            Trait auraTrait = new Trait("Aura", TraitCategory.MECHANICS);
+            Trait attackTrait = new Trait("Attack", TraitCategory.MECHANICS);
+            Trait fireTrait = new Trait("Fire", TraitCategory.ENERGY);
+            Trait sanctifiedTrait = new Trait("Sanctified", TraitCategory.MECHANICS);
+            Trait forceTrait = new Trait("Force", TraitCategory.ENERGY);
+            Trait curseTrait = new Trait("Curse", TraitCategory.AFFLICTION);
+            Trait hexTrait = new Trait("Hex", TraitCategory.CLASS_SPECIFIC);
+            Trait electricityTrait = new Trait("Electricity", TraitCategory.ENERGY);
+            Trait subtleTrait = new Trait("Subtle", TraitCategory.MECHANICS);
+            Trait darknessTrait = new Trait("Darkness", TraitCategory.MECHANICS);
+            Trait unholyTrait = new Trait("Unholy", TraitCategory.MECHANICS);
+            Trait scryingTrait = new Trait("Scrying", TraitCategory.MECHANICS);
+            Trait woodTrait = new Trait("Wood", TraitCategory.ELEMENTAL);
+            Trait deathTrait = new Trait("Death", TraitCategory.MECHANICS);
+            Trait voidTrait = new Trait("Void", TraitCategory.ENERGY);
+            Trait spiritTrait = new Trait("Spirit", TraitCategory.CREATURE);
+            Trait revelationTrait = new Trait("Revelation", TraitCategory.MECHANICS);
+            Trait diseaseTrait = new Trait("Disease",  TraitCategory.AFFLICTION);
+            Trait holyTrait = new Trait("Holy", TraitCategory.MECHANICS);
+            Trait olfactoryTrait = new Trait("Olfactory", TraitCategory.SENSE);
+            Trait metalTrait = new Trait("Metal", TraitCategory.ELEMENTAL);
+            Trait extradimensionalTrait = new Trait("Extradimensional", TraitCategory.MECHANICS);
+            Trait summonTrait = new Trait("Summon", TraitCategory.MECHANICS);
+            Trait sleepTrait = new Trait("Sleep", TraitCategory.MECHANICS);
+            Trait amphibiousTrait = new Trait("Amphibious", TraitCategory.MONSTER);
+            Trait angelTrait = new Trait("Angel", TraitCategory.MONSTER);
+            Trait aberrationTrait = new Trait("Aberration", TraitCategory.CREATURE);
+            Trait alchemicalTrait = new Trait("Alchemical", TraitCategory.MONSTER);
+            Trait animalTrait = new Trait("Animal", TraitCategory.CREATURE);
+            Trait aquaticTrait = new Trait("Aquatic", TraitCategory.MONSTER);
+            Trait archetypeTrait = new Trait("Archetype", TraitCategory.FEAT);
+            Trait archonTrait = new Trait("Archon", TraitCategory.MONSTER);
+            Trait azataTrait = new Trait("Azata", TraitCategory.MONSTER);
+            Trait beastTrait = new Trait("Beast",  TraitCategory.CREATURE);
+            Trait bombTrait = new Trait("Bomb", TraitCategory.EQUIPMENT);
+            Trait celestialTrait = new Trait("Celestial", TraitCategory.CREATURE);
+            Trait constructTrait = new Trait("Construct", TraitCategory.CREATURE);
+            Trait consumableTrait = new Trait("Consumable", TraitCategory.EQUIPMENT);
+            Trait daemonTrait = new Trait("Daemon", TraitCategory.MONSTER);
+            Trait dedicationTrait = new Trait("Dedication", TraitCategory.FEAT);
+            Trait demonTrait = new Trait("Demon", TraitCategory.MONSTER);
+            Trait devilTrait = new Trait("Devil", TraitCategory.MONSTER);
+            Trait dinosaurTrait = new Trait("Dinosaur", TraitCategory.MONSTER);
+            Trait dragonTrait = new Trait("Dragon", TraitCategory.CREATURE);
+            Trait elementalTrait = new Trait("Elemental", TraitCategory.CREATURE);
+            Trait elixirTrait = new Trait("Elixir", TraitCategory.EQUIPMENT);
+            Trait etherealTrait = new Trait("Ethereal", TraitCategory.CREATURE);
+            Trait fiendTrait = new Trait("Fiend", TraitCategory.CREATURE);
+            Trait giantTrait = new Trait("Giant", TraitCategory.CREATURE);
+            Trait grappleTrait = new Trait("Grapple", TraitCategory.WEAPON);
+            Trait hagTrait = new Trait("Hag", TraitCategory.MONSTER);
+            Trait hryngarTrait = new Trait("Hryngar", TraitCategory.MONSTER);
+            Trait mechanicalTrait = new Trait("Mechanical", TraitCategory.EQUIPMENT);
+            Trait mindlessTrait = new Trait("Mindless", TraitCategory.MONSTER);
+            Trait minionTrait = new Trait("Minion", TraitCategory.MECHANICS);
+            Trait monitorTrait = new Trait("Monitor", TraitCategory.CREATURE);
+            Trait multiclassTrait = new Trait("Multiclass", TraitCategory.FEAT);
+            Trait occultTrait = new Trait("Occult", TraitCategory.TRADITION);
+            Trait oozeTrait = new Trait("Ooze", TraitCategory.CREATURE);
+            Trait possessionTrait = new Trait("Possession", TraitCategory.MECHANICS);
+            Trait potionTrait = new Trait("Potion", TraitCategory.EQUIPMENT);
+            Trait structureTrait = new Trait("Structure", TraitCategory.EQUIPMENT);
+            Trait summonedTrait = new Trait("Summoned", TraitCategory.MECHANICS);
+            Trait trapTrait = new Trait("Trap", TraitCategory.EQUIPMENT);
+            Trait undeadTrait = new Trait("Undead", TraitCategory.CREATURE);
+            Trait wandTrait = new Trait("Wand", TraitCategory.EQUIPMENT);
 
             traitRepo.saveAll(List.of(dwarfTrait, elfTrait, gnomeTrait, goblinFeat, halflingTrait, humanTrait, kholoTrait, koboldTrait, leshyTrait, orcTrait, samsaranTrait, tripkeeTrait, wayangTrait,
                     aiuvarinTrait, changelingTrait, dromaarTrait, nephilimTrait,
+                    archetypeTrait, dedicationTrait, generalTrait, lineageTrait, multiclassTrait, skillTrait,
                     bardTrait, clericTrait, druidTrait, fighterTrait, rangerTrait, rogueTrait, witchTrait, wizardTrait,
                     alchemistTrait, barbarianTrait, championTrait, investigatorTrait, monkTrait, oracleTrait, sorcererTrait, swashbucklerTrait,
                     animistTrait, commanderTrait, exemplarTrait, guardianTrait, gunslingerTrait, magusTrait, psychicTrait, summonerTrait, thaumaturgeTrait,
-                    feyTrait, fungusTrait, humanoidTrait, lineageTrait, plantTrait,
-                    auditoryTrait, concentrateTrait, downtimeTrait, emotionTrait, explorationTrait, fearTrait, flourishTrait, fortuneTrait, generalTrait, healingTrait, incapactitationTrait, linguisticTrait, magicalTrait, manipulateTrait, mentalTrait, moveTrait, nonlethalTrait, pressTrait, rageTrait, secretTrait, skillTrait, stanceTrait, visualTrait,
-                    acidTrait, airTrait, arcaneTrait, auraTrait, cantripTrait, coldTrait, compositionTrait, consecrationTrait, curseTrait, curseboundTrait, darknessTrait, deathTrait, detectionTrait, diseaseTrait, divineTrait, earthTrait, electricityTrait, extradimensionalTrait, fireTrait, focusTrait, forceTrait, hexTrait, holyTrait, illusionTrait, lightTrait, metalTrait, misfortuneTrait, morphTrait, olfactoryTrait, poisonTrait, polymorphTrait, predictionTrait, primalTrait, revelationTrait, sanctifiedTrait, scryingTrait, shadowTrait, sleepTrait, sonicTrait, spellshapeTrait, spiritTrait, subtleTrait, summonTrait, teleportationTrait, unholyTrait, vitalityTrait, voidTrait, wanderingTrait, waterTrait, woodTrait,
+                    aberrationTrait, animalTrait, beastTrait, celestialTrait, constructTrait, dragonTrait, elementalTrait, etherealTrait, feyTrait, fiendTrait, fungusTrait, giantTrait, humanoidTrait, monitorTrait, oozeTrait, plantTrait, spiritTrait, undeadTrait,
+                    alchemicalTrait, amphibiousTrait, angelTrait, aquaticTrait, archonTrait, azataTrait, daemonTrait, demonTrait, devilTrait, dinosaurTrait, hagTrait, hryngarTrait, mindlessTrait,
+                    auditoryTrait, olfactoryTrait, visualTrait,
+                    acidTrait, coldTrait, electricityTrait, fireTrait, forceTrait, sonicTrait, vitalityTrait, voidTrait,
+                    airTrait, earthTrait, metalTrait, waterTrait, woodTrait,
+                    arcaneTrait, divineTrait, occultTrait,
+                    compositionTrait, curseboundTrait, hexTrait, rageTrait, stanceTrait, wanderingTrait,
+                    curseTrait, diseaseTrait,
+                    illusionTrait,
+                    poisonTrait,
+                    shadowTrait,
                     aquadynamicTrait, bulwarkTrait, comfortTrait, flexibleTrait, laminarTrait, noisyTrait,
-                    agileTrait, attachedToShieldTrait, attackTrait, backstabberTrait, backswingTrait, concealableTrait, deadlyTrait, disarmTrait, fatalTrait, finesseTrait, forcefulTrait, freeHandTrait, joustingTrait, parryTrait, propulsiveTrait, rangedTripTrait, reachTrait, shoveTrait, sweepTrait, thrownTrait, tripTrait, twinTrait, twoHandTrait, unarmedTrait, versatileTrait, volleyTrait));
+                    agileTrait, attachedToShieldTrait, backstabberTrait, backswingTrait, concealableTrait, deadlyTrait, disarmTrait, fatalTrait, finesseTrait, forcefulTrait, freeHandTrait, grappleTrait, joustingTrait, nonlethalTrait, parryTrait, propulsiveTrait, rangedTripTrait, reachTrait, shoveTrait, sweepTrait, thrownTrait, tripTrait, twinTrait, twoHandTrait, unarmedTrait, versatileTrait, volleyTrait,
+                    attackTrait, auraTrait, cantripTrait, concentrateTrait, consecrationTrait, darknessTrait, deathTrait, detectionTrait, downtimeTrait, emotionTrait, explorationTrait, extradimensionalTrait, fearTrait, flourishTrait, focusTrait, fortuneTrait, healingTrait, holyTrait, incapactitationTrait, lightTrait, linguisticTrait, magicalTrait, manipulateTrait, mentalTrait, minionTrait, misfortuneTrait, morphTrait, moveTrait, polymorphTrait, possessionTrait, predictionTrait, pressTrait, primalTrait, revelationTrait, sanctifiedTrait, scryingTrait, secretTrait, sleepTrait, spellshapeTrait, subtleTrait, summonTrait, summonedTrait, teleportationTrait, unholyTrait,
+                    bombTrait, consumableTrait, elixirTrait, mechanicalTrait, potionTrait, structureTrait, trapTrait, wandTrait));
 
             Spell acidGrip = new Spell("Acid Grip", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(acidTrait, concentrateTrait, manipulateTrait), "An ephemeral, taloned hand grips the target, burning it with magical acid.");
             acidGrip.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
