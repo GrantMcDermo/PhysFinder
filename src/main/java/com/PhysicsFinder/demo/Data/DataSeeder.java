@@ -257,6 +257,9 @@ public class DataSeeder {
             allegro.setSpellTargets("1 ally");
             allegro.setSpellDuration("1 round");
 
+            Spell animalFeature = new Spell("Animal Feature", 2, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(concentrateTrait, focusTrait, manipulateTrait, morphTrait, rangerTrait), "Without fully transforming your body, you gain one animalistic feature, which you select from the list below each time you Cast the Spell.");
+            animalFeature.setSpellDuration("1 minute");
+
             Spell animalForm = new Spell("Animal Form", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, polymorphTrait), "You call upon primal energy to transform yourself into a Medium animal battle form.");
             animalForm.setSpellTraditions(List.of(SpellTraditions.PRIMAL));
             animalForm.setSpellDuration("1 minute");
@@ -609,12 +612,20 @@ public class DataSeeder {
             enlarge.setSpellTargets("1 willing creature");
             enlarge.setSpellDuration("5 minutes");
 
+            Spell enlargeCompanion = new Spell("Enlarge Companion", 2, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, focusTrait, manipulateTrait, polymorphTrait, rangerTrait), "Your animal companion grows much larger, towering over its foes in battle.");
+            enlargeCompanion.setSpellRange(30);
+            enlargeCompanion.setSpellTargets("your animal companion");
+            enlargeCompanion.setSpellDuration("1 minute");
+
             Spell enthrall = new Spell("Enthrall", 3, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(auditoryTrait, concentrateTrait, emotionTrait, manipulateTrait), "Your words fascinate your targets.");
             enthrall.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
             enthrall.setSpellRange(120);
             enthrall.setSpellTargets("all creatures in range");
             enthrall.setSpellDefense("Will");
             enthrall.setSpellDuration("sustained");
+
+            Spell ephemeralTracking = new Spell("Ephemeral Tracking", 3, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, focusTrait, manipulateTrait, rangerTrait), "You can look at currents in the air and water and see tracks that you can follow just as you would on land.");
+            ephemeralTracking.setSpellDuration("1 hour");
 
             Spell evilEye = new Spell("Evil Eye", 1, SpellType.CANTRIP, ActionType.SINGLE_ACTION, Set.of(cantripTrait, curseTrait, hexTrait, manipulateTrait, witchTrait), "Your patron's resentment manifests in a baleful, envious gaze.");
             evilEye.setSpellRange(30);
@@ -731,6 +742,9 @@ public class DataSeeder {
             gougingClaw.setSpellTargets("1 creature");
             gougingClaw.setSpellDefense("AC");
 
+            Spell gravityWeapon = new Spell("Gravity Weapon", 1, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(focusTrait, rangerTrait), "You build up gravitational force and funnel it into your blows, leading to more powerful attacks with blade and bow alike.");
+            gravityWeapon.setSpellDuration("1 minute");
+
             Spell grimTendrils = new Spell("Grim Tendrils", 1, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, voidTrait), "Tendrils of darkness curl out from your fingertips and race through the air.");
             grimTendrils.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
             grimTendrils.setSpellArea(30);
@@ -772,6 +786,9 @@ public class DataSeeder {
             Spell healAnimal = new Spell("Heal Animal", 1, SpellType.FOCUS, ActionType.ONE_TO_TWO_ACTIONS, Set.of(druidTrait, focusTrait, healingTrait, manipulateTrait, vitalityTrait), "You heal an animal's wounds, restoring 1d8 Hit Points to the target. The number of actions spent Casting this Spell determines its effect.");
             healAnimal.setSpellTargets("1 willing living animal");
 
+            Spell healCompanion = new Spell("Heal Companion", 1, SpellType.FOCUS, ActionType.ONE_TO_TWO_ACTIONS, Set.of(focusTrait, healingTrait, rangerTrait, vitalityTrait), "You heal your animal companion's wounds.");
+            healCompanion.setSpellTargets("your animal companion");
+
             Spell holyLight = new Spell("Holy Light", 3, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(attackTrait, concentrateTrait, fireTrait, holyTrait, lightTrait, manipulateTrait), "You shine a blazing ray of light tinged with holy energy.");
             holyLight.setSpellTraditions(List.of(SpellTraditions.DIVINE, SpellTraditions.PRIMAL));
             holyLight.setSpellRange(120);
@@ -789,6 +806,14 @@ public class DataSeeder {
             Spell humanoidForm = new Spell("Humanoid Form", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, polymorphTrait), "You transform your appearance to that of a Small or Medium humanoid, such as a dwarf, elf, goblin, halfling, human, or orc.");
             humanoidForm.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
             humanoidForm.setSpellDuration("10 minutes");
+
+            Spell huntersLuck = new Spell("Hunter's Luck", 2, SpellType.FOCUS, ActionType.FREE_ACTION, Set.of(concentrateTrait, focusTrait, fortuneTrait, rangerTrait), "You have a preternatural ability to remember details about your foes.");
+            huntersLuck.setSpellTrigger("You attempt a check to Recall Knowledge about a creature, but you haven’t rolled yet");
+
+            Spell huntersVision = new Spell("Hunter's Vision", 5, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(concentrateTrait, focusTrait, rangerTrait), "Your target glows with a magical aura visible only to you and those who follow your lead.");
+            huntersVision.setSpellRange(30);
+            huntersVision.setSpellTargets("1 hunted prey");
+            huntersVision.setSpellDuration("10 minutes");
 
             Spell hydraulicPush = new Spell("Hydraulic Push", 1, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(attackTrait, concentrateTrait, manipulateTrait, waterTrait), "You call forth a powerful blast of pressurized water that bludgeons the target and knocks it back.");
             hydraulicPush.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
@@ -912,6 +937,11 @@ public class DataSeeder {
             madMonkeys.setSpellArea(5);
             madMonkeys.setSpellAreaType("burst");
             madMonkeys.setSpellDuration("sustained up to 1 minute");
+
+            Spell magicHide = new Spell("Magic Hide", 1, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(focusTrait, manipulateTrait, rangerTrait), "Your animal companion grows a thicker hide, matted fur, or a harder shell, granting it a +1 status bonus to AC.");
+            magicHide.setSpellRange(30);
+            magicHide.setSpellTargets("your animal companion");
+            magicHide.setSpellDuration("1 minute");
 
             Spell maliciousShadow = new Spell("Malicious Shadow", 3, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, focusTrait, hexTrait, manipulateTrait, shadowTrait, witchTrait), "Your patron warps the target's shadow into a deadly form, such as strangling hands, a dangerous weapon, harrying runes, or the like.");
             maliciousShadow.setSpellRange(30);
@@ -1132,6 +1162,12 @@ public class DataSeeder {
             rallyingAnthem.setSpellAreaType("emanation");
             rallyingAnthem.setSpellDuration("1 round");
 
+            Spell rangersBramble = new Spell("Ranger's Bramble", 3, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, focusTrait, manipulateTrait, plantTrait, rangerTrait), "You cause plants in the area to entangle your foes, with the effects of entangling flora. A creature that critically fails the save takes 2d4 persistent bleed damage in addition to being immobilized. Escaping your bramble doesn't end the bleed damage.");
+            rangersBramble.setSpellRange(100);
+            rangersBramble.setSpellArea(5);
+            rangersBramble.setSpellAreaType("all squares that contain plants in a 5-foot burst");
+            rangersBramble.setSpellDuration("1 minute");
+
             Spell readAura = new Spell("Read Aura", 1, SpellType.CANTRIP, ActionType.ACTIVITY, Set.of(cantripTrait, concentrateTrait, detectionTrait, manipulateTrait), "You focus on the target object, opening your mind to perceive magical auras.");
             readAura.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
             readAura.setSpellCastAmount(1);
@@ -1251,6 +1287,10 @@ public class DataSeeder {
             soothingBallad.setSpellRange(30);
             soothingBallad.setSpellTargets("you and up to 9 allies");
 
+            Spell soothingMist = new Spell("Soothing Mist", 2, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, focusTrait, healingTrait, manipulateTrait, rangerTrait, vitalityTrait), "You call forth a magical mist that envelops a creature.");
+            soothingMist.setSpellRange(30);
+            soothingMist.setSpellTargets("1 willing living creature or 1 undead creature");
+
             Spell speakWithAnimals = new Spell("Speak with Animals", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "You can ask questions of, receive answers from, and use the Diplomacy skill with animals. The spell doesn't make them more friendly than normal. Cunning animals are likely to be terse and evasive, while less intelligent ones often make inane comments.");
             speakWithAnimals.setSpellTraditions(List.of(SpellTraditions.PRIMAL));
             speakWithAnimals.setSpellDuration("1 hour");
@@ -1369,6 +1409,9 @@ public class DataSeeder {
             tempestSurge.setSpellRange(30);
             tempestSurge.setSpellTargets("1 creature");
             tempestSurge.setSpellDefense("basic Reflex");
+
+            Spell terrainTransposition = new Spell("Terrain Transposition", 5, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, focusTrait, manipulateTrait, rangerTrait, teleportationTrait), "You mystically transpose your current location with another.");
+            terrainTransposition.setSpellRange(90);
 
             Spell toxicCloud = new Spell("Toxic Cloud", 5, SpellType.SPELL, ActionType.THREE_ACTIONS, Set.of(concentrateTrait, deathTrait, manipulateTrait, poisonTrait), "You conjure a poisonous fog.");
             toxicCloud.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
@@ -1543,32 +1586,34 @@ public class DataSeeder {
             wildingWord.setSpellDuration("sustained up to 1 minute");
 
             spellRepo.saveAll(List.of(
-                    acidGrip, airBubble, allegro, aqueousOrb, arcticRift, bane, banishment, bindUndead, blazingBolt,
-                    blessedBoundary, bloodVendetta, bloodWard, cataclysm, chainLightning, charmingPush, chillingDarkness,
-                    clingingIce, command, communityRestoration, contingency, cornucopia, counterPerformance,
-                    courageousAnthem, cozyCabin, curseOfDeath, cursedMetamorphosis, darkness, daze, deceiversCloak,
-                    desiccate, dirgeOfDoom, disappearance, discernSecrets, disguiseMagic, dispelMagic, dispellingGlobe,
-                    divineDecree, dreamMessage, duplicateFoe, earthquake, earthworks, eclipseBurst, elementalBetrayal,
-                    elementalForm, energyAbsorption, energyAegis, enfeeble, evilEye, fallingStars, fatalAria, fear,
-                    feetToFins, fieldOfLife, fieryBody, figment, forceBolt, foresight, fortifySummoning,
-                    fortissimoComposition, gougingClaw, grimTendrils, handsOfTheApprentice, harm, heal, healAnimal,
-                    holyLight, houseOfImaginaryWalls, howlingBlizzard, humanoidForm, hydraulicPush, hymnOfHealing,
-                    illusoryCreature, illusoryScene, impalingBriars, impalingSpike, interdisciplinaryIncantation,
-                    interplanarTeleport, invisibilityCloak, invokeSpirits, lifeBoost, liminalDoorway,
-                    lingeringComposition, loremastersEtude, madMonkeys, maliciousShadow, massacre, message,
-                    metamorphosis, mindReading, mist, monstrosityForm, mysticArmor, needleOfVengeance, neverMind,
-                    nudgeFate, odeToOuroboros, personalBlizzard, pestForm, petrify, phantasmagoria, phantasmalCalamity,
-                    phantasmalMinionSpell, piedPiping, pinpoint, planarSeal, prestidigitation, primalSummons,
-                    projectImage, protectiveWards, pummelingRubble, raiseDead, rallyingAnthem, readAura, repulsion,
-                    resistEnergy, restorativeMovement, retrocognition, revealingLight, runeOfObservation, runicBody,
-                    runicWeapon, safePassage, scrambleBody, seeTheUnseen, sending, shieldSpell, shiftingForm,
-                    shroudOfNight, sigil, songOfMarching, songOfStrength, soothe, soothingBallad, spellwrack,
-                    spiralOfHorrors, spiritLink, stokeTheHeart, stormLord, stormwindFlight, summonConstruct,
-                    summonPlantOrFungus, summonUndead, symphonyOfTheUnfetteredHeart, tangleVine, telekineticHand,
-                    telekineticProjectile, teleport, tempestSurge, toxicCloud, translate, tripleTime, truespeech,
-                    trueTarget, uncontrollableDance, unfetteredMovement, unrelentingObservation, untamedForm,
-                    untamedShift, upliftingOverture, vampiricExsanguination, vampiricFeast, vaporForm, veilOfDreams,
-                    veilOfPrivacy, voidWarp, wallOfStone, wallOfWind, waterWalk, wildingWord));
+                    acidGrip, airBubble, allegro, animalFeature, aqueousOrb, arcticRift, bane, banishment, bindUndead,
+                    blazingBolt, blessedBoundary, bloodVendetta, bloodWard, cataclysm, chainLightning, charmingPush,
+                    chillingDarkness, clingingIce, command, communityRestoration, contingency, cornucopia,
+                    counterPerformance, courageousAnthem, cozyCabin, curseOfDeath, cursedMetamorphosis, darkness, daze,
+                    deceiversCloak, desiccate, dirgeOfDoom, disappearance, discernSecrets, disguiseMagic, dispelMagic,
+                    dispellingGlobe, divineDecree, dreamMessage, duplicateFoe, earthquake, earthworks, eclipseBurst,
+                    elementalBetrayal, elementalForm, energyAbsorption, energyAegis, enfeeble, enlargeCompanion, evilEye,
+                    ephemeralTracking, fallingStars, fatalAria, fear, feetToFins, fieldOfLife, fieryBody, figment,
+                    forceBolt, foresight, fortifySummoning, fortissimoComposition, gougingClaw, gravityWeapon,
+                    grimTendrils, handsOfTheApprentice, harm, heal, healAnimal, healCompanion, holyLight,
+                    houseOfImaginaryWalls, howlingBlizzard, humanoidForm, huntersLuck, huntersVision, hydraulicPush,
+                    hymnOfHealing, illusoryCreature, illusoryScene, impalingBriars, impalingSpike,
+                    interdisciplinaryIncantation, interplanarTeleport, invisibilityCloak, invokeSpirits, lifeBoost,
+                    liminalDoorway, lingeringComposition, loremastersEtude, madMonkeys, magicHide, maliciousShadow,
+                    massacre, message, metamorphosis, mindReading, mist, monstrosityForm, mysticArmor, needleOfVengeance,
+                    neverMind, nudgeFate, odeToOuroboros, personalBlizzard, pestForm, petrify, phantasmagoria,
+                    phantasmalCalamity, phantasmalMinionSpell, piedPiping, pinpoint, planarSeal, prestidigitation,
+                    primalSummons, projectImage, protectiveWards, pummelingRubble, raiseDead, rallyingAnthem,
+                    rangersBramble, readAura, repulsion, resistEnergy, restorativeMovement, retrocognition,
+                    revealingLight, runeOfObservation, runicBody, runicWeapon, safePassage, scrambleBody, seeTheUnseen,
+                    sending, shieldSpell, shiftingForm, shroudOfNight, sigil, songOfMarching, songOfStrength, soothe,
+                    soothingBallad, soothingMist, spellwrack, spiralOfHorrors, spiritLink, stokeTheHeart, stormLord,
+                    stormwindFlight, summonConstruct, summonPlantOrFungus, summonUndead, symphonyOfTheUnfetteredHeart,
+                    tangleVine, telekineticHand, telekineticProjectile, teleport, tempestSurge, terrainTransposition,
+                    toxicCloud, translate, tripleTime, truespeech, trueTarget, uncontrollableDance, unfetteredMovement,
+                    unrelentingObservation, untamedForm, untamedShift, upliftingOverture, vampiricExsanguination,
+                    vampiricFeast, vaporForm, veilOfDreams, veilOfPrivacy, voidWarp, wallOfStone, wallOfWind, waterWalk,
+                    wildingWord));
 
             Weapon crossbow = new Weapon("Crossbow", WeaponCategory.SIMPLE, WeaponType.RANGED, WeaponGroup.CROSSBOW, 1, 8, DamageType.PIERCING);
             crossbow.setRangeFeet(120);
