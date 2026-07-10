@@ -329,6 +329,8 @@ public class DataSeeder {
             breatheFire.setSpellAreaType("cone");
             breatheFire.setSpellDefense("basic Reflex");
 
+            Spell cackle = new Spell("Cackle", 1, SpellType.FOCUS, ActionType.FREE_ACTION, Set.of(concentrateTrait, focusTrait, hexTrait, witchTrait), "With a quick burst of laughter, you prolong a magical effect you created. You Sustain a spell.");
+
             Spell cataclysm = new Spell("Cataclysm", 10, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(acidTrait, airTrait, coldTrait, concentrateTrait, earthTrait, electricityTrait, fireTrait, manipulateTrait, waterTrait), "You call upon the unimaginable power of world-ending cataclysms, ripping a small piece of each cataclysm and combining them together into one horrifically powerful attack.");
             cataclysm.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
             cataclysm.setSpellRange(1000);
@@ -1044,6 +1046,9 @@ public class DataSeeder {
             odeToOuroboros.setSpellRange(60);
             odeToOuroboros.setSpellTargets("the triggering creature");
 
+            Spell patronsPuppet = new Spell("Patron's Puppet", 1, SpellType.FOCUS, ActionType.FREE_ACTION, Set.of(focusTrait, hexTrait, witchTrait), "At your unspoken plea, your patron temporarily assumes control over your familiar.");
+            patronsPuppet.setSpellTrigger("Your turn begins");
+
             Spell personalBlizzard = new Spell("Personal Blizzard", 3, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(coldTrait, focusTrait, hexTrait, witchTrait), "Your patron's breath becomes a blizzard of obscuring, scouring ice that follows your target.");
             personalBlizzard.setSpellRange(30);
             personalBlizzard.setSpellTargets("1 creature");
@@ -1092,6 +1097,11 @@ public class DataSeeder {
             phantomPain.setSpellTargets("1 creature");
             phantomPain.setSpellDefense("Will");
             phantomPain.setSpellDuration("1 minute");
+
+            Spell phaseFamiliar = new Spell("Phase Familiar", 1, SpellType.FOCUS, ActionType.REACTION, Set.of(focusTrait, hexTrait, manipulateTrait, witchTrait), "Your patron momentarily recalls your familiar to the ether, shifting it from its solid, physical form into a ghostly version of itself.");
+            phaseFamiliar.setSpellTrigger("Your familiar would take damage");
+            phaseFamiliar.setSpellRange(60);
+            phaseFamiliar.setSpellTargets("your familiar");
 
             Spell piedPiping = new Spell("Pied Piping", 10, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(bardTrait, compositionTrait, concentrateTrait, focusTrait, incapactitationTrait, mentalTrait, sonicTrait), "Your performance enraptures listeners, compelling them to follow you.");
             piedPiping.setSpellArea(5);
@@ -1587,8 +1597,8 @@ public class DataSeeder {
 
             spellRepo.saveAll(List.of(
                     acidGrip, airBubble, allegro, animalFeature, aqueousOrb, arcticRift, bane, banishment, bindUndead,
-                    blazingBolt, blessedBoundary, bloodVendetta, bloodWard, cataclysm, chainLightning, charmingPush,
-                    chillingDarkness, clingingIce, command, communityRestoration, contingency, cornucopia,
+                    blazingBolt, blessedBoundary, bloodVendetta, bloodWard, cackle, cataclysm, chainLightning,
+                    charmingPush, chillingDarkness, clingingIce, command, communityRestoration, contingency, cornucopia,
                     counterPerformance, courageousAnthem, cozyCabin, curseOfDeath, cursedMetamorphosis, darkness, daze,
                     deceiversCloak, desiccate, dirgeOfDoom, disappearance, discernSecrets, disguiseMagic, dispelMagic,
                     dispellingGlobe, divineDecree, dreamMessage, duplicateFoe, earthquake, earthworks, eclipseBurst,
@@ -1601,19 +1611,19 @@ public class DataSeeder {
                     interdisciplinaryIncantation, interplanarTeleport, invisibilityCloak, invokeSpirits, lifeBoost,
                     liminalDoorway, lingeringComposition, loremastersEtude, madMonkeys, magicHide, maliciousShadow,
                     massacre, message, metamorphosis, mindReading, mist, monstrosityForm, mysticArmor, needleOfVengeance,
-                    neverMind, nudgeFate, odeToOuroboros, personalBlizzard, pestForm, petrify, phantasmagoria,
-                    phantasmalCalamity, phantasmalMinionSpell, piedPiping, pinpoint, planarSeal, prestidigitation,
-                    primalSummons, projectImage, protectiveWards, pummelingRubble, raiseDead, rallyingAnthem,
-                    rangersBramble, readAura, repulsion, resistEnergy, restorativeMovement, retrocognition,
-                    revealingLight, runeOfObservation, runicBody, runicWeapon, safePassage, scrambleBody, seeTheUnseen,
-                    sending, shieldSpell, shiftingForm, shroudOfNight, sigil, songOfMarching, songOfStrength, soothe,
-                    soothingBallad, soothingMist, spellwrack, spiralOfHorrors, spiritLink, stokeTheHeart, stormLord,
-                    stormwindFlight, summonConstruct, summonPlantOrFungus, summonUndead, symphonyOfTheUnfetteredHeart,
-                    tangleVine, telekineticHand, telekineticProjectile, teleport, tempestSurge, terrainTransposition,
-                    toxicCloud, translate, tripleTime, truespeech, trueTarget, uncontrollableDance, unfetteredMovement,
-                    unrelentingObservation, untamedForm, untamedShift, upliftingOverture, vampiricExsanguination,
-                    vampiricFeast, vaporForm, veilOfDreams, veilOfPrivacy, voidWarp, wallOfStone, wallOfWind, waterWalk,
-                    wildingWord));
+                    neverMind, nudgeFate, odeToOuroboros, patronsPuppet, personalBlizzard, pestForm, petrify,
+                    phantasmagoria, phantasmalCalamity, phantasmalMinionSpell, phaseFamiliar, piedPiping, pinpoint,
+                    planarSeal, prestidigitation, primalSummons, projectImage, protectiveWards, pummelingRubble,
+                    raiseDead, rallyingAnthem, rangersBramble, readAura, repulsion, resistEnergy, restorativeMovement,
+                    retrocognition, revealingLight, runeOfObservation, runicBody, runicWeapon, safePassage, scrambleBody,
+                    seeTheUnseen, sending, shieldSpell, shiftingForm, shroudOfNight, sigil, songOfMarching,
+                    songOfStrength, soothe, soothingBallad, soothingMist, spellwrack, spiralOfHorrors, spiritLink,
+                    stokeTheHeart, stormLord, stormwindFlight, summonConstruct, summonPlantOrFungus, summonUndead,
+                    symphonyOfTheUnfetteredHeart, tangleVine, telekineticHand, telekineticProjectile, teleport,
+                    tempestSurge, terrainTransposition, toxicCloud, translate, tripleTime, truespeech, trueTarget,
+                    uncontrollableDance, unfetteredMovement, unrelentingObservation, untamedForm, untamedShift,
+                    upliftingOverture, vampiricExsanguination, vampiricFeast, vaporForm, veilOfDreams, veilOfPrivacy,
+                    voidWarp, wallOfStone, wallOfWind, waterWalk, wildingWord));
 
             Weapon crossbow = new Weapon("Crossbow", WeaponCategory.SIMPLE, WeaponType.RANGED, WeaponGroup.CROSSBOW, 1, 8, DamageType.PIERCING);
             crossbow.setRangeFeet(120);
@@ -3846,8 +3856,8 @@ public class DataSeeder {
             Feat quickDraw = new Feat("Quick Draw", 2, Set.of(gunslingerTrait, rangerTrait, rogueTrait), "You draw your weapon and attack with the same motion.");
             Feat runningReload = new Feat("Running Reload", 4, Set.of(gunslingerTrait, rangerTrait), "You can reload your weapon on the move.");
 
-            Feat cackle = new Feat("Cackle", 1, Set.of(witchTrait), "Your patron’s power fills you with confidence, letting you sustain a magical working even as a quick burst of laughter leaves your lips.");
-            cackle.setAvailableToClasses(List.of(witch));
+            Feat cackleFeat = new Feat("Cackle", 1, Set.of(witchTrait), "Your patron’s power fills you with confidence, letting you sustain a magical working even as a quick burst of laughter leaves your lips.");
+            cackleFeat.setAvailableToClasses(List.of(witch));
             Feat cauldron = new Feat("Cauldron", 1, Set.of(witchTrait), "You can brew magic in your cauldron, creating useful magical concoctions.");
             Feat counterspell = new Feat("Counterspell", 1, Set.of(witchTrait, wizardTrait), "When a foe Casts a Spell and you can see its manifestations, you can use your magic to disrupt it.");
             Feat witchsArmaments = new Feat("Witch's Armaments", 1, Set.of(witchTrait), "Your patron’s power changes your body to ensure you are never defenseless.");
@@ -4254,7 +4264,7 @@ public class DataSeeder {
                     impossibleFlurry, manifoldEdge, masterfulCompanion, perfectShot, shadowHunter,
                     legendaryShot, toTheEndsOfTheEarth, tripleThreat, ultimateSkirmisher,
                     quickDraw, runningReload,
-                    cackle, cauldron, counterspell, witchsArmaments, basicLesson, familiarsLanguage,
+                    cackleFeat, cauldron, counterspell, witchsArmaments, basicLesson, familiarsLanguage,
                     ritesOfConvocation, sympatheticStrike, ceremonialKnife, greaterLesson, wildWitchsArmaments, witchsCharge,
                     murksight, spiritFamiliar2, stitchedFamiliar, witchsBottle, doubleDouble, majorLesson, witchsCommunion,
                     covenSpell, hexFocus, witchsBroom, patronsPresence, reflectSpell, ritesOfTransfiguration, siphonPower,
