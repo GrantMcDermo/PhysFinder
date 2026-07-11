@@ -436,12 +436,34 @@ public class DataSeeder {
 
             Spell cackle = new Spell("Cackle", 1, SpellType.FOCUS, ActionType.FREE_ACTION, Set.of(concentrateTrait, focusTrait, hexTrait, witchTrait), "With a quick burst of laughter, you prolong a magical effect you created. You Sustain a spell.");
 
+            Spell calm = new Spell("Calm", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, emotionTrait, incapactitationTrait, manipulateTrait, mentalTrait), "You forcibly calm creatures in the area, soothing them into a nonviolent state; each creature must attempt a Will save.");
+            calm.setSpellTraditions(List.of(SpellTraditions.DIVINE, SpellTraditions.OCCULT));
+            calm.setSpellRange(120);
+            calm.setSpellArea(10);
+            calm.setSpellAreaType("burst");
+            calm.setSpellDefense("Will");
+            calm.setSpellDuration("sustained up to 1 minute");
+
+            Spell canticleOfEverlastingGrief = new Spell("Canticle of Everlasting Grief", 8, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(auditoryTrait, concentrateTrait, curseTrait, emotionTrait, fearTrait, manipulateTrait, mentalTrait), "You create a melody distilled from pure grief, conveying the inevitable loss of everything your target cherishes, audible to only them.");
+            canticleOfEverlastingGrief.setSpellTraditions(List.of(SpellTraditions.DIVINE, SpellTraditions.OCCULT));
+            canticleOfEverlastingGrief.setSpellRange(120);
+            canticleOfEverlastingGrief.setSpellTargets("1 creature");
+            canticleOfEverlastingGrief.setSpellDefense("Will");
+            canticleOfEverlastingGrief.setSpellDuration("varies");
+
             Spell cataclysm = new Spell("Cataclysm", 10, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(acidTrait, airTrait, coldTrait, concentrateTrait, earthTrait, electricityTrait, fireTrait, manipulateTrait, waterTrait), "You call upon the unimaginable power of world-ending cataclysms, ripping a small piece of each cataclysm and combining them together into one horrifically powerful attack.");
             cataclysm.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
             cataclysm.setSpellRange(1000);
             cataclysm.setSpellArea(60);
             cataclysm.setSpellAreaType("burst");
             cataclysm.setSpellDefense("basic Reflex");
+
+            Spell causticBlast = new Spell("Caustic Blast", 1, SpellType.CANTRIP, ActionType.TWO_ACTIONS, Set.of(acidTrait, cantripTrait, concentrateTrait, manipulateTrait), "You fling a large glob of acid that immediately detonates, spraying nearby creatures.");
+            causticBlast.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
+            causticBlast.setSpellRange(30);
+            causticBlast.setSpellArea(5);
+            causticBlast.setSpellAreaType("burst");
+            causticBlast.setSpellDefense("basic Reflex");
 
             Spell chainLightning = new Spell("Chain Lightning", 6, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, electricityTrait, manipulateTrait), "You discharge a powerful bolt of lightning at the target, dealing 8d12 electricity damage. The target must attempt a basic Reflex save. The electricity then arcs to another creature within 30 feet of the first target, jumps to another creature within 30 feet of that target, and so on. You can end the chain at any point. You can't target the same creature more than once, and you must have line of effect to all targets. Roll the damage only once and apply it to each target (halving or doubling as appropriate for its saving throw outcome). The chain ends if any one of the targets critically succeeds at its save.");
             chainLightning.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
@@ -475,6 +497,29 @@ public class DataSeeder {
             clairaudience.setSpellRange(500);
             clairaudience.setSpellDuration("10 minutes");
 
+            Spell clairvoyance = new Spell("Clairvoyance", 4, SpellType.SPELL, ActionType.ACTIVITY, Set.of(concentrateTrait, manipulateTrait, scryingTrait), "You create an invisible floating eye at a location within range (even if it's outside your line of sight or line of effect).");
+            clairvoyance.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            clairvoyance.setSpellCastAmount(1);
+            clairvoyance.setSpellCastUnits("minute");
+            clairvoyance.setSpellRange(500);
+            clairvoyance.setSpellDuration("10 minutes");
+
+            Spell cleanseAffliction = new Spell("Cleanse Affliction", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, healingTrait, manipulateTrait), "Gentle restorative magic pushes back the effects of toxins and more complex maladies.");
+            cleanseAffliction.setSpellTraditions(List.of(SpellTraditions.DIVINE, SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
+            cleanseAffliction.setSpellRange(0);
+            cleanseAffliction.setSpellTargets("1 willing creature");
+
+            Spell cleanseCuisine = new Spell("Cleanse Cuisine", 1, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "You transform all food and beverages in the area into delicious fare, changing water into wine or another fine beverage, or enhancing the food's taste and ingredients to make it a gourmet treat.");
+            cleanseCuisine.setSpellTraditions(List.of(SpellTraditions.DIVINE, SpellTraditions.PRIMAL));
+            cleanseCuisine.setSpellRange(10);
+            cleanseCuisine.setSpellArea(1);
+            cleanseCuisine.setSpellAreaType("cubic foot");
+
+            Spell clearMind = new Spell("Clear Mind", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, healingTrait, manipulateTrait, mentalTrait), "You drive mental contamination from the target's mind.");
+            clearMind.setSpellTraditions(List.of(SpellTraditions.DIVINE, SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
+            clearMind.setSpellRange(0);
+            clearMind.setSpellTargets("1 willing creature");
+
             Spell clingingIce = new Spell("Clinging Ice", 1, SpellType.CANTRIP, ActionType.SINGLE_ACTION, Set.of(cantripTrait, coldTrait, hexTrait, manipulateTrait, witchTrait), "Freezing sleet and heavy snowfall collect on the target's feet and legs, dealing 1d4 cold damage and other effects depending on its Reflex save.");
             clingingIce.setSpellRange(30);
             clingingIce.setSpellTargets("1 creature");
@@ -490,6 +535,13 @@ public class DataSeeder {
 
             Spell communityRestoration = new Spell("Community Restoration", 4, SpellType.FOCUS, ActionType.REACTION, Set.of(concentrateTrait, focusTrait, healingTrait, wizardTrait), "When you use your magic to support your allies, shared strength bolsters you all.");
             communityRestoration.setSpellTrigger("You Cast a Spell from a wizard spell slot, and the spell affects one or more willing allies without damaging them");
+
+            Spell confusion = new Spell("Confusion", 4, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, emotionTrait, manipulateTrait, mentalTrait), "You befuddle your target with strange impulses, causing it to act randomly.");
+            confusion.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            confusion.setSpellRange(30);
+            confusion.setSpellTargets("1 creature");
+            confusion.setSpellDefense("Will");
+            confusion.setSpellDuration("1 minute");
 
             Spell contingency = new Spell("Contingency", 7, SpellType.SPELL, ActionType.ACTIVITY, Set.of(concentrateTrait, manipulateTrait), "You prepare a spell that will trigger later.");
             contingency.setSpellTraditions(List.of(SpellTraditions.ARCANE));
@@ -525,12 +577,28 @@ public class DataSeeder {
             cozyCabin.setSpellRange(30);
             cozyCabin.setSpellDuration("12 hours");
 
+            Spell createFood = new Spell("Create Food", 2, SpellType.SPELL, ActionType.ACTIVITY, Set.of(concentrateTrait, manipulateTrait), "You create enough food to feed six Medium creatures for a day.");
+            createFood.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.PRIMAL));
+            createFood.setSpellCastAmount(1);
+            createFood.setSpellCastUnits("hour");
+            createFood.setSpellRange(30);
+
+            Spell createWater = new Spell("Create Water", 1, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, waterTrait), "As you cup your hands, water begins to flow forth from them.");
+            createWater.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.PRIMAL));
+            createWater.setSpellRange(0);
+
             Spell creation = new Spell("Creation", 4, SpellType.SPELL, ActionType.ACTIVITY, Set.of(concentrateTrait, manipulateTrait), "You conjure a temporary object from magical energy.");
             creation.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
             creation.setSpellCastUnits("minute");
             creation.setSpellCastAmount(1);
             creation.setSpellRange(0);
             creation.setSpellDuration("1 hour");
+
+            Spell crisisOfFaith = new Spell("Crisis of Faith", 3, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, mentalTrait), "You assault the target's faith, riddling the creature with doubt and mental turmoil that deal 6d6 mental damage, or 6d8 mental damage if it can cast divine spells. The effects are determined by its Will save.");
+            crisisOfFaith.setSpellTraditions(List.of(SpellTraditions.DIVINE));
+            crisisOfFaith.setSpellRange(30);
+            crisisOfFaith.setSpellTargets("1 creature");
+            crisisOfFaith.setSpellDefense("Will");
 
             Spell curseOfDeath = new Spell("Curse of Death", 5, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, curseTrait, deathTrait, focusTrait, hexTrait, manipulateTrait, voidTrait, witchTrait), "Your patron wraps a hand around your target's heart.");
             curseOfDeath.setSpellRange(30);
@@ -1703,33 +1771,34 @@ public class DataSeeder {
             spellRepo.saveAll(List.of(
                     acidGrip, aerialForm, airBubble, alarm, allegro, animalFeature, animalMessenger, antHaul, aqueousOrb,
                     arcticRift, augury, avatar, bane, banishment, bindUndead, blazingBolt, bless, blessedBoundary,
-                    bloodVendetta, bloodWard, blur, breathOfLife, cackle, cataclysm, chainLightning, charmingPush,
-                    chillingDarkness, clingingIce, command, communityRestoration, contingency, cornucopia,
-                    counterPerformance, courageousAnthem, cozyCabin, curseOfDeath, cursedMetamorphosis, darkness, daze,
-                    deceiversCloak, desiccate, dirgeOfDoom, disappearance, discernSecrets, disguiseMagic, dispelMagic,
-                    dispellingGlobe, divineDecree, dreamMessage, duplicateFoe, earthquake, earthworks, eclipseBurst,
-                    elementalBetrayal, elementalForm, energyAbsorption, energyAegis, enfeeble, enlargeCompanion, evilEye,
-                    ephemeralTracking, fallingStars, fatalAria, fear, feetToFins, fieldOfLife, fieryBody, figment,
-                    forceBolt, foresight, fortifySummoning, fortissimoComposition, gougingClaw, gravityWeapon,
-                    grimTendrils, handsOfTheApprentice, harm, heal, healAnimal, healCompanion, holyLight,
-                    houseOfImaginaryWalls, howlingBlizzard, humanoidForm, huntersLuck, huntersVision, hydraulicPush,
-                    hymnOfHealing, illusoryCreature, illusoryScene, impalingBriars, impalingSpike,
-                    interdisciplinaryIncantation, interplanarTeleport, invisibilityCloak, invokeSpirits, lifeBoost,
-                    liminalDoorway, lingeringComposition, loremastersEtude, madMonkeys, magicHide, maliciousShadow,
-                    massacre, message, metamorphosis, mindReading, mist, monstrosityForm, mysticArmor, needleOfVengeance,
-                    neverMind, nudgeFate, odeToOuroboros, patronsPuppet, personalBlizzard, pestForm, petrify,
-                    phantasmagoria, phantasmalCalamity, phantasmalMinionSpell, phaseFamiliar, piedPiping, pinpoint,
-                    planarSeal, prestidigitation, primalSummons, projectImage, protectiveWards, pummelingRubble,
-                    raiseDead, rallyingAnthem, rangersBramble, readAura, repulsion, resistEnergy, restorativeMovement,
-                    retrocognition, revealingLight, runeOfObservation, runicBody, runicWeapon, safePassage, scrambleBody,
-                    seeTheUnseen, sending, shieldSpell, shiftingForm, shroudOfNight, sigil, songOfMarching,
-                    songOfStrength, soothe, soothingBallad, soothingMist, spellwrack, spiralOfHorrors, spiritLink,
-                    stokeTheHeart, stormLord, stormwindFlight, summonConstruct, summonPlantOrFungus, summonUndead,
-                    symphonyOfTheUnfetteredHeart, tangleVine, telekineticHand, telekineticProjectile, teleport,
-                    tempestSurge, terrainTransposition, toxicCloud, translate, tripleTime, truespeech, trueTarget,
-                    uncontrollableDance, unfetteredMovement, unrelentingObservation, untamedForm, untamedShift,
-                    upliftingOverture, vampiricExsanguination, vampiricFeast, vaporForm, veilOfDreams, veilOfPrivacy,
-                    voidWarp, wallOfStone, wallOfWind, waterWalk, wildingWord));
+                    bloodVendetta, bloodWard, blur, breathOfLife, cackle, calm, canticleOfEverlastingGrief, cataclysm,
+                    causticBlast, chainLightning, charmingPush, chillingDarkness, clairvoyance, cleanseAffliction,
+                    cleanseCuisine, clearMind, clingingIce, command, communityRestoration, confusion, contingency,
+                    cornucopia, counterPerformance, courageousAnthem, cozyCabin, createFood, createWater, crisisOfFaith,
+                    curseOfDeath, cursedMetamorphosis, darkness, daze, deceiversCloak, desiccate, dirgeOfDoom,
+                    disappearance, discernSecrets, disguiseMagic, dispelMagic, dispellingGlobe, divineDecree,
+                    dreamMessage, duplicateFoe, earthquake, earthworks, eclipseBurst, elementalBetrayal, elementalForm,
+                    energyAbsorption, energyAegis, enfeeble, enlargeCompanion, evilEye, ephemeralTracking, fallingStars,
+                    fatalAria, fear, feetToFins, fieldOfLife, fieryBody, figment, forceBolt, foresight, fortifySummoning,
+                    fortissimoComposition, gougingClaw, gravityWeapon, grimTendrils, handsOfTheApprentice, harm, heal,
+                    healAnimal, healCompanion, holyLight, houseOfImaginaryWalls, howlingBlizzard, humanoidForm,
+                    huntersLuck, huntersVision, hydraulicPush, hymnOfHealing, illusoryCreature, illusoryScene,
+                    impalingBriars, impalingSpike, interdisciplinaryIncantation, interplanarTeleport, invisibilityCloak,
+                    invokeSpirits, lifeBoost, liminalDoorway, lingeringComposition, loremastersEtude, madMonkeys,
+                    magicHide, maliciousShadow, massacre, message, metamorphosis, mindReading, mist, monstrosityForm,
+                    mysticArmor, needleOfVengeance, neverMind, nudgeFate, odeToOuroboros, patronsPuppet,
+                    personalBlizzard, pestForm, petrify, phantasmagoria, phantasmalCalamity, phantasmalMinionSpell,
+                    phaseFamiliar, piedPiping, pinpoint, planarSeal, prestidigitation, primalSummons, projectImage,
+                    protectiveWards, pummelingRubble, raiseDead, rallyingAnthem, rangersBramble, readAura, repulsion,
+                    resistEnergy, restorativeMovement, retrocognition, revealingLight, runeOfObservation, runicBody,
+                    runicWeapon, safePassage, scrambleBody, seeTheUnseen, sending, shieldSpell, shiftingForm,
+                    shroudOfNight, sigil, songOfMarching, songOfStrength, soothe, soothingBallad, soothingMist,
+                    spellwrack, spiralOfHorrors, spiritLink, stokeTheHeart, stormLord, stormwindFlight, summonConstruct,
+                    summonPlantOrFungus, summonUndead, symphonyOfTheUnfetteredHeart, tangleVine, telekineticHand,
+                    telekineticProjectile, teleport, tempestSurge, terrainTransposition, toxicCloud, translate,
+                    tripleTime, truespeech, trueTarget, uncontrollableDance, unfetteredMovement, unrelentingObservation,
+                    untamedForm, untamedShift, upliftingOverture, vampiricExsanguination, vampiricFeast, vaporForm,
+                    veilOfDreams, veilOfPrivacy, voidWarp, wallOfStone, wallOfWind, waterWalk, wildingWord));
 
             Weapon crossbow = new Weapon("Crossbow", WeaponCategory.SIMPLE, WeaponType.RANGED, WeaponGroup.CROSSBOW, 1, 8, DamageType.PIERCING);
             crossbow.setRangeFeet(120);
