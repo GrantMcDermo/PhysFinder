@@ -620,12 +620,22 @@ public class DataSeeder {
             darkness.setSpellAreaType("burst");
             darkness.setSpellDuration("1 minute");
 
+            Spell darkvision = new Spell("Darkvision", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "You grant yourself supernatural sight in areas of darkness.");
+            darkvision.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
+            darkvision.setSpellDuration("1 hour");
+
             Spell daze = new Spell("Daze", 1, SpellType.CANTRIP, ActionType.TWO_ACTIONS, Set.of(cantripTrait, concentrateTrait, manipulateTrait, mentalTrait, nonlethalTrait), "You push into the target's mind and daze it with a mental jolt.");
             daze.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT));
             daze.setSpellRange(60);
             daze.setSpellTargets("1 creature");
             daze.setSpellDefense("Will");
             daze.setSpellDuration("1 round");
+
+            Spell deafness = new Spell("Deafness", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "The target loses its hearing.");
+            deafness.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
+            deafness.setSpellRange(30);
+            deafness.setSpellTargets("1 creature");
+            deafness.setSpellDefense("Fortitude");
 
             Spell deceiversCloak = new Spell("Deceiver's Cloak", 3, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, focusTrait, hexTrait, illusionTrait, manipulateTrait, witchTrait), "Your patron drapes a cloak of illusion about you, making you appear as another creature of the same body shape with roughly similar height and weight as yourself.");
             deceiversCloak.setSpellDuration("1 hour");
@@ -636,11 +646,31 @@ public class DataSeeder {
             desiccate.setSpellTargets("any number of living creatures");
             desiccate.setSpellDefense("basic Fortitude");
 
+            Spell detectMagic = new Spell("Detect Magic", 1, SpellType.CANTRIP, ActionType.TWO_ACTIONS, Set.of(cantripTrait, concentrateTrait, detectionTrait, manipulateTrait), "You send out a pulse that registers the presence of magic.");
+            detectMagic.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
+            detectMagic.setSpellArea(30);
+            detectMagic.setSpellAreaType("emanation");
+
+            Spell detectPoison = new Spell("Detect Poison", 1, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, detectionTrait, manipulateTrait), "You detect whether a creature is venomous or poisonous, or if an object is poison or has been poisoned.");
+            detectPoison.setSpellTraditions(List.of(SpellTraditions.DIVINE, SpellTraditions.PRIMAL));
+            detectPoison.setSpellRange(30);
+            detectPoison.setSpellTargets("1 object or creature");
+
+            Spell detectScrying = new Spell("Detect Scrying", 4, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, detectionTrait, manipulateTrait), "By reading trace auras, you detect the presence of scrying effects in the area.");
+            detectScrying.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            detectScrying.setSpellArea(30);
+            detectScrying.setSpellAreaType("emanation");
+            detectScrying.setSpellDuration("1 hour");
+
             Spell detonateMagic = new Spell("Detonate Magic", 9, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "You cause the magic within the target to dissipate in a destructive explosion.");
             detonateMagic.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
             detonateMagic.setSpellRange(120);
             detonateMagic.setSpellTargets("1 magic item or spell effect");
             detonateMagic.setSpellDefense("basic Reflex");
+
+            Spell dinosaurForm = new Spell("Dinosaur Form", 4, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, polymorphTrait), "You channel the primal forces of nature to transform into a Large animal battle form, specifically that of a powerful and terrifying dinosaur.");
+            dinosaurForm.setSpellTraditions(List.of(SpellTraditions.PRIMAL));
+            dinosaurForm.setSpellDuration("1 minute");
 
             Spell dirgeOfDoom = new Spell("Dirge of Doom", 3, SpellType.CANTRIP, ActionType.SINGLE_ACTION, Set.of(bardTrait, cantripTrait, compositionTrait, concentrateTrait, emotionTrait, fearTrait, mentalTrait), "Enemies within the area are frightened 1. They can't reduce their frightened value below 1 while they remain in the area.");
             dirgeOfDoom.setSpellArea(30);
@@ -690,12 +720,55 @@ public class DataSeeder {
             divineDecree.setSpellDefense("Fortitude");
             divineDecree.setSpellDuration("varies");
 
+            Spell divineImmolation = new Spell("Divine Immolation", 5, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, fireTrait, manipulateTrait, sanctifiedTrait, spiritTrait), "Divine flames scour creatures within the area.");
+            divineImmolation.setSpellTraditions(List.of(SpellTraditions.DIVINE));
+            divineImmolation.setSpellRange(120);
+            divineImmolation.setSpellArea(20);
+            divineImmolation.setSpellAreaType("burst");
+            divineImmolation.setSpellDefense("Reflex");
+
+            Spell divineInspiration = new Spell("Divine Inspiration", 8, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, mentalTrait), "You infuse a target with spiritual energy, refreshing its magic.");
+            divineInspiration.setSpellTraditions(List.of(SpellTraditions.DIVINE));
+            divineInspiration.setSpellRange(0);
+            divineInspiration.setSpellTargets("1 willing creature");
+
+            Spell divineLance = new Spell("Divine Lance", 1, SpellType.CANTRIP, ActionType.TWO_ACTIONS, Set.of(attackTrait, cantripTrait, concentrateTrait, manipulateTrait, sanctifiedTrait, spiritTrait), "You unleash a beam of divine energy.");
+            divineLance.setSpellTraditions(List.of(SpellTraditions.DIVINE));
+            divineLance.setSpellRange(60);
+            divineLance.setSpellTargets("1 creature");
+            divineLance.setSpellDefense("AC");
+
+            Spell divineWrath = new Spell("Divine Wrath", 4, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, sanctifiedTrait, spiritTrait), "You channel the fury of divinity against your foes.");
+            divineWrath.setSpellTraditions(List.of(SpellTraditions.DIVINE));
+            divineWrath.setSpellRange(120);
+            divineWrath.setSpellArea(20);
+            divineWrath.setSpellAreaType("burst");
+            divineWrath.setSpellDefense("Fortitude");
+
             Spell dizzyingColors = new Spell("Dizzying Colors", 1, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, illusionTrait, incapactitationTrait, manipulateTrait, visualTrait), "You unleash a swirling multitude of colors that overwhelms creatures based on their Will saves.");
             dizzyingColors.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
             dizzyingColors.setSpellArea(15);
             dizzyingColors.setSpellAreaType("cone");
             dizzyingColors.setSpellDefense("Will");
             dizzyingColors.setSpellDuration("1 or more rounds");
+
+            Spell dominate = new Spell("Dominate", 6, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, incapactitationTrait, manipulateTrait, mentalTrait), "You take command of the target, forcing it to obey you.");
+            dominate.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT));
+            dominate.setSpellRange(30);
+            dominate.setSpellTargets("1 creature");
+            dominate.setSpellDefense("Will");
+            dominate.setSpellDuration("until your next daily preparations");
+
+            Spell dragonForm = new Spell("Dragon Form", 6, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, polymorphTrait), "Calling upon powerful magic, you gain a Large dragon battle form.");
+            dragonForm.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
+            dragonForm.setSpellDuration("1 minute");
+
+            Spell dreamMessage = new Spell("Dream Message", 3, SpellType.SPELL, ActionType.ACTIVITY, Set.of(concentrateTrait, manipulateTrait, mentalTrait), "You send a message to your target's dream.");
+            dreamMessage.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT));
+            dreamMessage.setSpellCastAmount(10);
+            dreamMessage.setSpellCastUnits("minute");
+            dreamMessage.setSpellTargets("1 creature you know by name and have met in person");
+            dreamMessage.setSpellDuration("until your next daily preparations");
 
             Spell dreamingPotential = new Spell("Dreaming Potential", 5, SpellType.SPELL, ActionType.ACTIVITY, Set.of(concentrateTrait, manipulateTrait, mentalTrait), "You draw the target into a lucid dream where it can explore the endless possibilities of its own potential within the everchanging backdrop of its dreamscape.");
             dreamingPotential.setSpellTraditions(List.of(SpellTraditions.OCCULT));
@@ -704,13 +777,6 @@ public class DataSeeder {
             dreamingPotential.setSpellRange(0);
             dreamingPotential.setSpellTargets("1 willing sleeping creature");
             dreamingPotential.setSpellDuration("8 hours");
-
-            Spell dreamMessage = new Spell("Dream Message", 3, SpellType.SPELL, ActionType.ACTIVITY, Set.of(concentrateTrait, manipulateTrait, mentalTrait), "You send a message to your target's dream.");
-            dreamMessage.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT));
-            dreamMessage.setSpellCastAmount(10);
-            dreamMessage.setSpellCastUnits("minute");
-            dreamMessage.setSpellTargets("1 creature you know by name and have met in person");
-            dreamMessage.setSpellDuration("until your next daily preparations");
 
             Spell duplicateFoe = new Spell("Duplicate Foe", 7, SpellType.SPELL, ActionType.THREE_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "You create a temporary duplicate of an enemy to fight on your behalf.");
             duplicateFoe.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
@@ -1775,30 +1841,32 @@ public class DataSeeder {
                     causticBlast, chainLightning, charmingPush, chillingDarkness, clairvoyance, cleanseAffliction,
                     cleanseCuisine, clearMind, clingingIce, command, communityRestoration, confusion, contingency,
                     cornucopia, counterPerformance, courageousAnthem, cozyCabin, createFood, createWater, crisisOfFaith,
-                    curseOfDeath, cursedMetamorphosis, darkness, daze, deceiversCloak, desiccate, dirgeOfDoom,
-                    disappearance, discernSecrets, disguiseMagic, dispelMagic, dispellingGlobe, divineDecree,
-                    dreamMessage, duplicateFoe, earthquake, earthworks, eclipseBurst, elementalBetrayal, elementalForm,
-                    energyAbsorption, energyAegis, enfeeble, enlargeCompanion, evilEye, ephemeralTracking, fallingStars,
-                    fatalAria, fear, feetToFins, fieldOfLife, fieryBody, figment, forceBolt, foresight, fortifySummoning,
-                    fortissimoComposition, gougingClaw, gravityWeapon, grimTendrils, handsOfTheApprentice, harm, heal,
-                    healAnimal, healCompanion, holyLight, houseOfImaginaryWalls, howlingBlizzard, humanoidForm,
-                    huntersLuck, huntersVision, hydraulicPush, hymnOfHealing, illusoryCreature, illusoryScene,
-                    impalingBriars, impalingSpike, interdisciplinaryIncantation, interplanarTeleport, invisibilityCloak,
-                    invokeSpirits, lifeBoost, liminalDoorway, lingeringComposition, loremastersEtude, madMonkeys,
-                    magicHide, maliciousShadow, massacre, message, metamorphosis, mindReading, mist, monstrosityForm,
-                    mysticArmor, needleOfVengeance, neverMind, nudgeFate, odeToOuroboros, patronsPuppet,
-                    personalBlizzard, pestForm, petrify, phantasmagoria, phantasmalCalamity, phantasmalMinionSpell,
-                    phaseFamiliar, piedPiping, pinpoint, planarSeal, prestidigitation, primalSummons, projectImage,
-                    protectiveWards, pummelingRubble, raiseDead, rallyingAnthem, rangersBramble, readAura, repulsion,
-                    resistEnergy, restorativeMovement, retrocognition, revealingLight, runeOfObservation, runicBody,
-                    runicWeapon, safePassage, scrambleBody, seeTheUnseen, sending, shieldSpell, shiftingForm,
-                    shroudOfNight, sigil, songOfMarching, songOfStrength, soothe, soothingBallad, soothingMist,
-                    spellwrack, spiralOfHorrors, spiritLink, stokeTheHeart, stormLord, stormwindFlight, summonConstruct,
-                    summonPlantOrFungus, summonUndead, symphonyOfTheUnfetteredHeart, tangleVine, telekineticHand,
-                    telekineticProjectile, teleport, tempestSurge, terrainTransposition, toxicCloud, translate,
-                    tripleTime, truespeech, trueTarget, uncontrollableDance, unfetteredMovement, unrelentingObservation,
-                    untamedForm, untamedShift, upliftingOverture, vampiricExsanguination, vampiricFeast, vaporForm,
-                    veilOfDreams, veilOfPrivacy, voidWarp, wallOfStone, wallOfWind, waterWalk, wildingWord));
+                    curseOfDeath, cursedMetamorphosis, darkness, darkvision, daze, deafness, deceiversCloak, desiccate,
+                    detectMagic, detectPoison, detectScrying, dinosaurForm, dirgeOfDoom, disappearance, discernSecrets,
+                    disguiseMagic, dispelMagic, dispellingGlobe, divineDecree, divineImmolation, divineInspiration,
+                    divineLance, divineWrath, dominate, dragonForm, dreamMessage, duplicateFoe, earthquake, earthworks,
+                    eclipseBurst, elementalBetrayal, elementalForm, energyAbsorption, energyAegis, enfeeble,
+                    enlargeCompanion, evilEye, ephemeralTracking, fallingStars, fatalAria, fear, feetToFins, fieldOfLife,
+                    fieryBody, figment, forceBolt, foresight, fortifySummoning, fortissimoComposition, gougingClaw,
+                    gravityWeapon, grimTendrils, handsOfTheApprentice, harm, heal, healAnimal, healCompanion, holyLight,
+                    houseOfImaginaryWalls, howlingBlizzard, humanoidForm, huntersLuck, huntersVision, hydraulicPush,
+                    hymnOfHealing, illusoryCreature, illusoryScene, impalingBriars, impalingSpike,
+                    interdisciplinaryIncantation, interplanarTeleport, invisibilityCloak, invokeSpirits, lifeBoost,
+                    liminalDoorway, lingeringComposition, loremastersEtude, madMonkeys, magicHide, maliciousShadow,
+                    massacre, message, metamorphosis, mindReading, mist, monstrosityForm, mysticArmor, needleOfVengeance,
+                    neverMind, nudgeFate, odeToOuroboros, patronsPuppet, personalBlizzard, pestForm, petrify,
+                    phantasmagoria, phantasmalCalamity, phantasmalMinionSpell, phaseFamiliar, piedPiping, pinpoint,
+                    planarSeal, prestidigitation, primalSummons, projectImage, protectiveWards, pummelingRubble,
+                    raiseDead, rallyingAnthem, rangersBramble, readAura, repulsion, resistEnergy, restorativeMovement,
+                    retrocognition, revealingLight, runeOfObservation, runicBody, runicWeapon, safePassage, scrambleBody,
+                    seeTheUnseen, sending, shieldSpell, shiftingForm, shroudOfNight, sigil, songOfMarching,
+                    songOfStrength, soothe, soothingBallad, soothingMist, spellwrack, spiralOfHorrors, spiritLink,
+                    stokeTheHeart, stormLord, stormwindFlight, summonConstruct, summonPlantOrFungus, summonUndead,
+                    symphonyOfTheUnfetteredHeart, tangleVine, telekineticHand, telekineticProjectile, teleport,
+                    tempestSurge, terrainTransposition, toxicCloud, translate, tripleTime, truespeech, trueTarget,
+                    uncontrollableDance, unfetteredMovement, unrelentingObservation, untamedForm, untamedShift,
+                    upliftingOverture, vampiricExsanguination, vampiricFeast, vaporForm, veilOfDreams, veilOfPrivacy,
+                    voidWarp, wallOfStone, wallOfWind, waterWalk, wildingWord));
 
             Weapon crossbow = new Weapon("Crossbow", WeaponCategory.SIMPLE, WeaponType.RANGED, WeaponGroup.CROSSBOW, 1, 8, DamageType.PIERCING);
             crossbow.setRangeFeet(120);
