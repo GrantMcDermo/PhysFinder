@@ -388,6 +388,12 @@ public class DataSeeder {
             blazingBolt.setSpellTargets("1 or more creatures");
             blazingBolt.setSpellDefense("AC");
 
+            Spell bless = new Spell("Bless", 1, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(auraTrait, concentrateTrait, manipulateTrait, mentalTrait), "Blessings from beyond help your companions strike true.");
+            bless.setSpellTraditions(List.of(SpellTraditions.DIVINE, SpellTraditions.OCCULT));
+            bless.setSpellArea(15);
+            bless.setSpellAreaType("emanation");
+            bless.setSpellDuration("1 minute");
+
             Spell blessedBoundary = new Spell("Blessed Boundary", 6, SpellType.SPELL, ActionType.THREE_ACTIONS, Set.of(concentrateTrait, forceTrait, manipulateTrait, sanctifiedTrait), "Manifestations of divine force appear in the hundreds, swirling in a massive, protective sphere.");
             blessedBoundary.setSpellTraditions(List.of(SpellTraditions.DIVINE));
             blessedBoundary.setSpellRange(120);
@@ -409,6 +415,18 @@ public class DataSeeder {
             bloodWard.setSpellRange(30);
             bloodWard.setSpellTargets("1 creature");
             bloodWard.setSpellDuration("sustained up to 1 minute");
+
+            Spell blur = new Spell("Blur", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, illusionTrait, manipulateTrait, visualTrait), "The target's form appears blurry.");
+            blur.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            blur.setSpellRange(0);
+            blur.setSpellTargets("1 creature");
+            blur.setSpellDuration("1 minute");
+
+            Spell breathOfLife = new Spell("Breath of Life", 5, SpellType.SPELL, ActionType.REACTION, Set.of(concentrateTrait, healingTrait, vitalityTrait), "Your blessing revives a creature at the moment of its death.");
+            breathOfLife.setSpellTraditions(List.of(SpellTraditions.DIVINE));
+            breathOfLife.setSpellTrigger("A living creature within range would die");
+            breathOfLife.setSpellRange(60);
+            breathOfLife.setSpellTargets("the triggering creature");
 
             Spell breatheFire = new Spell("Breathe Fire", 1, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, fireTrait, manipulateTrait), "A gout of flame sprays from your mouth.");
             breatheFire.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
@@ -1684,25 +1702,25 @@ public class DataSeeder {
 
             spellRepo.saveAll(List.of(
                     acidGrip, aerialForm, airBubble, alarm, allegro, animalFeature, animalMessenger, antHaul, aqueousOrb,
-                    arcticRift, augury, avatar, bane, banishment, bindUndead, blazingBolt, blessedBoundary,
-                    bloodVendetta, bloodWard, cackle, cataclysm, chainLightning, charmingPush, chillingDarkness,
-                    clingingIce, command, communityRestoration, contingency, cornucopia, counterPerformance,
-                    courageousAnthem, cozyCabin, curseOfDeath, cursedMetamorphosis, darkness, daze, deceiversCloak,
-                    desiccate, dirgeOfDoom, disappearance, discernSecrets, disguiseMagic, dispelMagic, dispellingGlobe,
-                    divineDecree, dreamMessage, duplicateFoe, earthquake, earthworks, eclipseBurst, elementalBetrayal,
-                    elementalForm, energyAbsorption, energyAegis, enfeeble, enlargeCompanion, evilEye, ephemeralTracking,
-                    fallingStars, fatalAria, fear, feetToFins, fieldOfLife, fieryBody, figment, forceBolt, foresight,
-                    fortifySummoning, fortissimoComposition, gougingClaw, gravityWeapon, grimTendrils,
-                    handsOfTheApprentice, harm, heal, healAnimal, healCompanion, holyLight, houseOfImaginaryWalls,
-                    howlingBlizzard, humanoidForm, huntersLuck, huntersVision, hydraulicPush, hymnOfHealing,
-                    illusoryCreature, illusoryScene, impalingBriars, impalingSpike, interdisciplinaryIncantation,
-                    interplanarTeleport, invisibilityCloak, invokeSpirits, lifeBoost, liminalDoorway,
-                    lingeringComposition, loremastersEtude, madMonkeys, magicHide, maliciousShadow, massacre, message,
-                    metamorphosis, mindReading, mist, monstrosityForm, mysticArmor, needleOfVengeance, neverMind,
-                    nudgeFate, odeToOuroboros, patronsPuppet, personalBlizzard, pestForm, petrify, phantasmagoria,
-                    phantasmalCalamity, phantasmalMinionSpell, phaseFamiliar, piedPiping, pinpoint, planarSeal,
-                    prestidigitation, primalSummons, projectImage, protectiveWards, pummelingRubble, raiseDead,
-                    rallyingAnthem, rangersBramble, readAura, repulsion, resistEnergy, restorativeMovement,
+                    arcticRift, augury, avatar, bane, banishment, bindUndead, blazingBolt, bless, blessedBoundary,
+                    bloodVendetta, bloodWard, blur, breathOfLife, cackle, cataclysm, chainLightning, charmingPush,
+                    chillingDarkness, clingingIce, command, communityRestoration, contingency, cornucopia,
+                    counterPerformance, courageousAnthem, cozyCabin, curseOfDeath, cursedMetamorphosis, darkness, daze,
+                    deceiversCloak, desiccate, dirgeOfDoom, disappearance, discernSecrets, disguiseMagic, dispelMagic,
+                    dispellingGlobe, divineDecree, dreamMessage, duplicateFoe, earthquake, earthworks, eclipseBurst,
+                    elementalBetrayal, elementalForm, energyAbsorption, energyAegis, enfeeble, enlargeCompanion, evilEye,
+                    ephemeralTracking, fallingStars, fatalAria, fear, feetToFins, fieldOfLife, fieryBody, figment,
+                    forceBolt, foresight, fortifySummoning, fortissimoComposition, gougingClaw, gravityWeapon,
+                    grimTendrils, handsOfTheApprentice, harm, heal, healAnimal, healCompanion, holyLight,
+                    houseOfImaginaryWalls, howlingBlizzard, humanoidForm, huntersLuck, huntersVision, hydraulicPush,
+                    hymnOfHealing, illusoryCreature, illusoryScene, impalingBriars, impalingSpike,
+                    interdisciplinaryIncantation, interplanarTeleport, invisibilityCloak, invokeSpirits, lifeBoost,
+                    liminalDoorway, lingeringComposition, loremastersEtude, madMonkeys, magicHide, maliciousShadow,
+                    massacre, message, metamorphosis, mindReading, mist, monstrosityForm, mysticArmor, needleOfVengeance,
+                    neverMind, nudgeFate, odeToOuroboros, patronsPuppet, personalBlizzard, pestForm, petrify,
+                    phantasmagoria, phantasmalCalamity, phantasmalMinionSpell, phaseFamiliar, piedPiping, pinpoint,
+                    planarSeal, prestidigitation, primalSummons, projectImage, protectiveWards, pummelingRubble,
+                    raiseDead, rallyingAnthem, rangersBramble, readAura, repulsion, resistEnergy, restorativeMovement,
                     retrocognition, revealingLight, runeOfObservation, runicBody, runicWeapon, safePassage, scrambleBody,
                     seeTheUnseen, sending, shieldSpell, shiftingForm, shroudOfNight, sigil, songOfMarching,
                     songOfStrength, soothe, soothingBallad, soothingMist, spellwrack, spiralOfHorrors, spiritLink,
