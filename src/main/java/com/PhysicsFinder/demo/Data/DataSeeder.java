@@ -295,6 +295,10 @@ public class DataSeeder {
             acidGrip.setSpellDefense("Reflex");
             acidGrip.setSpellTargets("1 creature");
 
+            Spell aerialForm = new Spell("Aerial Form", 4, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, polymorphTrait), "You harness your mastery of the sky to reshape your body into a Medium flying animal battle form.");
+            aerialForm.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
+            aerialForm.setSpellDuration("1 minute");
+
             Spell agileFeet = new Spell("Agile Feet", 1, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(clericTrait, focusTrait, manipulateTrait), "The blessings of your god make your feet faster and your movements more fluid.");
             agileFeet.setSpellDuration("until the end of the current turn.");
 
@@ -304,6 +308,15 @@ public class DataSeeder {
             airBubble.setSpellRange(60);
             airBubble.setSpellTargets("the triggering creature");
             airBubble.setSpellDuration("1 minute");
+
+            Spell alarm = new Spell("Alarm", 1, SpellType.SPELL, ActionType.ACTIVITY, Set.of(concentrateTrait, manipulateTrait), "You ward an area to alert you when creatures enter without your permission.");
+            alarm.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
+            alarm.setSpellCastAmount(10);
+            alarm.setSpellCastUnits("minute");
+            alarm.setSpellRange(0);
+            alarm.setSpellArea(20);
+            alarm.setSpellAreaType("burst");
+            alarm.setSpellDuration("8 hours");
 
             Spell allegro = new Spell("Allegro", 7, SpellType.CANTRIP, ActionType.SINGLE_ACTION, Set.of(bardTrait, cantripTrait, compositionTrait, concentrateTrait, emotionTrait, mentalTrait), "You perform rapidly, speeding up your ally.");
             allegro.setSpellRange(30);
@@ -317,6 +330,18 @@ public class DataSeeder {
             animalForm.setSpellTraditions(List.of(SpellTraditions.PRIMAL));
             animalForm.setSpellDuration("1 minute");
 
+            Spell animalMessenger = new Spell("Animal Messenger", 2, SpellType.SPELL, ActionType.ACTIVITY, Set.of(concentrateTrait, manipulateTrait, mentalTrait), "You offer food, and an ordinary Tiny animal within range approaches to eat it.");
+            animalMessenger.setSpellTraditions(List.of(SpellTraditions.PRIMAL));
+            animalMessenger.setSpellCastAmount(1);
+            animalMessenger.setSpellCastUnits("minute");
+            animalMessenger.setSpellRange(120);
+
+            Spell antHaul = new Spell("Ant Haul", 1, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "You reinforce the target's musculoskeletal system to bear more weight.");
+            antHaul.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
+            antHaul.setSpellRange(0);
+            antHaul.setSpellTargets("1 creature");
+            antHaul.setSpellDuration("8 hours");
+
             Spell aqueousOrb = new Spell("Aqueous Orb", 3, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, waterTrait), "A sphere of water 10 feet in diameter forms in an unoccupied space in range, either on the ground or on the surface of a liquid.");
             aqueousOrb.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
             aqueousOrb.setSpellRange(60);
@@ -328,6 +353,15 @@ public class DataSeeder {
             arcticRift.setSpellArea(120);
             arcticRift.setSpellAreaType("line");
             arcticRift.setSpellDefense("Fortitude");
+
+            Spell augury = new Spell("Augury", 2, SpellType.SPELL, ActionType.ACTIVITY, Set.of(concentrateTrait, manipulateTrait, predictionTrait), "You gain a vague glimpse of the future.");
+            augury.setSpellTraditions(List.of(SpellTraditions.DIVINE, SpellTraditions.OCCULT));
+            augury.setSpellCastAmount(10);
+            augury.setSpellCastUnits("minute");
+
+            Spell avatar = new Spell("Avatar", 10, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, polymorphTrait), "You transform into an avatar of your deity, assuming a Huge battle form.");
+            avatar.setSpellTraditions(List.of(SpellTraditions.DIVINE));
+            avatar.setSpellDuration("1 minute");
 
             Spell bane = new Spell("Bane", 1, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(auraTrait, concentrateTrait, manipulateTrait, mentalTrait), "You fill the minds of your enemies with doubt.");
             bane.setSpellTraditions(List.of(SpellTraditions.DIVINE, SpellTraditions.OCCULT));
@@ -1649,25 +1683,26 @@ public class DataSeeder {
             wildingWord.setSpellDuration("sustained up to 1 minute");
 
             spellRepo.saveAll(List.of(
-                    acidGrip, airBubble, allegro, animalFeature, aqueousOrb, arcticRift, bane, banishment, bindUndead,
-                    blazingBolt, blessedBoundary, bloodVendetta, bloodWard, cackle, cataclysm, chainLightning,
-                    charmingPush, chillingDarkness, clingingIce, command, communityRestoration, contingency, cornucopia,
-                    counterPerformance, courageousAnthem, cozyCabin, curseOfDeath, cursedMetamorphosis, darkness, daze,
-                    deceiversCloak, desiccate, dirgeOfDoom, disappearance, discernSecrets, disguiseMagic, dispelMagic,
-                    dispellingGlobe, divineDecree, dreamMessage, duplicateFoe, earthquake, earthworks, eclipseBurst,
-                    elementalBetrayal, elementalForm, energyAbsorption, energyAegis, enfeeble, enlargeCompanion, evilEye,
-                    ephemeralTracking, fallingStars, fatalAria, fear, feetToFins, fieldOfLife, fieryBody, figment,
-                    forceBolt, foresight, fortifySummoning, fortissimoComposition, gougingClaw, gravityWeapon,
-                    grimTendrils, handsOfTheApprentice, harm, heal, healAnimal, healCompanion, holyLight,
-                    houseOfImaginaryWalls, howlingBlizzard, humanoidForm, huntersLuck, huntersVision, hydraulicPush,
-                    hymnOfHealing, illusoryCreature, illusoryScene, impalingBriars, impalingSpike,
-                    interdisciplinaryIncantation, interplanarTeleport, invisibilityCloak, invokeSpirits, lifeBoost,
-                    liminalDoorway, lingeringComposition, loremastersEtude, madMonkeys, magicHide, maliciousShadow,
-                    massacre, message, metamorphosis, mindReading, mist, monstrosityForm, mysticArmor, needleOfVengeance,
-                    neverMind, nudgeFate, odeToOuroboros, patronsPuppet, personalBlizzard, pestForm, petrify,
-                    phantasmagoria, phantasmalCalamity, phantasmalMinionSpell, phaseFamiliar, piedPiping, pinpoint,
-                    planarSeal, prestidigitation, primalSummons, projectImage, protectiveWards, pummelingRubble,
-                    raiseDead, rallyingAnthem, rangersBramble, readAura, repulsion, resistEnergy, restorativeMovement,
+                    acidGrip, aerialForm, airBubble, alarm, allegro, animalFeature, animalMessenger, antHaul, aqueousOrb,
+                    arcticRift, augury, avatar, bane, banishment, bindUndead, blazingBolt, blessedBoundary,
+                    bloodVendetta, bloodWard, cackle, cataclysm, chainLightning, charmingPush, chillingDarkness,
+                    clingingIce, command, communityRestoration, contingency, cornucopia, counterPerformance,
+                    courageousAnthem, cozyCabin, curseOfDeath, cursedMetamorphosis, darkness, daze, deceiversCloak,
+                    desiccate, dirgeOfDoom, disappearance, discernSecrets, disguiseMagic, dispelMagic, dispellingGlobe,
+                    divineDecree, dreamMessage, duplicateFoe, earthquake, earthworks, eclipseBurst, elementalBetrayal,
+                    elementalForm, energyAbsorption, energyAegis, enfeeble, enlargeCompanion, evilEye, ephemeralTracking,
+                    fallingStars, fatalAria, fear, feetToFins, fieldOfLife, fieryBody, figment, forceBolt, foresight,
+                    fortifySummoning, fortissimoComposition, gougingClaw, gravityWeapon, grimTendrils,
+                    handsOfTheApprentice, harm, heal, healAnimal, healCompanion, holyLight, houseOfImaginaryWalls,
+                    howlingBlizzard, humanoidForm, huntersLuck, huntersVision, hydraulicPush, hymnOfHealing,
+                    illusoryCreature, illusoryScene, impalingBriars, impalingSpike, interdisciplinaryIncantation,
+                    interplanarTeleport, invisibilityCloak, invokeSpirits, lifeBoost, liminalDoorway,
+                    lingeringComposition, loremastersEtude, madMonkeys, magicHide, maliciousShadow, massacre, message,
+                    metamorphosis, mindReading, mist, monstrosityForm, mysticArmor, needleOfVengeance, neverMind,
+                    nudgeFate, odeToOuroboros, patronsPuppet, personalBlizzard, pestForm, petrify, phantasmagoria,
+                    phantasmalCalamity, phantasmalMinionSpell, phaseFamiliar, piedPiping, pinpoint, planarSeal,
+                    prestidigitation, primalSummons, projectImage, protectiveWards, pummelingRubble, raiseDead,
+                    rallyingAnthem, rangersBramble, readAura, repulsion, resistEnergy, restorativeMovement,
                     retrocognition, revealingLight, runeOfObservation, runicBody, runicWeapon, safePassage, scrambleBody,
                     seeTheUnseen, sending, shieldSpell, shiftingForm, shroudOfNight, sigil, songOfMarching,
                     songOfStrength, soothe, soothingBallad, soothingMist, spellwrack, spiralOfHorrors, spiritLink,
