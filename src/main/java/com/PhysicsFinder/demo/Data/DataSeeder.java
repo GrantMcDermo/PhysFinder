@@ -814,6 +814,12 @@ public class DataSeeder {
             eclipseBurst.setSpellAreaType("burst");
             eclipseBurst.setSpellDefense("Reflex");
 
+            Spell electricArc = new Spell("Electric Arc", 1, SpellType.CANTRIP, ActionType.TWO_ACTIONS, Set.of(cantripTrait, concentrateTrait, electricityTrait, manipulateTrait), "An arc of lightning leaps from one target to another.");
+            electricArc.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
+            electricArc.setSpellRange(30);
+            electricArc.setSpellTargets("1 or 2 creatures");
+            electricArc.setSpellDefense("basic Reflex");
+
             Spell elementalBetrayal = new Spell("Elemental Betrayal", 1, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(concentrateTrait, focusTrait, hexTrait, witchTrait), "Your patron uses its superior command of the elements, empowering them to undermine your foe.");
             elementalBetrayal.setSpellRange(30);
             elementalBetrayal.setSpellTargets("1 creature");
@@ -858,6 +864,13 @@ public class DataSeeder {
             enlargeCompanion.setSpellTargets("your animal companion");
             enlargeCompanion.setSpellDuration("1 minute");
 
+            Spell entanglingFlora = new Spell("Entangling Flora", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, plantTrait, woodTrait), "Plants and fungi burst out or quickly grow, entangling creatures.");
+            entanglingFlora.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
+            entanglingFlora.setSpellRange(120);
+            entanglingFlora.setSpellArea(20);
+            entanglingFlora.setSpellAreaType("all squares in a 20-foot burst");
+            entanglingFlora.setSpellDuration("1 minute");
+
             Spell enthrall = new Spell("Enthrall", 3, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(auditoryTrait, concentrateTrait, emotionTrait, manipulateTrait), "Your words fascinate your targets.");
             enthrall.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
             enthrall.setSpellRange(120);
@@ -865,14 +878,34 @@ public class DataSeeder {
             enthrall.setSpellDefense("Will");
             enthrall.setSpellDuration("sustained");
 
+            Spell environmentalEndurance = new Spell("Environmental Endurance", 2, SpellType.SPELL, ActionType.ACTIVITY, Set.of(concentrateTrait, manipulateTrait), "You shield the target against dangerous temperatures.");
+            environmentalEndurance.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.PRIMAL));
+            environmentalEndurance.setSpellCastAmount(10);
+            environmentalEndurance.setSpellCastUnits("minute");
+            environmentalEndurance.setSpellRange(0);
+            environmentalEndurance.setSpellTargets("1 willing creature");
+            environmentalEndurance.setSpellDuration("until your next daily preparations");
+
             Spell ephemeralTracking = new Spell("Ephemeral Tracking", 3, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, focusTrait, manipulateTrait, rangerTrait), "You can look at currents in the air and water and see tracks that you can follow just as you would on land.");
             ephemeralTracking.setSpellDuration("1 hour");
+
+            Spell everlight = new Spell("Everlight", 2, SpellType.SPELL,ActionType.THREE_ACTIONS, Set.of(concentrateTrait, lightTrait, manipulateTrait), "The gemstone you touch glows, spreading bright light with a color of your choice in a 20-foot radius (and dim light for the next 20 feet). The spell ends immediately if the gemstone is broken.");
+            everlight.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
+            everlight.setSpellRange(0);
+            everlight.setSpellTargets("a gemstone worth 6 gp or more");
+            everlight.setSpellDuration("unlimited");
 
             Spell evilEye = new Spell("Evil Eye", 1, SpellType.CANTRIP, ActionType.SINGLE_ACTION, Set.of(cantripTrait, curseTrait, hexTrait, manipulateTrait, witchTrait), "Your patron's resentment manifests in a baleful, envious gaze.");
             evilEye.setSpellRange(30);
             evilEye.setSpellTargets("1 creature");
             evilEye.setSpellDefense("Will");
             evilEye.setSpellDuration("sustained up to 1 minute");
+
+            Spell execute = new Spell("Execute", 7, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, deathTrait, manipulateTrait, voidTrait), "You point at a creature and invoke the demise of all things.");
+            execute.setSpellTraditions(List.of(SpellTraditions.DIVINE, SpellTraditions.PRIMAL));
+            execute.setSpellRange(30);
+            execute.setSpellTargets("1 creature");
+            execute.setSpellDefense("basic Fortitude");
 
             Spell fallingStars = new Spell("Falling Stars", 9, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "You reach into the skies and call down an array of falling stars that explode upon colliding with the ground.");
             fallingStars.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
@@ -1845,19 +1878,20 @@ public class DataSeeder {
                     detectMagic, detectPoison, detectScrying, dinosaurForm, dirgeOfDoom, disappearance, discernSecrets,
                     disguiseMagic, dispelMagic, dispellingGlobe, divineDecree, divineImmolation, divineInspiration,
                     divineLance, divineWrath, dominate, dragonForm, dreamMessage, duplicateFoe, earthquake, earthworks,
-                    eclipseBurst, elementalBetrayal, elementalForm, energyAbsorption, energyAegis, enfeeble,
-                    enlargeCompanion, evilEye, ephemeralTracking, fallingStars, fatalAria, fear, feetToFins, fieldOfLife,
-                    fieryBody, figment, forceBolt, foresight, fortifySummoning, fortissimoComposition, gougingClaw,
-                    gravityWeapon, grimTendrils, handsOfTheApprentice, harm, heal, healAnimal, healCompanion, holyLight,
-                    houseOfImaginaryWalls, howlingBlizzard, humanoidForm, huntersLuck, huntersVision, hydraulicPush,
-                    hymnOfHealing, illusoryCreature, illusoryScene, impalingBriars, impalingSpike,
-                    interdisciplinaryIncantation, interplanarTeleport, invisibilityCloak, invokeSpirits, lifeBoost,
-                    liminalDoorway, lingeringComposition, loremastersEtude, madMonkeys, magicHide, maliciousShadow,
-                    massacre, message, metamorphosis, mindReading, mist, monstrosityForm, mysticArmor, needleOfVengeance,
-                    neverMind, nudgeFate, odeToOuroboros, patronsPuppet, personalBlizzard, pestForm, petrify,
-                    phantasmagoria, phantasmalCalamity, phantasmalMinionSpell, phaseFamiliar, piedPiping, pinpoint,
-                    planarSeal, prestidigitation, primalSummons, projectImage, protectiveWards, pummelingRubble,
-                    raiseDead, rallyingAnthem, rangersBramble, readAura, repulsion, resistEnergy, restorativeMovement,
+                    eclipseBurst, electricArc, elementalBetrayal, elementalForm, energyAbsorption, energyAegis, enfeeble,
+                    enlargeCompanion, entanglingFlora, environmentalEndurance, ephemeralTracking, everlight, evilEye,
+                    execute, fallingStars, fatalAria, fear, feetToFins, fieldOfLife, fieryBody, figment, forceBolt,
+                    foresight, fortifySummoning, fortissimoComposition, gougingClaw, gravityWeapon, grimTendrils,
+                    handsOfTheApprentice, harm, heal, healAnimal, healCompanion, holyLight, houseOfImaginaryWalls,
+                    howlingBlizzard, humanoidForm, huntersLuck, huntersVision, hydraulicPush, hymnOfHealing,
+                    illusoryCreature, illusoryScene, impalingBriars, impalingSpike, interdisciplinaryIncantation,
+                    interplanarTeleport, invisibilityCloak, invokeSpirits, lifeBoost, liminalDoorway,
+                    lingeringComposition, loremastersEtude, madMonkeys, magicHide, maliciousShadow, massacre, message,
+                    metamorphosis, mindReading, mist, monstrosityForm, mysticArmor, needleOfVengeance, neverMind,
+                    nudgeFate, odeToOuroboros, patronsPuppet, personalBlizzard, pestForm, petrify, phantasmagoria,
+                    phantasmalCalamity, phantasmalMinionSpell, phaseFamiliar, piedPiping, pinpoint, planarSeal,
+                    prestidigitation, primalSummons, projectImage, protectiveWards, pummelingRubble, raiseDead,
+                    rallyingAnthem, rangersBramble, readAura, repulsion, resistEnergy, restorativeMovement,
                     retrocognition, revealingLight, runeOfObservation, runicBody, runicWeapon, safePassage, scrambleBody,
                     seeTheUnseen, sending, shieldSpell, shiftingForm, shroudOfNight, sigil, songOfMarching,
                     songOfStrength, soothe, soothingBallad, soothingMist, spellwrack, spiralOfHorrors, spiritLink,
