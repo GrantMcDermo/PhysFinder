@@ -1147,11 +1147,27 @@ public class DataSeeder {
             Spell healCompanion = new Spell("Heal Companion", 1, SpellType.FOCUS, ActionType.ONE_TO_TWO_ACTIONS, Set.of(focusTrait, healingTrait, rangerTrait, vitalityTrait), "You heal your animal companion's wounds.");
             healCompanion.setSpellTargets("your animal companion");
 
+            Spell heroism = new Spell("Heroism", 3, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, mentalTrait), "You unlock the target's inner heroism, granting it a +1 status bonus to attack rolls, Perception checks, saving throws, and skill checks.");
+            heroism.setSpellTraditions(List.of(SpellTraditions.DIVINE, SpellTraditions.OCCULT));
+            heroism.setSpellRange(0);
+            heroism.setSpellTargets("1 creature");
+            heroism.setSpellDuration("10 minutes");
+
+            Spell hiddenMind = new Spell("Hidden Mind", 8, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "Powerful wards hide a creature from magic that would spy on it or affect its mind.");
+            hiddenMind.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            hiddenMind.setSpellRange(30);
+            hiddenMind.setSpellTargets("1 creature");
+            hiddenMind.setSpellDuration("until your next daily preparations");
+
             Spell holyLight = new Spell("Holy Light", 3, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(attackTrait, concentrateTrait, fireTrait, holyTrait, lightTrait, manipulateTrait), "You shine a blazing ray of light tinged with holy energy.");
             holyLight.setSpellTraditions(List.of(SpellTraditions.DIVINE, SpellTraditions.PRIMAL));
             holyLight.setSpellRange(120);
             holyLight.setSpellTargets("1 creature");
             holyLight.setSpellDefense("AC");
+
+            Spell honeyedWords = new Spell("Honeyed Words", 4, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, mentalTrait), "Falsehoods pass your lips as smoothly as silk.");
+            honeyedWords.setSpellTraditions(List.of(SpellTraditions.OCCULT));
+            honeyedWords.setSpellDuration("10 minutes");
 
             Spell houseOfImaginaryWalls = new Spell("House of Imaginary Walls", 5, SpellType.CANTRIP, ActionType.SINGLE_ACTION, Set.of(bardTrait, cantripTrait, compositionTrait, illusionTrait, manipulateTrait, visualTrait), "You mime an invisible 10-foot-by-10-foot wall adjacent to you and within your reach. The wall is solid to those creatures that don't disbelieve it, even incorporeal creatures. You and your allies can voluntarily believe the wall exists to continue to treat it as solid, for instance to climb onto it. A creature that disbelieves the illusion is temporarily immune to your house of imaginary walls for 1 minute. The wall doesn't block creatures that didn't see your visual performance, nor does it block objects. The wall has AC 10, Hardness equal to double the spell's rank, and HP equal to quadruple the spell's rank.");
             houseOfImaginaryWalls.setSpellDuration("1 round");
@@ -1179,10 +1195,27 @@ public class DataSeeder {
             hydraulicPush.setSpellTargets("1 creature or unattended object");
             hydraulicPush.setSpellDefense("AC");
 
+            Spell hydraulicTorrent = new Spell("Hydraulic Torrent", 4, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, waterTrait), "A swirling torrent of water manifests along a straight line, battering creatures and unattended objects in its path and possibly pushing them away from you.");
+            hydraulicTorrent.setSpellTraditions(List.of(SpellTraditions.PRIMAL));
+            hydraulicTorrent.setSpellArea(60);
+            hydraulicTorrent.setSpellAreaType("line");
+            hydraulicTorrent.setSpellDefense("Fortitude");
+
             Spell hymnOfHealing = new Spell("Hymn of Healing", 1, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(bardTrait, compositionTrait, concentrateTrait, focusTrait, healingTrait, vitalityTrait), "Your glorious singing mends wounds and provides a temporary respite from harm.");
             hymnOfHealing.setSpellRange(30);
             hymnOfHealing.setSpellTargets("you or 1 ally");
             hymnOfHealing.setSpellDuration("sustained up to 4 rounds");
+
+            Spell hypercognition = new Spell("Hypercognition", 3, SpellType.SPELL, ActionType.SINGLE_ACTION, Set.of(concentrateTrait), "You rapidly catalog and collate information relevant to your current situation.");
+            hypercognition.setSpellTraditions(List.of(SpellTraditions.OCCULT));
+
+            Spell hypnotize = new Spell("Hypnotize", 3, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(illusionTrait, manipulateTrait, subtleTrait, visualTrait), "You create a cloud of mesmerizing patterns and colors that hovers in the air.");
+            hypnotize.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            hypnotize.setSpellRange(120);
+            hypnotize.setSpellArea(10);
+            hypnotize.setSpellAreaType("burst");
+            hypnotize.setSpellDefense("Will");
+            hypnotize.setSpellDuration("sustained up to 1 minute");
 
             Spell illusoryCreature = new Spell("Illusory Creature", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(auditoryTrait, concentrateTrait, illusionTrait, manipulateTrait, olfactoryTrait, visualTrait), "You create an illusory image of a Large or smaller creature.");
             illusoryCreature.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
@@ -1211,7 +1244,7 @@ public class DataSeeder {
             illusoryScene.setSpellCastAmount(10);
             illusoryScene.setSpellCastUnits("minute");
             illusoryScene.setSpellRange(500);
-            illusoryScene.setSpellRange(30);
+            illusoryScene.setSpellArea(30);
             illusoryScene.setSpellAreaType("burst");
             illusoryScene.setSpellDuration("1 hour");
 
@@ -1968,24 +2001,25 @@ public class DataSeeder {
                     fieryBody, figment, floatingFlame, fly, forbiddingWard, forceBolt, foresight, fortifySummoning,
                     fortissimoComposition, freezeTime, frostbite, gate, geckoGrip, gentleLanding, ghostlyCarrier,
                     gougingClaw, gravityWeapon, grease, grimTendrils, guidance, handOfTheApprentice, harm, heal,
-                    healAnimal, healCompanion, holyLight, houseOfImaginaryWalls, howlingBlizzard, humanoidForm,
-                    huntersLuck, huntersVision, hydraulicPush, hymnOfHealing, illusoryCreature, illusoryScene,
-                    impalingBriars, impalingSpike, interdisciplinaryIncantation, interplanarTeleport, invisibilityCloak,
-                    invokeSpirits, lifeBoost, liminalDoorway, lingeringComposition, loremastersEtude, madMonkeys,
-                    magicHide, maliciousShadow, massacre, message, metamorphosis, mindReading, mist, monstrosityForm,
-                    mysticArmor, needleOfVengeance, neverMind, nudgeFate, odeToOuroboros, patronsPuppet,
-                    personalBlizzard, pestForm, petrify, phantasmagoria, phantasmalCalamity, phantasmalMinionSpell,
-                    phaseFamiliar, piedPiping, pinpoint, planarSeal, prestidigitation, primalSummons, projectImage,
-                    protectiveWards, pummelingRubble, raiseDead, rallyingAnthem, rangersBramble, readAura, repulsion,
-                    resistEnergy, restorativeMovement, retrocognition, revealingLight, runeOfObservation, runicBody,
-                    runicWeapon, safePassage, scrambleBody, seeTheUnseen, sending, shieldSpell, shiftingForm,
-                    shroudOfNight, sigil, songOfMarching, songOfStrength, soothe, soothingBallad, soothingMist,
-                    spellwrack, spiralOfHorrors, spiritLink, stokeTheHeart, stormLord, stormwindFlight, summonConstruct,
-                    summonPlantOrFungus, summonUndead, symphonyOfTheUnfetteredHeart, tangleVine, telekineticHand,
-                    telekineticProjectile, teleport, tempestSurge, terrainTransposition, toxicCloud, translate,
-                    tripleTime, truespeech, trueTarget, uncontrollableDance, unfetteredMovement, unrelentingObservation,
-                    untamedForm, untamedShift, upliftingOverture, vampiricExsanguination, vampiricFeast, vaporForm,
-                    veilOfDreams, veilOfPrivacy, voidWarp, wallOfStone, wallOfWind, waterWalk, wildingWord));
+                    healAnimal, healCompanion, heroism, hiddenMind, holyLight, honeyedWords, houseOfImaginaryWalls,
+                    howlingBlizzard, humanoidForm, huntersLuck, huntersVision, hydraulicPush, hydraulicTorrent,
+                    hymnOfHealing, hypercognition, hypnotize, illusoryCreature, illusoryScene, impalingBriars,
+                    impalingSpike, interdisciplinaryIncantation, interplanarTeleport, invisibilityCloak, invokeSpirits,
+                    lifeBoost, liminalDoorway, lingeringComposition, loremastersEtude, madMonkeys, magicHide,
+                    maliciousShadow, massacre, message, metamorphosis, mindReading, mist, monstrosityForm, mysticArmor,
+                    needleOfVengeance, neverMind, nudgeFate, odeToOuroboros, patronsPuppet, personalBlizzard, pestForm,
+                    petrify, phantasmagoria, phantasmalCalamity, phantasmalMinionSpell, phaseFamiliar, piedPiping,
+                    pinpoint, planarSeal, prestidigitation, primalSummons, projectImage, protectiveWards,
+                    pummelingRubble, raiseDead, rallyingAnthem, rangersBramble, readAura, repulsion, resistEnergy,
+                    restorativeMovement, retrocognition, revealingLight, runeOfObservation, runicBody, runicWeapon,
+                    safePassage, scrambleBody, seeTheUnseen, sending, shieldSpell, shiftingForm, shroudOfNight, sigil,
+                    songOfMarching, songOfStrength, soothe, soothingBallad, soothingMist, spellwrack, spiralOfHorrors,
+                    spiritLink, stokeTheHeart, stormLord, stormwindFlight, summonConstruct, summonPlantOrFungus,
+                    summonUndead, symphonyOfTheUnfetteredHeart, tangleVine, telekineticHand, telekineticProjectile,
+                    teleport, tempestSurge, terrainTransposition, toxicCloud, translate, tripleTime, truespeech,
+                    trueTarget, uncontrollableDance, unfetteredMovement, unrelentingObservation, untamedForm,
+                    untamedShift, upliftingOverture, vampiricExsanguination, vampiricFeast, vaporForm, veilOfDreams,
+                    veilOfPrivacy, voidWarp, wallOfStone, wallOfWind, waterWalk, wildingWord));
 
             Weapon crossbow = new Weapon("Crossbow", WeaponCategory.SIMPLE, WeaponType.RANGED, WeaponGroup.CROSSBOW, 1, 8, DamageType.PIERCING);
             crossbow.setRangeFeet(120);
