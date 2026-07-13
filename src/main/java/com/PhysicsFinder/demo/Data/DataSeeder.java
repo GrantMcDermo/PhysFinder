@@ -907,12 +907,30 @@ public class DataSeeder {
             execute.setSpellTargets("1 creature");
             execute.setSpellDefense("basic Fortitude");
 
+            Spell fabricatedTruth = new Spell("Fabricated Truth", 10, SpellType.SPELL, ActionType.THREE_ACTIONS, Set.of(concentrateTrait, incapactitationTrait, manipulateTrait, mentalTrait), "Choose a single statement you want the targets to believe. The fact could be narrow, such as “a dragon is circling overhead and wants to kill me”; wide-reaching, such as “all humanoids are disguised abominations”; or conceptual, such as “if I don't live a kinder life, I'll be punished in the afterlife.” The targets' experiences color how they react to this “truth” and how their behavior changes. If the statement changes what they perceive, they treat the change as a sudden revelation.\n" +
+                    "\n" +
+                    "The effect of the spell depends on the targets' Will saves. If a target is already affected by fabricated truth, your spell tries to counteract it. If the counteract check fails, the outcome of the target's saving throw can't be worse than a success.");
+            fabricatedTruth.setSpellTraditions(List.of(SpellTraditions.OCCULT));
+            fabricatedTruth.setSpellRange(100);
+            fabricatedTruth.setSpellTargets("up to 5 creatures");
+            fabricatedTruth.setSpellDefense("Will");
+            fabricatedTruth.setSpellDuration("varies");
+
             Spell fallingStars = new Spell("Falling Stars", 9, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "You reach into the skies and call down an array of falling stars that explode upon colliding with the ground.");
             fallingStars.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
             fallingStars.setSpellRange(500);
             fallingStars.setSpellArea(40);
             fallingStars.setSpellAreaType("4 bursts");
             fallingStars.setSpellDefense("basic Reflex");
+
+            Spell falseVision = new Spell("False Vision", 5, SpellType.SPELL, ActionType.ACTIVITY, Set.of(concentrateTrait, illusionTrait, manipulateTrait), "You create a false image that fools any attempts to scry on an area.");
+            falseVision.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            falseVision.setSpellCastAmount(10);
+            falseVision.setSpellCastUnits("minute");
+            falseVision.setSpellRange(0);
+            falseVision.setSpellArea(100);
+            falseVision.setSpellAreaType("burst");
+            falseVision.setSpellDuration("until your next daily preparations");
 
             Spell falseVitality = new Spell("False Vitality", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "You augment your flesh with the energies typically used to manipulate the undead.");
             falseVitality.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
@@ -972,6 +990,26 @@ public class DataSeeder {
             flicker.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
             flicker.setSpellDuration("1 minute");
 
+            Spell floatingFlame = new Spell("Floating Flame", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, fireTrait, manipulateTrait), "You create a fire that burns without fuel and moves to your commands.");
+            floatingFlame.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
+            floatingFlame.setSpellRange(30);
+            floatingFlame.setSpellArea(5);
+            floatingFlame.setSpellAreaType("1 5-foot square");
+            floatingFlame.setSpellDefense("Reflex");
+            floatingFlame.setSpellDuration("sustained up to 1 minute");
+
+            Spell fly = new Spell("Fly", 4, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "The target can soar through the air, gaining a fly Speed equal to its Speed or 20 feet, whichever is greater.");
+            fly.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
+            fly.setSpellRange(0);
+            fly.setSpellTargets("1 creature");
+            fly.setSpellDuration("5 minutes");
+
+            Spell forbiddingWard = new Spell("Forbidding Ward", 1, SpellType.CANTRIP, ActionType.TWO_ACTIONS, Set.of(cantripTrait, concentrateTrait, manipulateTrait), "You ward an ally against the attacks and hostile spells from the target enemy.");
+            forbiddingWard.setSpellTraditions(List.of(SpellTraditions.DIVINE, SpellTraditions.OCCULT));
+            forbiddingWard.setSpellRange(30);
+            forbiddingWard.setSpellTargets("1 ally and 1 enemy");
+            forbiddingWard.setSpellDuration("sustained up to 1 minute");
+
             Spell forceBarrage = new Spell("Force Barrage", 1, SpellType.SPELL, ActionType.ONE_TO_THREE_ACTIONS, Set.of(concentrateTrait, forceTrait, manipulateTrait), "You fire a shard of solidified magic toward a creature that you can see.");
             forceBarrage.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
             forceBarrage.setSpellRange(120);
@@ -992,6 +1030,15 @@ public class DataSeeder {
             fortifySummoning.setSpellTargets("1 creature you summoned");
 
             Spell fortissimoComposition = new Spell("Fortissimo Composition", 4, SpellType.FOCUS, ActionType.FREE_ACTION, Set.of(bardTrait, concentrateTrait, focusTrait, spellshapeTrait), "You call upon your muse to greatly increase the benefits you provide with your courageous anthem, rallying anthem, or song of strength composition.");
+
+            Spell freezeTime = new Spell("Freeze Time", 10, SpellType.SPELL, ActionType.THREE_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "You temporarily stop time for everything but yourself, allowing you to use several actions in what appears to others to be no time at all.");
+            freezeTime.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+
+            Spell frostbite = new Spell("Frostbite", 1, SpellType.CANTRIP, ActionType.TWO_ACTIONS, Set.of(cantripTrait, coldTrait, concentrateTrait, manipulateTrait), "An orb of biting cold coalesces around your target, freezing its body.");
+            frostbite.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
+            frostbite.setSpellRange(60);
+            frostbite.setSpellTargets("1 creature");
+            frostbite.setSpellDefense("basic Fortitude");
 
             Spell ghostlyWeapon = new Spell("Ghostly Weapon", 3, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "The target weapon becomes translucent and ghostly, and it can affect material and incorporeal creatures and objects.");
             ghostlyWeapon.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
@@ -1880,8 +1927,9 @@ public class DataSeeder {
                     divineLance, divineWrath, dominate, dragonForm, dreamMessage, duplicateFoe, earthquake, earthworks,
                     eclipseBurst, electricArc, elementalBetrayal, elementalForm, energyAbsorption, energyAegis, enfeeble,
                     enlargeCompanion, entanglingFlora, environmentalEndurance, ephemeralTracking, everlight, evilEye,
-                    execute, fallingStars, fatalAria, fear, feetToFins, fieldOfLife, fieryBody, figment, forceBolt,
-                    foresight, fortifySummoning, fortissimoComposition, gougingClaw, gravityWeapon, grimTendrils,
+                    execute, fabricatedTruth, fallingStars, falseVision, fatalAria, fear, feetToFins, fieldOfLife,
+                    fieryBody, figment, floatingFlame, fly, forbiddingWard, forceBolt, foresight, fortifySummoning,
+                    fortissimoComposition, freezeTime, frostbite, gougingClaw, gravityWeapon, grimTendrils,
                     handsOfTheApprentice, harm, heal, healAnimal, healCompanion, holyLight, houseOfImaginaryWalls,
                     howlingBlizzard, humanoidForm, huntersLuck, huntersVision, hydraulicPush, hymnOfHealing,
                     illusoryCreature, illusoryScene, impalingBriars, impalingSpike, interdisciplinaryIncantation,
