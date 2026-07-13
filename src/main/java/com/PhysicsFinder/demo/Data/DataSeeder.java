@@ -1040,6 +1040,29 @@ public class DataSeeder {
             frostbite.setSpellTargets("1 creature");
             frostbite.setSpellDefense("basic Fortitude");
 
+            Spell gate = new Spell("Gate", 10, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, teleportationTrait), "You tear open a rift to another plane, creating a portal that creatures can travel through in either direction.");
+            gate.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT));
+            gate.setSpellRange(120);
+            gate.setSpellDuration("sustained up to 1 minute");
+
+            Spell geckoGrip = new Spell("Gecko Grip", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "Tiny clinging hairs sprout across the creature's hands and feet, offering purchase on nearly any surface.");
+            geckoGrip.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
+            geckoGrip.setSpellRange(0);
+            geckoGrip.setSpellTargets("1 creature");
+            geckoGrip.setSpellDuration("10 minutes");
+
+            Spell gentleLanding = new Spell("Gentle Landing", 1, SpellType.SPELL, ActionType.REACTION, Set.of(airTrait, concentrateTrait), "You raise a magical updraft to arrest a fall.");
+            gentleLanding.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
+            gentleLanding.setSpellTrigger("A creature within range is falling");
+            gentleLanding.setSpellRange(60);
+            gentleLanding.setSpellTargets("1 falling creature");
+            gentleLanding.setSpellDuration("1 minute");
+
+            Spell ghostlyCarrier = new Spell("Ghostly Carrier", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "You create a Tiny, semi-corporeal figure with a form you choose.");
+            ghostlyCarrier.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            ghostlyCarrier.setSpellRange(120);
+            ghostlyCarrier.setSpellDuration("1 minute");
+
             Spell ghostlyWeapon = new Spell("Ghostly Weapon", 3, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "The target weapon becomes translucent and ghostly, and it can affect material and incorporeal creatures and objects.");
             ghostlyWeapon.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
             ghostlyWeapon.setSpellRange(0);
@@ -1066,11 +1089,25 @@ public class DataSeeder {
             Spell gravityWeapon = new Spell("Gravity Weapon", 1, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(focusTrait, rangerTrait), "You build up gravitational force and funnel it into your blows, leading to more powerful attacks with blade and bow alike.");
             gravityWeapon.setSpellDuration("1 minute");
 
+            Spell grease = new Spell("Grease", 1, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "You conjure grease, choosing an area or target.");
+            grease.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
+            grease.setSpellRange(30);
+            grease.setSpellArea(5);
+            grease.setSpellAreaType("4 contiguous 5-foot squares");
+            grease.setSpellTargets("1 object of 1 Bulk or less");
+            grease.setSpellDuration("1 minute");
+
             Spell grimTendrils = new Spell("Grim Tendrils", 1, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, voidTrait), "Tendrils of darkness curl out from your fingertips and race through the air.");
             grimTendrils.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
             grimTendrils.setSpellArea(30);
             grimTendrils.setSpellAreaType("line");
             grimTendrils.setSpellDefense("Fortitude");
+
+            Spell guidance = new Spell("Guidance", 1, SpellType.CANTRIP, ActionType.SINGLE_ACTION, Set.of(cantripTrait, concentrateTrait), "You ask for the guidance of supernatural entities, granting the target a +1 status bonus to one attack roll, Perception check, saving throw, or skill check the target attempts before the duration ends. The target chooses which roll to use the bonus on before rolling. If the target uses the bonus, the spell ends. Either way, the target is then temporarily immune for 1 hour.");
+            guidance.setSpellTraditions(List.of(SpellTraditions.DIVINE, SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
+            guidance.setSpellRange(30);
+            guidance.setSpellTargets("1 creature");
+            guidance.setSpellDuration("until the start of your next turn");
 
             Spell gustOfWind = new Spell("Gust of Wind", 1, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(airTrait, concentrateTrait, manipulateTrait), "A violent wind issues forth from your palm, blowing from the point where you are when you Cast the Spell to the line's opposite end.");
             gustOfWind.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
@@ -1085,10 +1122,10 @@ public class DataSeeder {
             hallucination.setSpellTargets("1 creature");
             hallucination.setSpellDuration("1 hour");
 
-            Spell handsOfTheApprentice = new Spell("Hands of the Apprentice", 1, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(attackTrait, focusTrait, manipulateTrait, wizardTrait), "You take advantage of one of the most fundamental lessons of magic to levitate and propel your weapon.");
-            handsOfTheApprentice.setSpellRange(500);
-            handsOfTheApprentice.setSpellTargets("1 creature");
-            handsOfTheApprentice.setSpellDefense("AC");
+            Spell handOfTheApprentice = new Spell("Hand of the Apprentice", 1, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(attackTrait, focusTrait, manipulateTrait, wizardTrait), "You take advantage of one of the most fundamental lessons of magic to levitate and propel your weapon.");
+            handOfTheApprentice.setSpellRange(500);
+            handOfTheApprentice.setSpellTargets("1 creature");
+            handOfTheApprentice.setSpellDefense("AC");
 
             Spell harm = new Spell("Harm", 1, SpellType.SPELL, ActionType.ONE_TO_THREE_ACTIONS, Set.of(manipulateTrait, voidTrait), "You channel void energy to harm the living or heal the undead.");
             harm.setSpellTraditions(List.of(SpellTraditions.DIVINE));
@@ -1929,26 +1966,26 @@ public class DataSeeder {
                     enlargeCompanion, entanglingFlora, environmentalEndurance, ephemeralTracking, everlight, evilEye,
                     execute, fabricatedTruth, fallingStars, falseVision, fatalAria, fear, feetToFins, fieldOfLife,
                     fieryBody, figment, floatingFlame, fly, forbiddingWard, forceBolt, foresight, fortifySummoning,
-                    fortissimoComposition, freezeTime, frostbite, gougingClaw, gravityWeapon, grimTendrils,
-                    handsOfTheApprentice, harm, heal, healAnimal, healCompanion, holyLight, houseOfImaginaryWalls,
-                    howlingBlizzard, humanoidForm, huntersLuck, huntersVision, hydraulicPush, hymnOfHealing,
-                    illusoryCreature, illusoryScene, impalingBriars, impalingSpike, interdisciplinaryIncantation,
-                    interplanarTeleport, invisibilityCloak, invokeSpirits, lifeBoost, liminalDoorway,
-                    lingeringComposition, loremastersEtude, madMonkeys, magicHide, maliciousShadow, massacre, message,
-                    metamorphosis, mindReading, mist, monstrosityForm, mysticArmor, needleOfVengeance, neverMind,
-                    nudgeFate, odeToOuroboros, patronsPuppet, personalBlizzard, pestForm, petrify, phantasmagoria,
-                    phantasmalCalamity, phantasmalMinionSpell, phaseFamiliar, piedPiping, pinpoint, planarSeal,
-                    prestidigitation, primalSummons, projectImage, protectiveWards, pummelingRubble, raiseDead,
-                    rallyingAnthem, rangersBramble, readAura, repulsion, resistEnergy, restorativeMovement,
-                    retrocognition, revealingLight, runeOfObservation, runicBody, runicWeapon, safePassage, scrambleBody,
-                    seeTheUnseen, sending, shieldSpell, shiftingForm, shroudOfNight, sigil, songOfMarching,
-                    songOfStrength, soothe, soothingBallad, soothingMist, spellwrack, spiralOfHorrors, spiritLink,
-                    stokeTheHeart, stormLord, stormwindFlight, summonConstruct, summonPlantOrFungus, summonUndead,
-                    symphonyOfTheUnfetteredHeart, tangleVine, telekineticHand, telekineticProjectile, teleport,
-                    tempestSurge, terrainTransposition, toxicCloud, translate, tripleTime, truespeech, trueTarget,
-                    uncontrollableDance, unfetteredMovement, unrelentingObservation, untamedForm, untamedShift,
-                    upliftingOverture, vampiricExsanguination, vampiricFeast, vaporForm, veilOfDreams, veilOfPrivacy,
-                    voidWarp, wallOfStone, wallOfWind, waterWalk, wildingWord));
+                    fortissimoComposition, freezeTime, frostbite, gate, geckoGrip, gentleLanding, ghostlyCarrier,
+                    gougingClaw, gravityWeapon, grease, grimTendrils, guidance, handOfTheApprentice, harm, heal,
+                    healAnimal, healCompanion, holyLight, houseOfImaginaryWalls, howlingBlizzard, humanoidForm,
+                    huntersLuck, huntersVision, hydraulicPush, hymnOfHealing, illusoryCreature, illusoryScene,
+                    impalingBriars, impalingSpike, interdisciplinaryIncantation, interplanarTeleport, invisibilityCloak,
+                    invokeSpirits, lifeBoost, liminalDoorway, lingeringComposition, loremastersEtude, madMonkeys,
+                    magicHide, maliciousShadow, massacre, message, metamorphosis, mindReading, mist, monstrosityForm,
+                    mysticArmor, needleOfVengeance, neverMind, nudgeFate, odeToOuroboros, patronsPuppet,
+                    personalBlizzard, pestForm, petrify, phantasmagoria, phantasmalCalamity, phantasmalMinionSpell,
+                    phaseFamiliar, piedPiping, pinpoint, planarSeal, prestidigitation, primalSummons, projectImage,
+                    protectiveWards, pummelingRubble, raiseDead, rallyingAnthem, rangersBramble, readAura, repulsion,
+                    resistEnergy, restorativeMovement, retrocognition, revealingLight, runeOfObservation, runicBody,
+                    runicWeapon, safePassage, scrambleBody, seeTheUnseen, sending, shieldSpell, shiftingForm,
+                    shroudOfNight, sigil, songOfMarching, songOfStrength, soothe, soothingBallad, soothingMist,
+                    spellwrack, spiralOfHorrors, spiritLink, stokeTheHeart, stormLord, stormwindFlight, summonConstruct,
+                    summonPlantOrFungus, summonUndead, symphonyOfTheUnfetteredHeart, tangleVine, telekineticHand,
+                    telekineticProjectile, teleport, tempestSurge, terrainTransposition, toxicCloud, translate,
+                    tripleTime, truespeech, trueTarget, uncontrollableDance, unfetteredMovement, unrelentingObservation,
+                    untamedForm, untamedShift, upliftingOverture, vampiricExsanguination, vampiricFeast, vaporForm,
+                    veilOfDreams, veilOfPrivacy, voidWarp, wallOfStone, wallOfWind, waterWalk, wildingWord));
 
             Weapon crossbow = new Weapon("Crossbow", WeaponCategory.SIMPLE, WeaponType.RANGED, WeaponGroup.CROSSBOW, 1, 8, DamageType.PIERCING);
             crossbow.setRangeFeet(120);
@@ -5167,7 +5204,7 @@ public class DataSeeder {
                     boundarySpell10, boundarySpell11, boundarySpell12, boundarySpell13, boundarySpell14, boundarySpell15, boundarySpell16, boundarySpell17, boundarySpell18, boundaryInitialSchoolSpell, boundaryAdvancedSchoolSpell));
 
             ClassFeatureChoice schoolOfUnifiedMagicalTheory = new ClassFeatureChoice(wizard, "Arcane Schools", "School of Unified Magical Theory");
-            FeatureGrantedSpells unifiedMagicalTheoryInitialSchoolSpell = new FeatureGrantedSpells(schoolOfUnifiedMagicalTheory, handsOfTheApprentice);
+            FeatureGrantedSpells unifiedMagicalTheoryInitialSchoolSpell = new FeatureGrantedSpells(schoolOfUnifiedMagicalTheory, handOfTheApprentice);
             unifiedMagicalTheoryInitialSchoolSpell.setCharacterLevelGranted(1);
             FeatureGrantedSpells unifiedMagicalTheoryAdvancedSchoolSpell = new FeatureGrantedSpells(schoolOfUnifiedMagicalTheory, interdisciplinaryIncantation);
             schoolOfUnifiedMagicalTheory.setGrantedSpells(List.of(unifiedMagicalTheoryInitialSchoolSpell, unifiedMagicalTheoryAdvancedSchoolSpell));
