@@ -1436,17 +1436,17 @@ public class DataSeeder {
             metamorphosis.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
             metamorphosis.setSpellDuration("1 minute");
 
-            Spell mindlink = new Spell("Mindlink", 1, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, mentalTrait), "You link your mind to the target's mind and mentally impart to that target an amount of information in an instant that could otherwise be communicated in 10 minutes.");
-            mindlink.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
-            mindlink.setSpellRange(0);
-            mindlink.setSpellTargets("1 willing creature");
-
             Spell mindReading = new Spell("Mind Reading", 3, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, detectionTrait, manipulateTrait, mentalTrait), "With a cursory mental touch, you attempt to read the target's mind.");
             mindReading.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
             mindReading.setSpellRange(30);
             mindReading.setSpellTargets("1 creature");
             mindReading.setSpellDefense("Will");
             mindReading.setSpellDuration("1 round or sustained up to 1 minute");
+
+            Spell mindlink = new Spell("Mindlink", 1, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, mentalTrait), "You link your mind to the target's mind and mentally impart to that target an amount of information in an instant that could otherwise be communicated in 10 minutes.");
+            mindlink.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            mindlink.setSpellRange(0);
+            mindlink.setSpellTargets("1 willing creature");
 
             Spell mislead = new Spell("Mislead", 6, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, illusionTrait, manipulateTrait), "You turn yourself invisible and create an illusory duplicate of yourself.");
             mislead.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
