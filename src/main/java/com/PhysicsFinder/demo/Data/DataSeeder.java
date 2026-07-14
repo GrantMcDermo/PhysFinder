@@ -1340,6 +1340,13 @@ public class DataSeeder {
             Spell knowTheWay = new Spell("Know the Way", 1, SpellType.CANTRIP, ActionType.TWO_ACTIONS, Set.of(cantripTrait, concentrateTrait, detectionTrait, manipulateTrait), "In your mind's eye, you magically reorient yourself.");
             knowTheWay.setSpellTraditions(List.of(SpellTraditions.DIVINE, SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
 
+            Spell laughingFit = new Spell("Laughing Fit", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, emotionTrait, manipulateTrait, mentalTrait), "The target is overtaken with uncontrollable laughter.");
+            laughingFit.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            laughingFit.setSpellRange(30);
+            laughingFit.setSpellTargets("1 living creature");
+            laughingFit.setSpellDefense("Will");
+            laughingFit.setSpellDuration("sustained");
+
             Spell levitate = new Spell("Levitate", 3, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "You defy gravity and levitate the target 5 feet off the ground.");
             levitate.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
             levitate.setSpellRange(0);
@@ -1350,6 +1357,11 @@ public class DataSeeder {
             lifeBoost.setSpellRange(30);
             lifeBoost.setSpellTargets("1 creature");
             lifeBoost.setSpellDuration("4 rounds");
+
+            Spell light = new Spell("Light", 1, SpellType.CANTRIP, ActionType.TWO_ACTIONS, Set.of(cantripTrait, concentrateTrait, lightTrait, manipulateTrait), "You create an orb of light that sheds bright light in a 20-foot radius (and dim light for the next 20 feet) in a color you choose.");
+            light.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
+            light.setSpellRange(120);
+            light.setSpellDuration("until your next daily preparations");
 
             Spell lightningBolt = new Spell("Lightning Bolt", 3, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, electricityTrait, manipulateTrait), "A bolt of lightning strikes outward from your hand, dealing 4d12 electricity damage with a basic Reflex save.");
             lightningBolt.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
@@ -1365,6 +1377,20 @@ public class DataSeeder {
             liminalDoorway.setSpellDuration("8 hours");
 
             Spell lingeringComposition = new Spell("Lingering Composition", 1, SpellType.FOCUS, ActionType.FREE_ACTION, Set.of(bardTrait, concentrateTrait, focusTrait, spellshapeTrait), "You add a flourish to your composition to extend its benefits.");
+
+            Spell locate = new Spell("Locate", 3, SpellType.SPELL, ActionType.ACTIVITY, Set.of(concentrateTrait, detectionTrait, manipulateTrait), "You learn the direction to the target (if you picked a specific object, such as “my mother's sword”) or the nearest target (if you picked a type of object, such as “swords”).");
+            locate.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT));
+            locate.setSpellCastAmount(10);
+            locate.setSpellCastUnits("minute");
+            locate.setSpellRange(500);
+            locate.setSpellTargets("1 specific object or type of object");
+            locate.setSpellDuration("sustained");
+
+            Spell lock = new Spell("Lock", 1, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "The target's latch mechanism clinks shut, held fast by unseen magical wards.");
+            lock.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT));
+            lock.setSpellRange(0);
+            lock.setSpellTargets("1 lock, or a door or container with a latch");
+            lock.setSpellDuration("until your next daily preparations");
 
             Spell loremastersEtude = new Spell("Loremaster's Etude", 1, SpellType.FOCUS, ActionType.FREE_ACTION, Set.of(bardTrait, compositionTrait, focusTrait, fortuneTrait, manipulateTrait), "You call upon your muse's deep mysteries, granting the target a greater ability to think and recall information.");
             loremastersEtude.setSpellTrigger("You or an ally within range attempts a skill check to Recall Knowledge");
@@ -2055,21 +2081,22 @@ public class DataSeeder {
                     hymnOfHealing, hypercognition, hypnotize, ignition, illOmen, illusoryCreature, illusoryScene,
                     impalingBriars, impalingSpike, implosion, indestructibility, infuseVitality, insectForm,
                     interdisciplinaryIncantation, interplanarTeleport, invisibilityCloak, invokeSpirits, itemFacade,
-                    knock, knowTheWay, lifeBoost, liminalDoorway, lingeringComposition, loremastersEtude, madMonkeys,
-                    magicHide, maliciousShadow, massacre, message, metamorphosis, mindReading, mist, monstrosityForm,
-                    mysticArmor, needleOfVengeance, neverMind, nudgeFate, odeToOuroboros, patronsPuppet,
-                    personalBlizzard, pestForm, petrify, phantasmagoria, phantasmalCalamity, phantasmalMinionSpell,
-                    phaseFamiliar, piedPiping, pinpoint, planarSeal, prestidigitation, primalSummons, projectImage,
-                    protectiveWards, pummelingRubble, raiseDead, rallyingAnthem, rangersBramble, readAura, repulsion,
-                    resistEnergy, restorativeMovement, retrocognition, revealingLight, runeOfObservation, runicBody,
-                    runicWeapon, safePassage, scrambleBody, seeTheUnseen, sending, shieldSpell, shiftingForm,
-                    shroudOfNight, sigil, songOfMarching, songOfStrength, soothe, soothingBallad, soothingMist,
-                    spellwrack, spiralOfHorrors, spiritLink, stokeTheHeart, stormLord, stormwindFlight, summonConstruct,
-                    summonPlantOrFungus, summonUndead, symphonyOfTheUnfetteredHeart, tangleVine, telekineticHand,
-                    telekineticProjectile, teleport, tempestSurge, terrainTransposition, toxicCloud, translate,
-                    tripleTime, truespeech, trueTarget, uncontrollableDance, unfetteredMovement, unrelentingObservation,
-                    untamedForm, untamedShift, upliftingOverture, vampiricExsanguination, vampiricFeast, vaporForm,
-                    veilOfDreams, veilOfPrivacy, voidWarp, wallOfStone, wallOfWind, waterWalk, wildingWord));
+                    knock, knowTheWay, laughingFit, lifeBoost, light, liminalDoorway, lingeringComposition, locate, lock,
+                    loremastersEtude, madMonkeys, magicHide, maliciousShadow, massacre, message, metamorphosis,
+                    mindReading, mist, monstrosityForm, mysticArmor, needleOfVengeance, neverMind, nudgeFate,
+                    odeToOuroboros, patronsPuppet, personalBlizzard, pestForm, petrify, phantasmagoria,
+                    phantasmalCalamity, phantasmalMinionSpell, phaseFamiliar, piedPiping, pinpoint, planarSeal,
+                    prestidigitation, primalSummons, projectImage, protectiveWards, pummelingRubble, raiseDead,
+                    rallyingAnthem, rangersBramble, readAura, repulsion, resistEnergy, restorativeMovement,
+                    retrocognition, revealingLight, runeOfObservation, runicBody, runicWeapon, safePassage, scrambleBody,
+                    seeTheUnseen, sending, shieldSpell, shiftingForm, shroudOfNight, sigil, songOfMarching,
+                    songOfStrength, soothe, soothingBallad, soothingMist, spellwrack, spiralOfHorrors, spiritLink,
+                    stokeTheHeart, stormLord, stormwindFlight, summonConstruct, summonPlantOrFungus, summonUndead,
+                    symphonyOfTheUnfetteredHeart, tangleVine, telekineticHand, telekineticProjectile, teleport,
+                    tempestSurge, terrainTransposition, toxicCloud, translate, tripleTime, truespeech, trueTarget,
+                    uncontrollableDance, unfetteredMovement, unrelentingObservation, untamedForm, untamedShift,
+                    upliftingOverture, vampiricExsanguination, vampiricFeast, vaporForm, veilOfDreams, veilOfPrivacy,
+                    voidWarp, wallOfStone, wallOfWind, waterWalk, wildingWord));
 
             Weapon crossbow = new Weapon("Crossbow", WeaponCategory.SIMPLE, WeaponType.RANGED, WeaponGroup.CROSSBOW, 1, 8, DamageType.PIERCING);
             crossbow.setRangeFeet(120);
