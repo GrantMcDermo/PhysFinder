@@ -1331,6 +1331,15 @@ public class DataSeeder {
             Spell jump = new Spell("Jump", 1, SpellType.SPELL, ActionType.SINGLE_ACTION, Set.of(manipulateTrait, moveTrait), "Your legs surge with strength, ready to leap high and far.");
             jump.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
 
+            Spell knock = new Spell("Knock", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "You make the target easier to open.");
+            knock.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            knock.setSpellRange(30);
+            knock.setSpellTargets("1 door, lock, or container");
+            knock.setSpellDuration("1 minute");
+
+            Spell knowTheWay = new Spell("Know the Way", 1, SpellType.CANTRIP, ActionType.TWO_ACTIONS, Set.of(cantripTrait, concentrateTrait, detectionTrait, manipulateTrait), "In your mind's eye, you magically reorient yourself.");
+            knowTheWay.setSpellTraditions(List.of(SpellTraditions.DIVINE, SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
+
             Spell levitate = new Spell("Levitate", 3, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "You defy gravity and levitate the target 5 feet off the ground.");
             levitate.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
             levitate.setSpellRange(0);
@@ -2046,21 +2055,21 @@ public class DataSeeder {
                     hymnOfHealing, hypercognition, hypnotize, ignition, illOmen, illusoryCreature, illusoryScene,
                     impalingBriars, impalingSpike, implosion, indestructibility, infuseVitality, insectForm,
                     interdisciplinaryIncantation, interplanarTeleport, invisibilityCloak, invokeSpirits, itemFacade,
-                    lifeBoost, liminalDoorway, lingeringComposition, loremastersEtude, madMonkeys, magicHide,
-                    maliciousShadow, massacre, message, metamorphosis, mindReading, mist, monstrosityForm, mysticArmor,
-                    needleOfVengeance, neverMind, nudgeFate, odeToOuroboros, patronsPuppet, personalBlizzard, pestForm,
-                    petrify, phantasmagoria, phantasmalCalamity, phantasmalMinionSpell, phaseFamiliar, piedPiping,
-                    pinpoint, planarSeal, prestidigitation, primalSummons, projectImage, protectiveWards,
-                    pummelingRubble, raiseDead, rallyingAnthem, rangersBramble, readAura, repulsion, resistEnergy,
-                    restorativeMovement, retrocognition, revealingLight, runeOfObservation, runicBody, runicWeapon,
-                    safePassage, scrambleBody, seeTheUnseen, sending, shieldSpell, shiftingForm, shroudOfNight, sigil,
-                    songOfMarching, songOfStrength, soothe, soothingBallad, soothingMist, spellwrack, spiralOfHorrors,
-                    spiritLink, stokeTheHeart, stormLord, stormwindFlight, summonConstruct, summonPlantOrFungus,
-                    summonUndead, symphonyOfTheUnfetteredHeart, tangleVine, telekineticHand, telekineticProjectile,
-                    teleport, tempestSurge, terrainTransposition, toxicCloud, translate, tripleTime, truespeech,
-                    trueTarget, uncontrollableDance, unfetteredMovement, unrelentingObservation, untamedForm,
-                    untamedShift, upliftingOverture, vampiricExsanguination, vampiricFeast, vaporForm, veilOfDreams,
-                    veilOfPrivacy, voidWarp, wallOfStone, wallOfWind, waterWalk, wildingWord));
+                    knock, knowTheWay, lifeBoost, liminalDoorway, lingeringComposition, loremastersEtude, madMonkeys,
+                    magicHide, maliciousShadow, massacre, message, metamorphosis, mindReading, mist, monstrosityForm,
+                    mysticArmor, needleOfVengeance, neverMind, nudgeFate, odeToOuroboros, patronsPuppet,
+                    personalBlizzard, pestForm, petrify, phantasmagoria, phantasmalCalamity, phantasmalMinionSpell,
+                    phaseFamiliar, piedPiping, pinpoint, planarSeal, prestidigitation, primalSummons, projectImage,
+                    protectiveWards, pummelingRubble, raiseDead, rallyingAnthem, rangersBramble, readAura, repulsion,
+                    resistEnergy, restorativeMovement, retrocognition, revealingLight, runeOfObservation, runicBody,
+                    runicWeapon, safePassage, scrambleBody, seeTheUnseen, sending, shieldSpell, shiftingForm,
+                    shroudOfNight, sigil, songOfMarching, songOfStrength, soothe, soothingBallad, soothingMist,
+                    spellwrack, spiralOfHorrors, spiritLink, stokeTheHeart, stormLord, stormwindFlight, summonConstruct,
+                    summonPlantOrFungus, summonUndead, symphonyOfTheUnfetteredHeart, tangleVine, telekineticHand,
+                    telekineticProjectile, teleport, tempestSurge, terrainTransposition, toxicCloud, translate,
+                    tripleTime, truespeech, trueTarget, uncontrollableDance, unfetteredMovement, unrelentingObservation,
+                    untamedForm, untamedShift, upliftingOverture, vampiricExsanguination, vampiricFeast, vaporForm,
+                    veilOfDreams, veilOfPrivacy, voidWarp, wallOfStone, wallOfWind, waterWalk, wildingWord));
 
             Weapon crossbow = new Weapon("Crossbow", WeaponCategory.SIMPLE, WeaponType.RANGED, WeaponGroup.CROSSBOW, 1, 8, DamageType.PIERCING);
             crossbow.setRangeFeet(120);
