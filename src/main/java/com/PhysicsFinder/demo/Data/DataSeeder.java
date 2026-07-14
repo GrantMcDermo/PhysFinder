@@ -1217,6 +1217,19 @@ public class DataSeeder {
             hypnotize.setSpellDefense("Will");
             hypnotize.setSpellDuration("sustained up to 1 minute");
 
+            Spell ignition = new Spell("Ignition", 1, SpellType.CANTRIP, ActionType.TWO_ACTIONS, Set.of(attackTrait, cantripTrait, concentrateTrait, fireTrait, manipulateTrait), "You snap your fingers and point at a target, which begins to smolder.");
+            ignition.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
+            ignition.setSpellRange(30);
+            ignition.setSpellTargets("1 creature");
+            ignition.setSpellDefense("AC");
+
+            Spell illOmen = new Spell("Ill Omen", 1, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, curseTrait, manipulateTrait, misfortuneTrait), "The target is struck with misfortune, which throws it off balance.");
+            illOmen.setSpellTraditions(List.of(SpellTraditions.OCCULT));
+            illOmen.setSpellRange(30);
+            illOmen.setSpellTargets("1 creature");
+            illOmen.setSpellDefense("Will");
+            illOmen.setSpellDuration("1 round");
+
             Spell illusoryCreature = new Spell("Illusory Creature", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(auditoryTrait, concentrateTrait, illusionTrait, manipulateTrait, olfactoryTrait, visualTrait), "You create an illusory image of a Large or smaller creature.");
             illusoryCreature.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
             illusoryCreature.setSpellRange(500);
@@ -1260,6 +1273,27 @@ public class DataSeeder {
             impalingSpike.setSpellDefense("Reflex");
             impalingSpike.setSpellDuration("1 minute");
 
+            Spell implosion = new Spell("Implosion", 9, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "You crush the target by causing it to collapse in on itself, dealing 75 damage. The first time each round you Sustain the spell, you must choose a new target to be subject to the same effect; the same creature can never be targeted more than once with a single casting of this spell. You also can't affect more than one creature per turn with implosion. You can't target a creature that's incorporeal, gaseous, or liquid, or otherwise lacking a solid form.");
+            implosion.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
+            implosion.setSpellRange(30);
+            implosion.setSpellTargets("1 corporeal creature");
+            implosion.setSpellDefense("basic Fortitude");
+            implosion.setSpellDuration("sustained up to 1 minute");
+
+            Spell indestructibility = new Spell("Indestructibility", 10, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "You sever yourself from cause and effect.");
+            indestructibility.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
+            indestructibility.setSpellDuration("until the start of your next turn");
+
+            Spell infuseVitality = new Spell("Infuse Vitality", 1, SpellType.SPELL, ActionType.ONE_TO_THREE_ACTIONS, Set.of(concentrateTrait, manipulateTrait, vitalityTrait), "You empower attacks with vital energy.");
+            infuseVitality.setSpellTraditions(List.of(SpellTraditions.DIVINE));
+            infuseVitality.setSpellRange(30);
+            infuseVitality.setSpellTargets("1 to 3 willing creatures");
+            infuseVitality.setSpellDuration("1 minute");
+
+            Spell insectForm = new Spell("Insect Form", 3, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, polymorphTrait), "You envision a simple bug and transform into a Medium animal battle form.");
+            insectForm.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
+            insectForm.setSpellDuration("1 minute");
+
             Spell interdisciplinaryIncantation = new Spell("Interdisciplinary Incantation", 4, SpellType.FOCUS, ActionType.REACTION, Set.of(concentrateTrait, focusTrait, wizardTrait), "You gather the embers of another caster's spell, using your understanding of unified magic to pick apart their formulas and incantations well enough to imitate the spell yourself, if only for a short time.");
             interdisciplinaryIncantation.setSpellTargets("A creature within 30 feet casts an arcane spell");
 
@@ -1287,6 +1321,12 @@ public class DataSeeder {
             invokeSpirits.setSpellAreaType("burst");
             invokeSpirits.setSpellDefense("Will");
             invokeSpirits.setSpellDuration("sustained up to 1 minute");
+
+            Spell itemFacade = new Spell("Item Facade", 1, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, illusionTrait, manipulateTrait, visualTrait), "You make the target object look and feel as though it were in much better or worse physical condition.");
+            itemFacade.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            itemFacade.setSpellRange(0);
+            itemFacade.setSpellTargets("1 object no more than 10 feet by 10 feet by 10 feet");
+            itemFacade.setSpellDuration("1 hour");
 
             Spell jump = new Spell("Jump", 1, SpellType.SPELL, ActionType.SINGLE_ACTION, Set.of(manipulateTrait, moveTrait), "Your legs surge with strength, ready to leap high and far.");
             jump.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
@@ -2003,8 +2043,9 @@ public class DataSeeder {
                     gougingClaw, gravityWeapon, grease, grimTendrils, guidance, handOfTheApprentice, harm, heal,
                     healAnimal, healCompanion, heroism, hiddenMind, holyLight, honeyedWords, houseOfImaginaryWalls,
                     howlingBlizzard, humanoidForm, huntersLuck, huntersVision, hydraulicPush, hydraulicTorrent,
-                    hymnOfHealing, hypercognition, hypnotize, illusoryCreature, illusoryScene, impalingBriars,
-                    impalingSpike, interdisciplinaryIncantation, interplanarTeleport, invisibilityCloak, invokeSpirits,
+                    hymnOfHealing, hypercognition, hypnotize, ignition, illOmen, illusoryCreature, illusoryScene,
+                    impalingBriars, impalingSpike, implosion, indestructibility, infuseVitality, insectForm,
+                    interdisciplinaryIncantation, interplanarTeleport, invisibilityCloak, invokeSpirits, itemFacade,
                     lifeBoost, liminalDoorway, lingeringComposition, loremastersEtude, madMonkeys, magicHide,
                     maliciousShadow, massacre, message, metamorphosis, mindReading, mist, monstrosityForm, mysticArmor,
                     needleOfVengeance, neverMind, nudgeFate, odeToOuroboros, patronsPuppet, personalBlizzard, pestForm,
