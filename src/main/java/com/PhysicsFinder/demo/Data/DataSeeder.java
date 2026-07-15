@@ -1409,11 +1409,34 @@ public class DataSeeder {
             magicHide.setSpellTargets("your animal companion");
             magicHide.setSpellDuration("1 minute");
 
+            Spell magicPassage = new Spell("Magic Passage", 5, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, earthTrait, manipulateTrait), "You create a visible tunnel through the wall in the chosen area, replacing the area with empty space.");
+            magicPassage.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
+            magicPassage.setSpellRange(0);
+            magicPassage.setSpellAreaType("5-foot-wide, 10-foot-tall, 10-foot-deep section of wooden, plaster, or stone wall");
+            magicPassage.setSpellDuration("1 hour");
+
             Spell maliciousShadow = new Spell("Malicious Shadow", 3, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, focusTrait, hexTrait, manipulateTrait, shadowTrait, witchTrait), "Your patron warps the target's shadow into a deadly form, such as strangling hands, a dangerous weapon, harrying runes, or the like.");
             maliciousShadow.setSpellRange(30);
             maliciousShadow.setSpellTargets("1 creature");
             maliciousShadow.setSpellDefense("AC");
             maliciousShadow.setSpellDuration("sustained up to 1 minute");
+
+            Spell manifestation = new Spell("Manifestation", 10, SpellType.SPELL, ActionType.THREE_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "You spin secrets from the fundaments of magic, shaping them into a power with nearly unlimited potential.");
+            manifestation.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
+
+            Spell marinersCurse = new Spell("Mariner's Curse", 5, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, curseTrait, manipulateTrait), "You afflict the target with the curse of the roiling, unforgiving sea.");
+            marinersCurse.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
+            marinersCurse.setSpellRange(0);
+            marinersCurse.setSpellTargets("1 creature");
+            marinersCurse.setSpellDefense("Will");
+
+            Spell marvelousMount = new Spell("Marvelous Mount", 2, SpellType.SPELL, ActionType.ACTIVITY, Set.of(concentrateTrait, manipulateTrait), "You conjure a Large fantastical creature to serve as a mount for the target.");
+            marvelousMount.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
+            marvelousMount.setSpellCastAmount(10);
+            marvelousMount.setSpellCastUnits("minute");
+            marvelousMount.setSpellRange(30);
+            marvelousMount.setSpellTargets("1 creature");
+            marvelousMount.setSpellDuration("8 hours");
 
             Spell maskOfTerror = new Spell("Mask of Terror", 7, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, emotionTrait, fearTrait, illusionTrait, manipulateTrait, mentalTrait, visualTrait), "The target appears to be a gruesome and terrifying creature.");
             maskOfTerror.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
@@ -1427,6 +1450,13 @@ public class DataSeeder {
             massacre.setSpellAreaType("line");
             massacre.setSpellDefense("Fortitude");
 
+            Spell mending = new Spell("Mending", 1, SpellType.SPELL, ActionType.ACTIVITY, Set.of(concentrateTrait, manipulateTrait), "You repair the target item.");
+            mending.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
+            mending.setSpellCastAmount(10);
+            mending.setSpellCastUnits("minute");
+            mending.setSpellRange(0);
+            mending.setSpellTargets("non-magical object of light Bulk or less");
+
             Spell message = new Spell("Message", 1, SpellType.CANTRIP, ActionType.SINGLE_ACTION, Set.of(auditoryTrait, cantripTrait, concentrateTrait, illusionTrait, linguisticTrait, mentalTrait, subtleTrait), "You mouth words quietly, but instead of coming out of your mouth, they're transferred directly to the ears of the target.");
             message.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT));
             message.setSpellRange(120);
@@ -1435,6 +1465,23 @@ public class DataSeeder {
             Spell metamorphosis = new Spell("Metamorphosis", 9, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, polymorphTrait), "Harnessing your mastery of transformative magic, you hide forms within forms.");
             metamorphosis.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
             metamorphosis.setSpellDuration("1 minute");
+
+            Spell migration = new Spell("Migration", 8, SpellType.SPELL, ActionType.ACTIVITY, Set.of(concentrateTrait, manipulateTrait, polymorphTrait), "The targets naturally take on animal forms most fitting their movement and environment.");
+            migration.setSpellTraditions(List.of(SpellTraditions.PRIMAL));
+            migration.setSpellCastAmount(10);
+            migration.setSpellCastUnits("minute");
+            migration.setSpellRange(20);
+            migration.setSpellTargets("you and up to 5 willing creatures");
+            migration.setSpellDuration("8 hours");
+
+            Spell mindProbe = new Spell("Mind Probe", 5, SpellType.SPELL, ActionType.ACTIVITY, Set.of(concentrateTrait, linguisticTrait, manipulateTrait, mentalTrait), "You cast your thoughts through a creature's mind, sifting for information.");
+            mindProbe.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            mindProbe.setSpellCastAmount(1);
+            mindProbe.setSpellCastUnits("minute");
+            mindProbe.setSpellRange(30);
+            mindProbe.setSpellTargets("1 creature");
+            mindProbe.setSpellDefense("Will");
+            mindProbe.setSpellDuration("sustained up to 1 minute");
 
             Spell mindReading = new Spell("Mind Reading", 3, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, detectionTrait, manipulateTrait, mentalTrait), "With a cursory mental touch, you attempt to read the target's mind.");
             mindReading.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
@@ -1448,6 +1495,15 @@ public class DataSeeder {
             mindlink.setSpellRange(0);
             mindlink.setSpellTargets("1 willing creature");
 
+            Spell mirage = new Spell("Mirage", 4, SpellType.SPELL, ActionType.ACTIVITY, Set.of(concentrateTrait, illusionTrait, manipulateTrait), "You create an illusion that causes natural terrain to look, sound, feel, and smell like a different kind of terrain.");
+            mirage.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
+            mirage.setSpellCastAmount(10);
+            mirage.setSpellCastUnits("minute");
+            mirage.setSpellRange(500);
+            mirage.setSpellArea(50);
+            mirage.setSpellAreaType("burst");
+            mirage.setSpellDuration("until your next daily preparations");
+
             Spell mislead = new Spell("Mislead", 6, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, illusionTrait, manipulateTrait), "You turn yourself invisible and create an illusory duplicate of yourself.");
             mislead.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
             mislead.setSpellDuration("sustained up to 1 minute");
@@ -1459,9 +1515,20 @@ public class DataSeeder {
             mist.setSpellAreaType("burst");
             mist.setSpellDuration("1 minute");
 
+            Spell momentOfRenewal = new Spell("Moment of Renewal", 8, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, healingTrait, manipulateTrait), "The targets experience a day's worth of recovery in an instant.");
+            momentOfRenewal.setSpellTraditions(List.of(SpellTraditions.DIVINE, SpellTraditions.PRIMAL));
+            momentOfRenewal.setSpellRange(0);
+            momentOfRenewal.setSpellTargets("up to 6 creatures");
+
             Spell monstrosityForm = new Spell("Monstrosity Form", 8, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, polymorphTrait), "You transform into the shape of a legendary monster, assuming a Huge battle form.");
             monstrosityForm.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
             monstrosityForm.setSpellDuration("1 minute");
+
+            Spell moonFrenzy = new Spell("Moon Frenzy", 5, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, morphTrait), "A feral aspect overcomes the targets, filling them with strength and ferocity.");
+            moonFrenzy.setSpellTraditions(List.of(SpellTraditions.PRIMAL));
+            moonFrenzy.setSpellRange(30);
+            moonFrenzy.setSpellTargets("up to 5 willing creatures");
+            moonFrenzy.setSpellDuration("1 minute");
 
             Spell mountainResilience = new Spell("Mountain Resilience", 4, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, earthTrait, manipulateTrait), "The target's skin hardens like the stone of a mountain face.");
             mountainResilience.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
@@ -2082,9 +2149,10 @@ public class DataSeeder {
                     impalingBriars, impalingSpike, implosion, indestructibility, infuseVitality, insectForm,
                     interdisciplinaryIncantation, interplanarTeleport, invisibilityCloak, invokeSpirits, itemFacade,
                     knock, knowTheWay, laughingFit, lifeBoost, light, liminalDoorway, lingeringComposition, locate, lock,
-                    loremastersEtude, madMonkeys, magicHide, maliciousShadow, massacre, message, metamorphosis,
-                    mindReading, mist, monstrosityForm, mysticArmor, needleOfVengeance, neverMind, nudgeFate,
-                    odeToOuroboros, patronsPuppet, personalBlizzard, pestForm, petrify, phantasmagoria,
+                    loremastersEtude, madMonkeys, magicHide, magicPassage, maliciousShadow, manifestation, marinersCurse,
+                    marvelousMount, massacre, mending, message, metamorphosis, migration, mindProbe, mindReading, mirage,
+                    mist, momentOfRenewal, monstrosityForm, moonFrenzy, mysticArmor, needleOfVengeance, neverMind,
+                    nudgeFate, odeToOuroboros, patronsPuppet, personalBlizzard, pestForm, petrify, phantasmagoria,
                     phantasmalCalamity, phantasmalMinionSpell, phaseFamiliar, piedPiping, pinpoint, planarSeal,
                     prestidigitation, primalSummons, projectImage, protectiveWards, pummelingRubble, raiseDead,
                     rallyingAnthem, rangersBramble, readAura, repulsion, resistEnergy, restorativeMovement,
