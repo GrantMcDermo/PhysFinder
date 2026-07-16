@@ -1540,6 +1540,10 @@ public class DataSeeder {
             mysticArmor.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
             mysticArmor.setSpellDuration("until your next daily preparations");
 
+            Spell natureIncarnate = new Spell("Nature Incarnate", 10, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, polymorphTrait), "The primal power of the world flows through you.");
+            natureIncarnate.setSpellTraditions(List.of(SpellTraditions.PRIMAL));
+            natureIncarnate.setSpellDuration("1 minute");
+
             Spell naturesPathway = new Spell("Nature's Pathway", 5, SpellType.SPELL, ActionType.ACTIVITY, Set.of(concentrateTrait, manipulateTrait, mentalTrait, plantTrait, teleportationTrait), "You step into a living tree with a trunk big enough for you to fit inside it and instantly teleport to any tree within 5 miles that also has a sufficiently large trunk.");
             naturesPathway.setSpellTraditions(List.of(SpellTraditions.PRIMAL));
             naturesPathway.setSpellCastAmount(1);
@@ -1566,6 +1570,13 @@ public class DataSeeder {
             nightmare.setSpellTargets("1 creature you know by name");
             nightmare.setSpellDefense("Will");
             nightmare.setSpellDuration("1 day");
+
+            Spell noiseBlast = new Spell("Noise Blast", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, sonicTrait), "A cacophonous noise blasts out, dealing 2d10 sonic damage. Each creature must attempt a Fortitude save.");
+            noiseBlast.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT));
+            noiseBlast.setSpellRange(30);
+            noiseBlast.setSpellArea(10);
+            noiseBlast.setSpellAreaType("burst");
+            noiseBlast.setSpellDefense("Fortitude");
 
             Spell nudgeFate = new Spell("Nudge Fate", 1, SpellType.CANTRIP, ActionType.SINGLE_ACTION, Set.of(cantripTrait, concentrateTrait, hexTrait, witchTrait), "The barest spin of your patron's spool is enough to alter fate.");
             nudgeFate.setSpellRange(30);
@@ -2151,11 +2162,11 @@ public class DataSeeder {
                     knock, knowTheWay, laughingFit, lifeBoost, light, liminalDoorway, lingeringComposition, locate, lock,
                     loremastersEtude, madMonkeys, magicHide, magicPassage, maliciousShadow, manifestation, marinersCurse,
                     marvelousMount, massacre, mending, message, metamorphosis, migration, mindProbe, mindReading, mirage,
-                    mist, momentOfRenewal, monstrosityForm, moonFrenzy, mysticArmor, needleOfVengeance, neverMind,
-                    nudgeFate, odeToOuroboros, patronsPuppet, personalBlizzard, pestForm, petrify, phantasmagoria,
-                    phantasmalCalamity, phantasmalMinionSpell, phaseFamiliar, piedPiping, pinpoint, planarSeal,
-                    prestidigitation, primalSummons, projectImage, protectiveWards, pummelingRubble, raiseDead,
-                    rallyingAnthem, rangersBramble, readAura, repulsion, resistEnergy, restorativeMovement,
+                    mist, momentOfRenewal, monstrosityForm, moonFrenzy, mysticArmor, natureIncarnate, needleOfVengeance,
+                    neverMind, noiseBlast, nudgeFate, odeToOuroboros, patronsPuppet, personalBlizzard, pestForm, petrify,
+                    phantasmagoria, phantasmalCalamity, phantasmalMinionSpell, phaseFamiliar, piedPiping, pinpoint,
+                    planarSeal, prestidigitation, primalSummons, projectImage, protectiveWards, pummelingRubble,
+                    raiseDead, rallyingAnthem, rangersBramble, readAura, repulsion, resistEnergy, restorativeMovement,
                     retrocognition, revealingLight, runeOfObservation, runicBody, runicWeapon, safePassage, scrambleBody,
                     seeTheUnseen, sending, shieldSpell, shiftingForm, shroudOfNight, sigil, songOfMarching,
                     songOfStrength, soothe, soothingBallad, soothingMist, spellwrack, spiralOfHorrors, spiritLink,
