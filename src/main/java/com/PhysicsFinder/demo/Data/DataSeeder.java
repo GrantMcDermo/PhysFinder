@@ -1583,10 +1583,38 @@ public class DataSeeder {
             nudgeFate.setSpellTargets("1 creature");
             nudgeFate.setSpellDuration("1 minute");
 
+            Spell oakenResilience = new Spell("Oaken Resilience", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, plantTrait, woodTrait), "The target's skin becomes tough, with a consistency like bark or wood.");
+            oakenResilience.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
+            oakenResilience.setSpellRange(0);
+            oakenResilience.setSpellTargets("1 willing creature");
+            oakenResilience.setSpellDuration("10 minutes");
+
             Spell odeToOuroboros = new Spell("Ode to Ouroboros", 5, SpellType.FOCUS, ActionType.REACTION, Set.of(bardTrait, compositionTrait, concentrateTrait, focusTrait), "Your ode staves off death.");
             odeToOuroboros.setSpellTrigger("A creature’s dying condition would reach the value at which they would die");
             odeToOuroboros.setSpellRange(60);
             odeToOuroboros.setSpellTargets("the triggering creature");
+
+            Spell oneWithPlants = new Spell("One With Plants", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, plantTrait, polymorphTrait, woodTrait), "You can either transform into a plant or merge with plant matter.");
+            oneWithPlants.setSpellTraditions(List.of(SpellTraditions.PRIMAL));
+            oneWithPlants.setSpellDuration("10 minutes or 8 hours");
+
+            Spell oneWithStone = new Spell("One With Stone", 3, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, earthTrait, manipulateTrait, polymorphTrait), "You can either transform into a stone or merge with stone.");
+            oneWithStone.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
+            oneWithStone.setSpellDuration("10 minutes or 8 hours");
+
+            Spell outcastsCurse = new Spell("Outcast's Curse", 4, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, curseTrait, manipulateTrait, mentalTrait, misfortuneTrait), "You afflict the target with a curse that makes its presence abrasive and off-putting.");
+            outcastsCurse.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT));
+            outcastsCurse.setSpellRange(0);
+            outcastsCurse.setSpellTargets("1 creature");
+            outcastsCurse.setSpellDefense("Will");
+
+            Spell overwhelmingPresence = new Spell("Overwhelming Presence", 9, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(auditoryTrait, concentrateTrait, incapactitationTrait, manipulateTrait, mentalTrait, visualTrait), "You surround yourself with supernatural splendor, appearing to be a god or similarly majestic being, with an appearance, regalia, and iconography of your choice.");
+            overwhelmingPresence.setSpellTraditions(List.of(SpellTraditions.DIVINE, SpellTraditions.OCCULT));
+            overwhelmingPresence.setSpellArea(40);
+            overwhelmingPresence.setSpellAreaType("burst");
+            overwhelmingPresence.setSpellTargets("any number of creatures");
+            overwhelmingPresence.setSpellDefense("Will");
+            overwhelmingPresence.setSpellDuration("until full tribute is paid");
 
             Spell patronsPuppet = new Spell("Patron's Puppet", 1, SpellType.FOCUS, ActionType.FREE_ACTION, Set.of(focusTrait, hexTrait, witchTrait), "At your unspoken plea, your patron temporarily assumes control over your familiar.");
             patronsPuppet.setSpellTrigger("Your turn begins");
@@ -2163,7 +2191,8 @@ public class DataSeeder {
                     loremastersEtude, madMonkeys, magicHide, magicPassage, maliciousShadow, manifestation, marinersCurse,
                     marvelousMount, massacre, mending, message, metamorphosis, migration, mindProbe, mindReading, mirage,
                     mist, momentOfRenewal, monstrosityForm, moonFrenzy, mysticArmor, natureIncarnate, needleOfVengeance,
-                    neverMind, noiseBlast, nudgeFate, odeToOuroboros, patronsPuppet, personalBlizzard, pestForm, petrify,
+                    neverMind, noiseBlast, nudgeFate, oakenResilience, odeToOuroboros, oneWithPlants, oneWithStone,
+                    outcastsCurse, overwhelmingPresence, patronsPuppet, personalBlizzard, pestForm, petrify,
                     phantasmagoria, phantasmalCalamity, phantasmalMinionSpell, phaseFamiliar, piedPiping, pinpoint,
                     planarSeal, prestidigitation, primalSummons, projectImage, protectiveWards, pummelingRubble,
                     raiseDead, rallyingAnthem, rangersBramble, readAura, repulsion, resistEnergy, restorativeMovement,
