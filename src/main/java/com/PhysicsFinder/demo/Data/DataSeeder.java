@@ -1616,8 +1616,37 @@ public class DataSeeder {
             overwhelmingPresence.setSpellDefense("Will");
             overwhelmingPresence.setSpellDuration("until full tribute is paid");
 
+            Spell paralyze = new Spell("Paralyze", 3, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, incapactitationTrait, manipulateTrait, mentalTrait), "You block the target's motor impulses before they can leave its mind, freezing target in place.");
+            paralyze.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            paralyze.setSpellRange(30);
+            paralyze.setSpellTargets("1 creature");
+            paralyze.setSpellDefense("Will");
+            paralyze.setSpellDuration("varies");
+
+            Spell paranoia = new Spell("Paranoia", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, illusionTrait, manipulateTrait, mentalTrait), "You cause the target to see all other creatures as dire threats.");
+            paranoia.setSpellTraditions(List.of(SpellTraditions.OCCULT));
+            paranoia.setSpellRange(30);
+            paranoia.setSpellTargets("1 creature");
+            paranoia.setSpellDefense("Will");
+            paranoia.setSpellDuration("1 minute");
+
             Spell patronsPuppet = new Spell("Patron's Puppet", 1, SpellType.FOCUS, ActionType.FREE_ACTION, Set.of(focusTrait, hexTrait, witchTrait), "At your unspoken plea, your patron temporarily assumes control over your familiar.");
             patronsPuppet.setSpellTrigger("Your turn begins");
+
+            Spell peacefulBubble = new Spell("Peaceful Bubble", 4, SpellType.SPELL, ActionType.ACTIVITY, Set.of(concentrateTrait, manipulateTrait), "An opaque shell of drifting, iridescent runes covers the area, creating a bubble.");
+            peacefulBubble.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            peacefulBubble.setSpellCastAmount(10);
+            peacefulBubble.setSpellCastUnits("minute");
+            peacefulBubble.setSpellRange(0);
+            peacefulBubble.setSpellArea(100);
+            peacefulBubble.setSpellAreaType("burst");
+            peacefulBubble.setSpellDuration("24 hours");
+
+            Spell peacefulRest = new Spell("Peaceful Rest", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "The targeted corpse doesn't decay, nor can it be transformed into an undead.");
+            peacefulRest.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
+            peacefulRest.setSpellRange(0);
+            peacefulRest.setSpellTargets("1 corpse");
+            peacefulRest.setSpellDuration("until your next daily preparations");
 
             Spell personalBlizzard = new Spell("Personal Blizzard", 3, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(coldTrait, focusTrait, hexTrait, witchTrait), "Your patron's breath becomes a blizzard of obscuring, scouring ice that follows your target.");
             personalBlizzard.setSpellRange(30);
@@ -1635,6 +1664,12 @@ public class DataSeeder {
                     "Acrobatics and Stealth modifiers of +10, unless your own is higher; Athletics modifier –4.");
             pestForm.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
             pestForm.setSpellDuration("10 minutes");
+
+            Spell petCache = new Spell("Pet Cache", 1, SpellType.SPELL, ActionType.SINGLE_ACTION, Set.of(extradimensionalTrait, manipulateTrait), "You open your cloak or create a gap with your hands, drawing the target into a pocket dimension just large enough for its basic comfort.");
+            petCache.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
+            petCache.setSpellRange(0);
+            petCache.setSpellTargets("1 willing creature that is your companion");
+            petCache.setSpellDuration("8 hours");
 
             Spell petrify = new Spell("Petrify", 6, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, earthTrait, manipulateTrait), "The target's body slowly turns into a stone statue.");
             petrify.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
@@ -1699,6 +1734,24 @@ public class DataSeeder {
             planarSeal.setSpellAreaType("burst");
             planarSeal.setSpellDuration("until your next daily preparations");
 
+            Spell planarTether = new Spell("Planar Tether", 4, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "You stitch the target to its current plane.");
+            planarTether.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT));
+            planarTether.setSpellRange(30);
+            planarTether.setSpellTargets("1 creature");
+            planarTether.setSpellDefense("Will");
+            planarTether.setSpellDuration("varies");
+
+            Spell plantForm = new Spell("Plant Form", 5, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, plantTrait, polymorphTrait, woodTrait), "Taking inspiration from verdant creatures, you transform into a Large plant battle form.");
+            plantForm.setSpellTraditions(List.of(SpellTraditions.PRIMAL));
+            plantForm.setSpellDuration("1 minute");
+
+            Spell possession = new Spell("Possession", 7, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, incapactitationTrait, manipulateTrait, mentalTrait, possessionTrait), "You send your mind and soul into the target's body, attempting to take control.");
+            possession.setSpellTraditions(List.of(SpellTraditions.OCCULT));
+            possession.setSpellRange(30);
+            possession.setSpellTargets("1 living creature");
+            possession.setSpellDefense("Will");
+            possession.setSpellDuration("1 minute");
+
             Spell prestidigitation = new Spell("Prestidigitation", 1, SpellType.CANTRIP, ActionType.TWO_ACTIONS, Set.of(cantripTrait, concentrateTrait, manipulateTrait), "The simplest magic does your bidding.");
             prestidigitation.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
             prestidigitation.setSpellRange(10);
@@ -1712,6 +1765,12 @@ public class DataSeeder {
             projectImage.setSpellRange(30);
             projectImage.setSpellDuration("sustained up to 1 minute");
 
+            Spell protection = new Spell("Protection", 1, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "You ward a creature against harm.");
+            protection.setSpellTraditions(List.of(SpellTraditions.DIVINE, SpellTraditions.OCCULT));
+            protection.setSpellRange(0);
+            protection.setSpellTargets("1 willing creature");
+            protection.setSpellDuration("1 minute");
+
             Spell protectiveWards = new Spell("Protective Wards", 1, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(auraTrait, focusTrait, manipulateTrait, wizardTrait), "You expand a ring of glyphs that shields your allies.");
             protectiveWards.setSpellArea(5);
             protectiveWards.setSpellAreaType("emanation centered on you");
@@ -1722,6 +1781,12 @@ public class DataSeeder {
             pummelingRubble.setSpellArea(15);
             pummelingRubble.setSpellAreaType("cone");
             pummelingRubble.setSpellDefense("Reflex");
+
+            Spell punishingWinds = new Spell("Punishing Winds", 8, SpellType.SPELL, ActionType.THREE_ACTIONS, Set.of(airTrait, concentrateTrait, manipulateTrait), "Violent winds and a powerful downdraft fill the area, forming a cyclone.");
+            punishingWinds.setSpellTraditions(List.of(SpellTraditions.PRIMAL));
+            punishingWinds.setSpellRange(100);
+            punishingWinds.setSpellAreaType("30-foot radius, 100-foot-tall cylinder");
+            punishingWinds.setSpellDuration("sustained up to 1 minute");
 
             Spell quandary = new Spell("Quandary", 8 ,SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, extradimensionalTrait, manipulateTrait, teleportationTrait), "You transport the target into an extraplanar puzzle room of mysterious origin, locking them there.");
             quandary.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
@@ -2192,19 +2257,20 @@ public class DataSeeder {
                     marvelousMount, massacre, mending, message, metamorphosis, migration, mindProbe, mindReading, mirage,
                     mist, momentOfRenewal, monstrosityForm, moonFrenzy, mysticArmor, natureIncarnate, needleOfVengeance,
                     neverMind, noiseBlast, nudgeFate, oakenResilience, odeToOuroboros, oneWithPlants, oneWithStone,
-                    outcastsCurse, overwhelmingPresence, patronsPuppet, personalBlizzard, pestForm, petrify,
-                    phantasmagoria, phantasmalCalamity, phantasmalMinionSpell, phaseFamiliar, piedPiping, pinpoint,
-                    planarSeal, prestidigitation, primalSummons, projectImage, protectiveWards, pummelingRubble,
-                    raiseDead, rallyingAnthem, rangersBramble, readAura, repulsion, resistEnergy, restorativeMovement,
-                    retrocognition, revealingLight, runeOfObservation, runicBody, runicWeapon, safePassage, scrambleBody,
-                    seeTheUnseen, sending, shieldSpell, shiftingForm, shroudOfNight, sigil, songOfMarching,
-                    songOfStrength, soothe, soothingBallad, soothingMist, spellwrack, spiralOfHorrors, spiritLink,
-                    stokeTheHeart, stormLord, stormwindFlight, summonConstruct, summonPlantOrFungus, summonUndead,
-                    symphonyOfTheUnfetteredHeart, tangleVine, telekineticHand, telekineticProjectile, teleport,
-                    tempestSurge, terrainTransposition, toxicCloud, translate, tripleTime, truespeech, trueTarget,
-                    uncontrollableDance, unfetteredMovement, unrelentingObservation, untamedForm, untamedShift,
-                    upliftingOverture, vampiricExsanguination, vampiricFeast, vaporForm, veilOfDreams, veilOfPrivacy,
-                    voidWarp, wallOfStone, wallOfWind, waterWalk, wildingWord));
+                    outcastsCurse, overwhelmingPresence, paralyze, paranoia, patronsPuppet, peacefulBubble, peacefulRest,
+                    personalBlizzard, pestForm, petCache, petrify, phantasmagoria, phantasmalCalamity,
+                    phantasmalMinionSpell, phaseFamiliar, piedPiping, pinpoint, planarSeal, planarTether, plantForm,
+                    possession, prestidigitation, primalSummons, projectImage, protection, protectiveWards,
+                    pummelingRubble, punishingWinds, raiseDead, rallyingAnthem, rangersBramble, readAura, repulsion,
+                    resistEnergy, restorativeMovement, retrocognition, revealingLight, runeOfObservation, runicBody,
+                    runicWeapon, safePassage, scrambleBody, seeTheUnseen, sending, shieldSpell, shiftingForm,
+                    shroudOfNight, sigil, songOfMarching, songOfStrength, soothe, soothingBallad, soothingMist,
+                    spellwrack, spiralOfHorrors, spiritLink, stokeTheHeart, stormLord, stormwindFlight, summonConstruct,
+                    summonPlantOrFungus, summonUndead, symphonyOfTheUnfetteredHeart, tangleVine, telekineticHand,
+                    telekineticProjectile, teleport, tempestSurge, terrainTransposition, toxicCloud, translate,
+                    tripleTime, truespeech, trueTarget, uncontrollableDance, unfetteredMovement, unrelentingObservation,
+                    untamedForm, untamedShift, upliftingOverture, vampiricExsanguination, vampiricFeast, vaporForm,
+                    veilOfDreams, veilOfPrivacy, voidWarp, wallOfStone, wallOfWind, waterWalk, wildingWord));
 
             Weapon crossbow = new Weapon("Crossbow", WeaponCategory.SIMPLE, WeaponType.RANGED, WeaponGroup.CROSSBOW, 1, 8, DamageType.PIERCING);
             crossbow.setRangeFeet(120);
