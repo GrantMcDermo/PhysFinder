@@ -1820,6 +1820,24 @@ public class DataSeeder {
             readAura.setSpellRange(30);
             readAura.setSpellTargets("1 object");
 
+            Spell readOmens = new Spell("Read Omens", 4, SpellType.SPELL, ActionType.ACTIVITY,Set.of(concentrateTrait, manipulateTrait, predictionTrait), "You peek into the future.");
+            readOmens.setSpellTraditions(List.of(SpellTraditions.DIVINE, SpellTraditions.OCCULT));
+            readOmens.setSpellCastAmount(10);
+            readOmens.setSpellCastUnits("minute");
+
+            Spell regenerate = new Spell("Regenerate", 7, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, healingTrait, manipulateTrait, vitalityTrait), "An infusion of vital energy grants a creature continuous healing.");
+            regenerate.setSpellTraditions(List.of(SpellTraditions.DIVINE, SpellTraditions.PRIMAL));
+            regenerate.setSpellRange(0);
+            regenerate.setSpellTargets("1 willing living creature");
+            regenerate.setSpellDuration("1 minute");
+
+            Spell remake = new Spell("Remake", 10, SpellType.SPELL, ActionType.ACTIVITY, Set.of(concentrateTrait, manipulateTrait), "You fully re-create an object from nothing, even if the object was destroyed.");
+            remake.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
+            remake.setSpellCastAmount(1);
+            remake.setSpellCastUnits("hour");
+            remake.setSpellCost("a remnant of the item");
+            remake.setSpellRange(5);
+
             Spell repulsion = new Spell("Repulsion", 6, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(auraTrait, concentrateTrait, manipulateTrait, mentalTrait), "You manifest an aura that prevents creatures from approaching you.");
             repulsion.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT));
             repulsion.setSpellArea(40);
@@ -1833,9 +1851,9 @@ public class DataSeeder {
             resistEnergy.setSpellTargets("1 creature");
             resistEnergy.setSpellDuration("10 minutes");
 
-            Spell restorativeMovement = new Spell("Restorative Movement", 5, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, focusTrait, hexTrait, manipulateTrait, witchTrait), "Your patron weaves the threads of time around the target, giving them some of the benefits of a day's passage.");
-            restorativeMovement.setSpellRange(30);
-            restorativeMovement.setSpellTargets("1 creature");
+            Spell restorativeMoment = new Spell("Restorative Moment", 5, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, focusTrait, hexTrait, manipulateTrait, witchTrait), "Your patron weaves the threads of time around the target, giving them some of the benefits of a day's passage.");
+            restorativeMoment.setSpellRange(30);
+            restorativeMoment.setSpellTargets("1 creature");
 
             Spell retrocognition = new Spell("Retrocognition", 7, SpellType.SPELL, ActionType.ACTIVITY, Set.of(concentrateTrait, manipulateTrait), "Opening your mind to mental echoes, you gain impressions from past events that occurred in your current location.");
             retrocognition.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
@@ -1850,6 +1868,27 @@ public class DataSeeder {
             revealingLight.setSpellAreaType("burst");
             revealingLight.setSpellDefense("Reflex");
             revealingLight.setSpellDuration("varies");
+
+            Spell revival = new Spell("Revival", 10, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, healingTrait, manipulateTrait, vitalityTrait), "A burst of healing energy soothes living creatures and temporarily rouses those recently slain.");
+            revival.setSpellTraditions(List.of(SpellTraditions.DIVINE, SpellTraditions.PRIMAL));
+            revival.setSpellRange(30);
+            revival.setSpellTargets("dead creatures and living creatures of your choice within range");
+            revival.setSpellDuration("sustained up to 1 minute");
+
+            Spell rewriteMemory = new Spell("Rewrite Memory", 4, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, mentalTrait), "You alter the target's memories by erasing a memory, enhancing a memory's clarity, altering a memory, or adding a false memory.");
+            rewriteMemory.setSpellTraditions(List.of(SpellTraditions.OCCULT));
+            rewriteMemory.setSpellRange(30);
+            rewriteMemory.setSpellTargets("1 creature");
+            rewriteMemory.setSpellDefense("Will");
+            rewriteMemory.setSpellDuration("unlimited");
+
+            Spell ringOfTruth = new Spell("Ring of Truth", 3, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, detectionTrait, manipulateTrait, mentalTrait), "You designate an area in which lies are revealed.");
+            ringOfTruth.setSpellTraditions(List.of(SpellTraditions.DIVINE, SpellTraditions.OCCULT));
+            ringOfTruth.setSpellRange(30);
+            ringOfTruth.setSpellArea(20);
+            ringOfTruth.setSpellAreaType("burst");
+            ringOfTruth.setSpellDefense("Will");
+            ringOfTruth.setSpellDuration("10 minutes");
 
             Spell runeOfObservation = new Spell("Rune of Observation", 4, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(concentrateTrait, focusTrait, wizardTrait), "You inscribe an invisible eye-shaped rune in the air, creating a sensor as clairvoyance.");
             runeOfObservation.setSpellDuration("1 hour");
@@ -2261,16 +2300,17 @@ public class DataSeeder {
                     personalBlizzard, pestForm, petCache, petrify, phantasmagoria, phantasmalCalamity,
                     phantasmalMinionSpell, phaseFamiliar, piedPiping, pinpoint, planarSeal, planarTether, plantForm,
                     possession, prestidigitation, primalSummons, projectImage, protection, protectiveWards,
-                    pummelingRubble, punishingWinds, raiseDead, rallyingAnthem, rangersBramble, readAura, repulsion,
-                    resistEnergy, restorativeMovement, retrocognition, revealingLight, runeOfObservation, runicBody,
-                    runicWeapon, safePassage, scrambleBody, seeTheUnseen, sending, shieldSpell, shiftingForm,
-                    shroudOfNight, sigil, songOfMarching, songOfStrength, soothe, soothingBallad, soothingMist,
-                    spellwrack, spiralOfHorrors, spiritLink, stokeTheHeart, stormLord, stormwindFlight, summonConstruct,
-                    summonPlantOrFungus, summonUndead, symphonyOfTheUnfetteredHeart, tangleVine, telekineticHand,
-                    telekineticProjectile, teleport, tempestSurge, terrainTransposition, toxicCloud, translate,
-                    tripleTime, truespeech, trueTarget, uncontrollableDance, unfetteredMovement, unrelentingObservation,
-                    untamedForm, untamedShift, upliftingOverture, vampiricExsanguination, vampiricFeast, vaporForm,
-                    veilOfDreams, veilOfPrivacy, voidWarp, wallOfStone, wallOfWind, waterWalk, wildingWord));
+                    pummelingRubble, punishingWinds, raiseDead, rallyingAnthem, rangersBramble, readAura, readOmens,
+                    regenerate, remake, repulsion, resistEnergy, restorativeMoment, retrocognition, revealingLight,
+                    revival, rewriteMemory, ringOfTruth, runeOfObservation, runicBody, runicWeapon, safePassage,
+                    scrambleBody, seeTheUnseen, sending, shieldSpell, shiftingForm, shroudOfNight, sigil, songOfMarching,
+                    songOfStrength, soothe, soothingBallad, soothingMist, spellwrack, spiralOfHorrors, spiritLink,
+                    stokeTheHeart, stormLord, stormwindFlight, summonConstruct, summonPlantOrFungus, summonUndead,
+                    symphonyOfTheUnfetteredHeart, tangleVine, telekineticHand, telekineticProjectile, teleport,
+                    tempestSurge, terrainTransposition, toxicCloud, translate, tripleTime, truespeech, trueTarget,
+                    uncontrollableDance, unfetteredMovement, unrelentingObservation, untamedForm, untamedShift,
+                    upliftingOverture, vampiricExsanguination, vampiricFeast, vaporForm, veilOfDreams, veilOfPrivacy,
+                    voidWarp, wallOfStone, wallOfWind, waterWalk, wildingWord));
 
             Weapon crossbow = new Weapon("Crossbow", WeaponCategory.SIMPLE, WeaponType.RANGED, WeaponGroup.CROSSBOW, 1, 8, DamageType.PIERCING);
             crossbow.setRangeFeet(120);
@@ -5192,7 +5232,7 @@ public class DataSeeder {
             lessonOfDeath.setGrantedSpells(List.of(deathHex));
 
             ClassFeatureChoice lessonOfRenewal = new ClassFeatureChoice(witch, "Major Lesson", "Lesson of Renewal");
-            FeatureGrantedSpells renewalHex = new FeatureGrantedSpells(lessonOfRenewal, restorativeMovement);
+            FeatureGrantedSpells renewalHex = new FeatureGrantedSpells(lessonOfRenewal, restorativeMoment);
             lessonOfRenewal.setGrantedSpells(List.of(renewalHex));
 
             ClassFeatureChoice schoolOfArsGrammatica = new ClassFeatureChoice(wizard, "Arcane Schools", "School of Ars Grammatica");
