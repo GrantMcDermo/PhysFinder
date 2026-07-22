@@ -1912,18 +1912,71 @@ public class DataSeeder {
             safePassage.setSpellAreaType("10-foot-wide, 10-foot-tall 60-foot-long section of terrain");
             safePassage.setSpellDuration("sustained up to 1 minute");
 
+            Spell sanctuary = new Spell("Sanctuary", 1, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "You ward a creature with protective energy that deters attacks.");
+            sanctuary.setSpellTraditions(List.of(SpellTraditions.DIVINE, SpellTraditions.OCCULT));
+            sanctuary.setSpellRange(0);
+            sanctuary.setSpellTargets("1 creature");
+            sanctuary.setSpellDuration("1 minute");
+
+            Spell scoutingEye = new Spell("Scouting Eye", 5, SpellType.SPELL, ActionType.ACTIVITY, Set.of(concentrateTrait, manipulateTrait, scryingTrait), "You create an invisible, floating eye, 1 inch in diameter, at a location you can see within 500 feet.");
+            scoutingEye.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT));
+            scoutingEye.setSpellCastAmount(1);
+            scoutingEye.setSpellCastUnits("minute");
+            scoutingEye.setSpellDuration("sustained");
+
             Spell scrambleBody = new Spell("Scramble Body", 1, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, focusTrait, manipulateTrait, wizardTrait), "Your magic throws the creature's biology into disarray, inducing nausea, fever, and other unpleasant conditions.");
             scrambleBody.setSpellRange(30);
             scrambleBody.setSpellTargets("1 living creature");
             scrambleBody.setSpellDefense("Fortitude");
 
+            Spell scrying = new Spell("Scrying", 6, SpellType.SPELL, ActionType.ACTIVITY, Set.of(concentrateTrait, manipulateTrait, scryingTrait), "You magically spy on a creature of your choice.");
+            scrying.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            scrying.setSpellCastAmount(10);
+            scrying.setSpellCastUnits("minute");
+            scrying.setSpellTargets("1 creature");
+            scrying.setSpellDefense("Will");
+            scrying.setSpellDuration("sustained up to 10 minutes");
+
             Spell seeTheUnseen = new Spell("See the Unseen", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, revelationTrait), "Your gaze pierces through illusions and finds invisible creatures and spirits.");
             seeTheUnseen.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT));
             seeTheUnseen.setSpellDuration("10 minutes");
 
+            Spell seizeSoul = new Spell("Seize Soul", 9, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, unholyTrait), "You trap the target's soul in the item before the soul can pass on to the afterlife.");
+            seizeSoul.setSpellTraditions(List.of(SpellTraditions.DIVINE, SpellTraditions.OCCULT));
+            seizeSoul.setSpellRequirement("item worth at least the target's level × 100 gp");
+            seizeSoul.setSpellRange(30);
+            seizeSoul.setSpellTargets("1 creature that died within the last minute");
+            seizeSoul.setSpellDuration("unlimited");
+
             Spell sending = new Spell("Sending", 5, SpellType.SPELL, ActionType.THREE_ACTIONS, Set.of(concentrateTrait, manipulateTrait, mentalTrait), "You send the creature a mental message of 25 words or fewer, and it can respond immediately with its own message of 25 words or fewer.");
             sending.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT));
             sending.setSpellTargets("1 creature you know well");
+
+            Spell shadowBlast = new Spell("Shadow Blast", 5, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, shadowTrait), "You shape the shadow substance of the Netherworld into a blast.");
+            shadowBlast.setSpellTraditions(List.of(SpellTraditions.DIVINE, SpellTraditions.OCCULT));
+            shadowBlast.setSpellAreaType("varies");
+            shadowBlast.setSpellDefense("basic Reflex or Will (target's choice)");
+
+            Spell shapeStone = new Spell("Shape Stone", 4, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, earthTrait, manipulateTrait), "You shape the stone into a rough shape of your choice.");
+            shapeStone.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
+            shapeStone.setSpellRange(0);
+            shapeStone.setSpellTargets("cube of stone 10 feet across or smaller");
+
+            Spell shapeWood = new Spell("Shape Wood", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, plantTrait, woodTrait), "You shape the wood into a rough shape of your choice.");
+            shapeWood.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
+            shapeWood.setSpellRange(0);
+            shapeWood.setSpellTargets("an unworked piece of wood up to 20 cubic feet in volume");
+
+            Spell shareLife = new Spell("Share Life", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "You forge a temporary link between the target's life essence and your own.");
+            shareLife.setSpellTraditions(List.of(SpellTraditions.DIVINE));
+            shareLife.setSpellRange(30);
+            shareLife.setSpellTargets("1 creature");
+            shareLife.setSpellDuration("10 minutes");
+
+            Spell shatter = new Spell("Shatter", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, sonicTrait), "A high-frequency sonic attack shatters a nearby object.");
+            shatter.setSpellTraditions(List.of(SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
+            shatter.setSpellRange(30);
+            shatter.setSpellTargets("1 unattended object");
 
             Spell shieldSpell = new Spell("Shield", 1, SpellType.CANTRIP, ActionType.SINGLE_ACTION, Set.of(cantripTrait, concentrateTrait, forceTrait), "You raise a magical shield of force.");
             shieldSpell.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT));
@@ -1931,6 +1984,12 @@ public class DataSeeder {
 
             Spell shiftingForm = new Spell("Shifting Form", 4, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(concentrateTrait, focusTrait, morphTrait, wizardTrait), "You change your body to better suit the moment.");
             shiftingForm.setSpellDuration("1 minute");
+
+            Spell shrink = new Spell("Shrink", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, polymorphTrait), "You warp space to make a creature smaller.");
+            shrink.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
+            shrink.setSpellRange(30);
+            shrink.setSpellTargets("1 willing creature");
+            shrink.setSpellDuration("5 minutes");
 
             Spell shroudOfNight = new Spell("Shroud of Night", 1, SpellType.CANTRIP, ActionType.SINGLE_ACTION, Set.of(cantripTrait, darknessTrait, hexTrait, manipulateTrait, witchTrait), "Your patron blankets the target's eyes in darkness.");
             shroudOfNight.setSpellRange(30);
@@ -1944,12 +2003,33 @@ public class DataSeeder {
             sigil.setSpellTargets("1 creature or object");
             sigil.setSpellDuration("unlimited");
 
+            Spell silence = new Spell("Silence", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(illusionTrait, manipulateTrait, subtleTrait), "The target makes no sound, preventing creatures from noticing it using hearing alone.");
+            silence.setSpellTraditions(List.of(SpellTraditions.DIVINE, SpellTraditions.OCCULT));
+            silence.setSpellRange(0);
+            silence.setSpellTargets("1 willing creature");
+            silence.setSpellDuration("1 minute");
+
             Spell sleep = new Spell("Sleep", 1, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, incapactitationTrait, manipulateTrait, mentalTrait, sleepTrait), "Each creature in the area becomes drowsy, possibly nodding off.");
             sleep.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
             sleep.setSpellRange(30);
             sleep.setSpellArea(5);
             sleep.setSpellAreaType("burst");
             sleep.setSpellDefense("Will");
+
+            Spell slither = new Spell("Slither", 5, SpellType.SPELL, ActionType.THREE_ACTIONS, Set.of(concentrateTrait, manipulateTrait, shadowTrait), "A mass of snakes made of shadow rise up to capture creatures in the area.");
+            slither.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            slither.setSpellRange(120);
+            slither.setSpellArea(20);
+            slither.setSpellAreaType("burst");
+            slither.setSpellDefense("Reflex");
+            slither.setSpellDuration("1 minute");
+
+            Spell slow = new Spell("Slow", 3, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "You dilate the flow of time around the target, slowing its actions.");
+            slow.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
+            slow.setSpellRange(30);
+            slow.setSpellTargets("1 creature");
+            slow.setSpellDefense("Fortitude");
+            slow.setSpellDuration("varies");
 
             Spell songOfMarching = new Spell("Song of Marching", 3, SpellType.CANTRIP, ActionType.SINGLE_ACTION, Set.of(bardTrait, cantripTrait, compositionTrait, concentrateTrait, mentalTrait), "You maintain a brisk performance that keeps allies on the move.");
             songOfMarching.setSpellArea(60);
@@ -1975,9 +2055,22 @@ public class DataSeeder {
             soothingMist.setSpellRange(30);
             soothingMist.setSpellTargets("1 willing living creature or 1 undead creature");
 
+            Spell soundBody = new Spell("Sound Body", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, healingTrait, manipulateTrait, vitalityTrait), "You send a surge of healing energy to restore the target's body.");
+            soundBody.setSpellTraditions(List.of(SpellTraditions.DIVINE, SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
+            soundBody.setSpellRange(0);
+            soundBody.setSpellTargets("1 willing creature");
+
             Spell speakWithAnimals = new Spell("Speak with Animals", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "You can ask questions of, receive answers from, and use the Diplomacy skill with animals. The spell doesn't make them more friendly than normal. Cunning animals are likely to be terse and evasive, while less intelligent ones often make inane comments.");
             speakWithAnimals.setSpellTraditions(List.of(SpellTraditions.PRIMAL));
             speakWithAnimals.setSpellDuration("1 hour");
+
+            Spell speakWithPlants = new Spell("Speak with Plants", 3, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, plantTrait, woodTrait), "You can ask questions of and receive answers from plants and fungi, but the spell doesn't make them more friendly or intelligent than normal.");
+            speakWithPlants.setSpellTraditions(List.of(SpellTraditions.DIVINE, SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
+            speakWithPlants.setSpellDuration("1 hour");
+
+            Spell speakWithStones = new Spell("Speak with Stones", 5, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, earthTrait, manipulateTrait), "You can ask questions of and receive answers from natural or worked stone.");
+            speakWithStones.setSpellTraditions(List.of(SpellTraditions.DIVINE, SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
+            speakWithStones.setSpellDuration("1 hour");
 
             Spell spellwrack = new Spell("Spellwrack", 6, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, curseTrait, forceTrait, manipulateTrait), "You cause any spells cast on the target to spill out their energy in harmful surges.");
             spellwrack.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT));
@@ -1996,11 +2089,40 @@ public class DataSeeder {
             spiralOfHorrors.setSpellAreaType("emanation");
             spiralOfHorrors.setSpellDuration("sustained up to 1 minute");
 
+            Spell spiritBlast = new Spell("Spirit Blast", 6, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, spiritTrait), "You concentrate ethereal energy and attack a creature's spirit, dealing 16d6 spirit damage with a basic Fortitude save.");
+            spiritBlast.setSpellTraditions(List.of(SpellTraditions.DIVINE, SpellTraditions.OCCULT));
+            spiritBlast.setSpellRange(30);
+            spiritBlast.setSpellTargets("1 creature");
+            spiritBlast.setSpellDefense("basic Fortitude");
+
             Spell spiritLink = new Spell("Spirit Link", 1, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, healingTrait, manipulateTrait, spiritTrait), "You form a spiritual link with another creature, taking in its pain.");
             spiritLink.setSpellTraditions(List.of(SpellTraditions.DIVINE, SpellTraditions.OCCULT));
             spiritLink.setSpellRange(30);
             spiritLink.setSpellTargets("1 willing creature");
             spiritLink.setSpellDuration("10 minutes");
+
+            Spell spiritualArmament = new Spell("Spiritual Armament", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, sanctifiedTrait, spiritTrait), "You create a ghostly, magical echo of one weapon you're wielding or wearing and fling it.");
+            spiritualArmament.setSpellTraditions(List.of(SpellTraditions.DIVINE, SpellTraditions.OCCULT));
+            spiritualArmament.setSpellRange(120);
+            spiritualArmament.setSpellTargets("1 target");
+            spiritualArmament.setSpellDefense("AC");
+            spiritualArmament.setSpellDuration("sustained up to 1 minute");
+
+            Spell spiritualGuardian = new Spell("Spiritual Guardian", 5, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, sanctifiedTrait, spiritTrait), "A Medium guardian made of magical force appears in an unoccupied space in range.");
+            spiritualGuardian.setSpellTraditions(List.of(SpellTraditions.DIVINE));
+            spiritualGuardian.setSpellRange(120);
+            spiritualGuardian.setSpellDuration("sustained up to 1 minute");
+
+            Spell stabilize = new Spell("Stabilize", 1, SpellType.CANTRIP, ActionType.TWO_ACTIONS, Set.of(cantripTrait, concentrateTrait, healingTrait, manipulateTrait, vitalityTrait), "Life energy shuts death's door.");
+            stabilize.setSpellTraditions(List.of(SpellTraditions.DIVINE, SpellTraditions.PRIMAL));
+            stabilize.setSpellRange(30);
+            stabilize.setSpellTargets("1 dying creature");
+
+            Spell status = new Spell("Status", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, detectionTrait, manipulateTrait), "As long as you and the target are on the same plane of existence and both alive, you remain aware of its present state.");
+            status.setSpellTraditions(List.of(SpellTraditions.DIVINE, SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
+            status.setSpellRange(0);
+            status.setSpellTargets("1 willing living creature");
+            status.setSpellDuration("until your next daily preparations");
 
             Spell stokeTheHeart = new Spell("Stoke the Heart", 1, SpellType.CANTRIP, ActionType.SINGLE_ACTION, Set.of(cantripTrait, concentrateTrait, emotionTrait, hexTrait, witchTrait), "Your patron fills a creature with fervor, empowering their blows.");
             stokeTheHeart.setSpellRange(30);
@@ -2023,6 +2145,13 @@ public class DataSeeder {
             stupefy.setSpellDefense("Will");
             stupefy.setSpellDuration("varies");
 
+            Spell subconsciousSuggestion = new Spell("Subconscious Suggestion", 5, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, incapactitationTrait, linguisticTrait, manipulateTrait, mentalTrait, subtleTrait), "You implant a subconscious suggestion deep within the target's mind for them to follow when a trigger you specify occurs.");
+            subconsciousSuggestion.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            subconsciousSuggestion.setSpellRange(30);
+            subconsciousSuggestion.setSpellTargets("1 creature");
+            subconsciousSuggestion.setSpellDefense("Will");
+            subconsciousSuggestion.setSpellDuration("varies");
+
             Spell suggestion = new Spell("Suggestion", 4, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, incapactitationTrait, linguisticTrait, manipulateTrait, mentalTrait, subtleTrait), "Your honeyed words are difficult for creatures to resist.");
             suggestion.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
             suggestion.setSpellRange(30);
@@ -2035,10 +2164,54 @@ public class DataSeeder {
             summonAnimal.setSpellRange(30);
             summonAnimal.setSpellDuration("sustained up to 1 minute");
 
+            Spell summonCelestial = new Spell("Summon Celestial", 5, SpellType.SPELL, ActionType.THREE_ACTIONS, Set.of(concentrateTrait, holyTrait, manipulateTrait, summonTrait), "You summon a creature that has the celestial trait and whose level is 5 or lower to fight for you.");
+            summonCelestial.setSpellTraditions(List.of(SpellTraditions.DIVINE));
+            summonCelestial.setSpellRange(30);
+            summonCelestial.setSpellDuration("sustained up to 1 minute");
+
             Spell summonConstruct = new Spell("Summon Construct", 1, SpellType.SPELL, ActionType.THREE_ACTIONS, Set.of(concentrateTrait, manipulateTrait, summonTrait), "You summon a creature that has the construct trait and whose level is –1 to fight for you.");
             summonConstruct.setSpellTraditions(List.of(SpellTraditions.ARCANE));
             summonConstruct.setSpellRange(30);
             summonConstruct.setSpellDuration("sustained up to 1 minute");
+
+            Spell summonDragon = new Spell("Summon Dragon", 5, SpellType.SPELL, ActionType.THREE_ACTIONS, Set.of(concentrateTrait, manipulateTrait, summonTrait), "You summon a creature that has the dragon trait and whose level is 5 or lower to fight for you.");
+            summonDragon.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
+            summonDragon.setSpellRange(30);
+            summonDragon.setSpellDuration("sustained up to 1 minute");
+
+            Spell summonElemental = new Spell("Summon Elemental", 2, SpellType.SPELL, ActionType.THREE_ACTIONS, Set.of(concentrateTrait, manipulateTrait, summonTrait), "You summon a creature that has the elemental trait and whose level is 1 or lower to fight for you.");
+            summonElemental.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
+            summonElemental.setSpellRange(30);
+            summonElemental.setSpellDuration("sustained up to 1 minute");
+
+            Spell summonEntity = new Spell("Summon Entity", 5, SpellType.SPELL, ActionType.THREE_ACTIONS, Set.of(concentrateTrait, manipulateTrait, summonTrait), "You summon a creature that has the aberration trait and whose level is 5 or lower to fight for you.");
+            summonEntity.setSpellTraditions(List.of(SpellTraditions.OCCULT));
+            summonEntity.setSpellRange(30);
+            summonEntity.setSpellDuration("sustained up to 1 minute");
+
+            Spell summonFey = new Spell("Summon Fey", 1, SpellType.SPELL, ActionType.THREE_ACTIONS, Set.of(concentrateTrait, manipulateTrait, summonTrait), "You summon a creature that has the fey trait and whose level is –1 to fight for you.");
+            summonFey.setSpellTraditions(List.of(SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
+            summonFey.setSpellRange(30);
+            summonFey.setSpellDuration("sustained up to 1 minute");
+
+            Spell summonFiend = new Spell("Summon Fiend", 5, SpellType.SPELL, ActionType.THREE_ACTIONS, Set.of(concentrateTrait, manipulateTrait, summonTrait, unholyTrait), "You summon a creature that has the fiend trait and whose level is 5 or lower to fight for you.");
+            summonFiend.setSpellTraditions(List.of(SpellTraditions.DIVINE));
+            summonFiend.setSpellRange(30);
+            summonFiend.setSpellDuration("sustained up to 1 minute");
+
+            Spell summonGiant = new Spell("Summon Giant", 5, SpellType.SPELL, ActionType.THREE_ACTIONS, Set.of(concentrateTrait, manipulateTrait, summonTrait), "You summon a creature that has the giant trait and whose level is 5 or lower to fight for you.");
+            summonGiant.setSpellTraditions(List.of(SpellTraditions.PRIMAL));
+            summonGiant.setSpellRange(30);
+            summonGiant.setSpellDuration("sustained up to 1 minute");
+
+            Spell summonInstrument = new Spell("Summon Instrument", 1, SpellType.CANTRIP, ActionType.THREE_ACTIONS, Set.of(cantripTrait, concentrateTrait, manipulateTrait), "You materialize a handheld musical instrument in your grasp.");
+            summonInstrument.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT));
+            summonInstrument.setSpellDuration("1 hour");
+
+            Spell summonMonitor = new Spell("Summon Monitor", 5, SpellType.SPELL, ActionType.THREE_ACTIONS, Set.of(concentrateTrait, manipulateTrait, summonTrait), "You summon a creature that has the monitor trait and whose level is 5 or lower to fight for you.");
+            summonMonitor.setSpellTraditions(List.of(SpellTraditions.DIVINE));
+            summonMonitor.setSpellRange(30);
+            summonMonitor.setSpellDuration("sustained up to 1 minute");
 
             Spell summonPlantOrFungus = new Spell("Summon Plant or Fungus", 1, SpellType.SPELL, ActionType.THREE_ACTIONS, Set.of(concentrateTrait, manipulateTrait, summonTrait), "You summon a creature that has the plant or fungus trait and whose level is –1 to fight for you.");
             summonPlantOrFungus.setSpellTraditions(List.of(SpellTraditions.PRIMAL));
@@ -2050,6 +2223,18 @@ public class DataSeeder {
             summonUndead.setSpellRange(30);
             summonUndead.setSpellDuration("sustained up to 1 minute");
 
+            Spell sunburst = new Spell("Sunburst", 7, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, fireTrait, lightTrait, manipulateTrait, vitalityTrait), "A powerful globe of searing sunlight explodes in the area, dealing 8d10 fire damage to all creatures in the area, plus an additional 8d10 vitality damage to undead creatures. Each creature in the area must attempt a Reflex save.");
+            sunburst.setSpellTraditions(List.of(SpellTraditions.DIVINE, SpellTraditions.PRIMAL));
+            sunburst.setSpellRange(500);
+            sunburst.setSpellArea(60);
+            sunburst.setSpellAreaType("burst");
+            sunburst.setSpellDefense("Reflex");
+
+            Spell sureFooting = new Spell("Sure Footing", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, healingTrait, manipulateTrait), "You free the target's limbs from ailments that impede mobility.");
+            sureFooting.setSpellTraditions(List.of(SpellTraditions.DIVINE, SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
+            sureFooting.setSpellRange(0);
+            sureFooting.setSpellTargets("1 willing creature");
+
             Spell sureStrike = new Spell("Sure Strike", 1, SpellType.SPELL, ActionType.SINGLE_ACTION, Set.of(concentrateTrait, fortuneTrait), "The next time you make an attack roll before the end of your turn, roll it twice and use the better result. The attack ignores circumstance penalties to the attack roll and any flat check required due to the target being concealed or hidden. You are then temporarily immune to sure strike for 10 minutes.");
             sureStrike.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
             sureStrike.setSpellDuration("until the end of your turn");
@@ -2057,6 +2242,13 @@ public class DataSeeder {
             Spell symphonyOfTheUnfetteredHeart = new Spell("Symphony of the Unfettered Heart", 5, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(bardTrait, compositionTrait, concentrateTrait, focusTrait), "Your symphony lifts listeners from their worldly concerns.");
             symphonyOfTheUnfetteredHeart.setSpellRange(30);
             symphonyOfTheUnfetteredHeart.setSpellTargets("you or 1 ally");
+
+            Spell synapticPulse = new Spell("Synaptic Pulse", 5, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, incapactitationTrait, manipulateTrait, mentalTrait), "You emit a pulsating mental blast that penetrates the minds of all enemies in the area.");
+            synapticPulse.setSpellTraditions(List.of(SpellTraditions.OCCULT));
+            synapticPulse.setSpellArea(30);
+            synapticPulse.setSpellAreaType("emanation");
+            synapticPulse.setSpellDefense("Will");
+            synapticPulse.setSpellDuration("1 round");
 
             Spell tangleVine = new Spell("Tangle Vine", 1, SpellType.CANTRIP, ActionType.TWO_ACTIONS, Set.of(attackTrait, cantripTrait, concentrateTrait, manipulateTrait, plantTrait, woodTrait), "A vine appears from thin air, flicking from your hand and lashing itself to the target.");
             tangleVine.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
@@ -2303,14 +2495,19 @@ public class DataSeeder {
                     pummelingRubble, punishingWinds, raiseDead, rallyingAnthem, rangersBramble, readAura, readOmens,
                     regenerate, remake, repulsion, resistEnergy, restorativeMoment, retrocognition, revealingLight,
                     revival, rewriteMemory, ringOfTruth, runeOfObservation, runicBody, runicWeapon, safePassage,
-                    scrambleBody, seeTheUnseen, sending, shieldSpell, shiftingForm, shroudOfNight, sigil, songOfMarching,
-                    songOfStrength, soothe, soothingBallad, soothingMist, spellwrack, spiralOfHorrors, spiritLink,
-                    stokeTheHeart, stormLord, stormwindFlight, summonConstruct, summonPlantOrFungus, summonUndead,
-                    symphonyOfTheUnfetteredHeart, tangleVine, telekineticHand, telekineticProjectile, teleport,
-                    tempestSurge, terrainTransposition, toxicCloud, translate, tripleTime, truespeech, trueTarget,
-                    uncontrollableDance, unfetteredMovement, unrelentingObservation, untamedForm, untamedShift,
-                    upliftingOverture, vampiricExsanguination, vampiricFeast, vaporForm, veilOfDreams, veilOfPrivacy,
-                    voidWarp, wallOfStone, wallOfWind, waterWalk, wildingWord));
+                    sanctuary, scoutingEye, scrambleBody, scrying, seeTheUnseen, seizeSoul, sending, shadowBlast,
+                    shapeStone, shapeWood, shareLife, shatter, shieldSpell, shiftingForm, shrink, shroudOfNight, sigil,
+                    silence, slither, slow, songOfMarching, songOfStrength, soothe, soothingBallad, soothingMist,
+                    soundBody, speakWithPlants, speakWithStones, spellwrack, spiralOfHorrors, spiritBlast, spiritLink,
+                    spiritualArmament, spiritualGuardian, stabilize, status, stokeTheHeart, stormLord, stormwindFlight,
+                    subconsciousSuggestion, summonCelestial, summonConstruct, summonDragon, summonElemental,
+                    summonEntity, summonFey, summonFiend, summonGiant, summonInstrument, summonMonitor,
+                    summonPlantOrFungus, summonUndead, sunburst, sureFooting, symphonyOfTheUnfetteredHeart,
+                    synapticPulse, tangleVine, telekineticHand, telekineticProjectile, teleport, tempestSurge,
+                    terrainTransposition, toxicCloud, translate, tripleTime, truespeech, trueTarget, uncontrollableDance,
+                    unfetteredMovement, unrelentingObservation, untamedForm, untamedShift, upliftingOverture,
+                    vampiricExsanguination, vampiricFeast, vaporForm, veilOfDreams, veilOfPrivacy, voidWarp, wallOfStone,
+                    wallOfWind, waterWalk, wildingWord));
 
             Weapon crossbow = new Weapon("Crossbow", WeaponCategory.SIMPLE, WeaponType.RANGED, WeaponGroup.CROSSBOW, 1, 8, DamageType.PIERCING);
             crossbow.setRangeFeet(120);
