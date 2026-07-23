@@ -2250,11 +2250,31 @@ public class DataSeeder {
             synapticPulse.setSpellDefense("Will");
             synapticPulse.setSpellDuration("1 round");
 
+            Spell tailwind = new Spell("Tailwind", 1, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(airTrait, concentrateTrait, manipulateTrait), "The wind at your back pushes you to find new horizons.");
+            tailwind.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
+            tailwind.setSpellDuration("1 hour");
+
+            Spell talkingCorpse = new Spell("Talking Corpse", 4, SpellType.SPELL, ActionType.ACTIVITY, Set.of(concentrateTrait, manipulateTrait), "You grant the target corpse a semblance of life, which it uses to speak the answers to three questions posed to it.");
+            talkingCorpse.setSpellTraditions(List.of(SpellTraditions.DIVINE, SpellTraditions.OCCULT));
+            talkingCorpse.setSpellCastAmount(10);
+            talkingCorpse.setSpellCastUnits("minute");
+            talkingCorpse.setSpellRange(0);
+            talkingCorpse.setSpellTargets("1 corpse");
+            talkingCorpse.setSpellDefense("Will");
+            talkingCorpse.setSpellDuration("10 minutes");
+
             Spell tangleVine = new Spell("Tangle Vine", 1, SpellType.CANTRIP, ActionType.TWO_ACTIONS, Set.of(attackTrait, cantripTrait, concentrateTrait, manipulateTrait, plantTrait, woodTrait), "A vine appears from thin air, flicking from your hand and lashing itself to the target.");
             tangleVine.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
             tangleVine.setSpellRange(30);
             tangleVine.setSpellTargets("1 creature");
             tangleVine.setSpellDefense("AC");
+
+            Spell tanglingCreepers = new Spell("Tangling Creepers", 6, SpellType.SPELL, ActionType.THREE_ACTIONS, Set.of(concentrateTrait, manipulateTrait, plantTrait, woodTrait), "Dense, twitching creepers sprout from every surface and fill any bodies of water in the area.");
+            tanglingCreepers.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
+            tanglingCreepers.setSpellRange(500);
+            tanglingCreepers.setSpellArea(40);
+            tanglingCreepers.setSpellAreaType("burst");
+            tanglingCreepers.setSpellDuration("10 minutes");
 
             Spell telekineticHand = new Spell("Telekinetic Hand", 1, SpellType.CANTRIP, ActionType.TWO_ACTIONS, Set.of(cantripTrait, concentrateTrait, manipulateTrait), "You create a floating, magical hand, either invisible or ghostlike, that grasps the target object and levitates it slowly up to 20 feet in any direction. When you Sustain the spell, you can move the object an additional 20 feet. If the object is in the air when the spell ends, the object falls.");
             telekineticHand.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
@@ -2268,11 +2288,20 @@ public class DataSeeder {
             telekineticHaul.setSpellTargets("1 unattended object of up to 80 Bulk with no dimension longer than 20 feet");
             telekineticHaul.setSpellDuration("sustained up to 1 minute");
 
+            Spell telekineticManeuver = new Spell("Telekinetic Maneuver", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(attackTrait, concentrateTrait, forceTrait, manipulateTrait), "With a rush of telekinetic power, you move a foe or something they carry.");
+            telekineticManeuver.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            telekineticManeuver.setSpellRange(60);
+            telekineticManeuver.setSpellTargets("1 creature");
+
             Spell telekineticProjectile = new Spell("Telekinetic Projectile", 1, SpellType.CANTRIP, ActionType.TWO_ACTIONS, Set.of(attackTrait, cantripTrait, concentrateTrait, manipulateTrait), "You hurl a loose, unattended object that is within range and that has 1 Bulk or less at the target. Make a spell attack roll against the target's AC. If you hit, you deal 2d6 bludgeoning, piercing, or slashing damage—as appropriate for the object you hurled. No specific traits or magic properties of the hurled item affect the attack or the damage.");
             telekineticProjectile.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
             telekineticProjectile.setSpellRange(30);
             telekineticProjectile.setSpellTargets("1 creature");
             telekineticProjectile.setSpellDefense("AC");
+
+            Spell telepathy = new Spell("Telepathy", 4, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, linguisticTrait, manipulateTrait, mentalTrait), "You can communicate telepathically with creatures within 30 feet.");
+            telepathy.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            telepathy.setSpellDuration("10 minutes");
 
             Spell teleport = new Spell("Teleport", 6, SpellType.SPELL, ActionType.ACTIVITY, Set.of(concentrateTrait, manipulateTrait, teleportationTrait), "You and the targets are instantly transported to any location within range, as long as you can identify the location precisely both by its position relative to your starting position and by its appearance (or other identifying features). Incorrect knowledge of the location's appearance usually causes the spell to fail, but it could instead lead to teleporting to an unwanted location or some other unusual mishap determined by the GM. Teleport is not precise over great distances. The targets appear at a distance from the intended destination equal to roughly 1 percent of the total distance traveled, in a direction determined by the GM. For short journeys, this lack of precision is irrelevant, but for long distances this could be up to 1 mile.");
             teleport.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
@@ -2288,6 +2317,12 @@ public class DataSeeder {
 
             Spell terrainTransposition = new Spell("Terrain Transposition", 5, SpellType.FOCUS, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, focusTrait, manipulateTrait, rangerTrait, teleportationTrait), "You mystically transpose your current location with another.");
             terrainTransposition.setSpellRange(90);
+
+            Spell thunderstrike = new Spell("Thunderstrike", 1, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, electricityTrait, manipulateTrait, sonicTrait), "You call down a tendril of lightning that cracks with thunder, dealing 1d12 electricity damage and 1d4 sonic damage to the target with a basic Reflex save. A target wearing metal armor or made of metal takes a –1 circumstance bonus to its save, and if damaged by the spell is clumsy 1 for 1 round.");
+            thunderstrike.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
+            thunderstrike.setSpellRange(120);
+            thunderstrike.setSpellTargets("1 creature");
+            thunderstrike.setSpellDefense("basic Reflex");
 
             Spell toxicCloud = new Spell("Toxic Cloud", 5, SpellType.SPELL, ActionType.THREE_ACTIONS, Set.of(concentrateTrait, deathTrait, manipulateTrait, poisonTrait), "You conjure a poisonous fog.");
             toxicCloud.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
@@ -2307,22 +2342,27 @@ public class DataSeeder {
             translocate.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
             translocate.setSpellRange(120);
 
+            Spell treeOfSeasons = new Spell("Tree of Seasons", 6, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, plantTrait, woodTrait), "You cause a Small tree to instantly sprout in an unoccupied space on the ground.");
+            treeOfSeasons.setSpellTraditions(List.of(SpellTraditions.PRIMAL));
+            treeOfSeasons.setSpellRange(60);
+            treeOfSeasons.setSpellDuration("1 minute");
+
             Spell tripleTime = new Spell("Triple Time", 2, SpellType.CANTRIP, ActionType.SINGLE_ACTION, Set.of(bardTrait, cantripTrait, compositionTrait, emotionTrait, manipulateTrait, mentalTrait), "Your music sets a fast pace.");
             tripleTime.setSpellArea(60);
             tripleTime.setSpellAreaType("emanation");
             tripleTime.setSpellDuration("1 round");
-
-            Spell truespeech = new Spell("Truespeech", 5, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "The target can understand all words regardless of language and also speak the languages of other creatures. When in a mixed group of creatures, each time the target speaks, it can choose a creature and speak in a language that creature understands, even if the target doesn't know what language that is.");
-            truespeech.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT));
-            truespeech.setSpellRange(0);
-            truespeech.setSpellTargets("1 creature");
-            truespeech.setSpellDuration("1 hour");
 
             Spell trueTarget = new Spell("True Target", 7, SpellType.SPELL, ActionType.SINGLE_ACTION, Set.of(concentrateTrait, fortuneTrait, predictionTrait), "You delve into the possible futures of the next few seconds to understand all the ways your foe might avoid harm, then cast out that vision to those around you.");
             trueTarget.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
             trueTarget.setSpellRange(60);
             trueTarget.setSpellTargets("4 creatures");
             trueTarget.setSpellDuration("until the start of your next turn");
+
+            Spell truespeech = new Spell("Truespeech", 5, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "The target can understand all words regardless of language and also speak the languages of other creatures. When in a mixed group of creatures, each time the target speaks, it can choose a creature and speak in a language that creature understands, even if the target doesn't know what language that is.");
+            truespeech.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT));
+            truespeech.setSpellRange(0);
+            truespeech.setSpellTargets("1 creature");
+            truespeech.setSpellDuration("1 hour");
 
             Spell umbralJourney = new Spell("Umbral Journey", 5, SpellType.SPELL, ActionType.ACTIVITY, Set.of(concentrateTrait, manipulateTrait, shadowTrait, teleportationTrait), "You move partially into the Netherworld, using its warped nature to speed your travels.");
             umbralJourney.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
@@ -2503,11 +2543,12 @@ public class DataSeeder {
                     subconsciousSuggestion, summonCelestial, summonConstruct, summonDragon, summonElemental,
                     summonEntity, summonFey, summonFiend, summonGiant, summonInstrument, summonMonitor,
                     summonPlantOrFungus, summonUndead, sunburst, sureFooting, symphonyOfTheUnfetteredHeart,
-                    synapticPulse, tangleVine, telekineticHand, telekineticProjectile, teleport, tempestSurge,
-                    terrainTransposition, toxicCloud, translate, tripleTime, truespeech, trueTarget, uncontrollableDance,
-                    unfetteredMovement, unrelentingObservation, untamedForm, untamedShift, upliftingOverture,
-                    vampiricExsanguination, vampiricFeast, vaporForm, veilOfDreams, veilOfPrivacy, voidWarp, wallOfStone,
-                    wallOfWind, waterWalk, wildingWord));
+                    synapticPulse, tailwind, talkingCorpse, tangleVine, tanglingCreepers, telekineticHand,
+                    telekineticManeuver, telekineticProjectile, telepathy, teleport, tempestSurge, terrainTransposition,
+                    thunderstrike, toxicCloud, translate, treeOfSeasons, tripleTime, trueTarget, truespeech,
+                    uncontrollableDance, unfetteredMovement, unrelentingObservation, untamedForm, untamedShift,
+                    upliftingOverture, vampiricExsanguination, vampiricFeast, vaporForm, veilOfDreams, veilOfPrivacy,
+                    voidWarp, wallOfStone, wallOfWind, waterWalk, wildingWord));
 
             Weapon crossbow = new Weapon("Crossbow", WeaponCategory.SIMPLE, WeaponType.RANGED, WeaponGroup.CROSSBOW, 1, 8, DamageType.PIERCING);
             crossbow.setRangeFeet(120);
