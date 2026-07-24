@@ -2379,11 +2379,24 @@ public class DataSeeder {
             uncontrollableDance.setSpellDefense("Will");
             uncontrollableDance.setSpellDuration("varies");
 
+            Spell unfathomableSong = new Spell("Unfathomable Song", 9, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(auditoryTrait, concentrateTrait, emotionTrait, fearTrait, incapactitationTrait, manipulateTrait, mentalTrait), "Fleeting notes of a strange and unnatural song fill the air, overtaking the mind.");
+            unfathomableSong.setSpellTraditions(List.of(SpellTraditions.OCCULT));
+            unfathomableSong.setSpellRange(120);
+            unfathomableSong.setSpellTargets("up to 5 creatures");
+            unfathomableSong.setSpellDefense("Will");
+            unfathomableSong.setSpellDuration("sustained up to 1 minute");
+
             Spell unfetteredMovement = new Spell("Unfettered Movement", 4, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "You repel hindrances that would affect a creature.");
             unfetteredMovement.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.PRIMAL));
             unfetteredMovement.setSpellRange(0);
             unfetteredMovement.setSpellTargets("1 creature touched");
             unfetteredMovement.setSpellDuration("10 minutes");
+
+            Spell unfetteredPack = new Spell("Unfettered Pack", 7, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "You free those who travel alongside you from environmental hindrances.");
+            unfetteredPack.setSpellTraditions(List.of(SpellTraditions.PRIMAL));
+            unfetteredPack.setSpellRange(30);
+            unfetteredPack.setSpellTargets("up to 10 creatures");
+            unfetteredPack.setSpellDuration("1 hour");
 
             Spell unrelentingObservation = new Spell("Unrelenting Observation", 8, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, scryingTrait), "This spell grants perfect sight based on scrying, allowing several willing targets to track the exact movements or position of one creature or object. Choose one target creature or object in the area to be tracked. It becomes the sensor for the spell. Up to five willing creatures of your choice in the area can see a ghostly image of this creature or object when it's out of their sight. They can perceive the creature or object perfectly, allowing them to ignore the concealed or invisible condition, though physical barriers still provide cover.\n" +
                     "\n" +
@@ -2546,9 +2559,9 @@ public class DataSeeder {
                     synapticPulse, tailwind, talkingCorpse, tangleVine, tanglingCreepers, telekineticHand,
                     telekineticManeuver, telekineticProjectile, telepathy, teleport, tempestSurge, terrainTransposition,
                     thunderstrike, toxicCloud, translate, treeOfSeasons, tripleTime, trueTarget, truespeech,
-                    uncontrollableDance, unfetteredMovement, unrelentingObservation, untamedForm, untamedShift,
-                    upliftingOverture, vampiricExsanguination, vampiricFeast, vaporForm, veilOfDreams, veilOfPrivacy,
-                    voidWarp, wallOfStone, wallOfWind, waterWalk, wildingWord));
+                    uncontrollableDance, unfathomableSong, unfetteredMovement, unfetteredPack, unrelentingObservation,
+                    untamedForm, untamedShift, upliftingOverture, vampiricExsanguination, vampiricFeast, vaporForm,
+                    veilOfDreams, veilOfPrivacy, voidWarp, wallOfStone, wallOfWind, waterWalk, wildingWord));
 
             Weapon crossbow = new Weapon("Crossbow", WeaponCategory.SIMPLE, WeaponType.RANGED, WeaponGroup.CROSSBOW, 1, 8, DamageType.PIERCING);
             crossbow.setRangeFeet(120);
