@@ -2427,12 +2427,15 @@ public class DataSeeder {
             vampiricExsanguination.setSpellAreaType("cone");
             vampiricExsanguination.setSpellDefense("basic Fortitude");
 
-
             Spell vampiricFeast = new Spell("Vampiric Feast", 3, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, deathTrait, manipulateTrait, voidTrait), "Your touch leeches the lifeblood out of a target to empower yourself.");
             vampiricFeast.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT));
             vampiricFeast.setSpellRange(0);
             vampiricFeast.setSpellTargets("1 living creature");
             vampiricFeast.setSpellDefense("basic Fortitude");
+
+            Spell vanishingTracks = new Spell("Vanishing Tracks", 1, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "You obscure the tracks you leave behind.");
+            vanishingTracks.setSpellTraditions(List.of(SpellTraditions.PRIMAL));
+            vanishingTracks.setSpellDuration("1 hour");
 
             Spell vaporForm = new Spell("Vapor Form", 4, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(airTrait, concentrateTrait, manipulateTrait, polymorphTrait), "The target transforms into a vaporous state.");
             vaporForm.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
@@ -2441,7 +2444,7 @@ public class DataSeeder {
             vaporForm.setSpellDuration("5 minutes");
 
             Spell veilOfDreams = new Spell("Veil of Dreams", 1, SpellType.FOCUS, ActionType.SINGLE_ACTION, Set.of(focusTrait, hexTrait, manipulateTrait, mentalTrait, witchTrait), "Your patron draws the target into a drowsy state, causing daydreams and sluggishness.");
-            veilOfDreams.setSpellArea(30);
+            veilOfDreams.setSpellRange(30);
             veilOfDreams.setSpellTargets("1 creature");
             veilOfDreams.setSpellDefense("Will");
             veilOfDreams.setSpellDuration("sustained up to 1 minute");
@@ -2454,17 +2457,46 @@ public class DataSeeder {
             veilOfPrivacy.setSpellTargets("1 creature or object");
             veilOfPrivacy.setSpellDuration("8 hours");
 
+            Spell ventriloquism = new Spell("Ventriloquism", 1, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(auditoryTrait, concentrateTrait, illusionTrait, manipulateTrait), "Whenever you speak or make any other sound vocally, you can make your vocalization seem to originate from somewhere else within 60 feet, and you can change that apparent location freely as you vocalize.");
+            ventriloquism.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT, SpellTraditions.PRIMAL));
+
+            Spell vibrantPattern = new Spell("Vibrant Pattern", 6, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(illusionTrait, incapactitationTrait, manipulateTrait, subtleTrait, visualTrait), "You create a pattern of lights that pulses with intensity.");
+            vibrantPattern.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            vibrantPattern.setSpellRange(120);
+            vibrantPattern.setSpellArea(10);
+            vibrantPattern.setSpellAreaType("burst");
+            vibrantPattern.setSpellDefense("Will");
+            vibrantPattern.setSpellDuration("sustained up to 1 minute");
+
             Spell visionOfDeath = new Spell("Vision of Death", 4, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, deathTrait, emotionTrait, fearTrait, manipulateTrait, mentalTrait), "You force the target to see a vision of its own death.");
             visionOfDeath.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
             visionOfDeath.setSpellRange(120);
             visionOfDeath.setSpellTargets("1 living creature");
             visionOfDeath.setSpellDefense("Will");
 
+            Spell vitalBeacon = new Spell("Vital Beacon", 4, SpellType.SPELL, ActionType.ACTIVITY, Set.of(concentrateTrait, healingTrait, manipulateTrait, vitalityTrait), "Vitality radiates outward from you, allowing others to supplicate and receive healing.");
+            vitalBeacon.setSpellTraditions(List.of(SpellTraditions.DIVINE, SpellTraditions.PRIMAL));
+            vitalBeacon.setSpellCastAmount(1);
+            vitalBeacon.setSpellCastUnits("minute");
+            vitalBeacon.setSpellDuration("until your next daily preparations");
+
+            Spell vitalityLash = new Spell("Vitality Lash", 1, SpellType.CANTRIP, ActionType.TWO_ACTIONS, Set.of(cantripTrait, concentrateTrait, manipulateTrait, vitalityTrait), "You demolish the target's corrupted essence with energy from Creation's Forge.");
+            vitalityLash.setSpellTraditions(List.of(SpellTraditions.DIVINE, SpellTraditions.PRIMAL));
+            vitalityLash.setSpellRange(30);
+            vitalityLash.setSpellTargets("1 creature that is undead or otherwise has void healing");
+            vitalityLash.setSpellDefense("basic Fortitude");
+
             Spell voidWarp = new Spell("Void Warp", 1, SpellType.CANTRIP, ActionType.TWO_ACTIONS, Set.of(cantripTrait, concentrateTrait, manipulateTrait, voidTrait), "You call upon the Void to harm life force.");
             voidWarp.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.OCCULT));
             voidWarp.setSpellRange(30);
             voidWarp.setSpellTargets("1 living creature");
             voidWarp.setSpellDefense("basic Fortitude");
+
+            Spell volcanicEruption = new Spell("Volcanic Eruption", 7, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, fireTrait, manipulateTrait), "The ground opens up, spraying a column of lava high into the air in a vertical cylinder, dealing 14d6 fire damage to creatures in the area.");
+            volcanicEruption.setSpellTraditions(List.of(SpellTraditions.PRIMAL));
+            volcanicEruption.setSpellRange(120);
+            volcanicEruption.setSpellAreaType("5-foot radius, 80-foot-tall cylinder");
+            volcanicEruption.setSpellDefense("Reflex");
 
             Spell wallOfFire = new Spell("Wall of Fire", 4, SpellType.SPELL, ActionType.THREE_ACTIONS, Set.of(concentrateTrait, fireTrait, manipulateTrait), "You raise a blazing wall that burns creatures passing through it.");
             wallOfFire.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
@@ -2560,8 +2592,9 @@ public class DataSeeder {
                     telekineticManeuver, telekineticProjectile, telepathy, teleport, tempestSurge, terrainTransposition,
                     thunderstrike, toxicCloud, translate, treeOfSeasons, tripleTime, trueTarget, truespeech,
                     uncontrollableDance, unfathomableSong, unfetteredMovement, unfetteredPack, unrelentingObservation,
-                    untamedForm, untamedShift, upliftingOverture, vampiricExsanguination, vampiricFeast, vaporForm,
-                    veilOfDreams, veilOfPrivacy, voidWarp, wallOfStone, wallOfWind, waterWalk, wildingWord));
+                    untamedForm, untamedShift, upliftingOverture, vampiricExsanguination, vampiricFeast, vanishingTracks,
+                    vaporForm, veilOfDreams, veilOfPrivacy, ventriloquism, vibrantPattern, vitalBeacon, vitalityLash,
+                    voidWarp, volcanicEruption, wallOfStone, wallOfWind, waterWalk, wildingWord));
 
             Weapon crossbow = new Weapon("Crossbow", WeaponCategory.SIMPLE, WeaponType.RANGED, WeaponGroup.CROSSBOW, 1, 8, DamageType.PIERCING);
             crossbow.setRangeFeet(120);
