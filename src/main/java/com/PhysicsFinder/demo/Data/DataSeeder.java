@@ -2498,6 +2498,12 @@ public class DataSeeder {
             volcanicEruption.setSpellAreaType("5-foot radius, 80-foot-tall cylinder");
             volcanicEruption.setSpellDefense("Reflex");
 
+            Spell wailsOfTheDamned = new Spell("Wails of the Damned", 9, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(auditoryTrait, concentrateTrait, deathTrait, manipulateTrait, voidTrait), "You howl a lament of damned souls.");
+            wailsOfTheDamned.setSpellTraditions(List.of(SpellTraditions.DIVINE, SpellTraditions.OCCULT));
+            wailsOfTheDamned.setSpellArea(40);
+            wailsOfTheDamned.setSpellAreaType("emanation");
+            wailsOfTheDamned.setSpellDefense("Fortitude");
+
             Spell wallOfFire = new Spell("Wall of Fire", 4, SpellType.SPELL, ActionType.THREE_ACTIONS, Set.of(concentrateTrait, fireTrait, manipulateTrait), "You raise a blazing wall that burns creatures passing through it.");
             wallOfFire.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
             wallOfFire.setSpellRange(120);
@@ -2507,6 +2513,11 @@ public class DataSeeder {
             wallOfForce.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
             wallOfForce.setSpellRange(30);
             wallOfForce.setSpellDuration("1 minute");
+
+            Spell wallOfIce = new Spell("Wall of Ice", 5, SpellType.SPELL, ActionType.THREE_ACTIONS, Set.of(coldTrait, concentrateTrait, manipulateTrait, waterTrait), "You sculpt an ice barrier that blocks sight and, once shattered, freezes foes.");
+            wallOfIce.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
+            wallOfIce.setSpellRange(120);
+            wallOfIce.setSpellDuration("1 minute");
 
             Spell wallOfStone = new Spell("Wall of Stone", 5, SpellType.SPELL, ActionType.THREE_ACTIONS, Set.of(concentrateTrait, earthTrait, manipulateTrait), "You shape a wall of solid stone.");
             wallOfStone.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
@@ -2528,11 +2539,26 @@ public class DataSeeder {
             warpMind.setSpellTargets("1 creature");
             warpMind.setSpellDefense("Will");
 
+            Spell waterBreathing = new Spell("Water Breathing", 2, SpellType.SPELL, ActionType.ACTIVITY, Set.of(concentrateTrait, manipulateTrait, waterTrait), "The targets can breathe underwater.");
+            waterBreathing.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.PRIMAL));
+            waterBreathing.setSpellCastAmount(1);
+            waterBreathing.setSpellCastUnits("minute");
+            waterBreathing.setSpellRange(30);
+            waterBreathing.setSpellTargets("up to  5 creatures");
+            waterBreathing.setSpellDuration("1 hour");
+
             Spell waterWalk = new Spell("Water Walk", 2, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait, waterTrait), "The target can walk on the surface of water and other liquids without falling through. It can go underwater if it wishes, but in that case it must Swim normally. This spell doesn't grant the ability to breathe underwater.");
             waterWalk.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.DIVINE, SpellTraditions.PRIMAL));
             waterWalk.setSpellRange(0);
             waterWalk.setSpellTargets("1 creature");
             waterWalk.setSpellDuration("10 minutes");
+
+            Spell waveOfDespair = new Spell("Wave of Despair", 5, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, emotionTrait, manipulateTrait, mentalTrait), "You inflict despair on creatures in the area.");
+            waveOfDespair.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.OCCULT));
+            waveOfDespair.setSpellArea(30);
+            waveOfDespair.setSpellAreaType("cone");
+            waveOfDespair.setSpellDefense("Will");
+            waveOfDespair.setSpellDuration("1 or more rounds");
 
             Spell weaponStorm = new Spell("Weapon Storm", 4, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, manipulateTrait), "You swing a weapon you're holding, and the weapon magically multiplies into duplicates that swipe at all creatures in either a cone or an emanation.");
             weaponStorm.setSpellTraditions(List.of(SpellTraditions.ARCANE, SpellTraditions.PRIMAL));
@@ -2545,6 +2571,13 @@ public class DataSeeder {
             wildingWord.setSpellTargets("1 creature");
             wildingWord.setSpellDefense("Will");
             wildingWord.setSpellDuration("sustained up to 1 minute");
+
+            Spell wrathfulStorm = new Spell("Wrathful Storm", 9, SpellType.SPELL, ActionType.THREE_ACTIONS, Set.of(airTrait, coldTrait, electricityTrait, manipulateTrait), "A massive storm cloud forms in the air above the area, spreading rain and gales.");
+            wrathfulStorm.setSpellTraditions(List.of(SpellTraditions.PRIMAL));
+            wrathfulStorm.setSpellRange(800);
+            wrathfulStorm.setSpellArea(400);
+            wrathfulStorm.setSpellAreaType("burst");
+            wrathfulStorm.setSpellDuration("sustained up to 1 minute");
 
             spellRepo.saveAll(List.of(
                     acidGrip, aerialForm, airBubble, alarm, allegro, animalFeature, animalMessenger, antHaul, aqueousOrb,
@@ -2594,7 +2627,8 @@ public class DataSeeder {
                     uncontrollableDance, unfathomableSong, unfetteredMovement, unfetteredPack, unrelentingObservation,
                     untamedForm, untamedShift, upliftingOverture, vampiricExsanguination, vampiricFeast, vanishingTracks,
                     vaporForm, veilOfDreams, veilOfPrivacy, ventriloquism, vibrantPattern, vitalBeacon, vitalityLash,
-                    voidWarp, volcanicEruption, wallOfStone, wallOfWind, waterWalk, wildingWord));
+                    voidWarp, volcanicEruption, wailsOfTheDamned, wallOfIce, wallOfStone, wallOfWind, waterBreathing,
+                    waterWalk, waveOfDespair, wildingWord, wrathfulStorm));
 
             Weapon crossbow = new Weapon("Crossbow", WeaponCategory.SIMPLE, WeaponType.RANGED, WeaponGroup.CROSSBOW, 1, 8, DamageType.PIERCING);
             crossbow.setRangeFeet(120);
