@@ -2579,6 +2579,12 @@ public class DataSeeder {
             wrathfulStorm.setSpellAreaType("burst");
             wrathfulStorm.setSpellDuration("sustained up to 1 minute");
 
+            Spell zealousConviction = new Spell("Zealous Conviction", 6, SpellType.SPELL, ActionType.TWO_ACTIONS, Set.of(concentrateTrait, emotionTrait, manipulateTrait, mentalTrait), "You bypass your targets' rational minds, instilling them with unshakable conviction and zeal.");
+            zealousConviction.setSpellTraditions(List.of(SpellTraditions.DIVINE, SpellTraditions.OCCULT));
+            zealousConviction.setSpellRange(30);
+            zealousConviction.setSpellTargets("up to 10 willing creatures");
+            zealousConviction.setSpellDuration("10 minutes");
+
             spellRepo.saveAll(List.of(
                     acidGrip, aerialForm, airBubble, alarm, allegro, animalFeature, animalMessenger, antHaul, aqueousOrb,
                     arcticRift, augury, avatar, bane, banishment, bindUndead, blazingBolt, bless, blessedBoundary,
@@ -2628,7 +2634,7 @@ public class DataSeeder {
                     untamedForm, untamedShift, upliftingOverture, vampiricExsanguination, vampiricFeast, vanishingTracks,
                     vaporForm, veilOfDreams, veilOfPrivacy, ventriloquism, vibrantPattern, vitalBeacon, vitalityLash,
                     voidWarp, volcanicEruption, wailsOfTheDamned, wallOfIce, wallOfStone, wallOfWind, waterBreathing,
-                    waterWalk, waveOfDespair, wildingWord, wrathfulStorm));
+                    waterWalk, waveOfDespair, wildingWord, wrathfulStorm, zealousConviction));
 
             Weapon crossbow = new Weapon("Crossbow", WeaponCategory.SIMPLE, WeaponType.RANGED, WeaponGroup.CROSSBOW, 1, 8, DamageType.PIERCING);
             crossbow.setRangeFeet(120);
